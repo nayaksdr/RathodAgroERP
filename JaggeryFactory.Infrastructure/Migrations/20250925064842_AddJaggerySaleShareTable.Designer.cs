@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JaggeryAgro.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250826080319_AddDateColumnToAdvancePayments")]
-    partial class AddDateColumnToAdvancePayments
+    [Migration("20250925064842_AddJaggerySaleShareTable")]
+    partial class AddJaggerySaleShareTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("Date")
@@ -85,9 +86,11 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("AdvanceAdjusted")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("AdvanceAmount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("AdvanceDate")
@@ -188,12 +191,15 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("QuantityTon")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("RatePerTon")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("TotalAmountSnapshot")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -228,6 +234,35 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.ToTable("Dealers");
                 });
 
+            modelBuilder.Entity("JaggeryAgro.Core.Entities.DealerAdvance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AdvanceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("DealerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DealerId");
+
+                    b.ToTable("DealerAdvances");
+                });
+
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Deposit", b =>
                 {
                     b.Property<int>("Id")
@@ -237,6 +272,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("DepositDate")
@@ -261,6 +297,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("Date")
@@ -277,11 +314,16 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("SplitwisePaymentId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ExpenseTypeId");
 
                     b.HasIndex("PaidById");
+
+                    b.HasIndex("SplitwisePaymentId");
 
                     b.ToTable("Expenses");
                 });
@@ -370,15 +412,19 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<decimal>("QuantityKg")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("StockKg")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("TotalCostSnapshot")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("UnitPrice")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -395,24 +441,29 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("AdvancePaid")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("DealerId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("QuantityInKg")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("RatePerKg")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("RemainingAmount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("SaleDate")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("TotalAmount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -420,6 +471,40 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasIndex("DealerId");
 
                     b.ToTable("JaggerySales");
+                });
+
+            modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggerySaleShare", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("JaggerySaleId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("NetAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PaidAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("PersonName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ShareAmount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JaggerySaleId");
+
+                    b.ToTable("JaggerySaleShares");
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Labor", b =>
@@ -464,9 +549,14 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("AdvanceAdjusted")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<DateTime>("FromDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<decimal>("GrossAmount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("IsPaid")
@@ -480,9 +570,13 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("NetAmount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("ToDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -499,6 +593,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("DailyWage")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Description")
@@ -514,6 +609,31 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.ToTable("LaborTypes");
                 });
 
+            modelBuilder.Entity("JaggeryAgro.Core.Entities.LaborTypeRate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("DailyRate")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("EffectiveFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LaborTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LaborTypeId");
+
+                    b.ToTable("LaborTypeRates");
+                });
+
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Member", b =>
                 {
                     b.Property<int>("Id")
@@ -521,6 +641,10 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Balance")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -540,6 +664,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("CanePurchaseId")
@@ -591,6 +716,41 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.ToTable("Settings");
                 });
 
+            modelBuilder.Entity("JaggeryAgro.Core.Entities.SplitwisePayment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("FromMemberId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PaidById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ToMemberId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FromMemberId");
+
+                    b.HasIndex("PaidById");
+
+                    b.HasIndex("ToMemberId");
+
+                    b.ToTable("SplitwisePayments");
+                });
+
             modelBuilder.Entity("JaggeryAgro.Core.Entities.WeeklyPayment", b =>
                 {
                     b.Property<int>("Id")
@@ -600,9 +760,11 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("AdvanceDeducted")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("DailyRate")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("DaysPresent")
@@ -621,6 +783,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("NetSalary")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("PaymentDate")
@@ -657,9 +820,11 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("AdvanceDeducted")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("DailyRate")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("DaysPresent")
@@ -675,6 +840,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("NetSalary")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("PaymentMethod")
@@ -950,6 +1116,17 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.Navigation("Farmer");
                 });
 
+            modelBuilder.Entity("JaggeryAgro.Core.Entities.DealerAdvance", b =>
+                {
+                    b.HasOne("JaggeryAgro.Core.Entities.Dealer", "Dealer")
+                        .WithMany()
+                        .HasForeignKey("DealerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dealer");
+                });
+
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Deposit", b =>
                 {
                     b.HasOne("JaggeryAgro.Core.Entities.Labor", "Labor")
@@ -975,9 +1152,16 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("JaggeryAgro.Core.Entities.SplitwisePayment", "SplitwisePayment")
+                        .WithMany()
+                        .HasForeignKey("SplitwisePaymentId")
+                        .OnDelete(DeleteBehavior.NoAction);
+
                     b.Navigation("ExpenseType");
 
                     b.Navigation("PaidBy");
+
+                    b.Navigation("SplitwisePayment");
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggerySale", b =>
@@ -989,6 +1173,17 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Dealer");
+                });
+
+            modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggerySaleShare", b =>
+                {
+                    b.HasOne("JaggeryAgro.Core.Entities.JaggerySale", "JaggerySale")
+                        .WithMany("Shares")
+                        .HasForeignKey("JaggerySaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("JaggerySale");
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Labor", b =>
@@ -1006,6 +1201,17 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.Navigation("LaborType");
                 });
 
+            modelBuilder.Entity("JaggeryAgro.Core.Entities.LaborTypeRate", b =>
+                {
+                    b.HasOne("JaggeryAgro.Core.Entities.LaborType", "LaborType")
+                        .WithMany("LaborTypeRates")
+                        .HasForeignKey("LaborTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("LaborType");
+                });
+
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Payment", b =>
                 {
                     b.HasOne("JaggeryAgro.Core.Entities.CanePurchase", null)
@@ -1019,6 +1225,31 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Labor");
+                });
+
+            modelBuilder.Entity("JaggeryAgro.Core.Entities.SplitwisePayment", b =>
+                {
+                    b.HasOne("JaggeryAgro.Core.Entities.Member", "FromMember")
+                        .WithMany()
+                        .HasForeignKey("FromMemberId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("JaggeryAgro.Core.Entities.Member", "PaidBy")
+                        .WithMany()
+                        .HasForeignKey("PaidById");
+
+                    b.HasOne("JaggeryAgro.Core.Entities.Member", "ToMember")
+                        .WithMany()
+                        .HasForeignKey("ToMemberId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("FromMember");
+
+                    b.Navigation("PaidBy");
+
+                    b.Navigation("ToMember");
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.WeeklyPayment", b =>
@@ -1113,8 +1344,15 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.Navigation("Payments");
                 });
 
+            modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggerySale", b =>
+                {
+                    b.Navigation("Shares");
+                });
+
             modelBuilder.Entity("JaggeryAgro.Core.Entities.LaborType", b =>
                 {
+                    b.Navigation("LaborTypeRates");
+
                     b.Navigation("Labors");
                 });
 #pragma warning restore 612, 618

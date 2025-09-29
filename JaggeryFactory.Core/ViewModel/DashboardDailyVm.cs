@@ -38,6 +38,7 @@
         public List<DailyPointDto> ProduceQtyDaily { get; set; } = new List<DailyPointDto>();
         public List<DailyPointDto> SalesQtyDaily { get; set; } = new List<DailyPointDto>();
         public List<DailyPointDto> SalesAmountDaily { get; set; } = new List<DailyPointDto>();
+        public List<DailyJaggeryShareDto> JaggeryShareDaily { get; set; } = new();
 
         public List<DailyJaggerySellDto> JagerySellDaily { get; set; } = new List<DailyJaggerySellDto>();
 
@@ -52,5 +53,10 @@
         public double TodayJaggerySellAmount { get; set; }
         public double TodayAdvanceDealer { get; set; }
         public double TodayCaneAdvace { get; set; }
+
+        public decimal TodayJaggeryShareTotal { get; set; }
+        public decimal TodayJaggerySharePaid { get; set; }
+        public decimal TodayJaggerySharePending { get; set; }
+
     }
 }

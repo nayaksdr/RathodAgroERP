@@ -21,6 +21,8 @@ namespace JaggeryAgro.Core.Entities
         [NotMapped]
         public string SearchDealer { get; set; }
         public Dealer Dealer { get; set; } // Navigation
+        public ICollection<JaggerySaleShare> Shares { get; set; } = new List<JaggerySaleShare>();
+
     }
 
 }

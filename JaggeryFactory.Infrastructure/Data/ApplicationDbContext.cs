@@ -34,9 +34,11 @@ namespace JaggeryAgro.Infrastructure.Data
         public DbSet<ExpenseType> ExpenseTypes { get; set; }
         public DbSet<Dealer> Dealers { get; set; }
         public DbSet<JaggerySale> JaggerySales { get; set; }
+        public DbSet<JaggerySalePayment> JaggerySalePayments { get; set; }
         public DbSet<DealerAdvance> DealerAdvances { get; set; }
         public DbSet<SplitwisePayment> SplitwisePayments { get; set; }
-       
+        public DbSet<JaggerySaleShare> JaggerySaleShares { get; set; }        
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -122,6 +124,8 @@ namespace JaggeryAgro.Infrastructure.Data
                 .WithMany()
                 .HasForeignKey(p => p.ToMemberId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+          
         }
     }
 }

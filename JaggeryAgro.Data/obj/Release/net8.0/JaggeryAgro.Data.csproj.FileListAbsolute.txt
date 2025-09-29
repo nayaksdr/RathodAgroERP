@@ -64,6 +64,7 @@ C:\Rathod Jaggery & Agro Application\JaggeryAgro.Data\obj\Release\net8.0\Jaggery
 C:\Rathod Jaggery & Agro Application\JaggeryAgro.Data\obj\Release\net8.0\JaggeryAgro.Data.AssemblyInfoInputs.cache
 C:\Rathod Jaggery & Agro Application\JaggeryAgro.Data\obj\Release\net8.0\JaggeryAgro.Data.AssemblyInfo.cs
 C:\Rathod Jaggery & Agro Application\JaggeryAgro.Data\obj\Release\net8.0\JaggeryAgro.Data.csproj.CoreCompileInputs.cache
+C:\Rathod Jaggery & Agro Application\JaggeryAgro.Data\obj\Release\net8.0\JaggeryAgro.Data.sourcelink.json
 C:\Rathod Jaggery & Agro Application\JaggeryAgro.Data\obj\Release\net8.0\JaggeryA.C679D0B1.Up2Date
 C:\Rathod Jaggery & Agro Application\JaggeryAgro.Data\obj\Release\net8.0\JaggeryAgro.Data.dll
 C:\Rathod Jaggery & Agro Application\JaggeryAgro.Data\obj\Release\net8.0\refint\JaggeryAgro.Data.dll
