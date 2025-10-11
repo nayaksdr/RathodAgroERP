@@ -5,7 +5,7 @@
 namespace JaggeryAgro.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddSplitwise : Migration
+    public partial class InitialCreateBaseline : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

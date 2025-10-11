@@ -5,24 +5,33 @@
 namespace JaggeryAgro.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddDealerTable : Migration
+    public partial class AddPaymentModeAndProofImageToJaggerySale : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "SearchDealer",
+                name: "PaymentMode",
                 table: "JaggerySales",
                 type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "ProofImage",
+                table: "JaggerySales",
+                type: "nvarchar(max)",
+                nullable: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "SearchDealer",
+                name: "PaymentMode",
+                table: "JaggerySales");
+
+            migrationBuilder.DropColumn(
+                name: "ProofImage",
                 table: "JaggerySales");
         }
     }

@@ -44,6 +44,15 @@ namespace JaggeryAgro.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
+
+            modelBuilder.Entity<ApplicationRole>(entity =>
+            {
+                entity.ToTable("AspNetRoles");
+                entity.Property(e => e.LastDayAsRoleUse)
+                      .HasColumnType("datetime2")
+                      .IsRequired(false);
+            });
+
             // ✅ Apply decimal precision globally
             foreach (var property in modelBuilder.Model
                 .GetEntityTypes()
@@ -125,7 +134,21 @@ namespace JaggeryAgro.Infrastructure.Data
                 .HasForeignKey(p => p.ToMemberId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-          
+            modelBuilder.Entity<JaggerySalePayment>()
+                .HasOne(p => p.FromMember)    
+                .WithMany()    
+                .HasForeignKey(p => p.FromMemberId)    
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<JaggerySalePayment>()
+                .HasOne(p => p.ToMember)
+                .WithMany()
+                .HasForeignKey(p => p.ToMemberId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+         
+
+
         }
     }
 }

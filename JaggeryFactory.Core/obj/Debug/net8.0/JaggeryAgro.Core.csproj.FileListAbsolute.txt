@@ -65,3 +65,37 @@ C:\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\refint
 C:\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\JaggeryAgro.Core.pdb
 C:\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\JaggeryAgro.Core.genruntimeconfig.cache
 C:\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\ref\JaggeryAgro.Core.dll
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-Black.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-BlackItalic.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-Bold.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-BoldItalic.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-ExtraBold.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-ExtraBoldItalic.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-ExtraLight.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-ExtraLightItalic.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-Italic.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-Light.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-LightItalic.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-Medium.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-MediumItalic.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-Regular.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-SemiBold.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-SemiBoldItalic.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-Thin.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\Lato-ThinItalic.ttf
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\LatoFont\OFL.txt
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\JaggeryAgro.Core.deps.json
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\JaggeryAgro.Core.runtimeconfig.json
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\JaggeryAgro.Core.dll
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\bin\Debug\net8.0\JaggeryAgro.Core.pdb
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\JaggeryAgro.Core.csproj.AssemblyReference.cache
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\JaggeryAgro.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\JaggeryAgro.Core.AssemblyInfoInputs.cache
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\JaggeryAgro.Core.AssemblyInfo.cs
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\JaggeryAgro.Core.csproj.CoreCompileInputs.cache
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\JaggeryAgro.Core.sourcelink.json
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\JaggeryAgro.Core.dll
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\refint\JaggeryAgro.Core.dll
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\JaggeryAgro.Core.pdb
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\JaggeryAgro.Core.genruntimeconfig.cache
+C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Core\obj\Debug\net8.0\ref\JaggeryAgro.Core.dll

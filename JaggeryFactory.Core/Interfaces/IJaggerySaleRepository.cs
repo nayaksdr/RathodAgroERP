@@ -32,7 +32,17 @@ namespace JaggeryAgro.Core.Interfaces
         // Delete a sale by Id
         Task DeleteAsync(int id);
         Task<List<JaggerySale>> GetAllAsync();
-        Task<List<JaggerySale>> GetAllIncludingDealerAsync();        
-        
+        Task<List<JaggerySale>> GetAllIncludingDealerAsync();
+        Task<List<JaggerySaleShare>> GetAllSharesAsync();
+
+        // Get all Jaggery Sale Payments with related Member and Sale info
+        Task<List<JaggerySalePayment>> GetAllPaymentsAsync();
+
+        // Optional: Add a JaggerySaleShare
+        Task AddShareAsync(JaggerySaleShare share);
+
+        // Optional: Add a JaggerySalePayment
+        Task AddPaymentAsync(JaggerySalePayment payment);
+
     }
 }

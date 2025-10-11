@@ -169,6 +169,9 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CaneWeightImagePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("FarmerId")
                         .HasColumnType("int");
 
@@ -253,9 +256,20 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PaidById")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PaymentMode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProofImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DealerId");
+
+                    b.HasIndex("PaidById");
 
                     b.ToTable("DealerAdvances");
                 });
@@ -306,6 +320,13 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.Property<int>("PaidById")
                         .HasColumnType("int");
+
+                    b.Property<string>("PaymentMode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProofImage")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SharedByIds")
                         .IsRequired()
@@ -444,6 +465,15 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.Property<int>("DealerId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("PaidById")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PaymentMode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProofImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("QuantityInKg")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
@@ -466,6 +496,8 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DealerId");
+
+                    b.HasIndex("PaidById");
 
                     b.ToTable("JaggerySales");
                 });
@@ -918,6 +950,11 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(21)
+                        .HasColumnType("nvarchar(21)");
+
                     b.Property<string>("Name")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -934,6 +971,10 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1107,6 +1148,18 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("JaggeryAgro.Infrastructure.Data.ApplicationRole", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
+
+                    b.Property<DateTime?>("LastDayAsRoleUse")
+                        .HasColumnType("datetime2");
+
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasDiscriminator().HasValue("ApplicationRole");
+                });
+
             modelBuilder.Entity("JaggeryAgro.Core.Entities.AdvancePayment", b =>
                 {
                     b.HasOne("JaggeryAgro.Core.Entities.Labor", "Labor")
@@ -1170,7 +1223,13 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("JaggeryAgro.Core.Entities.Member", "PaidBy")
+                        .WithMany()
+                        .HasForeignKey("PaidById");
+
                     b.Navigation("Dealer");
+
+                    b.Navigation("PaidBy");
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Deposit", b =>
@@ -1218,7 +1277,13 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("JaggeryAgro.Core.Entities.Member", "PaidBy")
+                        .WithMany()
+                        .HasForeignKey("PaidById");
+
                     b.Navigation("Dealer");
+
+                    b.Navigation("PaidBy");
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggerySalePayment", b =>
@@ -1226,7 +1291,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasOne("JaggeryAgro.Core.Entities.Member", "FromMember")
                         .WithMany()
                         .HasForeignKey("FromMemberId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("JaggeryAgro.Core.Entities.JaggerySale", "JaggerySale")
@@ -1238,7 +1303,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasOne("JaggeryAgro.Core.Entities.Member", "ToMember")
                         .WithMany()
                         .HasForeignKey("ToMemberId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("FromMember");

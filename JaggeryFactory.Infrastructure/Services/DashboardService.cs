@@ -263,6 +263,67 @@ namespace JaggeryAgro.Core.Services
             );
             }).ToList();
 
+            // Fetch jaggery shares and payments pending or paid
+
+            //// Fetch members
+            //var members1 = await _ctx.Members.AsNoTracking().ToListAsync(ct);
+
+            //// Fetch jaggery shares and payments
+            //var jaggeryShares = await _ctx.JaggerySaleShares
+            //    .Include(s => s.Member)
+            //    .Include(s => s.JaggerySale)
+            //    .ToListAsync(ct);
+
+            //var jaggeryPayments = await _ctx.JaggerySalePayments.ToListAsync(ct);
+
+            //// Prepare daily share per member
+            //vm.JaggeryShareDailyviewModel = members1.Select(m =>
+            //{
+            //    var memberShares = jaggeryShares.Where(s => s.MemberId == m.Id).ToList();
+
+            //    var totalPaid = memberShares.Sum(s => (decimal)s.PaidAmount +
+            //        jaggeryPayments
+            //            .Where(p => p.JaggerySaleId == s.JaggerySaleId && p.ToMemberId == m.Id)
+            //            .Sum(p => (decimal)p.Amount));
+
+            //    var totalShare = memberShares.Sum(s => (decimal)s.ShareAmount);
+            //    var totalPending = Math.Max(totalShare - totalPaid, 0);
+
+            //    return new JaggeryShareDailyVm
+            //    {
+            //        MemberName = m.Name,
+            //        Paid = totalPaid,
+            //        Pending = totalPending
+            //    };
+            //}).ToList();
+
+
+
+            // ------- Member Summary (for Pie Charts)
+            var members = await _ctx.Set<Member>().AsNoTracking().ToListAsync(ct); // Fetch all members
+            var expenses = await _ctx.Set<Expense>().AsNoTracking().ToListAsync(ct); // All expenses
+
+            vm.MemberSummary = members.Select(m =>
+            {
+                // Total paid by member (Splitwise)
+                var splitwisePaid = expenses.Where(e => e.PaidById == m.Id).Sum(e => (double)e.Amount);
+
+                // Total earned from jaggery sale shares
+                var jaggeryEarned = shares.Where(s => s.MemberId == m.Id).Sum(s => (double)s.ShareAmount);
+
+                return new MemberSummaryViewModel
+                {
+                    MemberId = m.Id,
+                    Name = m.Name,
+                    SplitwisePaid = (decimal)splitwisePaid,    // Explicit cast
+                    JaggeryEarned = (decimal)jaggeryEarned,    // Explicit cast
+                    NetBalance = (decimal)jaggeryEarned - (decimal)splitwisePaid // Explicit cast
+
+                    // Explicit cast
+
+                };
+            }).ToList();
+
             return vm;
         }
     }

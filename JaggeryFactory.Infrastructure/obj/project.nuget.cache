@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jVse1v6QSMM=",
+  "dgSpecHash": "XNUfKAFcL/w=",
   "success": true,
-  "projectFilePath": "C:\\Rathod Jaggery & Agro Application\\JaggeryFactory.Infrastructure\\JaggeryAgro.Infrastructure.csproj",
+  "projectFilePath": "C:\\Rathod Jaggery & Agro Application\\Rathod Jaggery & Agro Application (Live)\\Rathod Jaggery & Agro Application\\JaggeryFactory.Infrastructure\\JaggeryAgro.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\anthropic\\1.4.4\\anthropic.1.4.4.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\anyscale\\1.0.2\\anyscale.1.0.2.nupkg.sha512",
@@ -240,9 +240,9 @@
       "code": "NU1701",
       "level": "Warning",
       "message": "Package 'iTextSharp 5.5.13.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "projectPath": "C:\\Rathod Jaggery & Agro Application\\JaggeryFactory.Infrastructure\\JaggeryAgro.Infrastructure.csproj",
+      "projectPath": "C:\\Rathod Jaggery & Agro Application\\Rathod Jaggery & Agro Application (Live)\\Rathod Jaggery & Agro Application\\JaggeryFactory.Infrastructure\\JaggeryAgro.Infrastructure.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Rathod Jaggery & Agro Application\\JaggeryFactory.Infrastructure\\JaggeryAgro.Infrastructure.csproj",
+      "filePath": "C:\\Rathod Jaggery & Agro Application\\Rathod Jaggery & Agro Application (Live)\\Rathod Jaggery & Agro Application\\JaggeryFactory.Infrastructure\\JaggeryAgro.Infrastructure.csproj",
       "libraryId": "iTextSharp",
       "targetGraphs": [
         "net8.0"

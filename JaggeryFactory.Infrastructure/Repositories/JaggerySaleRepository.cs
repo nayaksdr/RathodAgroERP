@@ -39,7 +39,8 @@ namespace JaggeryAgro.Infrastructure.Repositories
         public async Task<List<JaggerySale>> GetFilteredAsync(string searchDealer, DateTime? fromDate, DateTime? toDate)
         {
             var query = _context.JaggerySales
-                                .Include(s => s.Dealer)
+                                .Include(s => s.Dealer)   // Include Dealer
+                                .Include(s => s.PaidBy)   // Include PaidBy (member)
                                 .AsQueryable();
 
             if (!string.IsNullOrEmpty(searchDealer))
@@ -51,8 +52,13 @@ namespace JaggeryAgro.Infrastructure.Repositories
             if (toDate.HasValue)
                 query = query.Where(s => s.SaleDate <= toDate.Value.Date);
 
-            return await query.OrderByDescending(s => s.SaleDate).ToListAsync();
+            query = query.Where(s => s.PaidBy != null);
+
+            return await query
+                         .OrderByDescending(s => s.SaleDate)
+                         .ToListAsync();
         }
+
 
         // Get a sale by ID
         public async Task<JaggerySale> GetByIdAsync(int id)
@@ -131,6 +137,35 @@ namespace JaggeryAgro.Infrastructure.Repositories
 
             return await query.SumAsync(s => (decimal?)s.AdvancePaid ?? 0);
         }
+        public async Task<List<JaggerySaleShare>> GetAllSharesAsync()
+        {
+            return await _context.JaggerySaleShares
+                .Include(s => s.Member)
+                .Include(s => s.JaggerySale)
+                    .ThenInclude(j => j.Dealer)
+                .ToListAsync();
+        }
 
+        public async Task<List<JaggerySalePayment>> GetAllPaymentsAsync()
+        {
+            return await _context.JaggerySalePayments
+                .Include(p => p.FromMember)
+                .Include(p => p.ToMember)
+                .Include(p => p.JaggerySale)
+                .ToListAsync();
+        }
+
+        public async Task AddShareAsync(JaggerySaleShare share)
+        {
+            _context.JaggerySaleShares.Add(share);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddPaymentAsync(JaggerySalePayment payment)
+        {
+            _context.JaggerySalePayments.Add(payment);
+            await _context.SaveChangesAsync();
+        }
     }
 }
+

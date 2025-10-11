@@ -11,6 +11,8 @@ namespace JaggeryAgro.Core.Entities
     {
         public int Id { get; set; }
         public int DealerId { get; set; }
+
+        public int? PaidById { get; set; }
         public decimal QuantityInKg { get; set; }
         public decimal RatePerKg { get; set; }
         public decimal TotalAmount { get; set; } // Quantity * Rate
@@ -20,7 +22,11 @@ namespace JaggeryAgro.Core.Entities
 
         [NotMapped]
         public string SearchDealer { get; set; }
-        public Dealer Dealer { get; set; } // Navigation
+        public Dealer Dealer { get; set; } // Navigation       
+        public Member? PaidBy { get; set; }
+        public string? PaymentMode { get; set; } // Cash, UPI, Bank
+        public string? ProofImage { get; set; }  // Path of uploaded image
+
         public ICollection<JaggerySaleShare> Shares { get; set; } = new List<JaggerySaleShare>();
 
     }

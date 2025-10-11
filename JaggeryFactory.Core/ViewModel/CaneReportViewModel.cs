@@ -15,6 +15,7 @@ namespace JaggeryAgro.Core.ViewModel
         public decimal TotalAmount { get; set; }
         public decimal TotalPaid { get; set; }
         public decimal Balance { get; set; }
+        public string? CaneWeightImagePath { get; set; }
         public List<CanePurchase>? Purchases { get; set; }
     }
 

@@ -66,7 +66,11 @@ namespace JaggeryAgro.Infrastructure.Repositories
 
         public async Task<IEnumerable<DealerAdvance>> FilterAsync(int? dealerId, DateTime? from, DateTime? to)
         {
-            var q = _ctx.DealerAdvances.Include(x => x.Dealer).AsQueryable();
+            
+            var q = _ctx.DealerAdvances
+                               .Include(s => s.Dealer)   // Include Dealer
+                               .Include(s => s.PaidBy)   // Include PaidBy (member)
+                               .AsQueryable();
 
             if (dealerId.HasValue && dealerId.Value > 0)
                 q = q.Where(x => x.DealerId == dealerId.Value);
@@ -77,7 +81,11 @@ namespace JaggeryAgro.Infrastructure.Repositories
             if (to.HasValue)
                 q = q.Where(x => x.AdvanceDate.Date <= to.Value.Date);
 
-            return await q.OrderByDescending(x => x.AdvanceDate).ToListAsync();
+            q = q.Where(s => s.PaidBy != null);
+
+            return await q
+                         .OrderByDescending(s => s.AdvanceDate)
+                         .ToListAsync();            
         }
 
         public async Task<decimal> GetTotalAdvanceByDealerAsync(int dealerId, DateTime? uptoDate = null)

@@ -168,6 +168,9 @@ namespace JaggeryAgro.Infrastructure.Repositories
             existing.PaidById = expense.PaidById;
             existing.ExpenseTypeId = expense.ExpenseTypeId;
             existing.SharedByIds = expense.SharedByIds;
+            // 🔹 New fields to include
+            existing.PaymentMode = expense.PaymentMode;  // ✅ Cash / UPI / Bank
+            existing.ProofImage = expense.ProofImage;    // ✅ image path from controller
             existing.Date = expense.Date;
 
             _context.Expenses.Update(existing);

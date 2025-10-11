@@ -38,8 +38,8 @@ namespace JaggeryAgro.Core.Entities
         public string? PaymentStatus { get; set; } // e.g., Pending, Paid
 
         [StringLength(500)]
-        public string? Notes { get; set; } 
-
+        public string? Notes { get; set; }
+        public string? CaneWeightImagePath { get; set; }
         public ICollection<Payment> Payments { get; set; } = new List<Payment>();
         public string FarmerName { get; set; } // ✅ Add this property
         

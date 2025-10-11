@@ -25,6 +25,13 @@
         public double Qty { get; set; }
         public double Amount { get; set; }
     }
+    public class JaggeryShareDailyVm
+    {
+        public string MemberName { get; set; }
+        public DateTime Date { get; set; }
+        public decimal Paid { get; set; }
+        public decimal Pending { get; set; }
+    }
 
     public class DashboardDailyVm
     {
@@ -41,7 +48,8 @@
         public List<DailyJaggeryShareDto> JaggeryShareDaily { get; set; } = new();
 
         public List<DailyJaggerySellDto> JagerySellDaily { get; set; } = new List<DailyJaggerySellDto>();
-
+        public List<JaggeryShareDailyVm> JaggeryShareDailyviewModel { get; set; }
+        public List<MemberSummaryViewModel> MemberSummary { get; set; } = new List<MemberSummaryViewModel>();
         // Today tiles
         public int TodayPresentCount { get; set; }
         public double TodayAdvance { get; set; }
