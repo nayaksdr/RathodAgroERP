@@ -11,9 +11,7 @@ namespace JaggeryAgro.Core.Entities
         public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; } = string.Empty;
-
-        public string? Role { get; set; }  // optional
+        public string Name { get; set; } = string.Empty;       
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -25,8 +23,9 @@ namespace JaggeryAgro.Core.Entities
 
         [ForeignKey(nameof(LaborTypeId))]   // ✅ Explicitly point to FK
         public LaborType LaborType { get; set; } = null!;  // Navigation Property       
-
-        // ❌ Remove from entity (this is a ViewModel concern, not DB entity)
-        // public List<SelectListItem>? LaborTypes { get; set; }
+        public string Mobile { get; set; } // can use as username
+        public string PasswordHash { get; set; } // store hashed password
+        public string Role { get; set; } = "Labor"; // default role
+        public bool IsActive { get; set; } = true;
     }
 }

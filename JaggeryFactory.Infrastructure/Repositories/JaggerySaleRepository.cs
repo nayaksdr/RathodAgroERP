@@ -120,12 +120,12 @@ namespace JaggeryAgro.Infrastructure.Repositories
 
             return await query.OrderByDescending(s => s.SaleDate).ToListAsync();
         }
-        public async Task<decimal> GetTotalAdvanceAppliedByDealerExceptAsync(int dealerId, DateTime uptoDate, int excludeSaleId)
-        {
-            return await _context.JaggerySales
-                .Where(s => s.DealerId == dealerId && s.SaleDate <= uptoDate && s.Id != excludeSaleId)
-                .SumAsync(s => (decimal?)s.AdvancePaid ?? 0);
-        }
+        //public async Task<decimal> GetTotalAdvanceAppliedByDealerExceptAsync(int dealerId, DateTime uptoDate, int excludeSaleId)
+        //{
+        //    return await _context.JaggerySales
+        //        .Where(s => s.DealerId == dealerId && s.SaleDate <= uptoDate && s.Id != excludeSaleId)
+        //        .SumAsync(s => (decimal?)s.AdvancePaid ?? 0);
+        //}
 
         public async Task<decimal> GetTotalAdvanceAppliedByDealerAsync(int dealerId, DateTime? uptoDate = null)
         {
@@ -165,6 +165,26 @@ namespace JaggeryAgro.Infrastructure.Repositories
         {
             _context.JaggerySalePayments.Add(payment);
             await _context.SaveChangesAsync();
+        }
+        public async Task<decimal> GetTotalAdvanceAppliedByDealerAsync(int dealerId, DateTime uptoDate)
+        {
+            return await _context.JaggerySales
+                .Where(s => s.DealerId == dealerId && s.SaleDate <= uptoDate)
+                .SumAsync(s => (decimal?)s.AdvancePaid) ?? 0;
+        }
+
+        public async Task<decimal> GetTotalAdvanceAppliedByDealer(int dealerId)
+        {
+            return await _context.JaggerySales
+                .Where(s => s.DealerId == dealerId)
+                .SumAsync(s => (decimal?)s.AdvancePaid) ?? 0;
+        }
+
+        public async Task<decimal> GetTotalAdvanceAppliedByDealerExceptAsync(int dealerId, int excludeSaleId)
+        {
+            return await _context.JaggerySales
+                .Where(s => s.DealerId == dealerId && s.Id != excludeSaleId)
+                .SumAsync(s => (decimal?)s.AdvancePaid) ?? 0;
         }
     }
 }

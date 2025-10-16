@@ -16,7 +16,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(21)", maxLength: 21, nullable: false),
                     LastDayAsRoleUse = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -32,6 +31,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LastDayAsRoleUse = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -290,53 +290,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DealerAdvances",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DealerId = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    AdvanceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Note = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_DealerAdvances", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_DealerAdvances_Dealers_DealerId",
-                        column: x => x.DealerId,
-                        principalTable: "Dealers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "JaggerySales",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DealerId = table.Column<int>(type: "int", nullable: false),
-                    QuantityInKg = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    RatePerKg = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    TotalAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    AdvancePaid = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    RemainingAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    SaleDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_JaggerySales", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_JaggerySales_Dealers_DealerId",
-                        column: x => x.DealerId,
-                        principalTable: "Dealers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CaneAdvances",
                 columns: table => new
                 {
@@ -465,6 +418,69 @@ namespace JaggeryAgro.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DealerAdvances",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DealerId = table.Column<int>(type: "int", nullable: false),
+                    PaidById = table.Column<int>(type: "int", nullable: true),
+                    PaymentMode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProofImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    AdvanceDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Note = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DealerAdvances", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DealerAdvances_Dealers_DealerId",
+                        column: x => x.DealerId,
+                        principalTable: "Dealers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DealerAdvances_Members_PaidById",
+                        column: x => x.PaidById,
+                        principalTable: "Members",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JaggerySales",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DealerId = table.Column<int>(type: "int", nullable: false),
+                    PaidById = table.Column<int>(type: "int", nullable: true),
+                    QuantityInKg = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    RatePerKg = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    TotalAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    AdvancePaid = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    RemainingAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    SaleDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PaymentMode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProofImage = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JaggerySales", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_JaggerySales_Dealers_DealerId",
+                        column: x => x.DealerId,
+                        principalTable: "Dealers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JaggerySales_Members_PaidById",
+                        column: x => x.PaidById,
+                        principalTable: "Members",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SplitwisePayments",
                 columns: table => new
                 {
@@ -494,73 +510,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         column: x => x.ToMemberId,
                         principalTable: "Members",
                         principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "JaggerySalePayments",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    JaggerySaleId = table.Column<int>(type: "int", nullable: false),
-                    FromMemberId = table.Column<int>(type: "int", nullable: false),
-                    ToMemberId = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    PaymentMode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_JaggerySalePayments", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_JaggerySalePayments_JaggerySales_JaggerySaleId",
-                        column: x => x.JaggerySaleId,
-                        principalTable: "JaggerySales",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_JaggerySalePayments_Members_FromMemberId",
-                        column: x => x.FromMemberId,
-                        principalTable: "Members",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_JaggerySalePayments_Members_ToMemberId",
-                        column: x => x.ToMemberId,
-                        principalTable: "Members",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "JaggerySaleShares",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    JaggerySaleId = table.Column<int>(type: "int", nullable: false),
-                    PersonName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PaidAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    PercentageShare = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    ShareAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    NetAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    MemberId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_JaggerySaleShares", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_JaggerySaleShares_JaggerySales_JaggerySaleId",
-                        column: x => x.JaggerySaleId,
-                        principalTable: "JaggerySales",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_JaggerySaleShares_Members_MemberId",
-                        column: x => x.MemberId,
-                        principalTable: "Members",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -720,6 +669,73 @@ namespace JaggeryAgro.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "JaggerySalePayments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    JaggerySaleId = table.Column<int>(type: "int", nullable: false),
+                    FromMemberId = table.Column<int>(type: "int", nullable: false),
+                    ToMemberId = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    PaymentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PaymentMode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JaggerySalePayments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_JaggerySalePayments_JaggerySales_JaggerySaleId",
+                        column: x => x.JaggerySaleId,
+                        principalTable: "JaggerySales",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JaggerySalePayments_Members_FromMemberId",
+                        column: x => x.FromMemberId,
+                        principalTable: "Members",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_JaggerySalePayments_Members_ToMemberId",
+                        column: x => x.ToMemberId,
+                        principalTable: "Members",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "JaggerySaleShares",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    JaggerySaleId = table.Column<int>(type: "int", nullable: false),
+                    PersonName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaidAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    PercentageShare = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    ShareAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    NetAmount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    MemberId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_JaggerySaleShares", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_JaggerySaleShares_JaggerySales_JaggerySaleId",
+                        column: x => x.JaggerySaleId,
+                        principalTable: "JaggerySales",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_JaggerySaleShares_Members_MemberId",
+                        column: x => x.MemberId,
+                        principalTable: "Members",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Expenses",
                 columns: table => new
                 {
@@ -731,7 +747,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     SharedByIds = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ExpenseTypeId = table.Column<int>(type: "int", nullable: false),
                     SplitwisePaymentId = table.Column<int>(type: "int", nullable: true),
-                    PaymentMode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PaymentMode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ProofImage = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -826,6 +842,11 @@ namespace JaggeryAgro.Infrastructure.Migrations
                 column: "DealerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DealerAdvances_PaidById",
+                table: "DealerAdvances",
+                column: "PaidById");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Deposits_LaborId",
                 table: "Deposits",
                 column: "LaborId");
@@ -869,6 +890,11 @@ namespace JaggeryAgro.Infrastructure.Migrations
                 name: "IX_JaggerySales_DealerId",
                 table: "JaggerySales",
                 column: "DealerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JaggerySales_PaidById",
+                table: "JaggerySales",
+                column: "PaidById");
 
             migrationBuilder.CreateIndex(
                 name: "IX_JaggerySaleShares_JaggerySaleId",
@@ -1019,10 +1045,10 @@ namespace JaggeryAgro.Infrastructure.Migrations
                 name: "Labors");
 
             migrationBuilder.DropTable(
-                name: "Members");
+                name: "Dealers");
 
             migrationBuilder.DropTable(
-                name: "Dealers");
+                name: "Members");
 
             migrationBuilder.DropTable(
                 name: "Farmers");

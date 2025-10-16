@@ -33,7 +33,7 @@ namespace JaggeryAgro.Core.Entities
        
         public int? SplitwisePaymentId { get; set; }  // <-- ensure this is in your model
         public SplitwisePayment? SplitwisePayment { get; set; }
-        public string PaymentMode { get; set; } // "Cash", "UPI", or "Bank"
+        public string? PaymentMode { get; set; } // "Cash", "UPI", or "Bank"
         public string? ProofImage { get; set; }       
 
     }

@@ -14,6 +14,7 @@ namespace JaggeryAgro.Core.Interfaces
         Task<List<Labor>> GetAllLaborsAsync(int? laborTypeId = null);
         Task<IEnumerable<Labor>> GetAllAsync();
         Task<List<Labor>> GetLaborsByTypeAsync(int laborTypeId);
+        Task<Labor> GetLaborsByTypeIdAsync(int laborTypeId);
         Task<Labor> GetByIdAsync(int id);
         Task AddAsync(Labor labor);
         Task UpdateAsync(Labor labor);
@@ -29,7 +30,9 @@ namespace JaggeryAgro.Core.Interfaces
         // Utilities
         IEnumerable<Labor> GetAllWithLaborType();
         void Save();
-        //List<SelectListItem> PopulateLaborTypes();
-        //IEnumerable<LaborType> GetAllLaborTypes();
+        Task<Labor> GetByMobileAsync(string mobile);        
+        Task<List<Attendance>> GetAttendanceAsync(int laborId);        
+        Task<List<WeeklySalary>> GetWeeklySalariesAsync(int laborId);
+        
     }
 }

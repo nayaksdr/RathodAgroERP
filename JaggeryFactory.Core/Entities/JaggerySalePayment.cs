@@ -31,7 +31,7 @@ namespace JaggeryAgro.Core.Entities
 
         // -------------------- Payment Details --------------------
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Amount { get; set; }        // Total amount of the payment
+        public decimal Amount { get; set; }        // Total amount of the payment       
 
         public DateTime PaymentDate { get; set; }  // Date when payment was made
 
