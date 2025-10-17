@@ -114,3 +114,42 @@ C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Ra
 C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryAgro.Infrastructure.pdb
 C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryAgro.Infrastructure.genruntimeconfig.cache
 C:\Rathod Jaggery & Agro Application\Rathod Jaggery & Agro Application (Live)\Rathod Jaggery & Agro Application\JaggeryFactory.Infrastructure\obj\Debug\net8.0\ref\JaggeryAgro.Infrastructure.dll
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-Black.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-BlackItalic.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-Bold.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-BoldItalic.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-ExtraBold.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-ExtraBoldItalic.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-ExtraLight.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-ExtraLightItalic.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-Italic.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-Light.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-LightItalic.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-Medium.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-MediumItalic.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-Regular.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-SemiBold.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-SemiBoldItalic.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-Thin.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\Lato-ThinItalic.ttf
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\LatoFont\OFL.txt
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\JaggeryAgro.Infrastructure.deps.json
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\JaggeryAgro.Infrastructure.runtimeconfig.json
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\JaggeryAgro.Infrastructure.dll
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\JaggeryAgro.Infrastructure.pdb
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\JaggeryAgro.Core.dll
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\JaggeryAgro.Data.dll
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\JaggeryAgro.Data.pdb
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\bin\Debug\net8.0\JaggeryAgro.Core.pdb
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryAgro.Infrastructure.csproj.AssemblyReference.cache
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryAgro.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryAgro.Infrastructure.AssemblyInfoInputs.cache
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryAgro.Infrastructure.AssemblyInfo.cs
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryAgro.Infrastructure.csproj.CoreCompileInputs.cache
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryAgro.Infrastructure.sourcelink.json
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryA.83D17C33.Up2Date
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryAgro.Infrastructure.dll
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\refint\JaggeryAgro.Infrastructure.dll
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryAgro.Infrastructure.pdb
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\JaggeryAgro.Infrastructure.genruntimeconfig.cache
+C:\WebAPI\Rathod Jaggery & Agro Application Dev\JaggeryFactory.Infrastructure\obj\Debug\net8.0\ref\JaggeryAgro.Infrastructure.dll

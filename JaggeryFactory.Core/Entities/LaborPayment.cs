@@ -20,5 +20,10 @@ namespace JaggeryAgro.Core.Entities
         // ✅ Add these:
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
+        
+        public int AttendanceDays { get; set; } // New property to store attendance days
+
+        public int rate { get; set; } // New property to store daily rate
+
     }
 }

@@ -47,7 +47,75 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("LaborId");
 
-                    b.ToTable("AdvancePayments");
+                    b.ToTable("AdvancePayments", (string)null);
+                });
+
+            modelBuilder.Entity("JaggeryAgro.Core.Entities.ApplicationUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastDayAsRoleUse")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Attendance", b =>
@@ -71,7 +139,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("LaborId");
 
-                    b.ToTable("Attendances");
+                    b.ToTable("Attendances", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.CaneAdvance", b =>
@@ -111,7 +179,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("FarmerId");
 
-                    b.ToTable("CaneAdvances");
+                    b.ToTable("CaneAdvances", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.CanePayment", b =>
@@ -158,7 +226,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("FarmerId");
 
-                    b.ToTable("CanePayments");
+                    b.ToTable("CanePayments", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.CanePurchase", b =>
@@ -206,7 +274,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("FarmerId");
 
-                    b.ToTable("CanePurchases");
+                    b.ToTable("CanePurchases", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Dealer", b =>
@@ -231,7 +299,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Dealers");
+                    b.ToTable("Dealers", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.DealerAdvance", b =>
@@ -271,7 +339,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("PaidById");
 
-                    b.ToTable("DealerAdvances");
+                    b.ToTable("DealerAdvances", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Deposit", b =>
@@ -296,7 +364,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("LaborId");
 
-                    b.ToTable("Deposits");
+                    b.ToTable("Deposits", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Expense", b =>
@@ -322,7 +390,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PaymentMode")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProofImage")
@@ -343,7 +410,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("SplitwisePaymentId");
 
-                    b.ToTable("Expenses");
+                    b.ToTable("Expenses", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.ExpenseType", b =>
@@ -360,7 +427,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ExpenseTypes");
+                    b.ToTable("ExpenseTypes", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Farmer", b =>
@@ -399,7 +466,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("Name", "Mobile");
 
-                    b.ToTable("Farmers");
+                    b.ToTable("Farmers", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggeryProduce", b =>
@@ -447,7 +514,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("JaggeryProduces");
+                    b.ToTable("JaggeryProduces", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggerySale", b =>
@@ -499,7 +566,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("PaidById");
 
-                    b.ToTable("JaggerySales");
+                    b.ToTable("JaggerySales", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggerySalePayment", b =>
@@ -539,7 +606,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("ToMemberId");
 
-                    b.ToTable("JaggerySalePayments");
+                    b.ToTable("JaggerySalePayments", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggerySaleShare", b =>
@@ -582,7 +649,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("MemberId");
 
-                    b.ToTable("JaggerySaleShares");
+                    b.ToTable("JaggerySaleShares", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Labor", b =>
@@ -593,6 +660,9 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("JoinDate")
                         .HasColumnType("datetime2");
 
@@ -602,11 +672,20 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.Property<int?>("LaborTypeId1")
                         .HasColumnType("int");
 
+                    b.Property<string>("Mobile")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Role")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -615,7 +694,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("LaborTypeId1");
 
-                    b.ToTable("Labors");
+                    b.ToTable("Labors", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.LaborPayment", b =>
@@ -629,6 +708,9 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.Property<decimal>("AdvanceAdjusted")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("AttendanceDays")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("FromDate")
                         .HasColumnType("datetime2");
@@ -657,9 +739,12 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.Property<DateTime>("ToDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("rate")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("LaborPayments");
+                    b.ToTable("LaborPayments", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.LaborType", b =>
@@ -684,7 +769,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LaborTypes");
+                    b.ToTable("LaborTypes", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.LaborTypeRate", b =>
@@ -709,7 +794,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("LaborTypeId");
 
-                    b.ToTable("LaborTypeRates");
+                    b.ToTable("LaborTypeRates", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Member", b =>
@@ -730,7 +815,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Members");
+                    b.ToTable("Members", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Payment", b =>
@@ -772,7 +857,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("LaborId");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.Setting", b =>
@@ -791,7 +876,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Settings");
+                    b.ToTable("Settings", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.SplitwisePayment", b =>
@@ -826,7 +911,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("ToMemberId");
 
-                    b.ToTable("SplitwisePayments");
+                    b.ToTable("SplitwisePayments", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.WeeklyPayment", b =>
@@ -886,7 +971,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("LaborId");
 
-                    b.ToTable("WeeklyPayments");
+                    b.ToTable("WeeklyPayments", (string)null);
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.WeeklySalary", b =>
@@ -938,10 +1023,10 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("LaborId");
 
-                    b.ToTable("WeeklySalaries");
+                    b.ToTable("WeeklySalaries", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+            modelBuilder.Entity("JaggeryAgro.Infrastructure.Data.ApplicationRole", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -950,10 +1035,8 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(21)
-                        .HasColumnType("nvarchar(21)");
+                    b.Property<DateTime?>("LastDayAsRoleUse")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
@@ -971,10 +1054,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1000,71 +1079,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -1146,18 +1160,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("JaggeryAgro.Infrastructure.Data.ApplicationRole", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
-
-                    b.Property<DateTime?>("LastDayAsRoleUse")
-                        .HasColumnType("datetime2");
-
-                    b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasDiscriminator().HasValue("ApplicationRole");
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.AdvancePayment", b =>
@@ -1422,7 +1424,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("JaggeryAgro.Infrastructure.Data.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1431,7 +1433,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("JaggeryAgro.Core.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1440,7 +1442,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("JaggeryAgro.Core.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1449,13 +1451,13 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("JaggeryAgro.Infrastructure.Data.ApplicationRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("JaggeryAgro.Core.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1464,7 +1466,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("JaggeryAgro.Core.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
