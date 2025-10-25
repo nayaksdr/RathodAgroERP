@@ -15,5 +15,6 @@ namespace JaggeryAgro.Core.Interfaces
         Task<IEnumerable<Attendance>> GetByLaborInRangeAsync(int laborId, DateTime from, DateTime to);
         Task<IEnumerable<Attendance>> GetByLaborIdAndDateRangeAsync(int laborId, DateTime start, DateTime end);
         Task<IEnumerable<Attendance>> GetAttendanceBetweenDatesAsync(DateTime start, DateTime end);
+        Task<int> GetDaysPresentAsync(int laborId, DateTime from, DateTime to);
     }
 }

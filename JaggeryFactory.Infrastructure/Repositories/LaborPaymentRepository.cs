@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace JaggeryAgro.Infrastructure.Repositories
@@ -13,10 +12,13 @@ namespace JaggeryAgro.Infrastructure.Repositories
     public class LaborPaymentRepository : ILaborPaymentRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly IAdvancePaymentRepository _advancePayRepo;
 
-        public LaborPaymentRepository(ApplicationDbContext context)
+        // Use the interface here, not concrete class
+        public LaborPaymentRepository(ApplicationDbContext context, IAdvancePaymentRepository advancePayRepo)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _advancePayRepo = advancePayRepo ?? throw new ArgumentNullException(nameof(advancePayRepo));
         }
 
         public async Task<bool> ExistsAsync(int laborId, DateTime? from, DateTime? to)
@@ -44,6 +46,10 @@ namespace JaggeryAgro.Infrastructure.Repositories
         {
             return await _context.LaborPayments.ToListAsync();
         }
-    }
+        public async Task SaveAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
 
+    }
 }

@@ -53,8 +53,7 @@ namespace JaggeryAgro.Infrastructure.Repositories
         public async Task<Labor?> GetByIdAsync(int id)
         {
             return await _context.Labors.FindAsync(id);
-        }
-
+        }        
         public Labor GetById(int id) => _context.Labors.Find(id);
 
         public void Add(Labor labor)
@@ -132,6 +131,55 @@ namespace JaggeryAgro.Infrastructure.Repositories
                 // Save changes to database
                 _context.SaveChanges();  // synchronous
             }
+        }
+        public async Task<Labor> GetByMobileAsync(string mobile)
+        {
+            return await _context.Labors.FirstOrDefaultAsync(l => l.Mobile == mobile && l.IsActive);
+        }
+
+        public async Task<List<Attendance>> GetAttendanceAsync(int laborId)
+        {
+            return await _context.Attendances
+                .Where(a => a.LaborId == laborId)
+                .OrderByDescending(a => a.Date)
+                .ToListAsync();
+        }
+        public async Task<List<WeeklySalary>> GetWeeklySalariesAsync(int laborId)
+        {
+            return await _context.WeeklySalaries
+                .Where(s => s.LaborId == laborId)
+                .OrderByDescending(s => s.WeekEnd)
+                .ToListAsync();
+        }
+       
+        public async Task<Labor> GetLaborsByTypeIdAsync(int laborTypeId)
+        {
+            return await _context.Labors
+                .Include(l => l.LaborType)
+                .FirstOrDefaultAsync(l => l.Id == laborTypeId);
+        }
+        // ✅ Corrected methods to include LaborType to prevent NullReferenceException
+        public async Task<Labor> GetByIdWithLaborTypeAsync(int id)
+        {
+            return await _context.Labors
+                                 .Include(l => l.LaborType) // Include LaborType
+                                 .FirstOrDefaultAsync(l => l.Id == id);
+        }
+
+        public async Task<List<Labor>> GetAllLaborsWithLaborTypeAsync()
+        {
+            return await _context.Labors
+                                 .Include(l => l.LaborType) // Include LaborType
+                                 .ToListAsync();
+        }
+
+        // Optional: get labors by LaborTypeId correctly
+        public async Task<List<Labor>> GetLaborsByLaborTypeIdAsync(int laborTypeId)
+        {
+            return await _context.Labors
+                                 .Include(l => l.LaborType)
+                                 .Where(l => l.LaborTypeId == laborTypeId)
+                                 .ToListAsync();
         }
 
     }

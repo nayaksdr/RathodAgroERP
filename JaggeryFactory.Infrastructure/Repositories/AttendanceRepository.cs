@@ -107,6 +107,16 @@ namespace JaggeryAgro.Infrastructure.Repositories
 
             return await query.ToListAsync();
         }
+        // ✅ Implementation for GetDaysPresentAsync
+        public async Task<int> GetDaysPresentAsync(int laborId, DateTime start, DateTime end)
+        {
+            return await _context.Attendances
+                                 .Where(a => a.LaborId == laborId &&
+                                             a.Date >= start &&
+                                             a.Date <= end &&
+                                             a.IsPresent)
+                                 .CountAsync();
+        }
 
     }
 }

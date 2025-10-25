@@ -22,5 +22,6 @@ namespace JaggeryAgro.Core.Interfaces
         /// </summary>
         Task<decimal> GetTotalAdvanceByDealerAsync(int dealerId, DateTime? uptoDate = null);
         Task<decimal> GetTotalAdvanceByDealer(int dealerId);
+        Task SaveAsync(DealerAdvance dealerAdvance);
     }
 }

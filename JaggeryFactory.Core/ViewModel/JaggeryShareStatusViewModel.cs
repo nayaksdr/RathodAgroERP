@@ -17,6 +17,8 @@ namespace JaggeryAgro.Core.ViewModel
         public decimal PaidAmount { get; set; }
         public decimal PendingAmount { get; set; }
         public string Status { get; set; }
+        public string? PaymentMode { get; set; } // Cash, UPI, Bank
+        public string? ProofImage { get; set; }  // Path of uploaded image
     }
 
 }

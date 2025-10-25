@@ -11,6 +11,7 @@ namespace JaggeryAgro.Core.ViewModel
     {
         public List<Expense> Expenses { get; set; }
         public List<JaggerySaleShare> JaggeryShares { get; set; }
+        public List<JaggerySale> JaggerySales { get; set; }
         public List<MemberSummaryViewModel> MemberSummary { get; set; }
         public List<JaggeryShareStatusViewModel> JaggeryStatusList { get; set; } // <-- strongly typed
     }

@@ -18,7 +18,8 @@ namespace JaggeryAgro.Core.Interfaces
         Task<IEnumerable<CanePurchase>> GetByFarmerAsyncNew(int farmerId);      
         Task<int> SaveChangesAsync();
         Task<IEnumerable<CanePurchase>> GetByFarmerBetweenAsync(int farmerId, DateTime from, DateTime to);
+        Task<decimal> GetTotalTonsByLaborInRangeAsync(int laborId, DateTime from, DateTime to);
 
     }
-   
+
 }

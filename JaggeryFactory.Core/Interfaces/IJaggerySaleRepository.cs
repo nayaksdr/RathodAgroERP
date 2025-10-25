@@ -10,7 +10,7 @@ namespace JaggeryAgro.Core.Interfaces
         // Get all sales with optional dealer and date filters
         Task<List<JaggerySale>> GetFilteredAsync(string dealerId, DateTime? fromDate, DateTime? toDate);
 
-        Task<decimal> GetTotalAdvanceAppliedByDealerExceptAsync(int dealerId, DateTime uptoDate, int excludeSaleId);
+        //Task<decimal> GetTotalAdvanceAppliedByDealerExceptAsync(int dealerId, DateTime uptoDate, int excludeSaleId);
 
         // Get all sales for a specific dealer
         Task<List<JaggerySale>> GetByDealerAsync(int dealerId);
@@ -20,7 +20,7 @@ namespace JaggeryAgro.Core.Interfaces
 
         // Get sale by Id
         Task<JaggerySale> GetByIdAsync(int id);
-        public Task<decimal> GetTotalAdvanceAppliedByDealerAsync(int dealerId, DateTime? uptoDate = null);
+        //public Task<decimal> GetTotalAdvanceAppliedByDealerAsync(int dealerId, DateTime? uptoDate = null);
 
 
         // Add a new sale
@@ -43,6 +43,12 @@ namespace JaggeryAgro.Core.Interfaces
 
         // Optional: Add a JaggerySalePayment
         Task AddPaymentAsync(JaggerySalePayment payment);
+
+        Task<decimal> GetTotalAdvanceAppliedByDealerAsync(int dealerId, DateTime uptoDate);
+
+        Task<decimal> GetTotalAdvanceAppliedByDealerExceptAsync(int dealerId, int excludeSaleId);
+        Task<decimal> GetTotalProductionByLaborInRangeAsync(int laborId, DateTime from, DateTime to);
+
 
     }
 }

@@ -24,16 +24,7 @@ namespace JaggeryAgro.Infrastructure.Repositories
                 .Include(r => r.LaborType)
                 .AsNoTracking()
                 .ToListAsync();
-        }
-
-        public async Task<LaborTypeRate> GetCurrentRateByLaborTypeIdAsync(int laborTypeId)
-        {
-            return await _context.LaborTypeRates
-                .Where(r => r.LaborTypeId == laborTypeId)
-                .OrderByDescending(r => r.EffectiveFrom)
-                .AsNoTracking()
-                .FirstOrDefaultAsync();
-        }
+        }           
 
         public async Task AddRateAsync(LaborTypeRate rate)
         {
@@ -65,13 +56,31 @@ namespace JaggeryAgro.Infrastructure.Repositories
                 await _context.SaveChangesAsync();
             }
         }
-
        
         public async Task<LaborTypeRate> GetByIdAsync(int id)
         {
             return await _context.LaborTypeRates
                 .Include(r => r.LaborType)
                 .FirstOrDefaultAsync(r => r.Id == id);
+        }
+        public async Task<LaborTypeRate> GetCurrentRateByLaborTypeIdAsync(int laborTypeId)
+        {
+            return await _context.LaborTypeRates
+                .Where(r => r.LaborTypeId == laborTypeId)
+                .OrderByDescending(r => r.EffectiveFrom)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<decimal> GetPerTonRateAsync(int laborTypeId)
+        {
+            var rate = await GetCurrentRateByLaborTypeIdAsync(laborTypeId);
+            return rate?.PerTonRate ?? 0m;
+        }
+
+        public async Task<decimal> GetPerProductionRateAsync(int laborTypeId)
+        {
+            var rate = await GetCurrentRateByLaborTypeIdAsync(laborTypeId);
+            return rate?.PerProductionRate ?? 0m;
         }
     }
 }

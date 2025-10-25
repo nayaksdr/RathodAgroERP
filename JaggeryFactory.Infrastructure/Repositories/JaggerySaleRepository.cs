@@ -41,6 +41,7 @@ namespace JaggeryAgro.Infrastructure.Repositories
             var query = _context.JaggerySales
                                 .Include(s => s.Dealer)   // Include Dealer
                                 .Include(s => s.PaidBy)   // Include PaidBy (member)
+                                .Include(s => s.Labor)    // ✅ Include Labor
                                 .AsQueryable();
 
             if (!string.IsNullOrEmpty(searchDealer))
@@ -120,12 +121,12 @@ namespace JaggeryAgro.Infrastructure.Repositories
 
             return await query.OrderByDescending(s => s.SaleDate).ToListAsync();
         }
-        public async Task<decimal> GetTotalAdvanceAppliedByDealerExceptAsync(int dealerId, DateTime uptoDate, int excludeSaleId)
-        {
-            return await _context.JaggerySales
-                .Where(s => s.DealerId == dealerId && s.SaleDate <= uptoDate && s.Id != excludeSaleId)
-                .SumAsync(s => (decimal?)s.AdvancePaid ?? 0);
-        }
+        //public async Task<decimal> GetTotalAdvanceAppliedByDealerExceptAsync(int dealerId, DateTime uptoDate, int excludeSaleId)
+        //{
+        //    return await _context.JaggerySales
+        //        .Where(s => s.DealerId == dealerId && s.SaleDate <= uptoDate && s.Id != excludeSaleId)
+        //        .SumAsync(s => (decimal?)s.AdvancePaid ?? 0);
+        //}
 
         public async Task<decimal> GetTotalAdvanceAppliedByDealerAsync(int dealerId, DateTime? uptoDate = null)
         {
@@ -165,6 +166,39 @@ namespace JaggeryAgro.Infrastructure.Repositories
         {
             _context.JaggerySalePayments.Add(payment);
             await _context.SaveChangesAsync();
+        }
+        public async Task<decimal> GetTotalAdvanceAppliedByDealerAsync(int dealerId, DateTime uptoDate)
+        {
+            return await _context.JaggerySales
+                .Where(s => s.DealerId == dealerId && s.SaleDate <= uptoDate)
+                .SumAsync(s => (decimal?)s.AdvancePaid) ?? 0;
+        }
+
+        public async Task<decimal> GetTotalAdvanceAppliedByDealer(int dealerId)
+        {
+            return await _context.JaggerySales
+                .Where(s => s.DealerId == dealerId)
+                .SumAsync(s => (decimal?)s.AdvancePaid) ?? 0;
+        }
+
+        public async Task<decimal> GetTotalAdvanceAppliedByDealerExceptAsync(int dealerId, int excludeSaleId)
+        {
+            return await _context.JaggerySales
+                .Where(s => s.DealerId == dealerId && s.Id != excludeSaleId)
+                .SumAsync(s => (decimal?)s.AdvancePaid) ?? 0;
+        }
+        public async Task<decimal> GetTotalProductionByLaborInRangeAsync(int laborId, DateTime from, DateTime to)
+        {
+            if (laborId <= 0)
+                throw new ArgumentException("Invalid LaborId provided.", nameof(laborId));
+
+            // Using nullable sum to safely handle empty results
+            var totalProduction = await _context.JaggerySales
+                .AsNoTracking()
+                .Where(x => x.LaborId == laborId && x.SaleDate >= from && x.SaleDate <= to)
+                .SumAsync(x => (decimal?)x.QuantityInKg) ?? 0m;
+
+            return totalProduction;
         }
     }
 }
