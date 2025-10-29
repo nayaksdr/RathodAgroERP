@@ -65,6 +65,14 @@ namespace JaggeryAgro.Infrastructure.Repositories
         {
             throw new NotImplementedException();
         }
+        public async Task<decimal> GetTotalTonsByLaborInRangeAsync(int laborId, DateTime from, DateTime to)
+        {
+            return await _db.CanePurchases
+                .Where(cp => cp.LaborId == laborId && cp.PurchaseDate >= from && cp.PurchaseDate <= to)
+                .SumAsync(cp => (decimal?)cp.QuantityTon ?? 0m);
+        }
+
+
     }
 }
 

@@ -33,6 +33,10 @@ namespace JaggeryAgro.Core.Entities
 
         public PaymentType PaymentType { get; set; }   // <--- Enum property
 
+        // 🔹 New fields for payment tracking
+        public bool IsPaid { get; set; } // true = Paid, false = Pending
+        public string? PaymentMode { get; set; } // Cash / UPI / Bank
+        public string? PaymentProofPath { get; set; } // uploaded file path
 
     }
 

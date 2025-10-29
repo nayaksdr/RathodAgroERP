@@ -9,6 +9,7 @@ namespace JaggeryAgro.Core.Interfaces
 { 
     public interface ILaborTypeRepository
     {
+        
         Task<IEnumerable<LaborType>> GetAllAsync();
         Task<LaborType> GetByIdAsync(int id);
         Task AddAsync(LaborType type);
@@ -17,6 +18,7 @@ namespace JaggeryAgro.Core.Interfaces
         
         Task<List<LaborType>> GetAllLaborTypesAsync();
 
+        Task<decimal> GetCurrentRateByLaborTypeIdAsync(int laborTypeId);
 
         //IEnumerable<object> GetAllLaborTypes();
     }

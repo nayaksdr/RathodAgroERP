@@ -142,7 +142,40 @@ namespace JaggeryAgro.Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return payment;
         }
-    }
-    
+        public async Task<CanePayment?> GetByIdAsync(int id)
+        {
+            return await _context.CanePayments
+                .Include(p => p.Farmer) // Include related entity if needed
+                .FirstOrDefaultAsync(p => p.Id == id);
+        }
+
+        public async Task<IEnumerable<CanePayment>> GetAllWithFarmerAsync()
+        {
+            return await _context.CanePayments
+                .Include(p => p.Farmer)
+                .ToListAsync();
+        }
+
+        public async Task UpdateAsync(CanePayment payment)
+        {
+            _context.CanePayments.Update(payment);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<CanePayment>> GetAllAsync()
+        {
+            return await _context.CanePayments.ToListAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var payment = await _context.CanePayments.FindAsync(id);
+            if (payment != null)
+            {
+                _context.CanePayments.Remove(payment);
+                await _context.SaveChangesAsync();
+            }
+        }
+    }   
     
 }

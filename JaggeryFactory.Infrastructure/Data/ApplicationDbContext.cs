@@ -1,13 +1,12 @@
 ﻿using JaggeryAgro.Core.Entities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 
 namespace JaggeryAgro.Infrastructure.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
@@ -18,7 +17,7 @@ namespace JaggeryAgro.Infrastructure.Data
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Deposit> Deposits { get; set; }
         public DbSet<Labor> Labors { get; set; }
-        public DbSet<LaborType> LaborTypes { get; set; }        
+        public DbSet<LaborType> LaborTypes { get; set; }
         public DbSet<WeeklyPayment> WeeklyPayments { get; set; }
         public DbSet<AdvancePayment> AdvancePayments { get; set; }
         public DbSet<WeeklySalary> WeeklySalaries { get; set; }
@@ -37,23 +36,26 @@ namespace JaggeryAgro.Infrastructure.Data
         public DbSet<JaggerySalePayment> JaggerySalePayments { get; set; }
         public DbSet<DealerAdvance> DealerAdvances { get; set; }
         public DbSet<SplitwisePayment> SplitwisePayments { get; set; }
-        public DbSet<JaggerySaleShare> JaggerySaleShares { get; set; }        
-      
-
+        public DbSet<JaggerySaleShare> JaggerySaleShares { get; set; }
+        public DbSet<CaneProcessing> CaneProcessings { get; set; }
+        public DbSet<JaggeryProduction> JaggeryProductions { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            // ✅ Identity table mappings
+            modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUsers");
+            modelBuilder.Entity<ApplicationRole>().ToTable("AspNetRoles");
 
+            // ✅ Add custom ApplicationRole property mapping once (no duplicate!)
             modelBuilder.Entity<ApplicationRole>(entity =>
             {
-                entity.ToTable("AspNetRoles");
                 entity.Property(e => e.LastDayAsRoleUse)
                       .HasColumnType("datetime2")
                       .IsRequired(false);
             });
 
-            // ✅ Apply decimal precision globally
+            // ✅ Decimal precision globally
             foreach (var property in modelBuilder.Model
                 .GetEntityTypes()
                 .SelectMany(t => t.GetProperties())
@@ -86,13 +88,11 @@ namespace JaggeryAgro.Infrastructure.Data
                 .HasForeignKey(cp => cp.FarmerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // CaneAdvance precision
             modelBuilder.Entity<CaneAdvance>()
                 .Property(a => a.RemainingAmount).HasPrecision(18, 2);
             modelBuilder.Entity<CaneAdvance>()
                 .Property(a => a.Amount).HasPrecision(18, 2);
 
-            // CanePayment precision
             modelBuilder.Entity<CanePayment>()
                 .Property(p => p.GrossAmount).HasPrecision(18, 2);
             modelBuilder.Entity<CanePayment>()
@@ -102,7 +102,6 @@ namespace JaggeryAgro.Infrastructure.Data
             modelBuilder.Entity<CanePayment>()
                 .Property(p => p.CarryForwardAdvance).HasPrecision(18, 2);
 
-            // Expense relationships
             modelBuilder.Entity<Expense>()
                 .HasOne(e => e.PaidBy)
                 .WithMany()
@@ -121,7 +120,6 @@ namespace JaggeryAgro.Infrastructure.Data
                 .HasForeignKey(e => e.SplitwisePaymentId)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            // SplitwisePayment relationships
             modelBuilder.Entity<SplitwisePayment>()
                 .HasOne(p => p.FromMember)
                 .WithMany()
@@ -135,9 +133,9 @@ namespace JaggeryAgro.Infrastructure.Data
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<JaggerySalePayment>()
-                .HasOne(p => p.FromMember)    
-                .WithMany()    
-                .HasForeignKey(p => p.FromMemberId)    
+                .HasOne(p => p.FromMember)
+                .WithMany()
+                .HasForeignKey(p => p.FromMemberId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<JaggerySalePayment>()
@@ -145,10 +143,6 @@ namespace JaggeryAgro.Infrastructure.Data
                 .WithMany()
                 .HasForeignKey(p => p.ToMemberId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-         
-
-
         }
     }
 }

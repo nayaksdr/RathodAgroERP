@@ -22,11 +22,17 @@ namespace JaggeryAgro.Core.Entities
 
         [NotMapped]
         public string SearchDealer { get; set; }
-        public Dealer Dealer { get; set; } // Navigation       
+        public Dealer Dealer { get; set; } // Navigation          
         public Member? PaidBy { get; set; }
         public string? PaymentMode { get; set; } // Cash, UPI, Bank
         public string? ProofImage { get; set; }  // Path of uploaded image
 
+        // public decimal UsedAdvance { get; set; } = 0m;
+
+        // ✅ Optional linkage to Labor (for labor-based jaggery calculations)
+        public int? LaborId { get; set; }   // ✅ add this line (nullable if optional)
+        public Labor? Labor { get; set; }   // ✅ navigation property
+        
         public ICollection<JaggerySaleShare> Shares { get; set; } = new List<JaggerySaleShare>();
 
     }

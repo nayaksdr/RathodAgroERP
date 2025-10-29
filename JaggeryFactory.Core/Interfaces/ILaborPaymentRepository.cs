@@ -12,6 +12,8 @@ namespace JaggeryAgro.Core.Interfaces
         Task<bool> ExistsAsync(int laborId, DateTime? from, DateTime? to);
         Task AddAsync(LaborPayment payment);
         Task<IEnumerable<LaborPayment>> GetAllAsync();
+        Task SaveAsync();
+
     }
 
 }

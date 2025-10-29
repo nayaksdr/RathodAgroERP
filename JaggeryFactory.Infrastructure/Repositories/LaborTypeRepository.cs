@@ -55,7 +55,14 @@ namespace JaggeryAgro.Infrastructure.Repositories
                 _context.LaborTypes.Remove(type);
                 await _context.SaveChangesAsync();
             }
-        }       
+        }
+            public async Task<decimal> GetCurrentRateByLaborTypeIdAsync(int laborTypeId)
+            {
+            var laborType = await _context.LaborTypes
+                .FirstOrDefaultAsync(x => x.Id == laborTypeId);
+
+            return laborType?.DailyWage ?? 0; // or WeeklyRate if your entity uses that
+        }
 
     }
 }

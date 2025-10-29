@@ -18,6 +18,10 @@ namespace JaggeryAgro.Core.Interfaces
         Task<IEnumerable<CanePayment>> GetAllPaymentsAsync();
         Task<CanePayment> GenerateFarmerPaymentAsync(int farmerId);
         Task<CanePayment> ConfirmPaymentAsync(CanePayment payment);
-
+        Task<IEnumerable<CanePayment>> GetAllAsync();
+        Task<CanePayment?> GetByIdAsync(int id);        
+        Task UpdateAsync(CanePayment entity);
+        Task DeleteAsync(int id);  // ✅ fixed
+      
     }
 }

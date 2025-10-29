@@ -5,7 +5,7 @@
 namespace JaggeryAgro.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreateBaseline : Migration
+    public partial class SyncLaborIdForCanePurchase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

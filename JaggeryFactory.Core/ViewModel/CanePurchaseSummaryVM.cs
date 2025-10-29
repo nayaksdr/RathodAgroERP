@@ -8,6 +8,7 @@ namespace JaggeryAgro.Core.ViewModel
 {
     public class CanePurchaseSummaryVM
     {
+        public int Id { get; set; } 
         public int FarmerId { get; set; }
         public string? FarmerName { get; set; }
         public decimal TotalTons { get; set; }

@@ -1,9 +1,6 @@
 ﻿using JaggeryAgro.Core.Interfaces;
 using JaggeryAgro.Core.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace JaggeryAgro.Infrastructure.Services
@@ -13,10 +10,12 @@ namespace JaggeryAgro.Infrastructure.Services
         private readonly IDealerAdvanceRepository _advRepo;
         private readonly IJaggerySaleRepository _saleRepo;
 
-        public DealerAccountService(IDealerAdvanceRepository advRepo, IJaggerySaleRepository saleRepo)
+        public DealerAccountService(
+            IDealerAdvanceRepository advRepo,
+            IJaggerySaleRepository saleRepo)
         {
-            _advRepo = advRepo;
-            _saleRepo = saleRepo;
+            _advRepo = advRepo ?? throw new ArgumentNullException(nameof(advRepo));
+            _saleRepo = saleRepo ?? throw new ArgumentNullException(nameof(saleRepo));
         }
 
         public async Task<decimal> GetAdvanceBalanceAsync(int dealerId, DateTime uptoDate)

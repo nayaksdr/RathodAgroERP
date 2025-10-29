@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JaggeryAgro.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9112eb7c083df103c1ea71f7415cfe81e337f7e9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a86763f90efcb3ef1536ac671050e947b34af5fd")]
 [assembly: System.Reflection.AssemblyProductAttribute("JaggeryAgro.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JaggeryAgro.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

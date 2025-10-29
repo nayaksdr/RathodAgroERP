@@ -17,6 +17,7 @@ namespace JaggeryAgro.Core.Entities
         [Required(ErrorMessage = "Description is required")]
         public string? Description { get; set; }
         public decimal DailyWage { get; set; }
+     
         public ICollection<Labor> Labors { get; set; } = new List<Labor>();
 
         public virtual ICollection<LaborTypeRate> LaborTypeRates { get; set; }

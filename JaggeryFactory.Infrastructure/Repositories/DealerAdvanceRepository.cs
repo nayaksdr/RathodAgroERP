@@ -102,5 +102,11 @@ namespace JaggeryAgro.Infrastructure.Repositories
                 .Where(a => a.DealerId == dealerId)
                 .SumAsync(a => (decimal?)a.Amount) ?? 0;   // handles null
         }
+        public async Task SaveAsync(DealerAdvance dealerAdvance)
+        {
+            _ctx.DealerAdvances.Add(dealerAdvance);
+            await _ctx.SaveChangesAsync();
+        }
+
     }
 }
