@@ -37,8 +37,12 @@ namespace JaggeryAgro.Infrastructure.Data
         public DbSet<DealerAdvance> DealerAdvances { get; set; }
         public DbSet<SplitwisePayment> SplitwisePayments { get; set; }
         public DbSet<JaggerySaleShare> JaggerySaleShares { get; set; }
+<<<<<<< HEAD
         public DbSet<CaneProcessing> CaneProcessings { get; set; }
         public DbSet<JaggeryProduction> JaggeryProductions { get; set; }
+=======
+
+>>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

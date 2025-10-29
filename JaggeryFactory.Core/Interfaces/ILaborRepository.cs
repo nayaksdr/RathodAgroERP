@@ -33,9 +33,13 @@ namespace JaggeryAgro.Core.Interfaces
         Task<Labor> GetByMobileAsync(string mobile);        
         Task<List<Attendance>> GetAttendanceAsync(int laborId);        
         Task<List<WeeklySalary>> GetWeeklySalariesAsync(int laborId);
+<<<<<<< HEAD
 
         Task<Labor> GetByIdWithLaborTypeAsync(int id);
         Task<List<Labor>> GetAllLaborsWithLaborTypeAsync();
         Task<List<Labor>> GetLaborsByLaborTypeIdAsync(int laborTypeId);
+=======
+        
+>>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
     }
 }

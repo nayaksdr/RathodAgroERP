@@ -24,7 +24,19 @@ namespace JaggeryAgro.Infrastructure.Repositories
                 .Include(r => r.LaborType)
                 .AsNoTracking()
                 .ToListAsync();
+<<<<<<< HEAD
         }           
+=======
+        }
+        // In LaborTypeRateRepository
+        public async Task<LaborTypeRate> GetCurrentRateByLaborTypeIdAsync(int laborTypeId)
+        {
+            return await _context.LaborTypeRates
+                .Where(r => r.LaborTypeId == laborTypeId && r.EffectiveFrom <= DateTime.Now)
+                .OrderByDescending(r => r.EffectiveFrom)
+                .FirstOrDefaultAsync();
+        }       
+>>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
 
         public async Task AddRateAsync(LaborTypeRate rate)
         {

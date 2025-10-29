@@ -19,6 +19,7 @@ namespace JaggeryAgro.Core.Entities
         public bool IsPaid { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
+<<<<<<< HEAD
         public int AttendanceDays { get; set; }
         public decimal rate { get; set; }
         public decimal? RatePerTon { get; set; }
@@ -26,5 +27,12 @@ namespace JaggeryAgro.Core.Entities
         public decimal? TotalJaggeryQty { get; set; }
         public decimal? TotalTons { get; set; }
         public decimal WorkAmount { get; set; }
+=======
+        
+        public int AttendanceDays { get; set; } // New property to store attendance days
+
+        public int rate { get; set; } // New property to store daily rate
+
+>>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
     }
 }

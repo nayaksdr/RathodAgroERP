@@ -227,6 +227,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasIndex("FarmerId");
 
                     b.ToTable("CanePayments", (string)null);
+<<<<<<< HEAD
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.CaneProcessing", b =>
@@ -252,6 +253,8 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasIndex("LaborId");
 
                     b.ToTable("CaneProcessings", (string)null);
+=======
+>>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.CanePurchase", b =>
@@ -302,8 +305,11 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("FarmerId");
 
+<<<<<<< HEAD
                     b.HasIndex("LaborId");
 
+=======
+>>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
                     b.ToTable("CanePurchases", (string)null);
                 });
 
@@ -545,6 +551,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JaggeryProduces", (string)null);
+<<<<<<< HEAD
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggeryProduction", b =>
@@ -570,6 +577,8 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasIndex("LaborId");
 
                     b.ToTable("JaggeryProductions", (string)null);
+=======
+>>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggerySale", b =>
@@ -811,6 +820,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.Property<DateTime>("ToDate")
                         .HasColumnType("datetime2");
 
+<<<<<<< HEAD
                     b.Property<decimal?>("TotalJaggeryQty")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
@@ -826,6 +836,10 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.Property<decimal>("rate")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
+=======
+                    b.Property<int>("rate")
+                        .HasColumnType("int");
+>>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
 
                     b.HasKey("Id");
 

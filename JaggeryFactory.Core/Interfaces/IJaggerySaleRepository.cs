@@ -47,7 +47,10 @@ namespace JaggeryAgro.Core.Interfaces
         Task<decimal> GetTotalAdvanceAppliedByDealerAsync(int dealerId, DateTime uptoDate);
 
         Task<decimal> GetTotalAdvanceAppliedByDealerExceptAsync(int dealerId, int excludeSaleId);
+<<<<<<< HEAD
         Task<decimal> GetTotalProductionByLaborInRangeAsync(int laborId, DateTime from, DateTime to);
+=======
+>>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
 
 
     }
