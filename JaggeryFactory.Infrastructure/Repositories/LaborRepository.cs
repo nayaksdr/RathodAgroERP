@@ -158,7 +158,7 @@ namespace JaggeryAgro.Infrastructure.Repositories
                 .Include(l => l.LaborType)
                 .FirstOrDefaultAsync(l => l.Id == laborTypeId);
         }
-<<<<<<< HEAD
+
         // ✅ Corrected methods to include LaborType to prevent NullReferenceException
         public async Task<Labor> GetByIdWithLaborTypeAsync(int id)
         {
@@ -182,8 +182,6 @@ namespace JaggeryAgro.Infrastructure.Repositories
                                  .Where(l => l.LaborTypeId == laborTypeId)
                                  .ToListAsync();
         }
-=======
->>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
 
     }
 }

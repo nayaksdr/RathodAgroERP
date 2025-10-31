@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,7 +56,7 @@ namespace JaggeryAgro.Infrastructure.Repositories
                                 {
                                     Id = c.Id,
                                     Amount = c.NetAmount,
-                                    PaymentDate = c.PaymentDate,
+                                    PaymentDate = c.PaymentDate.Value,
                                     FarmerId = c.FarmerId,
                                     FarmerName = "" // temporary, will fill below
                                 };
@@ -93,13 +94,17 @@ namespace JaggeryAgro.Infrastructure.Repositories
 
             return payments;
         }
-
-
+        public async Task<IEnumerable<CanePayment>> GetAllAsync()
+        {
+            return await _context.CanePayments
+                .Include(p => p.Farmer) // ensures Farmer name is loaded
+                .ToListAsync();
+        }
 
         public async Task<IEnumerable<CanePayment>> GetAllPaymentsAsync()
         {
             return await _context.CanePayments
-                .Include(p => p.Farmer)
+                .Include(p => p.Farmer)                
                 .ToListAsync();
         }
         
@@ -161,11 +166,14 @@ namespace JaggeryAgro.Infrastructure.Repositories
             _context.CanePayments.Update(payment);
             await _context.SaveChangesAsync();
         }
-
-        public async Task<IEnumerable<CanePayment>> GetAllAsync()
+        public async Task<IEnumerable<CanePayment>> GetAllAsync(Expression<Func<CanePayment, bool>> predicate)
         {
-            return await _context.CanePayments.ToListAsync();
+            return await _context.CanePayments
+                .Include(p => p.Farmer)
+                .Where(predicate)
+                .ToListAsync();
         }
+
 
         public async Task DeleteAsync(int id)
         {

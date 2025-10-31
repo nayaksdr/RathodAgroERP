@@ -16,11 +16,8 @@ namespace JaggeryAgro.Core.Services
               DateTime from,
               DateTime to,
               int attendanceDays,
-<<<<<<< HEAD
-              decimal rate,
-=======
-              int rate,
->>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
+              decimal rate,         
+
               decimal gross,
               decimal advance,
               decimal net,
@@ -42,11 +39,7 @@ namespace JaggeryAgro.Core.Services
              DateTime from,
              DateTime to,
              int attendanceDays,
-<<<<<<< HEAD
-             decimal rate,
-=======
-             int rate,
->>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
+             decimal rate,          
              decimal gross,
              decimal advance,
              decimal net,

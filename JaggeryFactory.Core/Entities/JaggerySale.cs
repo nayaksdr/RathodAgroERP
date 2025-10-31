@@ -27,17 +27,12 @@ namespace JaggeryAgro.Core.Entities
         public string? PaymentMode { get; set; } // Cash, UPI, Bank
         public string? ProofImage { get; set; }  // Path of uploaded image
 
-<<<<<<< HEAD
         // public decimal UsedAdvance { get; set; } = 0m;
 
         // ✅ Optional linkage to Labor (for labor-based jaggery calculations)
         public int? LaborId { get; set; }   // ✅ add this line (nullable if optional)
         public Labor? Labor { get; set; }   // ✅ navigation property
-        
-=======
-       // public decimal UsedAdvance { get; set; } = 0m;
 
->>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
         public ICollection<JaggerySaleShare> Shares { get; set; } = new List<JaggerySaleShare>();
 
     }

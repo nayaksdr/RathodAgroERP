@@ -3,6 +3,7 @@ using JaggeryAgro.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +19,11 @@ namespace JaggeryAgro.Core.Interfaces
         Task<IEnumerable<CanePayment>> GetAllPaymentsAsync();
         Task<CanePayment> GenerateFarmerPaymentAsync(int farmerId);
         Task<CanePayment> ConfirmPaymentAsync(CanePayment payment);
-        Task<IEnumerable<CanePayment>> GetAllAsync();
+        Task<IEnumerable<CanePayment>> GetAllAsync();      
+
+        // ✅ Get payments based on a filter (predicate)
+        Task<IEnumerable<CanePayment>> GetAllAsync(Expression<Func<CanePayment, bool>> predicate);
+
         Task<CanePayment?> GetByIdAsync(int id);        
         Task UpdateAsync(CanePayment entity);
         Task DeleteAsync(int id);  // ✅ fixed

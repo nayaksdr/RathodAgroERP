@@ -187,7 +187,7 @@ namespace JaggeryAgro.Infrastructure.Repositories
                 .Where(s => s.DealerId == dealerId && s.Id != excludeSaleId)
                 .SumAsync(s => (decimal?)s.AdvancePaid) ?? 0;
         }
-<<<<<<< HEAD
+
         public async Task<decimal> GetTotalProductionByLaborInRangeAsync(int laborId, DateTime from, DateTime to)
         {
             if (laborId <= 0)
@@ -201,8 +201,7 @@ namespace JaggeryAgro.Infrastructure.Repositories
 
             return totalProduction;
         }
-=======
->>>>>>> 33a9ded78b728faf46d40805babd453ca661cb61
+
     }
 }
 
