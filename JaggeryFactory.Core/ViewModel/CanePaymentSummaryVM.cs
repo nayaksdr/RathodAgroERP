@@ -22,7 +22,9 @@ namespace JaggeryAgro.Core.ViewModel
         public string? MemberName { get; set; }
         public string? PaymentProofPath { get; set; }
         public decimal? CarryForward { get; set; }   // nullable for safety
-
+        public decimal PaidAmount { get; set; } // ✅ new
+        public decimal BalanceAmount { get; set; } // ✅ new        
+        public string? PaymentStatus { get; set; }
     }
 
 }

@@ -227,7 +227,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasIndex("FarmerId");
 
                     b.ToTable("CanePayments", (string)null);
-
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.CaneProcessing", b =>
@@ -253,7 +252,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasIndex("LaborId");
 
                     b.ToTable("CaneProcessings", (string)null);
-
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.CanePurchase", b =>
@@ -304,9 +302,7 @@ namespace JaggeryAgro.Infrastructure.Migrations
 
                     b.HasIndex("FarmerId");
 
-
                     b.HasIndex("LaborId");
-
 
                     b.ToTable("CanePurchases", (string)null);
                 });
@@ -549,7 +545,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JaggeryProduces", (string)null);
-
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggeryProduction", b =>
@@ -575,7 +570,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.HasIndex("LaborId");
 
                     b.ToTable("JaggeryProductions", (string)null);
-
                 });
 
             modelBuilder.Entity("JaggeryAgro.Core.Entities.JaggerySale", b =>
@@ -817,7 +811,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.Property<DateTime>("ToDate")
                         .HasColumnType("datetime2");
 
-
                     b.Property<decimal?>("TotalJaggeryQty")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
@@ -833,10 +826,6 @@ namespace JaggeryAgro.Infrastructure.Migrations
                     b.Property<decimal>("rate")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("rate")
-                        .HasColumnType("int");
-
 
                     b.HasKey("Id");
 

@@ -44,8 +44,8 @@ namespace JaggeryAgro.Core.Entities
 
         [NotMapped]
         public string? PaidByMember { get; set; }        // ✅ Important for tracking payment status
-       
-        
+        public decimal PaidAmount { get; set; } // ✅ new
+        public decimal BalanceAmount { get; set; } // ✅ new
 
     }
 
