@@ -97,6 +97,7 @@ namespace JaggeryAgro.Infrastructure.Repositories
         public async Task<IEnumerable<CanePayment>> GetAllAsync()
         {
             return await _context.CanePayments
+                .Include(p => p.Member)
                 .Include(p => p.Farmer) // ensures Farmer name is loaded
                 .ToListAsync();
         }
