@@ -1,0 +1,115 @@
+﻿@model WeeklyPaymentViewModel
+@{
+    ViewData["Title"] = "एकल वेतन तयार करा";
+}
+
+<div class="container mt-4">
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">
+            <i class="bi bi-wallet2 text-success"></i> एकल वेतन तयार करा
+        </h2>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left"></i> यादीकडे परत जा
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <form asp-action="GenerateSingle" method="post" class="row g-3" id="paymentForm">
+
+                <!-- Labor -->
+                <div class="col-md-6">
+                    <label asp-for="LaborId" class="form-label fw-bold">कामगार</label>
+                    @Html.DropDownListFor(
+                    model => model.LaborId,
+                                        (IEnumerable<SelectListItem>)ViewBag.Labors,
+                                        "-- कामगार निवडा --",
+                                        new { @class = "form-select", required = "required" }
+                                        )
+                    <span asp-validation-for="LaborId" class="text-danger"></span>
+                </div>
+
+                <!-- From Date -->
+                <div class="col-md-6">
+                    <label for="fromDate" class="form-label fw-bold">पासूनची तारीख</label>
+                    <input type="date" id="fromDate" name="fromDate" class="form-control" required />
+                </div>
+
+                <!-- To Date -->
+                <div class="col-md-6">
+                    <label for="toDate" class="form-label fw-bold">पर्यंतची तारीख</label>
+                    <input type="date" id="toDate" name="toDate" class="form-control" required />
+                </div>
+
+                <!-- Payment Method -->
+                <div class="col-md-6">
+                    <label for="paymentMethod" class="form-label fw-bold">देयक पद्धत</label>
+                    <select id="paymentMethod" name="paymentMethod" class="form-select" required>
+                        <option value="">-- देयक पद्धत निवडा --</option>
+                        <option value="Cash">रोख</option>
+                        <option value="Bank Transfer">बँक हस्तांतरण</option>
+                        <option value="UPI">UPI</option>
+                        <option value="Cheque">चेक</option>
+                    </select>
+                </div>
+
+                <!-- Net Pay Input -->
+                <div class="mb-3 col-md-6">
+                    <label asp-for="NetPay" class="form-label fw-bold">एकूण वेतन</label>
+                    <input asp-for="NetPay" class="form-control" id="netPayInput" />
+                    <span asp-validation-for="NetPay" class="text-danger"></span>
+                    <div class="form-text text-muted">
+                        जास्तीत जास्त परवानगी दिलेले वेतन: <strong>@ViewBag.NetSalary</strong>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="col-12 mt-3">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-cash-coin"></i> वेतन तयार करा
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary ms-2">
+                        रद्द करा
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var netSalary = parseFloat('@ViewBag.NetSalary');
+
+            // Live validation on NetPay field
+            $('#netPayInput').on('input', function () {
+                var enteredAmount = parseFloat($(this).val());
+
+                if (isNaN(enteredAmount) || enteredAmount <= 0) {
+                    $(this).addClass('is-invalid');
+                } else {
+                    $(this).removeClass('is-invalid');
+                }
+
+                if (enteredAmount > netSalary) {
+                    $(this).addClass('is-invalid');
+                    $('#netPayInput').val('');
+                    alert("निवडलेली रक्कम परवानगी दिलेल्या वेतनापेक्षा जास्त नसावी (" + netSalary.toFixed(2) + ").");
+                }
+            });
+
+            // Final check before form submission
+            $('#paymentForm').on('submit', function (e) {
+                var enteredAmount = parseFloat($('#netPayInput').val());
+
+                if (isNaN(enteredAmount) || enteredAmount <= 0 || enteredAmount > netSalary) {
+                    alert("कृपया वैध वेतन रक्कम टाका (कमाल " + netSalary.toFixed(2) + ").");
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+}

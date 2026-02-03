@@ -1,0 +1,122 @@
+﻿@using JaggeryAgro.Core.ViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggerySaleReportVM
+@inject IViewLocalizer Localizer
+
+@{
+    Layout = null;
+    string title = Localizer["Jaggery Sale Report"].Value;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@title</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+
+        h2 {
+            margin-bottom: 4px;
+        }
+
+        .meta {
+            margin-bottom: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #444;
+            padding: 6px;
+            text-align: right;
+        }
+
+            th:first-child, td:first-child {
+                text-align: left;
+            }
+
+        tfoot td {
+            font-weight: bold;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="text-center">@title</h2>
+
+    <div class="meta">
+        <div>
+            <strong>@Localizer["Dealer"]:</strong>
+            @(Model.DealerName ?? Localizer["All Dealers"].Value)
+        </div>
+
+        <div>
+            <strong>@Localizer["Period"]:</strong>
+            @(Model.From?.ToString("yyyy-MM-dd") ?? "—") @Localizer["To"]
+            @(Model.To?.ToString("yyyy-MM-dd") ?? "—")
+        </div>
+        <div>
+            <strong>@Localizer["Generated"]:</strong> @DateTime.Now.ToString("yyyy-MM-dd HH:mm")
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>@Localizer["Dealer"]</th>
+                <th>@Localizer["Date"]</th>
+                <th>@Localizer["Quantity (Kg)"]</th>
+                <th>@Localizer["Rate / Kg"]</th>
+                <th>@Localizer["Total Amount"]</th>
+                <th>@Localizer["Advance"]</th>
+                <th>@Localizer["Remaining"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Sales != null && Model.Sales.Any())
+            {
+                foreach (var s in Model.Sales)
+                {
+                    <tr>
+                        <td>@(s.Dealer?.Name ?? Model.DealerName)</td>
+                        <td>@s.SaleDate.ToString("yyyy-MM-dd")</td>
+                        <td>@s.QuantityInKg</td>
+                        <td>@s.RatePerKg</td>
+                        <td>@s.TotalAmount</td>
+                        <td>@s.AdvancePaid</td>
+                        <td>@s.RemainingAmount</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="7" class="text-center text-danger">
+                        @Localizer["No sales records found"]
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-center">@Localizer["Total"]</td>
+                <td>@Model.TotalQuantityKg</td>
+                <td></td>
+                <td>@Model.TotalAmount</td>
+                <td>@Model.TotalAdvance</td>
+                <td>@Model.TotalRemaining</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

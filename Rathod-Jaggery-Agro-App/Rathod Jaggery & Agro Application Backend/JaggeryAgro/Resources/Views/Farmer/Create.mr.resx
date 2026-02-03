@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="FarmerCreateTitle" xml:space="preserve">
+    <value>नवीन शेतकरी जोडा</value>
+  </data>
+  <data name="FarmerName" xml:space="preserve">
+    <value>नाव</value>
+  </data>
+  <data name="EnterFarmerName" xml:space="preserve">
+    <value>शेतकऱ्याचे नाव टाका</value>
+  </data>
+  <data name="FarmerMobile" xml:space="preserve">
+    <value>मोबाइल</value>
+  </data>
+  <data name="EnterFarmerMobile" xml:space="preserve">
+    <value>मोबाइल नंबर टाका</value>
+  </data>
+  <data name="FarmerAddress" xml:space="preserve">
+    <value>पत्ता</value>
+  </data>
+  <data name="EnterFarmerAddress" xml:space="preserve">
+    <value>पत्ता टाका</value>
+  </data>
+  <data name="FarmerVillage" xml:space="preserve">
+    <value>गाव</value>
+  </data>
+  <data name="EnterFarmerVillage" xml:space="preserve">
+    <value>गावाचे नाव टाका</value>
+  </data>
+  <data name="SaveFarmer" xml:space="preserve">
+    <value>शेतकरी जतन करा</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+</root>

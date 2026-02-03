@@ -1,0 +1,73 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.LaborType
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="container mt-5">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-white bg-success px-5 py-3 d-inline-block rounded-4 shadow">
+            @Localizer["Title"]
+        </h2>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card shadow-lg border-0 rounded-4 mx-auto" style="max-width:600px;">
+        <div class="card-body p-4">
+            <form asp-action="Create" method="post" class="needs-validation" novalidate>
+                @Html.AntiForgeryToken()
+
+                <!-- Labor Type Name -->
+                <div class="mb-4">
+                    <label asp-for="LaborTypeName" class="form-label fw-semibold">
+                        @Localizer["Label_LaborTypeName"]
+                    </label>
+                    <input asp-for="LaborTypeName" class="form-control shadow-sm" placeholder="@Localizer["Placeholder_LaborTypeName"]" />
+                    <span asp-validation-for="LaborTypeName" class="text-danger"></span>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-4">
+                    <label asp-for="Description" class="form-label fw-semibold">
+                        @Localizer["Label_Description"]
+                    </label>
+                    <textarea asp-for="Description" class="form-control shadow-sm" rows="4" placeholder="@Localizer["Placeholder_Description"]"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-end gap-2">
+                    <button type="submit" class="btn btn-success fw-bold px-4 shadow-sm rounded-pill">
+                        <i class="fas fa-save me-2"></i> @Localizer["Button_Save"]
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary fw-bold px-4 shadow-sm rounded-pill">
+                        <i class="fas fa-times me-2"></i> @Localizer["Button_Cancel"]
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Bootstrap validation
+        (() => {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+}

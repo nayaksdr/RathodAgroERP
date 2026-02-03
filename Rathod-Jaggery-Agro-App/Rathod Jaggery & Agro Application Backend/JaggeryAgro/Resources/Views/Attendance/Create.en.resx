@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PageHeader" xml:space="preserve"><value>Mark Attendance</value></data>
+  <data name="SelectLabor" xml:space="preserve"><value>Labor</value></data>
+  <data name="SelectLaborPlaceholder" xml:space="preserve"><value>Select Labor</value></data>
+  <data name="Date" xml:space="preserve"><value>Date</value></data>
+  <data name="IsPresent" xml:space="preserve"><value>Present?</value></data>
+  <data name="Button_Save" xml:space="preserve"><value>Save</value></data>
+  <data name="Button_Back" xml:space="preserve"><value>Back to List</value></data>
+</root>

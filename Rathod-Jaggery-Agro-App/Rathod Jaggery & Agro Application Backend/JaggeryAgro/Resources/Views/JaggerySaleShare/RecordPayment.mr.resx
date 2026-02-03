@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PageTitle" xml:space="preserve">
+    <value>सदस्यांकडून पैसे भरणे</value>
+  </data>
+  <data name="DealerLabel" xml:space="preserve">
+    <value>व्यापारी</value>
+  </data>
+  <data name="PayingMemberLabel" xml:space="preserve">
+    <value>रक्कम देणारा सदस्य</value>
+  </data>
+  <data name="PayingMemberPlaceholder" xml:space="preserve">
+    <value>पैसे भरणारा सदस्य निवडा</value>
+  </data>
+  <data name="PayingMemberValidation" xml:space="preserve">
+    <value>कृपया भरत सदस्य निवडा.</value>
+  </data>
+  <data name="ReceivingMemberLabel" xml:space="preserve">
+    <value>ज्याला पैसे द्यायचे</value>
+  </data>
+  <data name="ReceivingMemberPlaceholder" xml:space="preserve">
+    <value>ज्याला पैसे मिळणार आहेत तो सदस्य निवडा</value>
+  </data>
+  <data name="ReceivingMemberValidation" xml:space="preserve">
+    <value>कृपया सदस्य निवडा.</value>
+  </data>
+  <data name="AmountLabel" xml:space="preserve">
+    <value>रक्कम (₹)</value>
+  </data>
+  <data name="AmountValidation" xml:space="preserve">
+    <value>कृपया रक्कम भरा.</value>
+  </data>
+  <data name="PaymentModeLabel" xml:space="preserve">
+    <value>पेमेंट प्रकार</value>
+  </data>
+  <data name="PaymentModePlaceholder" xml:space="preserve">
+    <value>-- निवडा --</value>
+  </data>
+  <data name="PaymentModeValidation" xml:space="preserve">
+    <value>कृपया पेमेंट प्रकार निवडा.</value>
+  </data>
+  <data name="ProofImageLabel" xml:space="preserve">
+    <value>पेमेंट पुरावा (इमेज)</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>जतन करा</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+</root>

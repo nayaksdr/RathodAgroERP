@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+ <data name="EditJaggerySaleShare"><value>गुळ विक्री वाटा संपादित करा</value></data>
+<data name="UpdateSaleAndShareDetails"><value>विक्री आणि वाटा तपशील अद्यतनित करा</value></data>
+<data name="Edit"><value>संपादन करा</value></data>
+<data name="SelectSale"><value>व्यापारी निवडा</value></data>
+<data name="PleaseSelectSale"><value>कृपया व्यापारी निवडा.</value></data>
+<data name="PayingMember"><value>घेतलेली रक्कम देणारा सदस्य</value></data>
+<data name="AutoSelectedMemberPlaceholder"><value>सदस्य आपोआप निवडला जाईल</value></data>
+<data name="MembersToSplit"><value>वाटपासाठी सदस्य</value></data>
+<data name="SelectSaleToViewMembers"><value>विक्री निवडा, सदस्य आपोआप दिसतील.</value></data>
+<data name="ShareAmount"><value>वाटप रक्कम (₹)</value></data>
+<data name="EnterShareAmount"><value>कृपया वाटप रक्कम भरा.</value></data>
+<data name="PaidAmount"><value>घेतलेली रक्कम (₹)</value></data>
+<data name="EnterPaidAmount"><value>कृपया घेतलेली रक्कम भरा.</value></data>
+<data name="Save"><value>जतन करा</value></data>
+<data name="Cancel"><value>रद्द करा</value></data>
+<data name="NoMembersFound"><value>कोणतेही सदस्य आढळले नाहीत.</value></data>
+<data name="AllMembersAutoSelected"><value>सर्व सदस्य आपोआप निवडले गेले:</value></data>
+
+</root>

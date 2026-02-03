@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="JaggerySaleShare" xml:space="preserve"><value>Jaggery Sale Share</value></data>
+  <data name="AddNewSaleShare" xml:space="preserve"><value>Add New Sale Share</value></data>
+  <data name="JaggerySaleDetails" xml:space="preserve"><value>Jaggery Sale Details</value></data>
+  <data name="Date" xml:space="preserve"><value>Date</value></data>
+  <data name="Dealer" xml:space="preserve"><value>Dealer</value></data>
+  <data name="Member" xml:space="preserve"><value>Member</value></data>
+  <data name="ShareAmount" xml:space="preserve"><value>Share Amount (₹)</value></data>
+  <data name="PaidAmount" xml:space="preserve"><value>Paid Amount (₹)</value></data>
+  <data name="PendingAmount" xml:space="preserve"><value>Pending Amount (₹)</value></data>
+  <data name="Status" xml:space="preserve"><value>Status</value></data>
+  <data name="PaymentMode" xml:space="preserve"><value>Payment Mode</value></data>
+  <data name="Proof" xml:space="preserve"><value>Proof</value></data>
+  <data name="Action" xml:space="preserve"><value>Action</value></data>
+  <data name="NoImage" xml:space="preserve"><value>No Image</value></data>
+  <data name="RecordPayment" xml:space="preserve"><value>Record Payment</value></data>
+  <data name="Edit" xml:space="preserve"><value>Edit</value></data>
+  <data name="Delete" xml:space="preserve"><value>Delete</value></data>
+  <data name="ProofImage" xml:space="preserve"><value>Payment Proof Image</value></data>
+  <data name="PaidVsPendingChartTitle" xml:space="preserve"><value>Jaggery Sale Paid vs Pending per Member</value></data>
+  <data name="EarnedAmount" xml:space="preserve"><value>Earned Amount</value></data>
+  <data name="TotalBalance" xml:space="preserve"><value>Total Balance</value></data>
+  <data name="Search" xml:space="preserve"><value>Search:</value></data>
+<data name="ShowEntries" xml:space="preserve"><value>Show _MENU_ entries</value></data>
+<data name="ShowingEntries" xml:space="preserve"><value>Showing _START_ to _END_ of _TOTAL_ entries</value></data>
+<data name="Previous" xml:space="preserve"><value>Previous</value></data>
+<data name="Next" xml:space="preserve"><value>Next</value></data>
+<data name="NoRecordsFound" xml:space="preserve"><value>No matching records found</value></data>
+<data name="NoEntries" xml:space="preserve"><value>No entries available</value></data>
+
+</root>

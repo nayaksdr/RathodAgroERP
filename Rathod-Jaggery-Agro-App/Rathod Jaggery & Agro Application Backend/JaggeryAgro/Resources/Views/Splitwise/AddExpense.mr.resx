@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddExpenseTitle" xml:space="preserve">
+    <value>खर्च जोडा</value>
+  </data>
+  <data name="ExpenseType" xml:space="preserve">
+    <value>खर्चाचे प्रकार</value>
+  </data>
+  <data name="SelectExpenseType" xml:space="preserve">
+    <value>-- खर्च प्रकार निवडा --</value>
+  </data>
+  <data name="PaidBy" xml:space="preserve">
+    <value>कोणाकडून दिला</value>
+  </data>
+  <data name="SelectMember" xml:space="preserve">
+    <value>-- सदस्य निवडा --</value>
+  </data>
+  <data name="PaymentMode" xml:space="preserve">
+    <value>पेमेंट पद्धत</value>
+  </data>
+  <data name="SelectPaymentMode" xml:space="preserve">
+    <value>-- पेमेंट पद्धत निवडा --</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>रोख</value>
+  </data>
+  <data name="UPI" xml:space="preserve">
+    <value>GPay/PhonePe</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>बँक</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>रक्कम</value>
+  </data>
+  <data name="EnterAmount" xml:space="preserve">
+    <value>रक्कम लिहा</value>
+  </data>
+  <data name="ProofImage" xml:space="preserve">
+    <value>पुरावा (इमेज)</value>
+  </data>
+  <data name="SaveExpense" xml:space="preserve">
+    <value>खर्च जतन करा</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+</root>

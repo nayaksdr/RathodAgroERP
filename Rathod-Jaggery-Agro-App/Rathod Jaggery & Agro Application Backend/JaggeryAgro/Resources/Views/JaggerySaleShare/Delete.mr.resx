@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="DeleteJaggeryShareTitle" xml:space="preserve">
+    <value>गुळ विक्री वाटा हटवा</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>परत जा</value>
+  </data>
+  <data name="Sale" xml:space="preserve">
+    <value>विक्री</value>
+  </data>
+  <data name="Member" xml:space="preserve">
+    <value>सदस्य</value>
+  </data>
+  <data name="ShareAmount" xml:space="preserve">
+    <value>वाटप रक्कम</value>
+  </data>
+  <data name="PaidAmount" xml:space="preserve">
+    <value>भरलेली रक्कम</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>हटवा</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+</root>

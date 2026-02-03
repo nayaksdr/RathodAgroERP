@@ -1,0 +1,19 @@
+﻿.hover-shadow:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+    transition: all 0.3s ease-in-out;
+}
+
+.card-body h6 {
+    color: #495057;
+}
+
+@media (max-width: 576px) {
+    .card h3 {
+        font-size: 1.4rem;
+    }
+
+    .card h6 {
+        font-size: 0.9rem;
+    }
+}

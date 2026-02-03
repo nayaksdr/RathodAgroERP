@@ -1,0 +1,45 @@
+/* Orange header for DataTable */
+table.dataTable.table-orange-header thead th {
+    background: linear-gradient(135deg, #e65c00, #ff9900) !important; /* dark orange */
+    color: white !important;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    position: relative;
+}
+
+/* Rounded corners */
+table.dataTable.table-orange-header thead th:first-child {
+    border-top-left-radius: 10px;
+}
+table.dataTable.table-orange-header thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+/* Hover effect for rows */
+table.dataTable.table-orange-header tbody tr:hover {
+    background-color: #fff4e6 !important;
+    transition: background-color 0.3s ease;
+}
+
+/* Sorting arrows */
+table.dataTable.table-orange-header thead th.sorting:after {
+    content: "\25B2\25BC"; /* up/down triangles */
+    color: #28a745; /* green arrows */
+    font-size: 12px;
+    margin-left: 5px;
+    opacity: 0.5;
+}
+
+table.dataTable.table-orange-header thead th.sorting_asc:after {
+    content: "\25B2"; /* up arrow */
+    color: #28a745;
+    opacity: 1;
+}
+
+table.dataTable.table-orange-header thead th.sorting_desc:after {
+    content: "\25BC"; /* down arrow */
+    color: #28a745;
+    opacity: 1;
+}

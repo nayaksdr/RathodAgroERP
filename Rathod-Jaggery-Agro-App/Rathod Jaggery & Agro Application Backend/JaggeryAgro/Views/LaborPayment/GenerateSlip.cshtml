@@ -1,0 +1,90 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.LaborPayment
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <!-- Header -->
+        <div class="card-header bg-gradient-primary text-white text-center py-4 rounded-top-4"
+             style="background: linear-gradient(90deg,#0d6efd,#6610f2);">
+            <img src="~/images/RJ&A logo.png" alt="@Localizer["LogoAlt"]" style="height:60px;" class="mb-3" />
+            <h4 class="fw-bold" style="letter-spacing:1px;">🧾 @Localizer["PaymentSlipTitle"]</h4>
+        </div>
+
+        <!-- Body -->
+        <div class="card-body p-4">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <p class="mb-2"><b>@Localizer["LaborName"]:</b> @Model.LaborName</p>
+                    <p class="mb-2"><b>@Localizer["PaymentDate"]:</b> @Model.PaymentDate.ToString("dd-MM-yyyy")</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-2"><b>@Localizer["FromDate"]:</b> @Model.FromDate.ToString("dd-MM-yyyy")</p>
+                    <p class="mb-2"><b>@Localizer["ToDate"]:</b> @Model.ToDate.ToString("dd-MM-yyyy")</p>
+                </div>
+            </div>
+
+            <hr class="my-3" />
+
+            <!-- Salary Info -->
+            <div class="row text-center g-3">
+                <div class="col-md-4">
+                    <div class="card shadow-sm rounded-3 bg-light">
+                        <div class="card-body">
+                            <h6>@Localizer["TotalSalary"]</h6>
+                            <h4 class="fw-bold">₹@Model.GrossAmount</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm rounded-3 bg-light">
+                        <div class="card-body">
+                            <h6>@Localizer["Advance"]</h6>
+                            <h4 class="fw-bold text-danger">₹@Model.AdvanceAdjusted</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm rounded-3 bg-light">
+                        <div class="card-body">
+                            <h6>@Localizer["NetSalary"]</h6>
+                            <h4 class="fw-bold text-success">₹@Model.NetAmount</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="mt-4 text-center">
+                <form asp-action="GenerateSlip" method="post" class="d-inline-block">
+                    <input type="hidden" name="LaborId" value="@Model.LaborId" />
+                    <input type="hidden" name="PaymentDate" value="@Model.PaymentDate" />
+                    <input type="hidden" name="From" value="@Model.FromDate.ToString("yyyy-MM-dd")" />
+                    <input type="hidden" name="To" value="@Model.ToDate.ToString("yyyy-MM-dd")" />
+
+                    <button type="submit" class="btn btn-lg btn-success shadow-sm rounded-pill px-4">
+                        ✅ @Localizer["GeneratePDFSlip"]
+                    </button>
+                    <a asp-action="Index" class="btn btn-lg btn-secondary shadow-sm rounded-pill ms-3 px-4">
+                        <i class="fa-solid fa-xmark me-2"></i> @Localizer["Cancel"]
+                    </a>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="card-footer text-center text-muted small">
+            © RJ&A Factory | @Localizer["GeneratedOn"]: @DateTime.Now.ToString("dd-MM-yyyy HH:mm")
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(90deg, #0d6efd, #6610f2);
+    }
+</style>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>  
+
+  <data name="ReportTitle" xml:space="preserve">
+    <value>ऊस खरेदी अहवाल</value>
+  </data>
+  <data name="Farmer" xml:space="preserve">
+    <value>शेतकरी</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>यादीकडे परत जा</value>
+  </data>
+  <data name="TotalCane" xml:space="preserve">
+    <value>एकूण उस (टन)</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>एकूण रक्कम</value>
+  </data>
+  <data name="TotalPaid" xml:space="preserve">
+    <value>एकूण देय</value>
+  </data>
+  <data name="BalanceAmount" xml:space="preserve">
+    <value>बाकी रक्कम</value>
+  </data>
+  <data name="PurchaseDetails" xml:space="preserve">
+    <value>खरेदी तपशील</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>दिनांक</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>प्रमाण (टन)</value>
+  </data>
+  <data name="RatePerTon" xml:space="preserve">
+    <value>दर प्रति टन</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>एकूण</value>
+  </data>
+  <data name="WeightSlip" xml:space="preserve">
+    <value>वजन स्लिप</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>खरेदी डेटा उपलब्ध नाही</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>बंद करा</value>
+  </data>
+</root>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>ऊस खरेदी वगळा</value>
+  </data>
+  <data name="HeaderTitle" xml:space="preserve">
+    <value>ऊस खरेदी नोंद वगळा</value>
+  </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>यादीकडे परत जा</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>तुम्हाला ही ऊस खरेदी नोंद वगळायची आहे का?</value>
+  </data>
+  <data name="DateLabel" xml:space="preserve">
+    <value>दिनांक</value>
+  </data>
+  <data name="QuantityLabel" xml:space="preserve">
+    <value>टन</value>
+  </data>
+  <data name="RateLabel" xml:space="preserve">
+    <value>दर प्रति टन (₹)</value>
+  </data>
+  <data name="TotalLabel" xml:space="preserve">
+    <value>एकूण रक्कम (₹)</value>
+  </data>
+  <data name="WeightSlipLabel" xml:space="preserve">
+    <value>वजन स्लिप</value>
+  </data>
+  <data name="NoImageText" xml:space="preserve">
+    <value>नाही</value>
+  </data>
+  <data name="ConfirmDeleteButton" xml:space="preserve">
+    <value>वगळा</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+</root>

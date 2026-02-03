@@ -1,0 +1,172 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IViewLocalizer Localizer
+@model JaggeryAgro.Core.Entities.JaggerySale
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+    var isEdit = Model?.Id > 0;
+    ViewData["Title"] = isEdit ? Localizer["EditTitle"] : Localizer["CreateTitle"];
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-3">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0"><i class="bi bi-cart-fill me-2"></i> @ViewData["Title"]</h4>
+            <a asp-action="Index" class="btn btn-light btn-sm">
+                <i class="bi bi-arrow-left-circle me-1"></i> @Localizer["Back"]
+            </a>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="@(isEdit ? "Edit" : "Create")" method="post" class="row g-3" enctype="multipart/form-data">
+                @if (isEdit)
+                {
+                    <input type="hidden" asp-for="Id" />
+                }
+
+                <div class="col-md-6">
+                    <label asp-for="DealerId" class="form-label fw-bold">@Localizer["Dealer"]</label>
+                    <select asp-for="DealerId" asp-items="ViewBag.Dealers" class="form-select">
+                        <option value="">@Localizer["SelectDealer"]</option>
+                    </select>
+                    <span asp-validation-for="DealerId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="LaborId" class="form-label fw-bold">@Localizer["Labor"]</label>
+                    <select asp-for="LaborId" class="form-select" asp-items="ViewBag.Labors">
+                        <option value="">@Localizer["SelectLabor"]</option>
+                    </select>
+                    <span asp-validation-for="LaborId" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="QuantityInKg" class="form-label fw-bold">@Localizer["Quantity"]</label>
+                    <input asp-for="QuantityInKg" class="form-control" placeholder="@Localizer["QuantityPlaceholder"]" />
+                    <span asp-validation-for="QuantityInKg" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="RatePerKg" class="form-label fw-bold">@Localizer["Rate"]</label>
+                    <input asp-for="RatePerKg" class="form-control" placeholder="@Localizer["RatePlaceholder"]" />
+                    <span asp-validation-for="RatePerKg" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="SaleDate" class="form-label fw-bold">@Localizer["SaleDate"]</label>
+                    <input asp-for="SaleDate" type="date" class="form-control" />
+                    <span asp-validation-for="SaleDate" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">@Localizer["PaymentMode"]</label>
+                    <select asp-for="PaymentMode" class="form-select" id="paymentMode">
+                        <option value="">@Localizer["SelectPaymentMode"]</option>
+                        <option value="Cash">@Localizer["Cash"]</option>
+                        <option value="UPI">@Localizer["UPI"]</option>
+                        <option value="Bank">@Localizer["Bank"]</option>
+                    </select>
+                    <span asp-validation-for="PaymentMode" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6" id="imageUploadSection" style="display:none;">
+                    <label class="form-label fw-bold">@Localizer["ProofImage"]</label>
+                    <input type="file" name="ProofImage" class="form-control" accept="image/*" id="ProofImageInput" />
+                    @if (!string.IsNullOrEmpty(Model?.ProofImage))
+                    {
+                        <div class="mt-2">
+                            <img src="@Model.ProofImage" alt="Existing Proof" class="img-thumbnail" width="120" />
+                        </div>
+                    }
+                    <span asp-validation-for="ProofImage" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <img id="saleImagePreview"
+                         src="@((Model != null && !string.IsNullOrEmpty(Model.ProofImage)) ? Model.ProofImage : "#")"
+                         alt="Image Preview"
+                         class="img-thumbnail"
+                         style="display:@((Model != null && !string.IsNullOrEmpty(Model.ProofImage)) ? "block" : "none"); max-height:200px;" />
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="PaidById" class="form-label fw-bold">@Localizer["PaidBy"]</label>
+                    <select asp-for="PaidById" class="form-select" asp-items="ViewBag.Members">
+                        <option value="">@Localizer["SelectMember"]</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">@Localizer["TotalAmount"]</label>
+                    <input type="text" class="form-control bg-light fw-bold" id="Total" readonly />
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="AdvancePaid" class="form-label fw-bold">@Localizer["AdvancePaid"]</label>
+                    <input asp-for="AdvancePaid" class="form-control" id="AdvancePaid" placeholder="@Localizer["AdvancePlaceholder"]" />
+                    <span asp-validation-for="AdvancePaid" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">@Localizer["RemainingAmount"]</label>
+                    <input asp-for="RemainingAmount" class="form-control bg-light fw-bold" id="RemainingAmount" readonly />
+                </div>
+
+                <div class="col-12 text-end mt-3">
+                    <button type="submit" class="btn btn-success px-4">
+                        <i class="bi @(isEdit ? "bi-pencil-square" : "bi-save") me-1"></i>
+                        @(isEdit? Localizer["UpdateButton"] : Localizer["SaveButton"])
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(function () {
+            const $paymentMode = $("#paymentMode");
+            const $imageSection = $("#imageUploadSection");
+            const $proofInput = $("#ProofImageInput");
+            const $saleImagePreview = $("#saleImagePreview");
+
+            function toggleImageUpload() {
+                const mode = $paymentMode.val();
+                if (mode === "UPI" || mode === "Bank") $imageSection.show();
+                else $imageSection.hide();
+            }
+
+            $paymentMode.on("change", toggleImageUpload);
+            toggleImageUpload();
+
+            $proofInput.on("change", function (e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (ev) {
+                        $saleImagePreview.attr("src", ev.target.result).show();
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    $saleImagePreview.attr("src", "#").hide();
+                }
+            });
+
+            function calculateTotal() {
+                const qty = parseFloat($("#QuantityInKg").val()) || 0;
+                const rate = parseFloat($("#RatePerKg").val()) || 0;
+                const adv = parseFloat($("#AdvancePaid").val()) || 0;
+                const total = qty * rate;
+                const remaining = total - adv;
+                $("#Total").val(total.toFixed(2));
+                $("#RemainingAmount").val(remaining.toFixed(2));
+            }
+
+            $("#QuantityInKg, #RatePerKg, #AdvancePaid").on("input", calculateTotal);
+            calculateTotal();
+        });
+    </script>
+}

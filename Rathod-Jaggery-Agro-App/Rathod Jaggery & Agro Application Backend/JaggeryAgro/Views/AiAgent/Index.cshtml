@@ -1,0 +1,97 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["PageTitle"];
+}
+
+<div class="container mt-5">
+    <!-- Page Header -->
+    <div class="text-center mb-4 ai-header">
+        <h1 class="display-5 d-flex justify-content-center align-items-center flex-wrap">
+            <i class="bi bi-robot me-3" style="font-size: 2.5rem;"></i>
+            @Localizer["PageTitle"]
+        </h1>
+        <p class="lead mt-2">
+            @Localizer["PageSubtitle"]
+        </p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Question Form with Mic Button -->
+            <form id="chatForm" method="post" asp-action="Ask" class="d-flex flex-column gap-2">
+                <div class="input-group input-group-lg shadow-sm">
+                    <input type="text"
+                           id="questionInput"
+                           name="question"
+                           class="form-control"
+                           placeholder="@Localizer["QuestionPlaceholder"]"
+                           required />
+                    <button type="button"
+                            id="voiceBtn"
+                            class="btn btn-outline-primary hover-scale"
+                            title="@Localizer["MicTooltip"]">
+                        <i class="bi bi-mic"></i>
+                    </button>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg shadow hover-scale mt-2">
+                    <i class="bi bi-robot me-2"></i>@Localizer["AskButton"]
+                </button>
+            </form>
+
+            @if (ViewBag.Answer != null)
+            {
+                <div class="mt-4 ai-answer">
+                    <h5 class="text-success mb-2">@Localizer["UserQuestion"]</h5>
+                    <p>@ViewBag.Question</p>
+
+                    <h5 class="text-primary mb-2">@Localizer["AIAnswer"]</h5>
+                    <p id="aiAnswer">@ViewBag.Answer</p>
+
+                    <button type="button" id="speakBtn" class="btn btn-outline-success mt-2 hover-scale">
+                        <i class="bi bi-volume-up me-1"></i>@Localizer["ListenAnswer"]
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const voiceBtn = document.getElementById("voiceBtn");
+        const questionInput = document.getElementById("questionInput");
+
+        voiceBtn?.addEventListener("click", () => {
+            if (!('webkitSpeechRecognition' in window)) {
+                alert("@Localizer["MicNotSupported"]");
+                return;
+            }
+
+            const recognition = new webkitSpeechRecognition();
+            recognition.lang = navigator.language || "en-US"; // Use current culture
+            recognition.interimResults = false;
+            recognition.start();
+
+            recognition.onresult = function (event) {
+                questionInput.value = event.results[0][0].transcript;
+            };
+
+            recognition.onerror = function (event) {
+                console.error("Speech recognition error:", event.error);
+            };
+        });
+
+        const speakBtn = document.getElementById("speakBtn");
+        const aiAnswer = document.getElementById("aiAnswer");
+
+        speakBtn?.addEventListener("click", () => {
+            if (!aiAnswer) return;
+            const utterance = new SpeechSynthesisUtterance(aiAnswer.innerText);
+            utterance.lang = navigator.language || "en-US"; // Use current culture
+            utterance.pitch = 1;
+            utterance.rate = 1;
+            speechSynthesis.speak(utterance);
+        });
+    </script>
+}

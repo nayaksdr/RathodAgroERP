@@ -1,0 +1,14 @@
+﻿@using JaggeryAgro.Core.Entities
+@model WeeklyPayment
+
+<h2>पगार पावती</h2>
+<hr />
+<p><strong>कामगाराचे नाव:</strong> @Model.LaborName</p>
+<p><strong>कामगार प्रकार:</strong> @Model.LaborType</p>
+<p><strong>उपस्थित दिवस:</strong> @Model.DaysPresent</p>
+<p><strong>दररोज वेतन:</strong> ₹@Model.DailyRate</p>
+<p><strong>एकूण वेतन:</strong> ₹@(Model.DaysPresent* Model.DailyRate)</p>
+<p><strong>अ‍ॅडव्हान्स कपात:</strong> ₹@Model.AdvanceDeducted</p>
+<p><strong>नेट वेतन:</strong> ₹@Model.NetSalary</p>
+<p><strong>पगार देण्याची पद्धत:</strong> @Model.PaymentMethod</p>
+<p><strong>पगार दिनांक:</strong> @Model.PaymentDate.ToString("dd-MM-yyyy")</p>

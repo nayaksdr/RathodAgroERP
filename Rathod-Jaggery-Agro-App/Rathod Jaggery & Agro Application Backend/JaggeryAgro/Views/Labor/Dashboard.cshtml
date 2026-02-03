@@ -1,0 +1,121 @@
+﻿@using JaggeryAgro.Core.ViewModel
+@model LaborDashboardVM
+@{
+    ViewData["Title"] = "Labor Dashboard";
+}
+
+<div class="container mt-4">
+    <!-- Header -->
+    <div class="text-center mb-4">
+        <div class="p-4 rounded-4 shadow-sm bg-gradient"
+             style="background: linear-gradient(135deg, #28a745, #00c851, #007bff); color:white;">
+            <h2 class="fw-bold mb-0">
+                <i class="fa-solid fa-helmet-safety me-2"></i> स्वागत आहे, @Model.LaborName 👋
+            </h2>
+            <p class="mt-2 mb-0 small fst-italic">तुमचा डॅशबोर्ड - ऊस कारखाना व्यवस्थापन प्रणाली</p>
+        </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row g-3 mb-4 text-center">
+        <div class="col-6 col-md-3">
+            <div class="card bg-primary text-white shadow-lg p-3 rounded-3">
+                <h6>हजेरीचे दिवस</h6>
+                <h3 class="fw-bold">@Model.TotalDaysWorked</h3>
+                <i class="bi bi-calendar-check display-6"></i>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card bg-warning text-white shadow-lg p-3 rounded-3">
+                <h6>एकूण अॅडव्हान्स</h6>
+                <h3 class="fw-bold">₹@Model.TotalAdvance</h3>
+                <i class="bi bi-cash-coin display-6"></i>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card bg-success text-white shadow-lg p-3 rounded-3">
+                <h6>एकूण वेतन</h6>
+                <h3 class="fw-bold">₹@Model.TotalSalary</h3>
+                <i class="bi bi-wallet2 display-6"></i>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card bg-danger text-white shadow-lg p-3 rounded-3">
+                <h6>बाकी रक्कम</h6>
+                <h3 class="fw-bold">₹@Model.Balance</h3>
+                <i class="bi bi-exclamation-triangle display-6"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="row g-4">
+        <!-- Attendance Trend -->
+        <div class="col-md-6">
+            <div class="card shadow-lg p-3 rounded-4">
+                <h5 class="text-center fw-bold text-primary">हजेरी ट्रेंड</h5>
+                <canvas id="attendanceChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Weekly Salary Chart -->
+        <div class="col-md-6">
+            <div class="card shadow-lg p-3 rounded-4">
+                <h5 class="text-center fw-bold text-success">साप्ताहिक वेतन तुलना</h5>
+                <canvas id="salaryChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="text-center mt-4">
+        <form asp-action="Logout" method="post">
+            <button type="submit" class="btn btn-outline-danger btn-lg">
+                <i class="fa-solid fa-right-from-bracket me-2"></i> बाहेर पडा
+            </button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Attendance trend chart
+        const attendanceData = {
+            labels: @Html.Raw(Json.Serialize(Model.AttendanceRecords.Select(a => a.Date.ToString("dd-MM")))),
+            datasets: [{
+                label: 'हजेरी',
+                data: @Html.Raw(Json.Serialize(Model.AttendanceRecords.Select(a => a.IsPresent ? 1 : 0))),
+                borderColor: '#007bff',
+                backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                fill: true,
+                tension: 0.3
+            }]
+        };
+        new Chart(document.getElementById('attendanceChart'), {
+            type: 'line',
+            data: attendanceData,
+            options: { scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+        });
+
+        // Weekly salary bar chart
+        const salaryData = {
+            labels: @Html.Raw(Json.Serialize(Model.SalaryRecords.Select(s => s.WeekEnd.ToString("dd-MM")))),
+            datasets: [{
+                label: 'वेतन',
+                data: @Html.Raw(Json.Serialize(Model.SalaryRecords.Select(s => s.NetSalary))),
+                backgroundColor: 'rgba(40,167,69,0.6)',
+                borderColor: '#28a745',
+                borderWidth: 2
+            }]
+        };
+        new Chart(document.getElementById('salaryChart'), {
+            type: 'bar',
+            data: salaryData,
+            options: { scales: { y: { beginAtZero: true } } }
+        });
+    </script>
+}

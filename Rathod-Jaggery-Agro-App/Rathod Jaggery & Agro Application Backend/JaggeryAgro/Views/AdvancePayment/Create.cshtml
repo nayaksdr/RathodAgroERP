@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.AdvancePayment
+@inject IViewLocalizer Localizer
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <div class="card shadow-lg border-0 rounded-4">
+                <!-- Header -->
+                <div class="card-header text-white text-center py-3"
+                     style="background: linear-gradient(135deg, #28a745, #20c997); border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
+                    <h4 class="fw-bold mb-0">
+                        <i class="fas fa-hand-holding-usd me-2"></i>@Localizer["CreateAdvanceTitle"]
+                    </h4>
+                </div>
+
+                <div class="card-body p-4">
+                    <form asp-action="Create" method="post" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label asp-for="LaborId" class="form-label fw-semibold">
+                                <i class="fas fa-user me-2 text-success"></i>@Localizer["Labor"]
+                            </label>
+                            <select asp-for="LaborId" asp-items="ViewBag.Labors" class="form-select shadow-sm focus-ring">
+                                <option value="">@Localizer["SelectLabor"]</option>
+                            </select>
+                            <span asp-validation-for="LaborId" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="DateGiven" class="form-label fw-semibold">
+                                <i class="fas fa-calendar-alt me-2 text-success"></i>@Localizer["Date"]
+                            </label>
+                            <input asp-for="DateGiven" type="date" class="form-control shadow-sm focus-ring" />
+                            <span asp-validation-for="DateGiven" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Amount" class="form-label fw-semibold">
+                                <i class="fas fa-rupee-sign me-2 text-success"></i>@Localizer["Amount"]
+                            </label>
+                            <input asp-for="Amount" type="number" step="0.01" class="form-control shadow-sm focus-ring" />
+                            <span asp-validation-for="Amount" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-center gap-2">
+                            <button type="submit" class="btn btn-success px-4 shadow-sm hover-scale">
+                                <i class="fas fa-save me-1"></i>@Localizer["Save"]
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary px-4 shadow-sm hover-scale">
+                                <i class="fas fa-times me-1"></i>@Localizer["Cancel"]
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.querySelectorAll('.focus-ring').forEach(input => {
+            input.addEventListener('focus', () => input.classList.add('ringed'));
+            input.addEventListener('blur', () => input.classList.remove('ringed'));
+        });
+    </script>
+}

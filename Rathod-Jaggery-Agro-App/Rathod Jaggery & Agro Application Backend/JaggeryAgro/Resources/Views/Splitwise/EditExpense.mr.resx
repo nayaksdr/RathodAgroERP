@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+
+  <data name="EditExpenseTitle" xml:space="preserve">
+    <value>खर्च संपादित करा</value>
+  </data>
+  <data name="PaidBy" xml:space="preserve">
+    <value>कोणाने दिले</value>
+  </data>
+  <data name="ExpenseType" xml:space="preserve">
+    <value>खर्च प्रकार</value>
+  </data>
+  <data name="PaymentMode" xml:space="preserve">
+    <value>पेमेंट पद्धत</value>
+  </data>
+  <data name="PaymentProofImage" xml:space="preserve">
+    <value>पेमेंट पुरावा (इमेज)</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>रक्कम</value>
+  </data>
+  <data name="EnterAmount" xml:space="preserve">
+    <value>रक्कम प्रविष्ट करा</value>
+  </data>
+  <data name="SelectMember" xml:space="preserve">
+    <value>-- सदस्य निवडा --</value>
+  </data>
+  <data name="SelectExpenseType" xml:space="preserve">
+    <value>-- खर्च प्रकार निवडा --</value>
+  </data>
+  <data name="SelectPaymentMode" xml:space="preserve">
+    <value>-- पेमेंट पद्धत निवडा --</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>जतन करा</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+</root>

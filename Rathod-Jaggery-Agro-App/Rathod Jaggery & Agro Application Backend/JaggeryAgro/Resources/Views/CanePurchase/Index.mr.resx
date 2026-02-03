@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>ऊस खरेदी यादी</value>
+  </data>
+  <data name="AddNew" xml:space="preserve">
+    <value>नवी नोंद</value>
+  </data>
+  <data name="Farmer" xml:space="preserve">
+    <value>शेतकरी</value>
+  </data>
+  <data name="TotalTons" xml:space="preserve">
+    <value>एकूण टन</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>एकूण पैसे (₹)</value>
+  </data>
+  <data name="DueAmount" xml:space="preserve">
+    <value>देय रक्कम (₹)</value>
+  </data>
+  <data name="WeightSlip" xml:space="preserve">
+    <value>वजन स्लिप</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>पहा</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>अहवाल</value>
+  </data>
+  <data name="NoRecords" xml:space="preserve">
+    <value>नोंद आढळली नाही</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>बंद करा</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>शोधा:</value>
+  </data>
+  <data name="DisplayRecords" xml:space="preserve">
+    <value>_MENU_ नोंदी दर्शवा</value>
+  </data>
+  <data name="ShowingInfo" xml:space="preserve">
+    <value>_START_ ते _END_ पैकी _TOTAL_ नोंदी दर्शवत आहे</value>
+  </data>
+</root>

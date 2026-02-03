@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="DeleteLaborRateTitle" xml:space="preserve">
+    <value>Delete Labor Rate</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Are you sure you want to delete the following record?</value>
+  </data>
+  <data name="LaborType" xml:space="preserve">
+    <value>Labor Type</value>
+  </data>
+  <data name="DailyRate" xml:space="preserve">
+    <value>Daily Rate</value>
+  </data>
+  <data name="EffectiveFrom" xml:space="preserve">
+    <value>Effective From</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>Back</value>
+  </data>
+</root>

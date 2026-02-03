@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="LaborListTitle" xml:space="preserve">
+    <value>मजूरांची यादी</value>
+  </data>
+  <data name="AddNewLabor" xml:space="preserve">
+    <value>नवीन मजूर जोडा</value>
+  </data>
+  <data name="NoLaborFound" xml:space="preserve">
+    <value>कोणतेही मजूर सापडले नाहीत.</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>नाव</value>
+  </data>
+  <data name="LaborType" xml:space="preserve">
+    <value>मजूर प्रकार</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>मोबाईल क्रमांक</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>भूमिका</value>
+  </data>
+  <data name="JoinDate" xml:space="preserve">
+    <value>जॉईन तारीख</value>
+  </data>
+  <data name="ActiveStatus" xml:space="preserve">
+    <value>सक्रिय स्थिती</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>सक्रिय</value>
+  </data>
+  <data name="Inactive" xml:space="preserve">
+    <value>निष्क्रिय</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>सुधारित करा</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>तपशील</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>हटवा</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>शोधा:</value>
+  </data>
+  <data name="ShowEntries" xml:space="preserve">
+    <value>नोंदी दाखवा</value>
+  </data>
+  <data name="NoRecordsFound" xml:space="preserve">
+    <value>कोणतीही नोंद सापडली नाही</value>
+  </data>
+  <data name="ShowingEntries" xml:space="preserve">
+    <value>_TOTAL_ पैकी _START_ ते _END_ नोंदी दाखवत आहे</value>
+  </data>
+  <data name="NoEntriesAvailable" xml:space="preserve">
+    <value>नोंदी उपलब्ध नाहीत</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>मागील</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>पुढील</value>
+  </data>
+</root>

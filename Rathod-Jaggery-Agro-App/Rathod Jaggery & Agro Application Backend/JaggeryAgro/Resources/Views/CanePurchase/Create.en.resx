@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PageTitle" xml:space="preserve"><value>Create Cane Purchase</value></data>
+  <data name="HeaderTitle" xml:space="preserve"><value>Cane Purchase Registration</value></data>
+  <data name="FarmerLabel" xml:space="preserve"><value>Select Farmer</value></data>
+  <data name="SelectFarmerPlaceholder" xml:space="preserve"><value>Select Farmer</value></data>
+  <data name="LaborLabel" xml:space="preserve"><value>Select Labor (Mukadam)</value></data>
+  <data name="SelectLaborPlaceholder" xml:space="preserve"><value>Select Labor</value></data>
+  <data name="PurchaseDateLabel" xml:space="preserve"><value>Purchase Date</value></data>
+  <data name="QuantityLabel" xml:space="preserve"><value>Quantity (Ton)</value></data>
+  <data name="QuantityPlaceholder" xml:space="preserve"><value>e.g. 10.50</value></data>
+  <data name="RateLabel" xml:space="preserve"><value>Rate per Ton (₹)</value></data>
+  <data name="RatePlaceholder" xml:space="preserve"><value>e.g. 3100</value></data>
+  <data name="ImageLabel" xml:space="preserve"><value>Cane Weight Image</value></data>
+  <data name="ImageNote" xml:space="preserve"><value>Select only image files (jpg, png, bmp)</value></data>
+  <data name="ImagePreviewAlt" xml:space="preserve"><value>Image Preview</value></data>
+  <data name="NotesLabel" xml:space="preserve"><value>Notes</value></data>
+  <data name="NotesPlaceholder" xml:space="preserve"><value>Enter additional information...</value></data>
+  <data name="BackButton" xml:space="preserve"><value>Back</value></data>
+  <data name="SaveButton" xml:space="preserve"><value>Save</value></data>
+</root>

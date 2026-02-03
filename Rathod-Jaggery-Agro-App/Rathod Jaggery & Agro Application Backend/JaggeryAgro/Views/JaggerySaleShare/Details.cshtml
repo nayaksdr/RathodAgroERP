@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model JaggeryAgro.Core.Entities.JaggerySaleShare
+
+@{
+    ViewData["Title"] = Localizer["PersonwiseJaggerySaleDetails"];
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">
+            <i class="fas fa-info-circle me-2"></i> @ViewData["Title"]
+        </h2>
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-info text-white rounded-top-4">
+            <h5 class="mb-0 fw-semibold"><i class="fas fa-user-check me-2"></i> @Localizer["Details"]</h5>
+        </div>
+
+        <div class="card-body bg-light">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="p-3 bg-white border rounded shadow-sm">
+                        <strong>@Localizer["PersonName"]:</strong> @Model.PersonName
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-3 bg-white border rounded shadow-sm">
+                        <strong>@Localizer["PaidAmount"] (₹):</strong> @Model.PaidAmount.ToString("N2")
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-3 bg-white border rounded shadow-sm">
+                        <strong>@Localizer["ShareAmount"] (₹):</strong> @Model.ShareAmount.ToString("N2")
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-3 bg-white border rounded shadow-sm">
+                        <strong>@Localizer["NetAmount"] (₹):</strong> @Model.NetAmount.ToString("N2")
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-3 bg-white border rounded shadow-sm">
+                        <strong>@Localizer["SaleId"]:</strong> @Model.JaggerySaleId
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end mt-4">
+        <a asp-action="Index" class="btn btn-secondary px-4 shadow-sm">
+            <i class="fas fa-arrow-left me-2"></i> @Localizer["Back"]
+        </a>
+    </div>
+</div>

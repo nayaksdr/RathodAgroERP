@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="SplitwiseDashboardTitle"><value>स्प्लिटवाइज डॅशबोर्ड</value></data>
+
+  <data name="AddExpense"><value>खर्च जोडा</value></data>
+  <data name="AddMember"><value>सदस्य जोडा</value></data>
+
+  <data name="ExpenseList"><value>खर्च यादी</value></data>
+  <data name="PaidBy"><value>कोणाने दिला</value></data>
+  <data name="ExpenseType"><value>खर्चाचा प्रकार</value></data>
+  <data name="PaymentMode"><value>भरणा पद्धत</value></data>
+  <data name="Date"><value>दिनांक</value></data>
+  <data name="ProofImage"><value>पुरावा प्रतिमा</value></data>
+  <data name="Amount"><value>रक्कम</value></data>
+  <data name="Actions"><value>क्रिया</value></data>
+  <data name="Unknown"><value>अज्ञात</value></data>
+
+  <data name="Edit"><value>संपादन करा</value></data>
+  <data name="Delete"><value>हटवा</value></data>
+
+  <data name="PaymentProofImage"><value>भरणा पुरावा प्रतिमा</value></data>
+  <data name="Balances"><value>शिल्लक</value></data>
+  <data name="Settlements"><value>हिशोब चुकते</value></data>
+
+  <data name="Member"><value>सदस्य</value></data>
+  <data name="Balance"><value>शिल्लक</value></data>
+  <data name="From"><value>कोणाकडून</value></data>
+  <data name="To"><value>कोणाकडे</value></data>
+
+  <data name="NoExpensesFound"><value>खर्च आढळला नाही.</value></data>
+  <data name="NoSettlementData"><value>हिशोबाची माहिती उपलब्ध नाही.</value></data>
+
+  <data name="ExpenseSummary"><value>खर्च सारांश</value></data>
+  <data name="ExpensesByMember"><value>सदस्यांनुसार खर्च</value></data>
+  <data name="BalancePerMember"><value>प्रत्येक सदस्याची शिल्लक</value></data>
+
+  <data name="DownloadExcel"><value>Excel डाउनलोड</value></data>
+  <data name="DownloadPdf"><value>PDF डाउनलोड</value></data>
+</root>

@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Select Login Type";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Rathod Jaggery & Agro</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f4f4f4, #e3e3e3);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            text-align: center;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .login-btn {
+            width: 100%;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .admin-btn {
+            background: #0d6efd;
+            color: white;
+        }
+
+        .admin-btn:hover {
+            background: #084298;
+        }
+
+        .labor-btn {
+            background: #198754;
+            color: white;
+        }
+
+        .labor-btn:hover {
+            background: #0f5132;
+        }
+
+        h2 {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>👋 Welcome to Rathod Jaggery & Agro</h2>
+        <p>Please choose your login type</p>
+
+        <a href="/Account/Login" class="btn login-btn admin-btn">Admin Login</a>
+        <a href="/Account/LaborLogin" class="btn login-btn labor-btn">Labor Login</a>
+    </div>
+</body>
+</html>

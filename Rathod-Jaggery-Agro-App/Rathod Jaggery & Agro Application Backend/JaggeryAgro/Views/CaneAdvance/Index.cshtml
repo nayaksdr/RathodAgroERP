@@ -1,0 +1,118 @@
+﻿@using JaggeryAgro.Core.Entities
+@model IEnumerable<CaneAdvance>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-4 overflow-hidden">
+        <!-- ===== Card Header ===== -->
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">
+                <i class="fa-solid fa-hand-holding-dollar me-2"></i>
+                @Localizer["Title"]
+            </h4>
+            <a asp-action="Create" class="btn btn-success btn-sm shadow-sm hover-scale">
+                <i class="fa-solid fa-plus me-1"></i> @Localizer["Button_AddNew"]
+            </a>
+        </div>
+
+        <!-- ===== Card Body ===== -->
+        <div class="card-body">
+            <div class="table-responsive shadow-sm rounded-3">
+                <table class="table table-bordered table-hover align-middle mb-0" id="CaneAdvanceTable">
+                    <thead class="table-secondary text-center align-middle">
+                        <tr>
+                            <th>@Localizer["Column_Farmer"]</th>
+                            <th>@Localizer["Column_Date"]</th>
+                            <th>@Localizer["Column_Amount"]</th>
+                            <th>@Localizer["Column_PaymentMode"]</th>
+                            <th>@Localizer["Column_Member"]</th>
+                            <th>@Localizer["Column_ProofImage"]</th>
+                            <th>@Localizer["Column_Remarks"]</th>
+                            <th>@Localizer["Column_Actions"]</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr class="text-center">
+                                    <td>@(item.Farmer?.Name ?? "-")</td>
+
+                                    <td>
+                                        @(item.AdvanceDate != default
+                                                                        ? item.AdvanceDate.ToString("dd-MM-yyyy")
+                                                                        : "-")
+                            </td>
+
+                                    <td class="fw-bold text-success">
+                                        ₹ @(item.Amount.ToString("N2"))
+                                    </td>
+
+                                    <td>
+                                @if (!string.IsNullOrWhiteSpace(item.PaymentMode))
+                                        {
+                                            <span class="badge bg-secondary">@item.PaymentMode</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">—</span>
+                                        }
+                                    </td>
+
+                                    <td>@(item.Member?.Name ?? "-")</td>
+
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(item.ProofImage))
+                                        {
+                                            <a href="@Url.Content(item.ProofImage)" target="_blank" title="View Proof">
+                                                <img src="@Url.Content(item.ProofImage)" alt="Proof"
+                                                     class="img-thumbnail"
+                                                     style="width:50px;height:50px;object-fit:cover;" />
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">—</span>
+                                        }
+                                    </td>
+
+                                    <td>@(string.IsNullOrWhiteSpace(item.Remarks) ? "-" : item.Remarks)</td>
+
+                                    <td class="text-center d-flex flex-wrap justify-content-center gap-1">
+                                        <a asp-action="Edit" asp-route-id="@item.Id"
+                                           class="btn btn-primary btn-sm hover-scale"
+                                           title="@Localizer["Tooltip_Edit"]">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+
+                                        <a asp-action="Details" asp-route-id="@item.Id"
+                                           class="btn btn-info btn-sm text-white hover-scale"
+                                           title="@Localizer["Tooltip_Details"]">
+                                            <i class="fa-solid fa-circle-info"></i>
+                                        </a>
+
+                                        <a asp-action="Delete" asp-route-id="@item.Id"
+                                           class="btn btn-danger btn-sm hover-scale"
+                                           title="@Localizer["Tooltip_Delete"]">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="8" class="text-center text-muted py-4">
+                                    🚜 @Localizer["NoRecords"]
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

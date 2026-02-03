@@ -1,0 +1,79 @@
+﻿@using JaggeryAgro.Core.Entities
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model IEnumerable<Deposit>
+
+@{
+    ViewData["Title"] = Localizer["PageTitle"];
+}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">@Localizer["PageTitle"]</h2>
+
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-success">
+            <i class="fas fa-plus-circle"></i> @Localizer["AddNewDeposit"]
+        </a>
+    </div>
+
+    <table class="table table-bordered table-hover align-middle table-orange-header">
+        <thead class="table-dark">
+            <tr>
+                <th>@Localizer["Type"]</th>
+                <th>@Localizer["RelatedId"]</th>
+                <th>@Localizer["Amount"]</th>
+                <th>@Localizer["Date"]</th>
+                @if (User.IsInRole("Admin"))
+                {
+                    <th>@Localizer["Actions"]</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Labor</td>
+                    <td>@item.LaborId</td>
+                    <td>₹@item.Amount</td>
+                    <td>@item.DepositDate.ToShortDateString()</td>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.Id">
+                                @Localizer["Delete"]
+                            </button>
+                        </td>
+                    }
+                </tr>
+
+                <!-- 🔴 Delete Modal -->
+                <div class="modal fade" id="deleteModal-@item.Id" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <form asp-action="Delete" method="post">
+                                <div class="modal-header bg-danger text-white">
+                                    <h5 class="modal-title">@Localizer["DeleteConfirmationTitle"]</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    @Localizer["DeleteConfirmationMessage", item.Labor]
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger">@Localizer["YesDelete"]</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Localizer["Cancel"]</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,50 @@
+﻿@using JaggeryAgro.Core.Entities
+@using Microsoft.Extensions.Localization
+@model JaggeryAgro.Core.Entities.Dealer
+@inject IStringLocalizer<Dealer> Localizer
+
+@{
+    ViewBag.Title = Localizer["Title"];
+}
+
+<div class="container mt-4">
+    <!-- Header -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-danger">
+            <i class="bi bi-trash me-2"></i> @Localizer["Header"]
+        </h2>
+    </div>
+
+    <!-- Warning Card -->
+    <div class="card shadow-lg border-danger mb-4 mx-auto" style="max-width: 600px;">
+        <div class="card-header bg-warning bg-gradient text-dark fw-bold">
+            @Localizer["ConfirmQuestion"]
+        </div>
+        <div class="card-body">
+            <p>@Localizer["WarningMessage"]</p>
+            <dl class="row">
+                <dt class="col-sm-4 fw-bold">@Localizer["Label_Name"]</dt>
+                <dd class="col-sm-8">@Model.Name</dd>
+
+                <dt class="col-sm-4 fw-bold">@Localizer["Label_ContactNumber"]</dt>
+                <dd class="col-sm-8">@Model.ContactNumber</dd>
+
+                <dt class="col-sm-4 fw-bold">@Localizer["Label_Address"]</dt>
+                <dd class="col-sm-8">@Model.Address</dd>
+            </dl>
+
+            <!-- Action Buttons -->
+            <form asp-action="Delete" method="post" class="d-flex justify-content-between mt-4">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" />
+
+                <button type="submit" class="btn btn-danger px-4 shadow-sm rounded-pill">
+                    <i class="bi bi-trash me-2"></i> @Localizer["Button_Delete"]
+                </button>
+                <a asp-action="Index" class="btn btn-secondary px-4 shadow-sm rounded-pill">
+                    <i class="bi bi-x-circle me-2"></i> @Localizer["Button_Cancel"]
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

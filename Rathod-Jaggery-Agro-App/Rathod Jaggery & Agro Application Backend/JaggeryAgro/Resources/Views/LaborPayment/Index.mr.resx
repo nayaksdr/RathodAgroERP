@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Labor Payment List"><value>मजूर पगार यादी</value></data>
+  <data name="Total Salary"><value>एकूण पगार</value></data>
+  <data name="Advance Deducted"><value>एडव्हान्स वजा</value></data>
+  <data name="Net Salary"><value>नेट पगार</value></data>
+  <data name="Labor"><value>मजूर</value></data>
+  <data name="Select Labor"><value>मजूर निवडा</value></data>
+  <data name="From"><value>पासून</value></data>
+  <data name="To"><value>पर्यंत</value></data>
+  <data name="Filter"><value>फिल्टर करा</value></data>
+  <data name="Date Range"><value>दिनांक</value></data>
+  <data name="to"><value>ते</value></data>
+  <data name="Labor Name"><value>मजूर नाव</value></data>
+  <data name="Days/Production/Weight"><value>दिवस/उत्पादन/वजन</value></data>
+  <data name="Rate"><value>दर</value></data>
+  <data name="Advance"><value>एडव्हान्स</value></data>
+  <data name="Status"><value>स्थिती</value></data>
+  <data name="Slip"><value>स्लिप</value></data>
+  <data name="Paid"><value>देण्यात आला</value></data>
+  <data name="Pending"><value>प्रलंबित</value></data>
+  <data name="Generate Slip"><value>स्लिप तयार करा</value></data>
+  <data name="Generated"><value>तयार केले</value></data>
+  <data name="Days"><value>दिवस</value></data>
+  <data name="Search"><value>शोधा:</value></data>
+  <data name="Show _MENU_ entries per page"><value>प्रत्येक पानावर _MENU_ नोंदी दाखवा</value></data>
+  <data name="Showing _START_ to _END_ of _TOTAL_ entries"><value>एकूण _TOTAL_ पैकी _START_ ते _END_ नोंदी दर्शवत आहे</value></data>
+</root>

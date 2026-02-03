@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.AdvancePayment
+@inject IViewLocalizer Localizer
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-4 border-danger">
+        <!-- Header -->
+        <div class="card-header gradient-danger text-center rounded-top-4">
+            <h4><i class="fas fa-exclamation-triangle me-2"></i>@Localizer["DeleteAdvanceTitle"]</h4>
+        </div>
+
+        <div class="card-body text-center">
+            <p class="fs-5 text-danger fw-bold mb-4">
+                @Localizer["ConfirmDeleteMessage"]
+            </p>
+
+            <ul class="list-group mb-4 shadow-sm">
+                <li class="list-group-item">
+                    <i class="fas fa-user me-1"></i> <b>@Localizer["Labor"] :</b> @Model.Labor?.Name
+                </li>
+                <li class="list-group-item">
+                    <i class="fas fa-calendar-alt me-1"></i> <b>@Localizer["Date"] :</b> @Model.DateGiven.ToString("dd-MM-yyyy")
+                </li>
+                <li class="list-group-item">
+                    <i class="fas fa-rupee-sign me-1"></i> <b>@Localizer["Amount"] :</b> @Model.Amount
+                </li>
+            </ul>
+
+            <form asp-action="Delete" method="post" class="d-flex justify-content-center gap-2 flex-wrap">
+                <input type="hidden" asp-for="Id" />
+
+                <button type="submit" class="btn btn-danger px-4 shadow-sm hover-scale">
+                    <i class="fas fa-trash-alt me-1"></i> @Localizer["Delete"]
+                </button>
+                <a asp-action="Index" class="btn btn-secondary px-4 shadow-sm hover-scale">
+                    <i class="fas fa-times-circle me-1"></i> @Localizer["Cancel"]
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

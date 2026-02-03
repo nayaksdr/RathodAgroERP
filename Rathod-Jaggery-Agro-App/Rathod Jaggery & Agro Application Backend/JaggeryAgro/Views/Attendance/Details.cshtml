@@ -1,0 +1,47 @@
+﻿@using JaggeryAgro.Core.Entities
+@model Attendance
+@inject Microsoft.Extensions.Localization.IStringLocalizer<Attendance> Localizer
+
+@{
+    ViewData["Title"] = Localizer["PageTitle"];
+}
+
+<div class="container mt-4">
+    <!-- Page Header -->
+    <div class="text-center my-4">
+        <h2 class="form-header">
+            @ViewData["Title"]
+        </h2>
+    </div>
+
+    <!-- Details Card -->
+    <div class="card shadow-lg rounded-4 mb-4">
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-3 fw-bold">@Localizer["LaborName"]</dt>
+                <dd class="col-sm-9">@Model.Labor?.Name</dd>
+
+                <dt class="col-sm-3 fw-bold">@Localizer["Date"]</dt>
+                <dd class="col-sm-9">@Model.Date.ToString("dd-MM-yyyy")</dd>
+
+                <dt class="col-sm-3 fw-bold">@Localizer["Status"]</dt>
+                <dd class="col-sm-9">
+                    @if (Model.IsPresent)
+                    {
+                        <span class="badge bg-success">@Localizer["Present"]</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">@Localizer["Absent"]</span>
+                    }
+                </dd>
+            </dl>
+        </div>
+
+        <div class="card-footer text-end">
+            <a asp-action="Index" class="btn btn-secondary shadow-sm hover-scale">
+                <i class="fas fa-arrow-left me-1"></i> @Localizer["BackButton"]
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>खर्च प्रकार यादी</value>
+  </data>
+
+  <data name="Header" xml:space="preserve">
+    <value>खर्च प्रकार यादी</value>
+  </data>
+
+  <data name="AddNew" xml:space="preserve">
+    <value>नवीन खर्च प्रकार जोडा</value>
+  </data>
+
+  <data name="SrNo" xml:space="preserve">
+    <value>क्र.</value>
+  </data>
+
+  <data name="ExpenseType" xml:space="preserve">
+    <value>खर्च प्रकार</value>
+  </data>
+
+  <data name="Actions" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+
+  <data name="Edit" xml:space="preserve">
+    <value>संपादित करा</value>
+  </data>
+
+  <data name="Delete" xml:space="preserve">
+    <value>हटवा</value>
+  </data>
+
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>तुम्हाला खात्री आहे का की हा खर्च प्रकार हटवायचा आहे?</value>
+  </data>
+</root>

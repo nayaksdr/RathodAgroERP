@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="TodayPresent" xml:space="preserve">
+    <value>Today's Attendance</value>
+  </data>
+  <data name="TodayAdvance" xml:space="preserve">
+    <value>Today's Advance</value>
+  </data>
+  <data name="TodayExpense" xml:space="preserve">
+    <value>Today's Expense</value>
+  </data>
+  <data name="TodayCaneTons" xml:space="preserve">
+    <value>Cane (Tons)</value>
+  </data>
+  <data name="TodayProduceQty" xml:space="preserve">
+    <value>Jaggery Production (Kg)</value>
+  </data>
+  <data name="TodaySell" xml:space="preserve">
+    <value>Jaggery Sales (&#8377;)</value>
+  </data>
+  <data name="AttendanceChart" xml:space="preserve">
+    <value>Attendance</value>
+  </data>
+  <data name="AdvanceChart" xml:space="preserve">
+    <value>Advance</value>
+  </data>
+  <data name="ExpenseChart" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="CaneChart" xml:space="preserve">
+    <value>Cane Purchase (Tons)</value>
+  </data>
+  <data name="ProduceChart" xml:space="preserve">
+    <value>Jaggery Production (Kg)</value>
+  </data>
+  <data name="JaggerySellChart" xml:space="preserve">
+    <value>Jaggery Sales</value>
+  </data>
+  <data name="MemberSectionTitle" xml:space="preserve">
+    <value>Member-wise Jaggery Sale &amp; Expense Share</value>
+  </data>
+  <data name="MemberSectionDesc" xml:space="preserve">
+    <value>Each member’s contribution, earnings, and overall balance are shown below.</value>
+  </data>
+  <data name="PaidAmount" xml:space="preserve">
+    <value>Amount Paid</value>
+  </data>
+  <data name="EarnedAmount" xml:space="preserve">
+    <value>Amount Earned</value>
+  </data>
+  <data name="NetBalance" xml:space="preserve">
+    <value>Net Balance</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity (Kg)</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount (&#8377;)</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Label_Attendance" xml:space="preserve">
+    <value>Attendance</value>
+  </data>
+  <data name="Label_Advance" xml:space="preserve">
+    <value>Advance (&#8377;)</value>
+  </data>
+  <data name="Label_Expense" xml:space="preserve">
+    <value>Expense (&#8377;)</value>
+  </data>
+  <data name="Label_CanePurchase" xml:space="preserve">
+    <value>Cane Purchase (Tons)</value>
+  </data>
+  <data name="Label_JaggeryProduce" xml:space="preserve">
+    <value>Jaggery Production (Kg)</value>
+  </data>
+  <data name="Label_Quantity" xml:space="preserve">
+    <value>Quantity (Kg)</value>
+  </data>
+  <data name="Label_Amount" xml:space="preserve">
+    <value>Amount (&#8377;)</value>
+  </data>
+  <data name="Label_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Label_AmountPaid" xml:space="preserve">
+    <value>Amount Paid</value>
+  </data>
+  <data name="Label_AmountEarned" xml:space="preserve">
+    <value>Amount Earned</value>
+  </data>
+</root>

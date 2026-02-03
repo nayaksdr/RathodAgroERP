@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="DeleteAdvanceTitle" xml:space="preserve">
+    <value>आगाऊ भरणा हटवा</value>
+  </data>
+  <data name="ConfirmDeleteMessage" xml:space="preserve">
+    <value>आपण ही नोंद नक्की हटवू इच्छिता?</value>
+  </data>
+  <data name="Labor" xml:space="preserve">
+    <value>कर्मचारी</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>दिनांक</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>रक्कम</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>हटवा</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+</root>

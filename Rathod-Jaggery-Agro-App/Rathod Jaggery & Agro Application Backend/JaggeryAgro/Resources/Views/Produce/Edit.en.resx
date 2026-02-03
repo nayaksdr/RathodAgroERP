@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+  <data name="EditTitle" xml:space="preserve">
+    <value>Edit Jaggery Production</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>Edit Jaggery Production</value>
+  </data>
+  <data name="UpdateButton" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+</root>

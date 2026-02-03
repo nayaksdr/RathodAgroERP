@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="CreateAdvanceTitle" xml:space="preserve">
+    <value>आधीच्या पैसे भरणे</value>
+  </data>
+  <data name="Labor" xml:space="preserve">
+    <value>कामगार</value>
+  </data>
+  <data name="SelectLabor" xml:space="preserve">
+    <value>-- कामगार निवडा --</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>दिनांक</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>रक्कम (₹)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>जतन करा</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+</root>

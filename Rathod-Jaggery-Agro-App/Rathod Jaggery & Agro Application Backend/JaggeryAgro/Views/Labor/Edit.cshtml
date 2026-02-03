@@ -1,0 +1,103 @@
+﻿@model JaggeryAgro.Core.Entities.Labor
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="container mt-5">
+
+    <!-- Page Header -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-white px-4 py-3 d-inline-block rounded shadow-lg"
+            style="background: linear-gradient(90deg, #0d6efd, #6610f2);
+                   font-size: 2rem;
+                   letter-spacing: 1px;
+                   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
+            <i class="fas fa-user-edit me-2"></i> @Localizer["PageTitle"]
+        </h2>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body bg-light p-4">
+
+            <form asp-action="Edit" method="post" class="needs-validation" novalidate>
+                @Html.AntiForgeryToken()
+
+                <!-- Hidden Id -->
+                <input type="hidden" asp-for="Id" />
+
+                <!-- Name -->
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-semibold">@Localizer["Name"]</label>
+                    <input asp-for="Name" class="form-control shadow-sm" placeholder="@Localizer["EnterName"]" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!-- Labor Type -->
+                <div class="mb-3">
+                    <label asp-for="LaborTypeId" class="form-label fw-semibold">@Localizer["LaborType"]</label>
+                    <select asp-for="LaborTypeId" class="form-select shadow-sm" asp-items="ViewBag.LaborTypes">
+                        <option value="">@Localizer["SelectLaborType"]</option>
+                    </select>
+                    <span asp-validation-for="LaborTypeId" class="text-danger"></span>
+                </div>
+
+                <!-- Mobile -->
+                <div class="mb-3">
+                    <label asp-for="Mobile" class="form-label fw-semibold">
+                        <i class="fas fa-phone-alt me-1 text-success"></i> @Localizer["Mobile"]
+                    </label>
+                    <input asp-for="Mobile" class="form-control shadow-sm" placeholder="@Localizer["EnterMobile"]" />
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                </div>
+
+                <!-- Password (optional) -->
+                <div class="mb-3">
+                    <label asp-for="PasswordHash" class="form-label fw-semibold">
+                        <i class="fas fa-lock me-1 text-warning"></i> @Localizer["Password"]
+                    </label>
+                    <input asp-for="PasswordHash" class="form-control shadow-sm" placeholder="@Localizer["EnterPassword"]" />
+                    <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                </div>
+
+                <!-- Role -->
+                <div class="mb-3">
+                    <label asp-for="Role" class="form-label fw-semibold">@Localizer["Role"]</label>
+                    <input asp-for="Role" class="form-control shadow-sm" placeholder="@Localizer["EnterRole"]" />
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+
+                <!-- Join Date -->
+                <div class="mb-3">
+                    <label asp-for="JoinDate" class="form-label fw-semibold">@Localizer["JoinDate"]</label>
+                    <input asp-for="JoinDate" type="date" class="form-control shadow-sm"
+                           value="@Model.JoinDate.ToString("yyyy-MM-dd")" />
+                    <span asp-validation-for="JoinDate" class="text-danger"></span>
+                </div>
+
+                <!-- IsActive -->
+                <div class="form-check form-switch mb-4">
+                    <input asp-for="IsActive" class="form-check-input" type="checkbox" role="switch" />
+                    <label asp-for="IsActive" class="form-check-label fw-semibold">@Localizer["IsActive"]</label>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex flex-wrap gap-2 justify-content-end mt-4">
+                    <button type="submit" class="btn btn-success fw-bold shadow-sm px-4">
+                        <i class="fas fa-check-circle me-2"></i> @Localizer["Submit"]
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary fw-bold shadow-sm px-4">
+                        <i class="fas fa-times-circle me-2"></i> @Localizer["Back"]
+                    </a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

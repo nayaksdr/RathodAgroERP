@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model IEnumerable<JaggeryAgro.Core.Entities.Farmer>
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["PageTitle"];
+}
+
+<div class="container mt-4">
+
+    <!-- Header -->
+    <div class="text-center my-4">
+        <h2 class="fw-bold text-white bg-success px-4 py-2 d-inline-block rounded-3 shadow">
+            <i class="bi bi-people-fill me-2"></i> @ViewData["Title"]
+        </h2>
+    </div>
+
+    <!-- Add Farmer Button -->
+    <div class="bg-success text-center py-3 rounded shadow mb-3">
+        <a class="btn btn-outline-light btn-lg fw-bold px-4 rounded-pill" asp-action="Create">
+            <i class="bi bi-plus-circle me-2"></i> @Localizer["AddNewFarmerButton"]
+        </a>
+    </div>
+
+    <!-- Farmer Table -->
+    <div class="table-responsive shadow-sm">
+        <table class="table table-bordered table-hover align-middle table-orange-header" id="FarmerTable">
+            <thead class="table-dark">
+                <tr>
+                    <th>@Localizer["NameHeader"]</th>
+                    <th>@Localizer["MobileHeader"]</th>
+                    <th>@Localizer["AddressHeader"]</th>
+                    <th>@Localizer["VillageHeader"]</th>
+                    <th style="width:150px;">@Localizer["ActionHeader"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var farmer in Model)
+                {
+                    <tr>
+                        <td>@farmer.Name</td>
+                        <td>@farmer.Mobile</td>
+                        <td>@farmer.Address</td>
+                        <td>@farmer.Village</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@farmer.Id" class="btn btn-warning btn-sm me-1" title="@Localizer["EditTooltip"]">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+
+                            <form asp-action="Delete" asp-route-id="@farmer.Id" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                        onclick="return confirm('@Localizer["DeleteConfirm"]');"
+                                        title="@Localizer["DeleteTooltip"]">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#FarmerTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 5
+            });
+        });
+    </script>
+}

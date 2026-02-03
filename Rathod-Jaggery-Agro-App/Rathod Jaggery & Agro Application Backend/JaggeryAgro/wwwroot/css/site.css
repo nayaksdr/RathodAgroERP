@@ -1,0 +1,901 @@
+﻿/* ========================= */
+/*   MOBILE NAV FIXES        */
+/* ========================= */
+@media (max-width: 767.98px) {
+    /* Shrink logo height to avoid tall header */
+    .navbar-brand img,
+    .logo-img {
+        height: 50px !important;
+        width: auto !important;
+        object-fit: contain; /* ensure logo scales properly */
+    }
+
+    /* Reduce spacing in collapsed navbar */
+    .navbar-collapse {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .navbar-nav .nav-item {
+        margin-top: 4px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .navbar-nav .nav-link {
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+    }
+}
+
+/* ========================= */
+/*   DESKTOP LOGO DEFAULT    */
+/* ========================= */
+.logo-img {
+    height: 80px; /* desktop default height */
+    width: auto; /* maintain aspect ratio */
+    object-fit: contain; /* ensure logo fits container without distortion */
+}
+.table-hover tbody tr:hover {
+    background-color: #f1f9f1; /* हलका हिरवा */
+    transition: 0.3s ease-in-out;
+}
+
+.table thead th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.badge {
+    font-size: 0.9rem;
+    border-radius: 20px;
+}
+.card-header {
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+}
+
+.card-body .p-3 {
+    transition: transform 0.2s ease-in-out;
+}
+
+    .card-body .p-3:hover {
+        transform: scale(1.05);
+        background-color: #f9f9f9;
+    }
+.btn {
+    transition: transform 0.2s ease-in-out;
+}
+
+    .btn:hover {
+        transform: scale(1.05);
+    }
+.form-select {
+    transition: 0.3s ease-in-out;
+}
+
+    .form-select:hover,
+    .form-select:focus {
+        border-color: #198754 !important; /* Green border on hover */
+        box-shadow: 0 0 8px rgba(25,135,84,0.5);
+    }
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+/* Table highlight and hover effect */
+#advanceTable tbody tr:hover {
+    background-color: #e9f7ef;
+}
+
+/* Input focus style (if any inputs are added later) */
+input:focus, select:focus, textarea:focus {
+    border-color: #198754;
+    box-shadow: 0 0 8px rgba(25, 135, 84, 0.5);
+    outline: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn-lg {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    #advanceTable th, #advanceTable td {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+}
+/* Input focus highlight */
+.form-control:focus, .form-select:focus {
+    border-color: #6610f2;
+    box-shadow: 0 0 8px rgba(102, 16, 242, 0.3);
+    outline: none;
+}
+
+/* Button hover effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+/* Card headers with gradient */
+.card-header.gradient-primary {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: white;
+}
+
+.card-header.gradient-success {
+    background: linear-gradient(135deg, #28a745, #198754);
+    color: white;
+}
+
+.card-header.gradient-danger {
+    background: linear-gradient(135deg, #dc3545, #a71d2a);
+    color: white;
+}
+
+/* Input focus highlight */
+.form-control:focus, .form-select:focus {
+    border-color: #6610f2;
+    box-shadow: 0 0 8px rgba(102, 16, 242, 0.3);
+    outline: none;
+}
+
+/* Button hover effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Table hover highlight */
+.table-hover tbody tr:hover {
+    background-color: #e9f7ef;
+}
+
+/* List group shadow */
+.list-group.shadow-sm {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    h2, h4 {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .list-group-item, #advanceTable th, #advanceTable td {
+        font-size: 0.85rem;
+    }
+}
+
+/* ========================= */
+/* Gradient card headers */
+.card-header.gradient-primary {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: white;
+}
+
+.card-header.gradient-success {
+    background: linear-gradient(135deg, #28a745, #198754);
+    color: white;
+}
+
+.card-header.gradient-danger {
+    background: linear-gradient(135deg, #dc3545, #a71d2a);
+    color: white;
+}
+
+/* Card shadows */
+.card.shadow-lg {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+
+/* Buttons hover scale */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* List group shadow */
+.list-group.shadow-sm {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Responsive font and spacing adjustments */
+@media (max-width: 575.98px) {
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .list-group-item {
+        font-size: 0.9rem;
+    }
+}
+/* Form header */
+.form-header {
+    font-weight: 700;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, #28a745, #198754);
+}
+
+/* Input focus */
+.form-control:focus, .form-select:focus {
+    border-color: #198754;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+    outline: none;
+}
+
+/* Buttons hover scale */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    h2, .form-header {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Page Header */
+.ai-header {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
+}
+
+    .ai-header h1 {
+        font-weight: 700;
+        color: #0d6efd;
+    }
+
+/* 🌐 Language Toggle */
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.lang-label {
+    color: #ddd;
+    transition: color 0.3s ease;
+}
+
+.lang-switch {
+    width: 3em;
+    height: 1.6em;
+    background-color: #6c757d;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .lang-switch:checked {
+        background-color: #0d6efd;
+        box-shadow: 0 0 10px rgba(13, 110, 253, 0.6);
+    }
+
+    .lang-switch:focus {
+        box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+    }
+
+.navbar-dark .nav-link,
+.navbar-dark .navbar-brand {
+    color: #f8f9fa !important;
+    font-weight: 500;
+}
+
+    .navbar-dark .nav-link:hover {
+        color: #0d6efd !important;
+        text-shadow: 0 0 5px rgba(13, 110, 253, 0.6);
+    }
+
+    .ai-header p.lead {
+        color: #6c757d;
+    }
+
+/* Chat form input group */
+.input-group.shadow-sm {
+    box-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.1);
+    border-radius: 0.5rem;
+}
+
+#questionInput {
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+#voiceBtn {
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+/* Buttons hover effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* AI Answer Box */
+.ai-answer {
+    background-color: #f8f9fa;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 575.98px) {
+    .ai-header h1 {
+        font-size: 1.75rem;
+    }
+
+    #questionInput {
+        font-size: 0.9rem;
+    }
+
+    .btn-lg {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+/* Form Header */
+.form-header {
+    font-weight: 700;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, #28a745, #198754);
+}
+
+/* Input & select focus highlight */
+.form-control:focus, .form-select:focus {
+    border-color: #198754;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+    outline: none;
+}
+
+/* Buttons hover effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Shadowed form controls */
+.shadow-sm {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    h2.form-header {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+/* Form & Card Header */
+.form-header {
+    font-weight: 700;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, #28a745, #198754);
+}
+
+/* Buttons hover effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Shadowed elements */
+.shadow-sm, .shadow-lg {
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
+}
+
+/* Badge styling */
+.badge {
+    font-size: 0.9rem;
+    padding: 0.45em 0.65em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    h2.form-header {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    dl.row dt, dl.row dd {
+        font-size: 0.95rem;
+    }
+}
+/* Form Header */
+.form-header {
+    font-weight: 700;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+}
+
+/* Input & select focus highlight */
+.form-control:focus, .form-select:focus {
+    border-color: #198754;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+    outline: none;
+}
+
+/* Buttons hover effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Shadowed elements */
+.shadow-sm, .shadow-lg {
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    h2.form-header {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+/* Buttons hover effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Shadowed elements */
+.shadow-sm, .shadow-lg {
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
+}
+
+/* Responsive table adjustments */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    .btn {
+        font-size: 0.85rem;
+        padding: 0.35rem 0.6rem;
+    }
+}
+/* Form Header */
+.form-header {
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.15);
+}
+
+/* Shadowed inputs */
+.form-control.shadow-sm {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Buttons hover effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    h2.form-header {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+/* Form Header */
+.form-header {
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.15);
+}
+
+/* Shadowed buttons */
+.shadow-sm, .shadow-lg {
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
+}
+
+/* Buttons hover effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    h2.form-header {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.35rem 0.75rem;
+    }
+}
+/* Form / Page Header */
+.form-header {
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.15);
+}
+
+/* Shadowed buttons */
+.shadow-sm, .shadow-lg {
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
+}
+
+/* Buttons hover effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    h2.form-header {
+        font-size: 1.25rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.35rem 0.75rem;
+    }
+}
+
+/* Form / Page Header */
+.form-header {
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.15);
+}
+
+/* Shadowed elements */
+.shadow-sm, .shadow-lg {
+    box-shadow: 0 0.3rem 0.6rem rgba(0,0,0,0.1);
+}
+
+/* Buttons hover effect */
+.hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+    h4 {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.35rem 0.75rem;
+    }
+
+    .form-control, .form-select {
+        font-size: 0.95rem;
+    }
+}
+.hover-scale {
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s;
+}
+
+    .hover-scale:hover {
+        transform: scale(1.04);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+/* Input glow on focus */
+.focus-ring:focus {
+    border-color: #007bff !important;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.4) !important;
+}
+
+/* Rounded form elements */
+.form-control,
+.form-select {
+    border-radius: 0.6rem;
+}
+
+/* Card slight lift effect */
+.card {
+    transition: all 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+    }
+
+/* Mobile adjustments */
+@media (max-width: 576px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-header h4 {
+        font-size: 1.1rem;
+    }
+}
+.chart-container {
+    position: relative;
+    height: 280px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .chart-container {
+        height: 240px;
+    }
+}
+/* Focus Highlight */
+.custom-focus:focus {
+    border-color: #43cea2 !important;
+    box-shadow: 0 0 10px rgba(67, 206, 162, 0.6) !important;
+    transition: 0.3s ease-in-out;
+}
+
+/* Hover Scale Animation */
+.hover-scale {
+    transition: transform 0.2s ease;
+}
+
+    .hover-scale:hover {
+        transform: scale(1.05);
+    }
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    h2 {
+        font-size: 1.5rem !important;
+        padding: 10px !important;
+    }
+
+    .form-control-lg {
+        font-size: 0.95rem;
+    }
+
+    .btn-lg {
+        width: 100%;
+    }
+}
+/* Navbar toggler animation */
+.navbar-toggler {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    width: 30px;
+    height: 22px;
+}
+
+    .navbar-toggler .bar1,
+    .navbar-toggler .bar2,
+    .navbar-toggler .bar3 {
+        display: block;
+        width: 100%;
+        height: 4px;
+        margin: 4px 0;
+        background-color: #fff;
+        transition: 0.4s;
+    }
+
+    /* Toggler open/close animation */
+    .navbar-toggler.active .bar1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .navbar-toggler.active .bar2 {
+        opacity: 0;
+    }
+
+    .navbar-toggler.active .bar3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+/* Dropdown hover/focus effect */
+.nav-link.dropdown-toggle:hover,
+.nav-link.dropdown-toggle:focus {
+    color: #1cc88a !important;
+}
+
+/* Card shadow for dashboard cards */
+.custom-card {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .custom-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+/* Gradient header and navbar */
+.navbar-premium {
+    background: linear-gradient(90deg, #4e73df, #1cc88a);
+}
+
+/* Focus highlight for links and buttons */
+.nav-link:focus, .btn:focus {
+    outline: 3px solid rgba(28,200,138,0.5);
+    outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .navbar-collapse {
+        display: none;
+    }
+
+        .navbar-collapse.show {
+            display: block;
+        }
+
+    .navbar-nav.flex-lg-row {
+        flex-direction: column !important;
+    }
+}
+.summary-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .summary-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+/* Mobile friendly adjustments */
+@media (max-width: 576px) {
+    h2 span {
+        display: block;
+        text-align: center;
+    }
+
+    .summary-card h4 {
+        font-size: 1.1rem;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+}
+@media (max-width: 768px) {
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+}
+
+.btn-gradient-success {
+    background: linear-gradient(90deg,#198754,#20c997);
+    color: #fff;
+    font-weight: 600;
+}
+
+    .btn-gradient-success:hover {
+        background: linear-gradient(90deg,#157347,#198754);
+    }
+
+/* 🌐 Language Toggle */
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.lang-label {
+    color: #ddd;
+    transition: color 0.3s ease;
+}
+
+.lang-switch {
+    width: 3em;
+    height: 1.6em;
+    background-color: #6c757d;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .lang-switch:checked {
+        background-color: #0d6efd;
+        box-shadow: 0 0 10px rgba(13, 110, 253, 0.6);
+    }
+
+    .lang-switch:focus {
+        box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+    }
+
+.navbar-dark .nav-link,
+.navbar-dark .navbar-brand {
+    color: #f8f9fa !important;
+    font-weight: 500;
+}
+
+    .navbar-dark .nav-link:hover {
+        color: #0d6efd !important;
+        text-shadow: 0 0 5px rgba(13, 110, 253, 0.6);
+    }

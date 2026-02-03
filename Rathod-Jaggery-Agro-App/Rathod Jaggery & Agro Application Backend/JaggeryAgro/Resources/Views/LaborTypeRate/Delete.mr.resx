@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="DeleteLaborRateTitle" xml:space="preserve">
+    <value>कर्मचारी दर हटवा</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>तुम्हाला खालील नोंद हटवायची खात्री आहे का?</value>
+  </data>
+  <data name="LaborType" xml:space="preserve">
+    <value>कर्मचारी प्रकार</value>
+  </data>
+  <data name="DailyRate" xml:space="preserve">
+    <value>दररोजचे वेतन</value>
+  </data>
+  <data name="EffectiveFrom" xml:space="preserve">
+    <value>प्रभावी तारीख</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>हटवा</value>
+  </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>मागे जा</value>
+  </data>
+</root>

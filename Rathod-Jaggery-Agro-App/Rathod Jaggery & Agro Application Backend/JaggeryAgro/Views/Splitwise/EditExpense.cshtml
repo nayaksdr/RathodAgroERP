@@ -1,0 +1,119 @@
+﻿@model JaggeryAgro.Core.Entities.Expense
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewBag.Title = Localizer["EditExpenseTitle"];
+}
+
+<div class="container my-5">
+
+    <!-- Page Header -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-white bg-warning d-inline-block px-4 py-2 rounded-3 shadow-sm">
+            <i class="bi bi-pencil-square me-2"></i> @Localizer["EditExpenseTitle"]
+        </h2>
+    </div>
+
+    <div class="card shadow-sm p-4">
+        <form asp-action="EditExpense" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+
+            <!-- Paid By -->
+            <div class="mb-3">
+                <label asp-for="PaidById" class="form-label fw-bold">@Localizer["PaidBy"]</label>
+                <select asp-for="PaidById" class="form-select" asp-items="ViewBag.Members">
+                    <option value="">@Localizer["SelectMember"]</option>
+                </select>
+                <span asp-validation-for="PaidById" class="text-danger"></span>
+            </div>
+
+            <!-- Expense Type -->
+            <div class="mb-3">
+                <label asp-for="ExpenseTypeId" class="form-label fw-bold">@Localizer["ExpenseType"]</label>
+                <select asp-for="ExpenseTypeId" class="form-select" asp-items="ViewBag.ExpenseTypes">
+                    <option value="">@Localizer["SelectExpenseType"]</option>
+                </select>
+                <span asp-validation-for="ExpenseTypeId" class="text-danger"></span>
+            </div>
+
+            <!-- Payment Mode -->
+            <div class="mb-3">
+                <label asp-for="PaymentMode" class="form-label fw-bold">@Localizer["PaymentMode"]</label>
+                <select asp-for="PaymentMode" class="form-select" id="paymentMode">
+                    <option value="">@Localizer["SelectPaymentMode"]</option>
+                    <option value="Cash">Cash</option>
+                    <option value="UPI">UPI</option>
+                    <option value="Bank">Bank</option>
+                </select>
+                <span asp-validation-for="PaymentMode" class="text-danger"></span>
+            </div>
+
+            <!-- Proof Image -->
+            <div class="mb-3" id="imageUploadSection" style="display:none;">
+                <label class="form-label fw-bold">@Localizer["PaymentProofImage"]</label>
+                <input type="file" name="ProofImage" id="ProofImageInput" class="form-control" accept="image/*" />
+
+                <div class="mt-2 d-flex gap-2 align-items-center flex-wrap">
+                    @if (!string.IsNullOrEmpty(Model.ProofImage))
+                    {
+                        <img id="existingExpenseImage" src="@Model.ProofImage" alt="Existing proof" width="120" class="rounded shadow-sm" />
+                    }
+                    <img id="expenseImagePreview" src="#" alt="New proof preview" width="120" class="rounded shadow-sm" style="display:none;" />
+                </div>
+            </div>
+
+            <!-- Amount -->
+            <div class="mb-3">
+                <label asp-for="Amount" class="form-label fw-bold">@Localizer["Amount"]</label>
+                <input asp-for="Amount" class="form-control" placeholder="@Localizer["EnterAmount"]" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex flex-wrap gap-2 mt-3">
+                <button type="submit" class="btn btn-primary shadow-sm">
+                    <i class="bi bi-save me-1"></i> @Localizer["Save"]
+                </button>
+                <a asp-action="Index" class="btn btn-secondary shadow-sm">
+                    <i class="bi bi-x-circle me-1"></i> @Localizer["Cancel"]
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function toggleImageUpload() {
+            const paymentMode = document.getElementById("paymentMode").value;
+            const imageSection = document.getElementById("imageUploadSection");
+            imageSection.style.display = (paymentMode === "UPI" || paymentMode === "Bank") ? "block" : "none";
+        }
+
+        const proofInput = document.getElementById("ProofImageInput");
+        proofInput.addEventListener("change", function (e) {
+            const preview = document.getElementById("expenseImagePreview");
+            const existingImg = document.getElementById("existingExpenseImage");
+            const file = e.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "inline-block";
+                    if (existingImg) existingImg.style.display = "none";
+                }
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "#";
+                preview.style.display = "none";
+                if (existingImg) existingImg.style.display = "inline-block";
+            }
+        });
+
+        document.getElementById("paymentMode").addEventListener("change", toggleImageUpload);
+        document.addEventListener("DOMContentLoaded", toggleImageUpload);
+    </script>
+}

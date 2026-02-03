@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+
+  <data name="DeleteExpenseTitle" xml:space="preserve">
+    <value>खर्च हटवा</value>
+  </data>
+  <data name="DeleteExpenseConfirm" xml:space="preserve">
+    <value>तुम्हाला खालील खर्च हटवायचा आहे का?</value>
+  </data>
+  <data name="PaidBy" xml:space="preserve">
+    <value>कोणाने दिले:</value>
+  </data>
+  <data name="ExpenseType" xml:space="preserve">
+    <value>खर्च प्रकार:</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>रक्कम:</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>हटवा</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+</root>

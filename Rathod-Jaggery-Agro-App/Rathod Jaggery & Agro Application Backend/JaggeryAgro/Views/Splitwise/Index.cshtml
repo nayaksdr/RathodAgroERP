@@ -1,0 +1,256 @@
+﻿@using JaggeryAgro.Core.Entities
+@model IEnumerable<Expense>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewBag.Title = Localizer["SplitwiseDashboardTitle"];
+    var members = ViewBag.Members as List<Member>;
+    var balances = ViewBag.Balances as Dictionary<int, decimal> ?? new Dictionary<int, decimal>();
+    var settlements = ViewBag.Settlements as List<(int from, int to, decimal amount)> ?? new List<(int, int, decimal)>();
+}
+
+<div class="container my-5">
+
+    <!-- Header and Actions -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-success mb-3 mb-md-0">
+            <i class="bi bi-graph-up-arrow me-2"></i> @Localizer["SplitwiseDashboardTitle"]
+        </h2>
+        <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-lg btn-primary shadow-sm rounded-pill px-4"
+               asp-controller="Splitwise" asp-action="AddExpense">
+                <i class="bi bi-plus-circle me-2"></i> @Localizer["AddExpense"]
+            </a>
+            <a class="btn btn-lg btn-info shadow-sm rounded-pill px-4 text-white fw-bold"
+               asp-controller="Splitwise" asp-action="AddMember">
+                <i class="bi bi-person-plus-fill me-2"></i> @Localizer["AddMember"]
+            </a>
+        </div>
+    </div>
+
+    <!-- Expenses Table -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-success bg-gradient text-white text-center fw-bold fs-5">
+            <i class="bi bi-cash-coin me-2"></i> @Localizer["ExpenseList"]
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark text-center">
+                        <tr>
+                            <th>@Localizer["PaidBy"]</th>
+                            <th>@Localizer["ExpenseType"]</th>
+                            <th>@Localizer["PaymentMode"]</th>
+                            <th>@Localizer["Date"]</th>
+                            <th>@Localizer["ProofImage"]</th>
+                            <th>@Localizer["Amount"]</th>
+                            <th>@Localizer["Actions"]</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="7" class="text-muted">@Localizer["NoExpensesFound"]</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var e in Model)
+                            {
+                                <tr>
+                                    <td>@(members.FirstOrDefault(m => m.Id == e.PaidById)?.Name ?? Localizer["Unknown"].Value)</td>
+                                    <td>@e.ExpenseType?.Name</td>
+                                    <td>@e.PaymentMode</td>
+                                    <td>@e.Date.ToString("dd MMM yyyy")</td>
+                                    <td>
+                                        @if (e.PaymentMode?.ToLower() != "cash" && !string.IsNullOrEmpty(e.ProofImage))
+                                        {
+                                            <img src="@Url.Content(e.ProofImage)" class="img-thumbnail clickable-image"
+                                                 style="width:50px; height:50px; cursor:pointer;"
+                                                 data-bs-toggle="modal" data-bs-target="#imageModal"
+                                                 data-imgsrc="@Url.Content(e.ProofImage)" />
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">-</span>
+                                        }
+                                    </td>
+                                    <td>@String.Format("₹{0:N2}", e.Amount)</td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-1">
+                                            <a asp-action="EditExpense" asp-route-id="@e.Id" class="btn btn-sm btn-primary" title="@Localizer["Edit"]">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a asp-action="DeleteExpense" asp-route-id="@e.Id" class="btn btn-sm btn-danger" title="@Localizer["Delete"]">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">@Localizer["PaymentProofImage"]</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" class="img-fluid rounded shadow-sm" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Balances & Settlements -->
+    <div class="row mt-4">
+        <!-- Balances -->
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-header bg-warning bg-gradient text-dark fw-bold text-center">
+                    <i class="bi bi-wallet2 me-2"></i> @Localizer["Balances"]
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-striped mb-0 text-center">
+                            <thead><tr><th>@Localizer["Member"]</th><th>@Localizer["Balance"]</th></tr></thead>
+                            <tbody>
+                                @foreach (var kv in balances)
+                                {
+                                    <tr>
+                                        <td>@members.First(m => m.Id == kv.Key).Name</td>
+                                        <td class="fw-bold @(kv.Value >= 0 ? "text-success" : "text-danger")">
+                                            @kv.Value.ToString("C", new System.Globalization.CultureInfo("en-IN"))
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settlements -->
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info bg-gradient text-white fw-bold text-center">
+                    <i class="bi bi-check2-circle me-2"></i> @Localizer["Settlements"]
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-striped mb-0 text-center">
+                            <thead><tr><th>@Localizer["From"]</th><th>@Localizer["To"]</th><th>@Localizer["Amount"]</th></tr></thead>
+                            <tbody>
+                                @if (settlements.Any())
+                                {
+                                    foreach (var s in settlements)
+                                    {
+                                        <tr>
+                                            <td>@members.First(m => m.Id == s.from).Name</td>
+                                            <td>@members.First(m => m.Id == s.to).Name</td>
+                                            <td>@String.Format("₹{0:N2}", s.amount)</td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr><td colspan="3" class="text-muted">@Localizer["NoSettlementData"]</td></tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <h3 class="mt-4 text-center text-primary">@Localizer["ExpenseSummary"]</h3>
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light fw-bold">@Localizer["ExpensesByMember"]</div>
+                <div class="card-body">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light fw-bold">@Localizer["BalancePerMember"]</div>
+                <div class="card-body">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Buttons -->
+    <div class="d-flex gap-2 justify-content-center mb-5">
+        <a class="btn btn-outline-success" asp-action="ExportExcel">
+            <i class="bi bi-file-earmark-excel me-1"></i> @Localizer["DownloadExcel"]
+        </a>
+        <a class="btn btn-outline-danger" asp-action="ExportPdf">
+            <i class="bi bi-file-earmark-pdf me-1"></i> @Localizer["DownloadPdf"]
+        </a>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<!-- Lock Chart.js to stable v4 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+
+<script>
+    // Modal image preview
+    document.addEventListener('DOMContentLoaded', function () {
+        const imageModal = document.getElementById('imageModal');
+        imageModal.addEventListener('show.bs.modal', function (event) {
+            const imgSrc = event.relatedTarget.getAttribute('data-imgsrc');
+            imageModal.querySelector('#modalImage').src = imgSrc;
+        });
+    });
+
+    // Pie Chart - Expenses per Member
+    var ctxPie = document.getElementById('pieChart').getContext('2d');
+    var pieChart = new Chart(ctxPie, {
+        type: 'pie',
+        data: {
+            labels: [@Html.Raw(string.Join(",", members.Select(m => $"'{m.Name}'")))],
+            datasets: [{
+                data: [@Html.Raw(string.Join(",", members.Select(m => Model.Where(e => e.PaidById == m.Id).Sum(e => e.Amount))))],
+                backgroundColor: ['#4CAF50','#2196F3','#FF9800','#9C27B0','#F44336','#00BCD4','#FFC107']
+            }]
+        },
+        options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+    });
+
+    // Bar Chart - Balances
+    var ctxBar = document.getElementById('barChart').getContext('2d');
+    var barChart = new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+            labels: [@Html.Raw(string.Join(",", members.Select(m => $"'{m.Name}'")))],
+            datasets: [{
+                label: 'Balance',
+                data: [@Html.Raw(string.Join(",", balances.Select(kv => kv.Value)))],
+                backgroundColor: ['#4CAF50','#2196F3','#FF9800','#9C27B0','#F44336','#00BCD4','#FFC107']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true, ticks: { callback: function(v){return '₹' + v;} } } }
+        }
+    });
+</script>

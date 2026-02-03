@@ -1,0 +1,99 @@
+﻿@model JaggeryAgro.Core.Entities.LaborTypeRate
+@using JaggeryAgro.Core.Entities
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+    var laborTypes = ViewBag.LaborTypes as List<LaborType> ?? new List<LaborType>();
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <div class="card-header bg-warning text-dark d-flex align-items-center gap-2">
+                    <i class="bi bi-pencil-square fs-4"></i>
+                    <h4 class="mb-0 fw-bold">@ViewData["Title"]</h4>
+                </div>
+
+                <div class="card-body">
+                    <form asp-action="Edit" method="post" novalidate>
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="Id" />
+
+                        <!-- Employee Type -->
+                        <div class="mb-4">
+                            <label asp-for="LaborTypeId" class="form-label fw-semibold">@Localizer["Select_LaborType"]</label>
+                            <select asp-for="LaborTypeId"
+                                    class="form-select shadow-sm"
+                                    asp-items="@(new SelectList(ViewBag.LaborTypes, "Id", "LaborTypeName", Model.LaborTypeId))"
+                                    id="LaborTypeSelect">
+                                <option value="">@Localizer["Select_LaborType"]</option>
+                            </select>
+                            <span asp-validation-for="LaborTypeId" class="text-danger"></span>
+                        </div>
+
+                        <!-- Rate -->
+                        <div class="mb-4">
+                            <label asp-for="DailyRate" class="form-label fw-semibold" id="rateLabel">@Localizer["DailyRate_Label"]</label>
+                            <input asp-for="DailyRate" class="form-control shadow-sm" id="DailyRateInput" placeholder="@Localizer["DailyRate_Placeholder"]" />
+                            <small class="text-muted" id="rateHint">@Localizer["RateHint_Daily"]</small>
+                            <span asp-validation-for="DailyRate" class="text-danger"></span>
+                        </div>
+
+                        <!-- Effective From -->
+                        <div class="mb-4">
+                            <label asp-for="EffectiveFrom" class="form-label fw-semibold">@Localizer["EffectiveFrom_Label"]</label>
+                            <input asp-for="EffectiveFrom" type="date" class="form-control shadow-sm" />
+                            <span asp-validation-for="EffectiveFrom" class="text-danger"></span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex gap-3">
+                            <button type="submit" class="btn btn-primary flex-fill shadow-sm rounded-pill">
+                                <i class="bi bi-save me-2"></i> @Localizer["Button_Update"]
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary flex-fill shadow-sm rounded-pill">
+                                <i class="bi bi-x-circle me-2"></i> @Localizer["Button_Cancel"]
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function updateRateLabel() {
+            const select = document.getElementById("LaborTypeSelect");
+            const selectedText = select.options[select.selectedIndex]?.text || "";
+            const label = document.getElementById("rateLabel");
+            const input = document.getElementById("DailyRateInput");
+            const hint = document.getElementById("rateHint");
+
+            if (selectedText === "ऊस तोड कामगार") {
+                label.textContent = "@Localizer["PerTon_Label"]";
+                input.placeholder = "@Localizer["PerTon_Placeholder"]";
+                hint.textContent = "@Localizer["RateHint_PerTon"]";
+            }
+            else if (selectedText === "गुळ तयार करणारा कामगार") {
+                label.textContent = "@Localizer["PerJaggery_Label"]";
+                input.placeholder = "@Localizer["PerJaggery_Placeholder"]";
+                hint.textContent = "@Localizer["RateHint_PerJaggery"]";
+            }
+            else {
+                label.textContent = "@Localizer["DailyRate_Label"]";
+                input.placeholder = "@Localizer["DailyRate_Placeholder"]";
+                hint.textContent = "@Localizer["RateHint_Daily"]";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", updateRateLabel);
+        document.getElementById("LaborTypeSelect").addEventListener("change", updateRateLabel);
+    </script>
+}

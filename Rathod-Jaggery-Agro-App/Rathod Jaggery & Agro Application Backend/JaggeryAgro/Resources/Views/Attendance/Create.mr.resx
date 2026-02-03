@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PageHeader" xml:space="preserve"><value>हजेरी नोंदवा</value></data>
+  <data name="SelectLabor" xml:space="preserve"><value>मजूर</value></data>
+  <data name="SelectLaborPlaceholder" xml:space="preserve"><value>मजूर निवडा</value></data>
+  <data name="Date" xml:space="preserve"><value>दिनांक</value></data>
+  <data name="IsPresent" xml:space="preserve"><value>हजर आहे?</value></data>
+  <data name="Button_Save" xml:space="preserve"><value>जतन करा</value></data>
+  <data name="Button_Back" xml:space="preserve"><value>यादीकडे परत जा</value></data>
+</root>

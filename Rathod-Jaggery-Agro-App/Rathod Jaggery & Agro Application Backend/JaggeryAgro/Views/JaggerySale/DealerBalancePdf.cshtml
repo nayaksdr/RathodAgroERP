@@ -1,0 +1,61 @@
+﻿@using JaggeryAgro.Core.ViewModel
+@model DealerBalanceVM
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    Layout = null;
+    string title = Localizer["ReportTitle"].Value;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@title</title>
+    <link href="~/css/dealer.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>@title</h2>
+
+    <div class="meta">
+        <div><strong>@Localizer["DealerLabel"]</strong> @Model.DealerName</div>
+        <div><strong>@Localizer["GeneratedOn"]</strong> @DateTime.Now.ToString("yyyy-MM-dd HH:mm")</div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>@Localizer["Date"]</th>
+                <th>@Localizer["Quantity"]</th>
+                <th>@Localizer["RatePerKg"]</th>
+                <th>@Localizer["Total"]</th>
+                <th>@Localizer["Advance"]</th>
+                <th>@Localizer["Remaining"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model.Sales)
+            {
+                <tr>
+                    <td>@s.SaleDate.ToString("yyyy-MM-dd")</td>
+                    <td>@s.QuantityInKg</td>
+                    <td>@s.RatePerKg</td>
+                    <td>@s.TotalAmount</td>
+                    <td>@s.AdvancePaid</td>
+                    <td>@s.RemainingAmount</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>@Localizer["GrandTotal"]</td>
+                <td>@Model.Sales.Sum(x => x.QuantityInKg)</td>
+                <td></td>
+                <td>@Model.TotalSold</td>
+                <td>@Model.TotalAdvance</td>
+                <td>@Model.Balance</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

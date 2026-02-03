@@ -1,0 +1,28 @@
+﻿<root>
+  <data name="CreateTitle"><value>नवीन गुळ विक्री</value></data>
+  <data name="EditTitle"><value>गुळ विक्री संपादन</value></data>
+  <data name="Back"><value>परत जा</value></data>
+  <data name="Dealer"><value>व्यापारी</value></data>
+  <data name="SelectDealer"><value>-- व्यापारी निवडा --</value></data>
+  <data name="Labor"><value>गुळ बनवणारा मजूर</value></data>
+  <data name="SelectLabor"><value>-- मजूर निवडा --</value></data>
+  <data name="Quantity"><value>प्रमाण (क्विंटल)</value></data>
+  <data name="QuantityPlaceholder"><value>उदा. 50</value></data>
+  <data name="Rate"><value>दर (₹)</value></data>
+  <data name="RatePlaceholder"><value>उदा. 3000</value></data>
+  <data name="SaleDate"><value>तारीख</value></data>
+  <data name="PaymentMode"><value>पेमेंट पद्धत</value></data>
+  <data name="SelectPaymentMode"><value>-- पेमेंट पद्धत निवडा --</value></data>
+  <data name="Cash"><value>रोख</value></data>
+  <data name="UPI"><value>युपीआय</value></data>
+  <data name="Bank"><value>बँक</value></data>
+  <data name="ProofImage"><value>पेमेंट पुरावा (इमेज)</value></data>
+  <data name="PaidBy"><value>पेमेंट कोणी घेतले</value></data>
+  <data name="SelectMember"><value>-- सदस्य निवडा --</value></data>
+  <data name="TotalAmount"><value>एकूण रक्कम (₹)</value></data>
+  <data name="AdvancePaid"><value>आगाऊ रक्कम (₹)</value></data>
+  <data name="AdvancePlaceholder"><value>उदा. 20000</value></data>
+  <data name="RemainingAmount"><value>उर्वरित रक्कम (₹)</value></data>
+  <data name="UpdateButton"><value>अपडेट करा</value></data>
+  <data name="SaveButton"><value>सेव्ह करा</value></data>
+</root>

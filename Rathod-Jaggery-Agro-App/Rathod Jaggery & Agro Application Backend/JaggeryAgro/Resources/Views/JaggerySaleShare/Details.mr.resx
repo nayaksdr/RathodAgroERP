@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PersonwiseJaggerySaleDetails"><value>व्यक्ती-वार गुळ विक्री तपशील</value></data>
+<data name="Details"><value>तपशील</value></data>
+<data name="PersonName"><value>व्यक्तीचे नाव</value></data>
+<data name="PaidAmount"><value>भरलेले</value></data>
+<data name="ShareAmount"><value>वाटप</value></data>
+<data name="NetAmount"><value>नेट</value></data>
+<data name="SaleId"><value>विक्री आयडी</value></data>
+<data name="Back"><value>मागे जा</value></data>
+
+</root>

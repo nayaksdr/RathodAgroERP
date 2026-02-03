@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.LaborTypeRate
+@inject IViewLocalizer Localizer
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-danger text-white d-flex align-items-center gap-2">
+                    <i class="bi bi-trash fs-4"></i>
+                    <h4 class="mb-0 fw-bold">@Localizer["DeleteLaborRateTitle"]</h4>
+                </div>
+
+                <div class="card-body">
+                    <p class="mb-4 fw-semibold text-dark">
+                        @Localizer["DeleteConfirmation"]
+                    </p>
+
+                    <div class="table-responsive mb-4">
+                        <table class="table table-bordered table-striped">
+                            <tbody>
+                                <tr>
+                                    <th class="fw-bold">@Localizer["LaborType"]</th>
+                                    <td>@Model.LaborType?.LaborTypeName</td>
+                                </tr>
+                                <tr>
+                                    <th class="fw-bold">@Localizer["DailyRate"]</th>
+                                    <td>@Model.DailyRate.ToString("C")</td>
+                                </tr>
+                                <tr>
+                                    <th class="fw-bold">@Localizer["EffectiveFrom"]</th>
+                                    <td>@Model.EffectiveFrom.ToString("dd-MM-yyyy")</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-danger flex-fill shadow-sm rounded-pill">
+                                <i class="bi bi-trash-fill me-1"></i> @Localizer["DeleteButton"]
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary flex-fill shadow-sm rounded-pill">
+                                <i class="bi bi-arrow-left me-1"></i> @Localizer["BackButton"]
+                            </a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

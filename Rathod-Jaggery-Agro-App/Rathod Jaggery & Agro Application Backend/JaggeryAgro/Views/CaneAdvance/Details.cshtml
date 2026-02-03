@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model JaggeryAgro.Core.Entities.CaneAdvance
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="container mt-4">
+    <!-- Page Header -->
+    <div class="text-center my-4">
+        <h2 class="form-header text-success">
+            <i class="fa-solid fa-circle-info me-2"></i> @Localizer["Title"]
+        </h2>
+    </div>
+
+    <!-- Details Card -->
+    <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body">
+            <dl class="row mb-0 fs-5">
+                <dt class="col-sm-3 fw-bold">@Localizer["Label_Farmer"]</dt>
+                <dd class="col-sm-9">@Model.Farmer?.Name</dd>
+
+                <dt class="col-sm-3 fw-bold">@Localizer["Column_Member"]</dt>
+                <dd class="col-sm-9">@Model.Member?.Name </dd>
+
+                <dt class="col-sm-3 fw-bold">@Localizer["Label_Amount"]</dt>
+                <dd class="col-sm-9 text-success fw-bold">₹ @Model.Amount.ToString("N2")</dd>
+
+                <dt class="col-sm-3 fw-bold">@Localizer["Label_Date"]</dt>
+                <dd class="col-sm-9">@Model.AdvanceDate.ToString("dd-MM-yyyy")</dd>
+
+                <dt class="col-sm-3 fw-bold">@Localizer["Label_PaymentMode"]</dt>
+                <dd class="col-sm-9">@Model.PaymentMode </dd>                
+
+                <dt class="col-sm-3 fw-bold">@Localizer["Label_Remarks"]</dt>
+                <dd class="col-sm-9">@Model.Remarks</dd>
+
+                <dt class="col-sm-3 fw-bold">@Localizer["Label_Attachment"]</dt>
+                <dd class="col-sm-9">
+                    @if (!string.IsNullOrEmpty(Model.ProofImage))
+                    {
+                        <a href="@Model.ProofImage" target="_blank">
+                            <img src="@Model.ProofImage" alt="Proof" class="img-thumbnail shadow-sm" style="width:100px;height:100px;object-fit:cover;" />
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="text-muted">—</span>
+                    }
+                </dd>
+            </dl>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div class="card-footer d-flex flex-wrap justify-content-between gap-2 bg-light rounded-bottom-4">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary shadow-sm hover-scale">
+                <i class="fa-solid fa-pen-to-square me-2"></i> @Localizer["Button_Edit"]
+            </a>
+
+            <a asp-action="Index" class="btn btn-secondary shadow-sm hover-scale">
+                <i class="fa-solid fa-list me-2"></i> @Localizer["Button_BackToList"]
+            </a>
+        </div>
+    </div>
+</div>

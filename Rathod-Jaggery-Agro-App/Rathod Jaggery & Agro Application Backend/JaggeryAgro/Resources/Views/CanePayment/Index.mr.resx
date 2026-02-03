@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- ===== RESX HEADERS ===== -->
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- ===== PAGE TITLES ===== -->
+  <data name="Title" xml:space="preserve">
+    <value>ऊस पेमेंट सूची</value>
+  </data>
+  <data name="Summary_Title" xml:space="preserve">
+    <value>शेतकरी पेमेंट सारांश</value>
+  </data>
+  <data name="FarmerPaymentSummary" xml:space="preserve">
+    <value>शेतकरी पेमेंट सारांश</value>
+  </data>
+
+  <!-- ===== SUMMARY LABELS ===== -->
+  <data name="TotalAmount" xml:space="preserve">
+    <value>एकूण रक्कम</value>
+  </data>
+  <data name="AdvanceAmount" xml:space="preserve">
+    <value>उचल रक्कम</value>
+  </data>
+  <data name="NetAmount" xml:space="preserve">
+    <value>निव्वळ रक्कम</value>
+  </data>
+  <data name="TotalPaid" xml:space="preserve">
+    <value>भरलेली रक्कम</value>
+  </data>
+  <data name="BalancePending" xml:space="preserve">
+    <value>बाकी रक्कम</value>
+  </data>
+
+  <!-- ===== BUTTONS ===== -->
+  <data name="Button_CreatePayment" xml:space="preserve">
+    <value>पेमेंट तयार करा</value>
+  </data>
+  <data name="Button_UpdateStatus" xml:space="preserve">
+    <value>स्थिती अद्यतनित करा</value>
+  </data>
+  <data name="Button_ExportExcel" xml:space="preserve">
+    <value>एक्सेल निर्यात करा</value>
+  </data>
+  <data name="Button_ExportPdf" xml:space="preserve">
+    <value>पीडीएफ निर्यात करा</value>
+  </data>
+  <data name="Button_PaymentSlip" xml:space="preserve">
+    <value>पेमेंट स्लिप तयार करा</value>
+  </data>
+  <data name="Button_Confirm" xml:space="preserve">
+    <value>निश्चित करा</value>
+  </data>
+
+  <!-- ===== STATUS LABELS ===== -->
+  <data name="Status_Paid" xml:space="preserve">
+    <value>भरणा झाला</value>
+  </data>
+  <data name="Status_Partial" xml:space="preserve">
+    <value>आंशिक भरलेले</value>
+  </data>
+  <data name="Status_Pending" xml:space="preserve">
+    <value>प्रलंबित</value>
+  </data>
+  <data name="Label_Remaining" xml:space="preserve">
+    <value>शिल्लक रक्कम</value>
+  </data>
+  <data name="Label_PaidAmount" xml:space="preserve">
+    <value>भरलेली रक्कम</value>
+  </data>
+  <data name="Label_Status" xml:space="preserve">
+    <value>पेमेंट स्थिती</value>
+  </data>
+  <data name="Label_Balance" xml:space="preserve">
+    <value>उर्वरित रक्कम</value>
+  </data>
+
+  <!-- ===== LABELS & FILTER ===== -->
+  <data name="Label_SelectFarmer" xml:space="preserve">
+    <value>शेतकरी निवडा</value>
+  </data>
+  <data name="Option_AllFarmers" xml:space="preserve">
+    <value>-- सर्व शेतकरी --</value>
+  </data>
+  <data name="Label_CurrentBalance" xml:space="preserve">
+    <value>चालू शिल्लक</value>
+  </data>
+  <data name="Hint_ProofFileTypes" xml:space="preserve">
+    <value>मान्य फाईल प्रकार: PDF, JPG, JPEG, PNG</value>
+  </data>
+
+  <!-- ===== TABLE HEADERS ===== -->
+  <data name="Table_Header_Farmer" xml:space="preserve">
+    <value>शेतकरी</value>
+  </data>
+  <data name="Table_Header_Date" xml:space="preserve">
+    <value>दिनांक</value>
+  </data>
+  <data name="Table_Header_TotalAmount" xml:space="preserve">
+    <value>एकूण रक्कम</value>
+  </data>
+  <data name="Table_Header_Advance" xml:space="preserve">
+    <value>उचल रक्कम</value>
+  </data>
+  <data name="Table_Header_Paid" xml:space="preserve">
+    <value>भरलेली रक्कम</value>
+  </data>
+  <data name="Table_Header_Balance" xml:space="preserve">
+    <value>शिल्लक रक्कम</value>
+  </data>
+  <data name="Table_Header_CarryForward" xml:space="preserve">
+    <value>कॅरी फॉरवर्ड</value>
+  </data>
+  <data name="Table_Header_PaymentMode" xml:space="preserve">
+    <value>पेमेंट मोड</value>
+  </data>
+  <data name="Table_Header_Status" xml:space="preserve">
+    <value>स्थिती</value>
+  </data>
+  <data name="Table_Header_PaidBy" xml:space="preserve">
+    <value>कोणाकडून पेमेंट (मेंबर)</value>
+  </data>
+  <data name="Table_Header_Proof" xml:space="preserve">
+    <value>पुरावा</value>
+  </data>
+  <data name="Table_Header_Action" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+  <data name="Table_Header_Actions" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+
+  <!-- ===== PAYMENT MODES ===== -->
+  <data name="PaymentMode_Cash" xml:space="preserve">
+    <value>रोख</value>
+  </data>
+  <data name="PaymentMode_UPI" xml:space="preserve">
+    <value>GPay / PhonePe</value>
+  </data>
+  <data name="PaymentMode_Bank" xml:space="preserve">
+    <value>बँक हस्तांतरण</value>
+  </data>
+
+  <!-- ===== MESSAGES ===== -->
+  <data name="PaymentStatusPaid" xml:space="preserve">
+    <value>सर्व पेमेंट पूर्ण झाले आहे.</value>
+  </data>
+  <data name="PaymentStatusPartial" xml:space="preserve">
+    <value>काही रक्कम भरलेली आहे, उर्वरित बाकी आहे.</value>
+  </data>
+  <data name="PaymentStatusPending" xml:space="preserve">
+    <value>अजून पेमेंट बाकी आहे.</value>
+  </data>
+<data name="Summary_CarryForward" xml:space="preserve">
+    <value>पुढे नेलेले रक्कम</value>
+  </data>
+  <!-- ===== MISC ===== -->
+  <data name="NoData" xml:space="preserve">
+    <value>कोणतीही पेमेंट नोंद सापडली नाही.</value>
+  </data>
+<data name="Status_NoData" xml:space="preserve">
+    <value>माहिती नाही</value>
+  </data>
+</root>

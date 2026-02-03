@@ -1,0 +1,52 @@
+﻿@model JaggeryAgro.Core.Entities.JaggeryProduce
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["CreateTitle"];
+}
+
+<div class="container mt-4">
+    <!-- Header -->
+    <div class="text-center my-4">
+        <h2 class="fw-bold text-white bg-warning px-4 py-2 d-inline-block rounded-3 shadow">
+            🍯 @Localizer["Header"]
+        </h2>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card shadow-sm rounded-3">
+        <div class="card-body">
+            <form asp-action="Create" method="post" class="needs-validation" novalidate>
+                @Html.AntiForgeryToken()
+
+                <!-- Include Form Partial -->
+                <partial name="_Form" model="Model" />
+
+                <!-- Buttons -->
+                <div class="mt-4 d-flex flex-wrap gap-2 justify-content-end">
+                    <button type="submit" class="btn btn-success btn-lg shadow-sm">
+                        <i class="bi bi-save me-1"></i> @Localizer["SaveButton"]
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary btn-lg shadow-sm">
+                        <i class="bi bi-x-circle me-1"></i> @Localizer["CancelButton"]
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function calculateTotal() {
+            let qty = parseFloat(document.getElementById("QuantityKg")?.value) || 0;
+            let unit = parseFloat(document.getElementById("UnitPrice")?.value) || 0;
+            document.getElementById("TotalCost").value = Math.round(qty * unit);
+        }
+
+        document.getElementById("QuantityKg")?.addEventListener("input", calculateTotal);
+        document.getElementById("UnitPrice")?.addEventListener("input", calculateTotal);
+    </script>
+}

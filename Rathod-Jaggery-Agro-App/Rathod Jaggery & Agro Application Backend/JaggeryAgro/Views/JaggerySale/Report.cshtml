@@ -1,0 +1,131 @@
+﻿@using JaggeryAgro.Core.ViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggerySaleReportVM
+@inject IViewLocalizer Localizer
+
+@{
+    ViewBag.Title = Localizer["Jaggery Sale Report"];
+    var dealers = ViewBag.Dealers as SelectList ?? new SelectList(new List<object>());
+}
+
+<div class="container mt-4">
+
+    <!-- Header -->
+    <div class="text-center my-3">
+        <h3 class="fw-bold text-white bg-info bg-gradient d-inline-block px-4 py-2 rounded shadow">
+            <i class="bi bi-file-earmark-text me-2"></i> @Localizer["Jaggery Sale Report"]
+        </h3>
+    </div>
+
+    <!-- Filter Form -->
+    <form asp-action="Report" method="get" class="row gy-2 gx-2 mb-3">
+        <div class="col-md-3">
+            <label class="form-label fw-bold text-white bg-primary px-2 py-1 rounded">
+                <i class="bi bi-person-badge me-2"></i> @Localizer["Dealer"]
+            </label>
+            <select name="dealerId" class="form-select" asp-items="dealers">
+                <option value="">@Localizer["All Dealers"]</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label fw-bold text-white bg-primary px-2 py-1 rounded">
+                <i class="bi bi-calendar-event me-2"></i> @Localizer["From"]
+            </label>
+            <input type="date" name="from" value="@Model.From?.ToString("yyyy-MM-dd")" class="form-control" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label fw-bold text-white bg-primary px-2 py-1 rounded">
+                <i class="bi bi-calendar-event me-2"></i> @Localizer["To"]
+            </label>
+            <input type="date" name="to" value="@Model.To?.ToString("yyyy-MM-dd")" class="form-control" />
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <button class="btn btn-primary me-2" type="submit">
+                <i class="bi bi-search"></i> @Localizer["Search"]
+            </button>
+
+            <a class="btn btn-outline-success"
+               asp-action="ExportSalesExcel"
+               asp-route-dealerId="@Model.DealerId"
+               asp-route-from="@Model.From?.ToString("yyyy-MM-dd")"
+               asp-route-to="@Model.To?.ToString("yyyy-MM-dd")">
+                <i class="bi bi-file-earmark-excel"></i> @Localizer["Excel"]
+            </a>
+
+            <a class="btn btn-outline-danger ms-2"
+               asp-action="ExportSalesPdf"
+               asp-route-dealerId="@Model.DealerId"
+               asp-route-from="@Model.From?.ToString("yyyy-MM-dd")"
+               asp-route-to="@Model.To?.ToString("yyyy-MM-dd")">
+                <i class="bi bi-file-earmark-pdf"></i> @Localizer["PDF"]
+            </a>
+        </div>
+    </form>
+
+    <!-- Report Table -->
+    <div class="card shadow-sm">
+        <div class="card-body table-responsive">
+            <table id="JaggerySaleReportTable" class="table table-bordered table-hover align-middle table-orange-header">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>@Localizer["Dealer"]</th>
+                        <th>@Localizer["Date"]</th>
+                        <th>@Localizer["Quantity (Kg)"]</th>
+                        <th>@Localizer["Rate / Kg"]</th>
+                        <th>@Localizer["Total Amount"]</th>
+                        <th>@Localizer["Advance"]</th>
+                        <th>@Localizer["Remaining"]</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @if (Model?.Sales != null && Model.Sales.Any())
+                    {
+                        foreach (var s in Model.Sales)
+                        {
+                            <tr>
+                                <td>@(s.Dealer?.Name ?? Model.DealerName)</td>
+                                <td>@s.SaleDate.ToString("dd-MM-yyyy")</td>
+                                <td>@s.QuantityInKg</td>
+                                <td>@s.RatePerKg</td>
+                                <td>@s.TotalAmount</td>
+                                <td>@s.AdvancePaid</td>
+                                <td>@s.RemainingAmount</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center text-danger">@Localizer["No sales records found"]</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot class="fw-bold text-center">
+                    <tr>
+                        <td>@Localizer["Total"]</td>
+                        <td></td>
+                        <td>@Model?.TotalQuantityKg</td>
+                        <td></td>
+                        <td>@Model?.TotalAmount</td>
+                        <td>@Model?.TotalAdvance</td>
+                        <td>@Model?.TotalRemaining</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#JaggerySaleReportTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 5
+            });
+        });
+    </script>
+}

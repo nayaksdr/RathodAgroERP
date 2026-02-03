@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0</value></resheader>
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>ठेव यादी</value>
+  </data>
+
+  <data name="AddNewDeposit" xml:space="preserve">
+    <value>नवीन ठेव जोडा</value>
+  </data>
+
+  <data name="Type" xml:space="preserve">
+    <value>प्रकार</value>
+  </data>
+
+  <data name="RelatedId" xml:space="preserve">
+    <value>संबंधित आयडी</value>
+  </data>
+
+  <data name="Amount" xml:space="preserve">
+    <value>रक्कम</value>
+  </data>
+
+  <data name="Date" xml:space="preserve">
+    <value>तारीख</value>
+  </data>
+
+  <data name="Actions" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+
+  <data name="Delete" xml:space="preserve">
+    <value>हटवा</value>
+  </data>
+
+  <data name="DeleteConfirmationTitle" xml:space="preserve">
+    <value>हटवण्याची पुष्टी</value>
+  </data>
+
+  <data name="DeleteConfirmationMessage" xml:space="preserve">
+    <value>आपण <strong>{0}</strong> प्रकारची ठेव हटवू इच्छिता का?</value>
+  </data>
+
+  <data name="YesDelete" xml:space="preserve">
+    <value>होय, हटवा</value>
+  </data>
+
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+</root>

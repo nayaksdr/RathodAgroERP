@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- ✅ Titles -->
+  <data name="Title_Create" xml:space="preserve">
+    <value>ऊस आगाऊ रक्कम जोडा</value>
+  </data>
+<data name="Title" xml:space="preserve">
+  <value>उसाच्या आगाऊ रकमेचे संपादन</value>
+</data>
+
+  <data name="Title_Edit" xml:space="preserve">
+    <value>ऊस आगाऊ रक्कम संपादित करा</value>
+  </data>
+
+  <!-- ✅ Headers -->
+  <data name="Header_Create" xml:space="preserve">
+    <value>आगाऊ रक्कम नोंदवा</value>
+  </data>
+
+  <data name="Header_Edit" xml:space="preserve">
+    <value>आगाऊ रक्कम संपादित करा</value>
+  </data>
+
+  <!-- ✅ Labels -->
+  <data name="Label_Farmer" xml:space="preserve">
+    <value>शेतकरी</value>
+  </data>
+
+  <data name="Placeholder_SelectFarmer" xml:space="preserve">
+    <value>-- शेतकरी निवडा --</value>
+  </data>
+
+  <data name="Label_Date" xml:space="preserve">
+    <value>दिनांक</value>
+  </data>
+
+  <data name="Label_Amount" xml:space="preserve">
+    <value>रक्कम (₹)</value>
+  </data>
+
+  <data name="Label_Remarks" xml:space="preserve">
+    <value>टिप / कारण</value>
+  </data>
+
+  <data name="Placeholder_Remarks" xml:space="preserve">
+    <value>टिप लिहा...</value>
+  </data>
+
+  <!-- ✅ Added Fields -->
+  <data name="Label_AdvanceType" xml:space="preserve">
+    <value>आगाऊ प्रकार</value>
+  </data>
+
+  <data name="Placeholder_SelectAdvanceType" xml:space="preserve">
+    <value>-- आगाऊ प्रकार निवडा --</value>
+  </data>
+
+  <data name="Label_PaymentMode" xml:space="preserve">
+    <value>पेमेंट मोड</value>
+  </data>
+
+  <data name="Placeholder_SelectPaymentMode" xml:space="preserve">
+    <value>-- पेमेंट मोड निवडा --</value>
+  </data>
+
+  <data name="Label_ReferenceNo" xml:space="preserve">
+    <value>संदर्भ क्रमांक</value>
+  </data>
+
+  <data name="Placeholder_ReferenceNo" xml:space="preserve">
+    <value>व्यवहार क्रमांक लिहा...</value>
+  </data>
+
+  <data name="Label_Attachment" xml:space="preserve">
+    <value>संलग्न फाइल</value>
+  </data>
+
+  <data name="Placeholder_Attachment" xml:space="preserve">
+    <value>पुरावा अपलोड करा (ऐच्छिक)</value>
+  </data>
+
+  <!-- ✅ Member Field (New) -->
+  <data name="Column_Member" xml:space="preserve">
+    <value>सदस्याचे नाव</value>
+  </data>
+
+  <data name="Placeholder_SelectMember" xml:space="preserve">
+    <value>-- सदस्य निवडा --</value>
+  </data>
+
+  <!-- ✅ Buttons -->
+  <data name="Button_Save" xml:space="preserve">
+    <value>जतन करा</value>
+  </data>
+
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+
+  <data name="Button_Back" xml:space="preserve">
+    <value>मागे जा</value>
+  </data>
+
+  <!-- ✅ Additional Labels Used in View -->
+  <data name="Cash" xml:space="preserve">
+    <value>रोख</value>
+  </data>
+
+  <data name="UPI" xml:space="preserve">
+    <value>यूपीआय</value>
+  </data>
+
+  <data name="Bank" xml:space="preserve">
+    <value>बँक</value>
+  </data>
+
+  <data name="ProofImage" xml:space="preserve">
+    <value>पेमेंट पुरावा प्रतिमा</value>
+  </data>
+
+  <data name="SelectPaymentMode" xml:space="preserve">
+    <value>पेमेंट मोड निवडा</value>
+  </data>
+</root>

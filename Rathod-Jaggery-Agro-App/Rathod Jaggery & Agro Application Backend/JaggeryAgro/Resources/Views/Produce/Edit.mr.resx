@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+ <data name="EditTitle" xml:space="preserve">
+    <value>उत्पादन संपादित करा</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>जागरी उत्पादन संपादित करा</value>
+  </data>
+  <data name="UpdateButton" xml:space="preserve">
+    <value>अपडेट करा</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+
+</root>

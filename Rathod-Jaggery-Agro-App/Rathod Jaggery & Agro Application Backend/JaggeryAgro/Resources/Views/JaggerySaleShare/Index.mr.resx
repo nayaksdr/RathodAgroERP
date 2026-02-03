@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="JaggerySaleShare" xml:space="preserve"><value>गुळ विक्री वाटा</value></data>
+  <data name="AddNewSaleShare" xml:space="preserve"><value>नवीन विक्री वाटा</value></data>
+  <data name="JaggerySaleDetails" xml:space="preserve"><value>गुळ विक्री तपशील</value></data>
+  <data name="Date" xml:space="preserve"><value>तारीख</value></data>
+  <data name="Dealer" xml:space="preserve"><value>व्यापारी</value></data>
+  <data name="Member" xml:space="preserve"><value>सदस्य</value></data>
+  <data name="ShareAmount" xml:space="preserve"><value>वाटा (₹)</value></data>
+  <data name="PaidAmount" xml:space="preserve"><value>घेतलेली रक्कम (₹)</value></data>
+  <data name="PendingAmount" xml:space="preserve"><value>बाकी रक्कम (₹)</value></data>
+  <data name="Status" xml:space="preserve"><value>स्थिती</value></data>
+  <data name="PaymentMode" xml:space="preserve"><value>पेमेंट पद्धत</value></data>
+  <data name="Proof" xml:space="preserve"><value>पुरावा</value></data>
+  <data name="Action" xml:space="preserve"><value>क्रिया</value></data>
+  <data name="NoImage" xml:space="preserve"><value>प्रतिमा नाही</value></data>
+  <data name="RecordPayment" xml:space="preserve"><value>भरणा नोंदवा</value></data>
+  <data name="Edit" xml:space="preserve"><value>संपादित करा</value></data>
+  <data name="Delete" xml:space="preserve"><value>हटवा</value></data>
+  <data name="ProofImage" xml:space="preserve"><value>भरणा पुरावा प्रतिमा</value></data>
+  <data name="PaidVsPendingChartTitle" xml:space="preserve"><value>गुळ विक्री Paid vs Pending प्रति सदस्य</value></data>
+  <data name="EarnedAmount" xml:space="preserve"><value>मिळालेली रक्कम</value></data>
+  <data name="TotalBalance" xml:space="preserve"><value>एकूण शिल्लक</value></data>
+  <data name="Search" xml:space="preserve"><value>शोधा:</value></data>
+<data name="ShowEntries" xml:space="preserve"><value>_MENU_ नोंदी दाखवा</value></data>
+<data name="ShowingEntries" xml:space="preserve"><value>_START_ ते _END_ पैकी _TOTAL_ नोंदी दर्शवित आहे</value></data>
+<data name="Previous" xml:space="preserve"><value>मागील</value></data>
+<data name="Next" xml:space="preserve"><value>पुढील</value></data>
+<data name="NoRecordsFound" xml:space="preserve"><value>जुळणारे रेकॉर्ड आढळले नाहीत</value></data>
+<data name="NoEntries" xml:space="preserve"><value>नोंदी उपलब्ध नाहीत</value></data>
+
+</root>

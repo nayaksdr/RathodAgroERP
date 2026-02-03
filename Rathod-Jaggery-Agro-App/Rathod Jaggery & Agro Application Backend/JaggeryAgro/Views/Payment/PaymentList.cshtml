@@ -1,0 +1,121 @@
+﻿@model IEnumerable<JaggeryAgro.Core.Entities.WeeklyPayment>
+
+
+
+@{
+    ViewData["Title"] = "साप्ताहिक वेतन यादी";
+}
+
+<div class="container-fluid mt-4">
+    <!-- Page Header -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3">
+        <h2 class="mb-2 mb-md-0">
+            <i class="bi bi-cash-stack text-success"></i> साप्ताहिक वेतन यादी
+        </h2>
+    </div>
+
+    <!-- Filter Form -->
+    <form method="get" asp-action="PaymentList" class="row g-2 align-items-end mb-3">
+        <div class="col-md-3">
+            <label>पासून तारीख</label>
+            <input type="date" name="fromDate" value="@ViewBag.FromDate?.ToString("dd-MM-yyyy")" class="form-control" required />
+        </div>
+        <div class="col-md-3">
+            <label>पर्यंत तारीख</label>
+            <input type="date" name="toDate" value="@ViewBag.ToDate?.ToString("dd-MM-yyyy")" class="form-control" required />
+        </div>
+        <div class="col-md-3 align-self-end">
+            <button type="submit" class="btn btn-primary">शोधा</button>
+        </div>
+       
+    </form>
+
+    <!-- Responsive Table -->
+    <div class="table-responsive shadow-sm rounded">
+
+        <table class="table table-bordered table-hover align-middle table-orange-header" id="PaymentTable">
+            <thead>
+                <tr>
+                    <th>कामगाराचे नाव</th>
+                    <th>कामगार प्रकार</th>
+                    <th>उपस्थित दिवस</th>
+                    <th>दररोज वेतन</th>
+                    <th>अ‍ॅडव्हान्स कपात</th>
+                    <th>नेट वेतन</th>
+                    @* <th>पगार देण्याची पद्धत</th> *@
+                    <th>पगार दिनांक</th>
+                    <th class="text-center">क्रिया</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var payment in Model)
+                    {
+                        <tr>
+                            <td>@payment.LaborName</td>
+                            <td>@payment.LaborType</td>
+                            <td>@payment.DaysPresent</td>
+                            <td>₹@payment.DailyRate.ToString("N2")</td>
+                            <td>₹@payment.AdvanceDeducted.ToString("N2")</td>
+                            <td class="fw-bold text-success">₹@payment.NetSalary.ToString("N2")</td>
+                           @*  <td>@(string.IsNullOrEmpty(payment.PaymentMethod) ? "-" : payment.PaymentMethod)</td> *@
+                            <td>@(payment.WeekStart != default ? payment.WeekEnd.ToString("dd/MM/yyyy") : "-")</td>
+                            <td class="text-center">
+                                <div class="btn-group btn-group-sm" role="group">
+                                    @if (payment.LaborId > 0)
+                                    {
+                                        <!-- Already saved payment -->
+                                        <a class="btn btn-outline-danger"
+                                           asp-action="DownloadSlip"
+                                           asp-route-id="@payment.LaborId"
+                                           title="पगाराची पावती डाउनलोड करा">
+                                            <i class="bi bi-file-earmark-pdf"></i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <!-- Create payment -->
+                                        <a class="btn btn-outline-primary"
+                                           asp-controller="Payment"
+                                           asp-action="GenerateSingle"
+                                           asp-route-laborId="@payment.LaborId"
+                                           asp-route-fromDate="@ViewBag.FromDate?.ToString("yyyy-MM-dd")"
+                                           asp-route-toDate="@ViewBag.ToDate?.ToString("yyyy-MM-dd")"
+                                           title="पगार तयार करा">
+                                            <i class="bi bi-cash"></i>
+                                        </a>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="9" class="text-center text-muted">कोणतेही पगार रेकॉर्ड सापडले नाहीत.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+
+    <script>
+        $(document).ready(function () {
+            $('#PaymentTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 5
+            });
+        });
+    </script>
+}

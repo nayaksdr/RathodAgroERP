@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Create Jaggery Sale Share</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="SelectDealer" xml:space="preserve">
+    <value>Select Dealer</value>
+  </data>
+  <data name="SelectDealerPlaceholder" xml:space="preserve">
+    <value>-- Choose a Dealer --</value>
+  </data>
+  <data name="SelectDealerValidation" xml:space="preserve">
+    <value>Please select a dealer.</value>
+  </data>
+  <data name="PayingMember" xml:space="preserve">
+    <value>Paying Member</value>
+  </data>
+  <data name="PayingMemberPlaceholder" xml:space="preserve">
+    <value>Auto-filled after selecting dealer</value>
+  </data>
+  <data name="SplitMembers" xml:space="preserve">
+    <value>Split Among Members</value>
+  </data>
+  <data name="SplitMembersHint" xml:space="preserve">
+    <value>Members who will receive payment share.</value>
+  </data>
+  <data name="PaidAmount" xml:space="preserve">
+    <value>Paid Amount</value>
+  </data>
+  <data name="PaidAmountValidation" xml:space="preserve">
+    <value>Please enter the paid amount.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="NoMembersFound" xml:space="preserve">
+    <value>No members found for this sale.</value>
+  </data>
+  <data name="AllMembersAuto" xml:space="preserve">
+    <value>All members are selected automatically.</value>
+  </data>
+</root>

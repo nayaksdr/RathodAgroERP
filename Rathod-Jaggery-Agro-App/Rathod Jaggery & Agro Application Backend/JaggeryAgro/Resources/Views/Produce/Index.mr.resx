@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve"><value>गुळ तयार केले</value></data>
+  <data name="HeaderTitle" xml:space="preserve"><value>गुळ उत्पादन अहवाल</value></data>
+  <data name="ExportExcel" xml:space="preserve"><value>एक्सेल निर्यात करा</value></data>
+  <data name="FromDate" xml:space="preserve"><value>पासून</value></data>
+  <data name="ToDate" xml:space="preserve"><value>पर्यंत</value></data>
+  <data name="Filter" xml:space="preserve"><value>फिल्टर करा</value></data>
+  <data name="AddNewRecord" xml:space="preserve"><value>नवीन नोंद जोडा</value></data>
+  <data name="TotalBellyCount" xml:space="preserve"><value>एकूण भेली संख्या</value></data>
+  <data name="TotalProductionKg" xml:space="preserve"><value>एकूण उत्पादन (किलो)</value></data>
+  <data name="Date" xml:space="preserve"><value>तारीख</value></data>
+  <data name="BatchNumber" xml:space="preserve"><value>बॅच क्रमांक</value></data>
+  <data name="BellyWeightKg" xml:space="preserve"><value>भेली वजन (किलो)</value></data>
+  <data name="BellyCount" xml:space="preserve"><value>भेली संख्या</value></data>
+  <data name="Quality" xml:space="preserve"><value>गुणवत्ता</value></data>
+  <data name="StockKg" xml:space="preserve"><value>स्टॉक (किलो)</value></data>
+  <data name="Actions" xml:space="preserve"><value>क्रिया</value></data>
+  <data name="Details" xml:space="preserve"><value>तपशील</value></data>
+  <data name="Edit" xml:space="preserve"><value>संपादित करा</value></data>
+  <data name="Delete" xml:space="preserve"><value>हटवा</value></data>
+  <data name="DeleteConfirm" xml:space="preserve"><value>ही नोंद हटवायची आहे का?</value></data>
+</root>

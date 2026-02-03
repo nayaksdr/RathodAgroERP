@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>  
+
+  <data name="ReportTitle" xml:space="preserve">
+    <value>Sugarcane Purchase Report</value>
+  </data>
+  <data name="Farmer" xml:space="preserve">
+    <value>Farmer</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="TotalCane" xml:space="preserve">
+    <value>Total Cane (Ton)</value>
+  </data>
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+  <data name="TotalPaid" xml:space="preserve">
+    <value>Total Paid</value>
+  </data>
+  <data name="BalanceAmount" xml:space="preserve">
+    <value>Balance Amount</value>
+  </data>
+  <data name="PurchaseDetails" xml:space="preserve">
+    <value>Purchase Details</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity (Ton)</value>
+  </data>
+  <data name="RatePerTon" xml:space="preserve">
+    <value>Rate per Ton</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="WeightSlip" xml:space="preserve">
+    <value>Weight Slip</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>No purchase data available</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+</root>

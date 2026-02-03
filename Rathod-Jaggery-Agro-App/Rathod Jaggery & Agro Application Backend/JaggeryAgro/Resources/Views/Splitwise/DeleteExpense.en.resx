@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+
+  <data name="DeleteExpenseTitle" xml:space="preserve">
+    <value>Delete Expense</value>
+  </data>
+  <data name="DeleteExpenseConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete the following expense?</value>
+  </data>
+  <data name="PaidBy" xml:space="preserve">
+    <value>Paid By:</value>
+  </data>
+  <data name="ExpenseType" xml:space="preserve">
+    <value>Expense Type:</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount:</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+</root>

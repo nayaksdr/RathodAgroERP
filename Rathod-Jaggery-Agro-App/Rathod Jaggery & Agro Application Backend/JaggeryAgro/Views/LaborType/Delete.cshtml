@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.LaborType
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="container mt-5">
+    <!-- Page Header -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-white bg-danger px-4 py-3 d-inline-block rounded-3 shadow">
+            @Localizer["Title"]
+        </h2>
+    </div>
+
+    <!-- Confirmation Card -->
+    <div class="card shadow-lg border-0 rounded-4 mx-auto" style="max-width:600px;">
+        <div class="card-body">
+            <h5 class="text-center text-danger mb-4">
+                @Localizer["ConfirmMessage"]
+            </h5>
+
+            <!-- Labor Type Details -->
+            <div class="border rounded p-3 bg-light mb-4">
+                <h6 class="fw-bold">@Localizer["Label_LaborTypeName"]: <span class="text-primary">@Model.LaborTypeName</span></h6>
+                <p class="mb-0">@Localizer["Label_Description"]: @Model.Description</p>
+            </div>
+
+            <!-- Delete Form -->
+            <form asp-action="Delete" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" />
+
+                <div class="d-flex justify-content-center gap-3">
+                    <button type="submit" class="btn btn-danger fw-bold px-4 shadow-sm rounded-pill">
+                        <i class="fas fa-trash-alt me-2"></i> @Localizer["Button_Delete"]
+                    </button>
+
+                    <a asp-action="Index" class="btn btn-secondary fw-bold px-4 shadow-sm rounded-pill">
+                        <i class="fas fa-times me-2"></i> @Localizer["Button_Cancel"]
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

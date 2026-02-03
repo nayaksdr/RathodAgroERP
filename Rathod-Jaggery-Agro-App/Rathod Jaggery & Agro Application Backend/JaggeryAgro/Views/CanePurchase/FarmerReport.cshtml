@@ -1,0 +1,167 @@
+﻿@using JaggeryAgro.Core.ViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model FarmerReportViewModel
+
+<div class="container my-5">
+
+    <!-- Header -->
+    <div class="text-center mb-4">
+        <div class="p-4 rounded-4 shadow-sm bg-gradient"
+             style="background: linear-gradient(135deg, #198754, #28a745, #00c851);">
+            <h2 class="fw-bold text-white mb-0 d-flex flex-column flex-md-row justify-content-center align-items-center gap-2">
+                <i class="fa-solid fa-leaf fa-lg text-warning"></i>
+                <span>@Localizer["ReportTitle"]</span>
+                <span class="fw-bolder text-uppercase ms-md-2 text-light border-bottom border-3 border-warning px-2">
+                    @Model.FarmerName
+                </span>
+            </h2>
+            <p class="text-light mt-2 mb-0 fst-italic small">
+                <i class="fa-solid fa-user me-1"></i> @Localizer["Farmer"] : <strong>@Model.FarmerName</strong>
+            </p>
+            <a asp-action="Index" class="btn btn-light btn-sm">
+                <i class="bi bi-arrow-left-circle me-1"></i> @Localizer["BackToList"]
+            </a>
+        </div>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="row mt-3 g-3">
+        <div class="col-6 col-md-3">
+            <div class="card summary-card text-white bg-primary rounded-3 p-3 h-100 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-1">@Localizer["TotalCane"]</h6>
+                        <h4 class="fw-bold">@Model.TotalQuantity</h4>
+                    </div>
+                    <i class="fa-solid fa-truck-ramp-box fa-2x opacity-75"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card summary-card text-white bg-success rounded-3 p-3 h-100 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-1">@Localizer["TotalAmount"]</h6>
+                        <h4 class="fw-bold">₹@Model.TotalAmount</h4>
+                    </div>
+                    <i class="fa-solid fa-sack-dollar fa-2x opacity-75"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card summary-card text-white bg-info rounded-3 p-3 h-100 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-1">@Localizer["TotalPaid"]</h6>
+                        <h4 class="fw-bold">₹@Model.TotalPaid</h4>
+                    </div>
+                    <i class="fa-solid fa-credit-card fa-2x opacity-75"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-3">
+            <div class="card summary-card text-white bg-danger rounded-3 p-3 h-100 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-1">@Localizer["BalanceAmount"]</h6>
+                        <h4 class="fw-bold">₹@Model.Balance</h4>
+                    </div>
+                    <i class="fa-solid fa-triangle-exclamation fa-2x opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-4" />
+
+    <!-- Purchase Details -->
+    <div class="text-center mb-4">
+        <h4 class="fw-bold text-primary border-bottom border-2 pb-2 d-inline-block">
+            <i class="fa-solid fa-cart-flatbed me-2"></i> @Localizer["PurchaseDetails"]
+        </h4>
+    </div>
+
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="card-body bg-light">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle text-center mb-0" id="purchaseTable">
+                    <thead class="bg-dark text-white text-uppercase">
+                        <tr>
+                            <th>@Localizer["Date"]</th>
+                            <th>@Localizer["Quantity"]</th>
+                            <th>@Localizer["RatePerTon"]</th>
+                            <th>@Localizer["Total"]</th>
+                            <th>@Localizer["WeightSlip"]</th>
+                            <th>@Localizer["Actions"]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Purchases != null && Model.Purchases.Any())
+                        {
+                            foreach (var p in Model.Purchases)
+                            {
+                                <tr class="table-row-hover">
+                                    <td>@p.PurchaseDate.ToString("dd-MM-yyyy")</td>
+                                    <td class="fw-semibold">@p.QuantityTon</td>
+                                    <td class="text-primary fw-bold">₹@p.RatePerTon</td>
+                                    <td class="text-danger fw-bold">₹@(p.QuantityTon* p.RatePerTon)</td>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(p.CaneWeightImagePath))
+                                        {
+                                            <img src="@Url.Content(p.CaneWeightImagePath)"
+                                                 class="img-thumbnail cane-image-thumb"
+                                                 style="max-height:60px; border-radius:8px; cursor:pointer;"
+                                                 data-bs-toggle="modal"
+                                                 data-bs-target="#imageModal"
+                                                 data-img="@Url.Content(p.CaneWeightImagePath)" />
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">-</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-sm btn-warning me-1">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-sm btn-danger">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center text-muted fw-bold py-3">
+                                    <i class="fa-solid fa-folder-open me-2"></i> @Localizer["NoData"]
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-body p-0">
+                <img id="modalImage" src="" class="img-fluid rounded-top" />
+            </div>
+            <div class="modal-footer bg-light border-top">
+                <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">
+                    <i class="fa-solid fa-xmark me-1"></i> @Localizer["Close"]
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+﻿@model IEnumerable<JaggeryAgro.Core.Entities.DealerAdvance>
+@using JaggeryAgro.Core.Entities
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<div class="container mt-4">
+
+    <!-- Header + Add Button -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="fw-bold text-white bg-success bg-gradient d-inline-block px-4 py-2 rounded shadow">
+            <i class="bi bi-cash-coin me-2"></i> @Localizer["Header_Title"]
+        </h4>
+
+        <a asp-action="Create"
+           class="btn btn-lg fw-bold px-4 shadow rounded-pill text-white"
+           style="background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
+                  border: none;
+                  transition: all 0.3s ease;">
+            <i class="bi bi-plus-circle me-2"></i> @Localizer["Button_AddNew"]
+        </a>
+    </div>
+
+    <!-- Filter Form -->
+    <form method="get" class="row g-3 mb-3 align-items-end">
+        <div class="col-md-3">
+            <label class="form-label px-3 py-2 bg-light border border-success rounded d-inline-flex align-items-center gap-2 shadow-sm">
+                <i class="bi bi-person-badge-fill text-success"></i> @Localizer["Label_Dealer"]
+            </label>
+            <select name="dealerId" asp-items="ViewBag.Dealers" class="form-select">
+                <option value="">@Localizer["Option_AllDealers"]</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label fw-bold text-white bg-primary px-2 py-1 rounded">
+                <i class="bi bi-calendar-event me-2"></i> @Localizer["Label_FromDate"]
+            </label>
+            <input type="date" name="from" value="@ViewBag.From" class="form-control" />
+        </div>
+
+        <div class="col-md-3">
+            <label class="form-label fw-bold text-white bg-primary px-2 py-1 rounded">
+                <i class="bi bi-calendar-event me-2"></i> @Localizer["Label_ToDate"]
+            </label>
+            <input type="date" name="to" value="@ViewBag.To" class="form-control" />
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-dark w-100">
+                <i class="bi bi-search"></i> @Localizer["Button_Search"]
+            </button>
+        </div>
+    </form>
+
+    <!-- Table -->
+    <div class="table-responsive shadow-sm">
+        <table id="DealerAdvanceTable" class="table table-bordered table-hover align-middle table-orange-header">
+            <thead class="table-dark">
+                <tr>
+                    <th>@Localizer["Table_Dealer"]</th>
+                    <th>@Localizer["Table_Member"]</th>
+                    <th>@Localizer["Table_Date"]</th>
+                    <th>@Localizer["Table_PaymentMode"]</th>
+                    <th>@Localizer["Table_Proof"]</th>
+                    <th class="text-end">@Localizer["Table_Amount"]</th>
+                    <th>@Localizer["Table_Note"]</th>
+                    <th class="text-end">@Localizer["Table_Action"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var a in Model)
+                {
+                    <tr>
+                        <td>@a.Dealer?.Name</td>
+                        <td>@a.PaidBy?.Name</td>
+                        <td>@a.AdvanceDate.ToString("dd-MMM-yyyy")</td>
+                        <td>@a.PaymentMode</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(a.ProofImage))
+                            {
+                                <img src="@Url.Content(a.ProofImage)"
+                                     class="img-thumbnail clickable-image"
+                                     style="width:50px; height:50px; cursor:pointer;"
+                                     data-bs-toggle="modal"
+                                     data-bs-target="#imageModal"
+                                     data-imgsrc="@Url.Content(a.ProofImage)" />
+                            }
+                            else
+                            {
+                                <span class="text-muted">@Localizer["Text_NoImage"]</span>
+                            }
+                        </td>
+                        <td class="text-end">@a.Amount.ToString("N2")</td>
+                        <td>@a.Note</td>
+                        <td class="text-end">
+                            <a asp-action="Edit" asp-route-id="@a.Id" class="btn btn-sm btn-outline-secondary">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <form asp-action="Delete" asp-route-id="@a.Id" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                        onclick="return confirm('@Localizer["Confirm_Delete"]')">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Proof Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">@Localizer["Modal_Title"]</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" alt="Preview" class="img-fluid rounded shadow" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#DealerAdvanceTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 5
+            });
+
+            // Show image in modal
+            $('.clickable-image').on('click', function () {
+                var imgSrc = $(this).data('imgsrc');
+                $('#modalImage').attr('src', imgSrc);
+            });
+        });
+    </script>
+}

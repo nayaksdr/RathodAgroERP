@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Header_Title"><value>Dealer Advances</value></data>
+  <data name="Button_AddNew"><value>Add New</value></data>
+  <data name="Label_Dealer"><value>Dealer</value></data>
+  <data name="Option_AllDealers"><value>All Dealers</value></data>
+  <data name="Label_FromDate"><value>From</value></data>
+  <data name="Label_ToDate"><value>To</value></data>
+  <data name="Button_Search"><value>Search</value></data>
+  <data name="Table_Dealer"><value>Dealer</value></data>
+  <data name="Table_Member"><value>Member</value></data>
+  <data name="Table_Date"><value>Date</value></data>
+  <data name="Table_PaymentMode"><value>Payment Mode</value></data>
+  <data name="Table_Proof"><value>Proof</value></data>
+  <data name="Table_Amount"><value>Amount (₹)</value></data>
+  <data name="Table_Note"><value>Note</value></data>
+  <data name="Table_Action"><value>Action</value></data>
+  <data name="Text_NoImage"><value>No Image</value></data>
+  <data name="Modal_Title"><value>Payment Proof Image</value></data>
+  <data name="Confirm_Delete"><value>Are you sure you want to delete?</value></data>
+</root>

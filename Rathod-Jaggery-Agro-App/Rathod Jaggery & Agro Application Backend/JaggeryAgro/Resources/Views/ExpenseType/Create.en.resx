@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>Add Expense Type</value>
+  </data>
+
+  <data name="ExpenseTypeNameLabel" xml:space="preserve">
+    <value>Expense Type Name</value>
+  </data>
+
+  <data name="ExpenseTypePlaceholder" xml:space="preserve">
+    <value>e.g., Labor Wages</value>
+  </data>
+
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+
+  <data name="AddButton" xml:space="preserve">
+    <value>Add</value>
+  </data>
+</root>

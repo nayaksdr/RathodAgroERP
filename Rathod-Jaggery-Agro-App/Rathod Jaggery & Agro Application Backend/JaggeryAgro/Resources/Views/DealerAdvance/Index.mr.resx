@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Header_Title"><value>व्यापारी आगाऊ रक्कम</value></data>
+  <data name="Button_AddNew"><value>नवी नोंद</value></data>
+  <data name="Label_Dealer"><value>व्यापारी</value></data>
+  <data name="Option_AllDealers"><value>सर्व व्यापारी</value></data>
+  <data name="Label_FromDate"><value>पासून</value></data>
+  <data name="Label_ToDate"><value>पर्यंत</value></data>
+  <data name="Button_Search"><value>शोधा</value></data>
+  <data name="Table_Dealer"><value>व्यापारी</value></data>
+  <data name="Table_Member"><value>सदस्य</value></data>
+  <data name="Table_Date"><value>तारीख</value></data>
+  <data name="Table_PaymentMode"><value>पेमेंट पद्धत</value></data>
+  <data name="Table_Proof"><value>पुरावा</value></data>
+  <data name="Table_Amount"><value>रक्कम (₹)</value></data>
+  <data name="Table_Note"><value>टीप</value></data>
+  <data name="Table_Action"><value>क्रिया</value></data>
+  <data name="Text_NoImage"><value>प्रतिमा उपलब्ध नाही</value></data>
+  <data name="Modal_Title"><value>भरणा पुरावा प्रतिमा</value></data>
+  <data name="Confirm_Delete"><value>हटवायचे का?</value></data>
+</root>

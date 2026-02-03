@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="FarmerDetailsTitle" xml:space="preserve">
+    <value>Farmer Details</value>
+  </data>
+  <data name="FarmerName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="FarmerMobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="FarmerAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="FarmerVillage" xml:space="preserve">
+    <value>Village</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

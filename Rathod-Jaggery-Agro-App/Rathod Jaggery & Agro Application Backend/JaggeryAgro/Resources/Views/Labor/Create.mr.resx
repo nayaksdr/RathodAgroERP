@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Labor Registration" xml:space="preserve"><value>नवीन मजूर नोंदणी</value></data>
+  <data name="Name" xml:space="preserve"><value>नाव</value></data>
+  <data name="Enter Labor Name" xml:space="preserve"><value>मजूरचे नाव टाका</value></data>
+  <data name="Mobile" xml:space="preserve"><value>मोबाईल नंबर</value></data>
+  <data name="Enter Mobile Number" xml:space="preserve"><value>मोबाईल नंबर टाका</value></data>
+  <data name="Password" xml:space="preserve"><value>पासवर्ड</value></data>
+  <data name="Enter Password (e.g. 1234)" xml:space="preserve"><value>पासवर्ड टाका (उदा. 1234)</value></data>
+  <data name="Labor Type" xml:space="preserve"><value>मजूर प्रकार</value></data>
+  <data name="Select Labor Type" xml:space="preserve"><value>मजूर प्रकार निवडा</value></data>
+  <data name="Role" xml:space="preserve"><value>भूमिका</value></data>
+  <data name="Join Date" xml:space="preserve"><value>जॉईन तारीख</value></data>
+  <data name="Save" xml:space="preserve"><value>जतन करा</value></data>
+  <data name="Cancel" xml:space="preserve"><value>रद्द करा</value></data>
+</root>

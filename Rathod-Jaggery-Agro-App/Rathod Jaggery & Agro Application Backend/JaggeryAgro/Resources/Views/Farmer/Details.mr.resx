@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="FarmerDetailsTitle" xml:space="preserve">
+    <value>शेतकरी तपशील</value>
+  </data>
+  <data name="FarmerName" xml:space="preserve">
+    <value>नाव</value>
+  </data>
+  <data name="FarmerMobile" xml:space="preserve">
+    <value>मोबाइल</value>
+  </data>
+  <data name="FarmerAddress" xml:space="preserve">
+    <value>पत्ता</value>
+  </data>
+  <data name="FarmerVillage" xml:space="preserve">
+    <value>गाव</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>संपादित करा</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>यादीकडे परत जा</value>
+  </data>
+</root>

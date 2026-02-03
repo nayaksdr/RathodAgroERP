@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Edit Dealer</value>
+  </data>
+  <data name="Label_Name" xml:space="preserve">
+    <value>Dealer Name</value>
+  </data>
+  <data name="Placeholder_Name" xml:space="preserve">
+    <value>Enter dealer name</value>
+  </data>
+  <data name="Label_ContactNumber" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="Placeholder_ContactNumber" xml:space="preserve">
+    <value>Enter mobile number</value>
+  </data>
+  <data name="Label_Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Placeholder_Address" xml:space="preserve">
+    <value>Enter address</value>
+  </data>
+  <data name="Button_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Button_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+</root>

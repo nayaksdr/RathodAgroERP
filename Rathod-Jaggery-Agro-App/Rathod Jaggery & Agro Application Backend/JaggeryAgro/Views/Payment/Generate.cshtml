@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "साप्ताहिक वेतन तयार करा";
+    Layout = "_Layout";
+}
+
+<h2 class="mb-4">साप्ताहिक वेतन तयार करा</h2>
+
+<form asp-action="Generate" method="post" class="p-4 border rounded bg-light shadow-sm">
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">पासूनची तारीख</label>
+            <input type="date" name="fromDate" class="form-control" required />
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">पर्यंतची तारीख</label>
+            <input type="date" name="toDate" class="form-control" required />
+        </div>
+        @*   <div class="col-md-4">
+            <label class="form-label">देयक पद्धत</label>
+            <select name="paymentMethod" class="form-select" required>
+                <option value="">-- पद्धत निवडा --</option>
+                <option value="Cash">रोख</option>
+                <option value="Bank Transfer">बँक हस्तांतरण</option>
+                <option value="UPI">UPI</option>
+            </select>
+        </div> *@
+    </div>
+    <button type="submit" class="btn btn-primary px-4">वेतन तयार करा</button>
+</form>
+
+@if (ViewBag.Payments != null && ViewBag.Payments.Count > 0)
+{
+    <h3 class="mt-5">तयार केलेली वेतने</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>तारीख</th>
+                <th>रक्कम</th>
+                <th>पद्धत</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var payment in ViewBag.Payments)
+            {
+                <tr>
+                    <td>@payment.Date.ToShortDateString()</td>
+                    <td>@payment.Amount.ToString("C")</td>
+                    <td>@payment.Method</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (ViewBag.Payments != null)
+{
+    <div class="alert alert-info">निवडलेल्या तारखांच्या कालावधीसाठी कोणतेही वेतन तयार केलेले नाही.</div>
+}

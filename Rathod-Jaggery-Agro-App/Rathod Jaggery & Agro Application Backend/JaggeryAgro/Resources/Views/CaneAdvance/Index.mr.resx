@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- ===== शीर्षक ===== -->
+  <data name="Title" xml:space="preserve">
+    <value>ऊस आगाऊ यादी</value>
+  </data>
+
+  <!-- ===== बटणे ===== -->
+  <data name="Button_AddNew" xml:space="preserve">
+    <value>नवीन आगाऊ जोडा</value>
+  </data>
+  <data name="Button_Save" xml:space="preserve">
+    <value>जतन करा</value>
+  </data>
+  <data name="Button_Back" xml:space="preserve">
+    <value>यादीकडे परत जा</value>
+  </data>
+  <data name="Button_Update" xml:space="preserve">
+    <value>सुधारणा करा</value>
+  </data>
+  <data name="Button_Delete" xml:space="preserve">
+    <value>हटवा</value>
+  </data>
+
+  <!-- ===== तक्त्याचे कॉलम ===== -->
+  <data name="Column_Farmer" xml:space="preserve">
+    <value>शेतकरी</value>
+  </data>
+  <data name="Column_Date" xml:space="preserve">
+    <value>दिनांक</value>
+  </data>
+  <data name="Column_Amount" xml:space="preserve">
+    <value>रक्कम (₹)</value>
+  </data>
+  <data name="Column_PaymentMode" xml:space="preserve">
+    <value>देयक पद्धत</value>
+  </data>
+  <data name="Column_Member" xml:space="preserve">
+    <value>सदस्याचे नाव</value>
+  </data>
+  <data name="Column_ProofImage" xml:space="preserve">
+    <value>पुरावा प्रतिमा</value>
+  </data>
+  <data name="Column_Remarks" xml:space="preserve">
+    <value>टिप / कारण</value>
+  </data>
+  <data name="Column_Actions" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+
+  <!-- ===== टूलटिप्स ===== -->
+  <data name="Tooltip_Edit" xml:space="preserve">
+    <value>नोंद संपादित करा</value>
+  </data>
+  <data name="Tooltip_Details" xml:space="preserve">
+    <value>तपशील पहा</value>
+  </data>
+  <data name="Tooltip_Delete" xml:space="preserve">
+    <value>नोंद हटवा</value>
+  </data>
+  <data name="Tooltip_ViewProof" xml:space="preserve">
+    <value>पुरावा प्रतिमा पाहण्यासाठी क्लिक करा</value>
+  </data>
+
+  <!-- ===== संदेश / स्थिती ===== -->
+  <data name="NoRecords" xml:space="preserve">
+    <value>कोणतीही आगाऊ नोंदी सापडल्या नाहीत.</value>
+  </data>
+  <data name="Message_ConfirmDelete" xml:space="preserve">
+    <value>आपल्याला ही आगाऊ नोंद हटवायची खात्री आहे का?</value>
+  </data>
+  <data name="Message_Saved" xml:space="preserve">
+    <value>आगाऊ नोंद यशस्वीरित्या जतन केली.</value>
+  </data>
+  <data name="Message_Updated" xml:space="preserve">
+    <value>आगाऊ नोंद यशस्वीरित्या सुधारित केली.</value>
+  </data>
+  <data name="Message_Deleted" xml:space="preserve">
+    <value>आगाऊ नोंद यशस्वीरित्या हटवली.</value>
+  </data>
+
+  <!-- ===== फॉर्म लेबल्स ===== -->
+  <data name="Label_Farmer" xml:space="preserve">
+    <value>शेतकऱ्याचे नाव</value>
+  </data>
+  <data name="Label_AdvanceDate" xml:space="preserve">
+    <value>आगाऊ दिनांक</value>
+  </data>
+  <data name="Label_Amount" xml:space="preserve">
+    <value>आगाऊ रक्कम</value>
+  </data>
+  <data name="Label_PaymentMode" xml:space="preserve">
+    <value>देयक पद्धत</value>
+  </data>
+  <data name="Label_Member" xml:space="preserve">
+    <value>सदस्याचे नाव</value>
+  </data>
+  <data name="Label_ProofImage" xml:space="preserve">
+    <value>पुरावा प्रतिमा अपलोड करा</value>
+  </data>
+  <data name="Label_Remarks" xml:space="preserve">
+    <value>टिप / कारण</value>
+  </data>
+
+  <!-- ===== पृष्ठ शीर्षके (Create/Edit/Details/Delete) ===== -->
+  <data name="Title_Create" xml:space="preserve">
+    <value>नवीन ऊस आगाऊ जोडा</value>
+  </data>
+  <data name="Title_Edit" xml:space="preserve">
+    <value>ऊस आगाऊ संपादित करा</value>
+  </data>
+  <data name="Title_Details" xml:space="preserve">
+    <value>ऊस आगाऊ तपशील</value>
+  </data>
+  <data name="Title_Delete" xml:space="preserve">
+    <value>ऊस आगाऊ हटवा</value>
+  </data>
+</root>

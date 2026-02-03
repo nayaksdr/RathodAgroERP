@@ -1,0 +1,33 @@
+﻿@using JaggeryAgro.Core.Entities
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model Deposit
+
+@{
+    ViewData["Title"] = Localizer["PageTitle"];
+}
+
+<div class="container mt-4">
+    <h2>@Localizer["Header"]</h2>
+
+    <dl class="row">
+        <dt class="col-sm-3">@Localizer["Labor"]</dt>
+        <dd class="col-sm-9">@Model.Labor</dd>
+
+        <dt class="col-sm-3">@Localizer["LaborId"]</dt>
+        <dd class="col-sm-9">@Model.LaborId</dd>
+
+        <dt class="col-sm-3">@Localizer["Amount"]</dt>
+        <dd class="col-sm-9">₹@Model.Amount</dd>
+
+        <dt class="col-sm-3">@Localizer["DepositDate"]</dt>
+        <dd class="col-sm-9">@Model.DepositDate.ToShortDateString()</dd>
+    </dl>
+
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+        <i class="bi bi-pencil-square"></i> @Localizer["Edit"]
+    </a>
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> @Localizer["Back"]
+    </a>
+</div>

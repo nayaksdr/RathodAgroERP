@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddLaborRateTitle" xml:space="preserve">
+    <value>कर्मचारी दर जोडा</value>
+  </data>
+  <data name="LaborType" xml:space="preserve">
+    <value>कर्मचारी प्रकार</value>
+  </data>
+  <data name="SelectLaborType" xml:space="preserve">
+    <value>-- कर्मचारी प्रकार निवडा --</value>
+  </data>
+  <data name="DailyRate" xml:space="preserve">
+    <value>दररोजचे वेतन</value>
+  </data>
+  <data name="DailyRatePlaceholder" xml:space="preserve">
+    <value>दररोजचे वेतन प्रविष्ट करा</value>
+  </data>
+  <data name="DailyRateHint" xml:space="preserve">
+    <value>दररोजचे वेतन प्रविष्ट करा (₹)</value>
+  </data>
+  <data name="EffectiveFrom" xml:space="preserve">
+    <value>प्रभावी तारीख</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>जतन करा</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+  <data name="TonRateLabel" xml:space="preserve">
+    <value>टननुसार दर</value>
+  </data>
+  <data name="TonRatePlaceholder" xml:space="preserve">
+    <value>टननुसार दर प्रविष्ट करा</value>
+  </data>
+  <data name="TonRateHint" xml:space="preserve">
+    <value>प्रत्येक टनासाठी दर प्रविष्ट करा (₹)</value>
+  </data>
+  <data name="JaggeryRateLabel" xml:space="preserve">
+    <value>गुळाच्या प्रमाणानुसार दर</value>
+  </data>
+  <data name="JaggeryRatePlaceholder" xml:space="preserve">
+    <value>गुळाच्या प्रमाणानुसार दर प्रविष्ट करा</value>
+  </data>
+  <data name="JaggeryRateHint" xml:space="preserve">
+    <value>गुळाच्या प्रमाणानुसार दर प्रविष्ट करा (₹)</value>
+  </data>
+</root>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AdvanceTitle" xml:space="preserve">
+    <value>Advance Payments</value>
+  </data>
+  <data name="AddAdvance" xml:space="preserve">
+    <value>Add New Advance</value>
+  </data>
+  <data name="LaborName" xml:space="preserve">
+    <value>Labor Name</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="DateGiven" xml:space="preserve">
+    <value>Date Given</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="NoRecords" xml:space="preserve">
+    <value>No records found</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+</root>

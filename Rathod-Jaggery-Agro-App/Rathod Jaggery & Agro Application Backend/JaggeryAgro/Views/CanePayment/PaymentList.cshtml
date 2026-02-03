@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model IEnumerable<JaggeryAgro.Core.Entities.CanePayment>
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+    // Group payments by Farmer for summary view
+    var groupedPayments = Model
+        .GroupBy(p => p.FarmerName)
+        .Select(g => new
+        {
+            FarmerName = g.Key,
+            TotalAmount = g.Sum(x => x.NetAmount),
+            Advance = g.Sum(x => x.AdvanceAmount),
+            CarryForward = g.Sum(x => x.CarryForwardAdvance),
+            NetAmount = g.Sum(x => x.NetAmount),
+            Payments = g.ToList(),
+            IsPaid = g.All(x => x.IsPaid)
+        });
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-4">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <h4>@Localizer["Header_List"]</h4>
+            <a asp-action="CreatePayment" class="btn btn-success">@Localizer["Button_AddPayment"]</a>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>@Localizer["Column_Farmer"]</th>
+                        <th>@Localizer["Column_TotalAmount"]</th>
+                        <th>@Localizer["Column_Advance"]</th>
+                        <th>@Localizer["Column_CarryForward"]</th>
+                        <th>@Localizer["Column_NetAmount"]</th>
+                        <th>@Localizer["Column_Status"]</th>
+                        <th>@Localizer["Column_Mode"]</th>
+                        <th>@Localizer["Column_PaidBy"]</th>
+                        <th>@Localizer["Column_Proof"]</th>
+                        <th>@Localizer["Column_Action"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var group in groupedPayments)
+                    {
+                        var first = group.Payments.FirstOrDefault();
+                        <tr>
+                            <td>@group.FarmerName</td>
+                            <td class="text-end">₹ @group.TotalAmount.ToString("N2")</td>
+                            <td class="text-end">₹ @group.Advance.ToString("N2")</td>
+                            <td class="text-end">₹ @group.CarryForward.ToString("N2")</td>
+                            <td class="text-end fw-bold">₹ @group.NetAmount.ToString("N2")</td>
+                            <td class="text-center">
+                                @if (group.IsPaid)
+                                {
+                                    <span class="badge bg-success">@Localizer["Status_Paid"]</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">@Localizer["Status_Pending"]</span>
+                                }
+                            </td>
+                            <td>@first?.PaymentMode </td>
+                            <td>@first?.PaidByMember </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(first?.PaymentProofPath))
+                                {
+                                    <a href="@first.PaymentProofPath" target="_blank" class="btn btn-sm btn-outline-primary">
+                                        @Localizer["Button_ViewProof"]
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">-</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                <form asp-action="MarkAsPaid" method="post" enctype="multipart/form-data" class="d-inline">
+                                    <input type="hidden" name="farmerName" value="@group.FarmerName" />
+                                    <button type="submit"
+                                            class="btn btn-sm btn-@(group.IsPaid ? "secondary" : "success")">
+                                        @(group.IsPaid? Localizer["Button_MarkPending"] : Localizer["Button_MarkPaid"])
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

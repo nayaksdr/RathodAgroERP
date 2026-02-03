@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>ऊस पेमेंट यादी</value>
+  </data>
+  <data name="Header_List" xml:space="preserve">
+    <value>ऊस पेमेंट यादी</value>
+  </data>
+  <data name="Button_AddPayment" xml:space="preserve">
+    <value>नवीन पेमेंट जोडा</value>
+  </data>
+
+  <!-- Table Columns -->
+  <data name="Column_Farmer" xml:space="preserve">
+    <value>शेतकरी</value>
+  </data>
+  <data name="Column_Date" xml:space="preserve">
+    <value>दिनांक</value>
+  </data>
+  <data name="Column_TotalAmount" xml:space="preserve">
+    <value>एकूण रक्कम</value>
+  </data>
+  <data name="Column_Advance" xml:space="preserve">
+    <value>उचल रक्कम</value>
+  </data>
+  <data name="Column_CarryForward" xml:space="preserve">
+    <value>कॅरी फॉरवर्ड</value>
+  </data>
+  <data name="Column_NetAmount" xml:space="preserve">
+    <value>निव्वळ रक्कम</value>
+  </data>
+  <data name="Column_Status" xml:space="preserve">
+    <value>स्थिती</value>
+  </data>
+  <data name="Column_Mode" xml:space="preserve">
+    <value>पेमेंट पद्धत</value>
+  </data>
+  <data name="Column_PaidBy" xml:space="preserve">
+    <value>कोणाकडून पेमेंट (मेंबर)</value>
+  </data>
+  <data name="Column_Proof" xml:space="preserve">
+    <value>पुरावा</value>
+  </data>
+  <data name="Column_Action" xml:space="preserve">
+    <value>कृती</value>
+  </data>
+
+  <!-- Status and Buttons -->
+  <data name="Status_Paid" xml:space="preserve">
+    <value>भरलेले</value>
+  </data>
+  <data name="Status_Pending" xml:space="preserve">
+    <value>प्रलंबित</value>
+  </data>
+  <data name="Button_ViewProof" xml:space="preserve">
+    <value>पुरावा पहा</value>
+  </data>
+  <data name="Button_MarkPaid" xml:space="preserve">
+    <value>भरलेले म्हणून चिन्हांकित करा</value>
+  </data>
+  <data name="Button_MarkPending" xml:space="preserve">
+    <value>प्रलंबित म्हणून चिन्हांकित करा</value>
+  </data>
+</root>

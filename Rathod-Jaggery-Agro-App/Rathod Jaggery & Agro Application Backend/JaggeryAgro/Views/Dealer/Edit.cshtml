@@ -1,0 +1,58 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.Dealer
+@inject IViewLocalizer Localizer
+
+@{
+    ViewBag.Title = Localizer["Title"];
+}
+
+<div class="container mt-4">
+    <!-- Header -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">
+            <i class="bi bi-pencil-square me-2"></i> @Localizer["Title"]
+        </h2>
+    </div>
+
+    <!-- Edit Form Card -->
+    <div class="card shadow-lg rounded-3 p-4 mx-auto" style="max-width: 600px;">
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <!-- Name -->
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label fw-bold">@Localizer["Label_Name"]</label>
+                <input asp-for="Name" class="form-control shadow-sm" placeholder="@Localizer["Placeholder_Name"]" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="mb-3">
+                <label asp-for="ContactNumber" class="form-label fw-bold">@Localizer["Label_ContactNumber"]</label>
+                <input asp-for="ContactNumber" class="form-control shadow-sm" placeholder="@Localizer["Placeholder_ContactNumber"]" />
+                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+            </div>
+
+            <!-- Address -->
+            <div class="mb-3">
+                <label asp-for="Address" class="form-label fw-bold">@Localizer["Label_Address"]</label>
+                <textarea asp-for="Address" class="form-control shadow-sm" rows="3" placeholder="@Localizer["Placeholder_Address"]"></textarea>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn btn-success px-4 shadow-sm rounded-pill">
+                    <i class="bi bi-check2-circle me-2"></i> @Localizer["Button_Update"]
+                </button>
+                <a asp-action="Index" class="btn btn-secondary px-4 shadow-sm rounded-pill">
+                    <i class="bi bi-arrow-left me-2"></i> @Localizer["Button_Back"]
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

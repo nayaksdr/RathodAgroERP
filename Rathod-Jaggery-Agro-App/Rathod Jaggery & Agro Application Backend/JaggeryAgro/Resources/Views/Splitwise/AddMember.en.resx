@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddMemberTitle" xml:space="preserve">
+    <value>Add Member</value>
+  </data>
+  <data name="MemberNameLabel" xml:space="preserve">
+    <value>Member Name</value>
+  </data>
+  <data name="EnterMemberName" xml:space="preserve">
+    <value>Enter member name</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+</root>

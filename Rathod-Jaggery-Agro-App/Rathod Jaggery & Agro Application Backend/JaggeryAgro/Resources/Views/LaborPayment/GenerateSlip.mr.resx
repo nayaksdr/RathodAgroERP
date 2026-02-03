@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="Title" xml:space="preserve">
+    <value>पगार पावती</value>
+  </data>
+  <data name="PaymentSlipTitle" xml:space="preserve">
+    <value>पगार पावती (Payment Slip)</value>
+  </data>
+  <data name="LogoAlt" xml:space="preserve">
+    <value>कारखाना लोगो</value>
+  </data>
+  <data name="LaborName" xml:space="preserve">
+    <value>मजूर नाव</value>
+  </data>
+  <data name="PaymentDate" xml:space="preserve">
+    <value>पेमेंट तारीख</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>पासून</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>पर्यंत</value>
+  </data>
+  <data name="TotalSalary" xml:space="preserve">
+    <value>एकूण पगार</value>
+  </data>
+  <data name="Advance" xml:space="preserve">
+    <value>एडव्हान्स</value>
+  </data>
+  <data name="NetSalary" xml:space="preserve">
+    <value>नेट पगार</value>
+  </data>
+  <data name="GeneratePDFSlip" xml:space="preserve">
+    <value>पीडीएफ पावती तयार करा</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+  <data name="GeneratedOn" xml:space="preserve">
+    <value>तयार केलेली तारीख</value>
+  </data>
+</root>

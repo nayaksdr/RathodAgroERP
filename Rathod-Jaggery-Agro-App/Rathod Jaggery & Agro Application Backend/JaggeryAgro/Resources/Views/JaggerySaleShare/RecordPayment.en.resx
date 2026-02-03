@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Record Payment from Members</value>
+  </data>
+  <data name="DealerLabel" xml:space="preserve">
+    <value>Dealer</value>
+  </data>
+  <data name="PayingMemberLabel" xml:space="preserve">
+    <value>Paying Member</value>
+  </data>
+  <data name="PayingMemberPlaceholder" xml:space="preserve">
+    <value>Select member who is making the payment</value>
+  </data>
+  <data name="PayingMemberValidation" xml:space="preserve">
+    <value>Please select the paying member.</value>
+  </data>
+  <data name="ReceivingMemberLabel" xml:space="preserve">
+    <value>Receiving Member</value>
+  </data>
+  <data name="ReceivingMemberPlaceholder" xml:space="preserve">
+    <value>Select the member who will receive payment</value>
+  </data>
+  <data name="ReceivingMemberValidation" xml:space="preserve">
+    <value>Please select the receiving member.</value>
+  </data>
+  <data name="AmountLabel" xml:space="preserve">
+    <value>Amount (₹)</value>
+  </data>
+  <data name="AmountValidation" xml:space="preserve">
+    <value>Please enter the payment amount.</value>
+  </data>
+  <data name="PaymentModeLabel" xml:space="preserve">
+    <value>Payment Mode</value>
+  </data>
+  <data name="PaymentModePlaceholder" xml:space="preserve">
+    <value>-- Select --</value>
+  </data>
+  <data name="PaymentModeValidation" xml:space="preserve">
+    <value>Please select payment mode.</value>
+  </data>
+  <data name="ProofImageLabel" xml:space="preserve">
+    <value>Payment Proof (Image)</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+</root>

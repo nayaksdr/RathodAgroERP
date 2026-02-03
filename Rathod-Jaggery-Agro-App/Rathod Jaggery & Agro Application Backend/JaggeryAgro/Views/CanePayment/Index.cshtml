@@ -1,0 +1,219 @@
+﻿@using JaggeryAgro.Core.Entities
+@using JaggeryAgro.Core.ViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.Rendering
+@model IEnumerable<CanePaymentSummaryVM>
+@inject IViewLocalizer Localizer
+
+<div class="text-center my-4">
+    <h2 class="fw-bold text-white bg-success px-4 py-2 d-inline-block rounded-3 shadow mb-3">
+        @Localizer["Title"]
+    </h2>
+</div>
+
+<!-- ✅ Farmer Filter Card -->
+<div class="d-flex justify-content-center mb-4">
+    <div class="card shadow-lg rounded-4 w-100" style="max-width: 400px;">
+        <div class="card-header bg-primary text-white text-center fw-bold fs-5 rounded-top-4">
+            <i class="fas fa-user me-2"></i> @Localizer["Label_SelectFarmer"]
+        </div>
+        <div class="card-body text-center">
+            <form method="get" asp-action="Index">
+                <select name="farmerId" class="form-select form-select-lg border-2 border-primary shadow-sm"
+                        asp-items="@(new SelectList(ViewBag.Farmers ?? new List<Farmer>(), "Id", "Name", ViewBag.SelectedFarmer))"
+                        onchange="this.form.submit()">
+                    <option value="">@Localizer["Option_AllFarmers"]</option>
+                </select>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ✅ Action Buttons -->
+<div class="d-flex justify-content-center flex-wrap my-3 gap-2">
+    <a asp-action="ExportExcel" asp-route-farmerId="@(ViewBag.SelectedFarmer ?? "")"
+       class="btn btn-success btn-lg rounded-pill shadow-sm">
+        <i class="fa fa-file-excel me-1"></i> @Localizer["Button_ExportExcel"]
+    </a>
+
+    <a asp-action="ExportPdf" asp-route-farmerId="@(ViewBag.SelectedFarmer ?? "")"
+       class="btn btn-danger btn-lg rounded-pill shadow-sm">
+        <i class="fa fa-file-pdf me-1"></i> @Localizer["Button_ExportPdf"]
+    </a>
+</div>
+
+<!-- ✅ Summary Card -->
+@if (Model != null && Model.Any())
+{
+    <div class="card shadow-lg mb-4">
+        <div class="card-header bg-danger text-white fw-bold fs-5 text-center">
+            @Localizer["FarmerPaymentSummary"]
+        </div>
+
+        <div class="card-body text-center fs-5">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <div class="p-3 bg-light rounded shadow-sm">
+                        <span class="fw-bold text-success">@Localizer["TotalAmount"]:</span><br />
+                        <span class="fs-5">₹ @Model.Sum(m => m.TotalPurchase).ToString("N2")</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 bg-light rounded shadow-sm">
+                        <span class="fw-bold text-primary">@Localizer["AdvanceAmount"]:</span><br />
+                        <span class="fs-5">₹ @Model.Sum(m => m.TotalAdvance).ToString("N2")</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 bg-light rounded shadow-sm">
+                        <span class="fw-bold text-danger">@Localizer["NetAmount"]:</span><br />
+                        <span class="fs-5">₹ @Model.Sum(m => m.NetAmount).ToString("N2")</span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 bg-light rounded shadow-sm">
+                        <span class="fw-bold text-warning">@Localizer["Summary_CarryForward"]:</span><br />
+                        <span class="fs-5">
+                            ₹ @((Model?.Sum(m => m.CarryForward ?? 0) ?? 0).ToString("N2"))
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+<!-- ✅ Payment Table -->
+<div class="table-responsive shadow-sm rounded-3 overflow-hidden">
+    <table class="table table-hover align-middle mb-4">
+        <thead class="bg-success text-white text-center">
+            <tr>
+                <th>@Localizer["Table_Header_Farmer"]</th>
+                <th>@Localizer["Table_Header_Date"]</th>
+                <th>@Localizer["Table_Header_TotalAmount"]</th>
+                <th>@Localizer["Table_Header_Advance"]</th>
+                <th>@Localizer["Table_Header_CarryForward"]</th>
+                <th>@Localizer["Table_Header_PaymentMode"]</th>
+                <th>@Localizer["Table_Header_Status"]</th>
+                <th>@Localizer["Table_Header_PaidBy"]</th>
+                <th>@Localizer["Table_Header_Proof"]</th>
+                <th>@Localizer["Table_Header_Actions"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    string statusBadge = "badge bg-danger px-3 py-2";
+                    string statusText = Localizer["Status_Pending"].Value;
+                    string icon = "bi bi-exclamation-circle text-danger";
+
+                    if (item.PaymentStatus == "Paid" || item.IsPaid)
+                    {
+                        statusBadge = "badge bg-success px-3 py-2";
+                        statusText = Localizer["Status_Paid"].Value;
+                        icon = "bi bi-cash-stack text-success";
+                    }
+                    else if (item.PaymentStatus == "Partial")
+                    {
+                        statusBadge = "badge bg-warning text-dark px-3 py-2";
+                        statusText = Localizer["Status_Partial"].Value;
+                        icon = "bi bi-hourglass-split text-warning";
+                    }
+                    else if (item.PaymentStatus == "No Data")
+                    {
+                        statusBadge = "badge bg-secondary px-3 py-2";
+                        statusText = Localizer["Status_NoData"].Value;
+                        icon = "bi bi-dash-circle text-secondary";
+                    }
+
+                    decimal totalPurchase = item.TotalPurchase;
+                    decimal totalAdvance = item.TotalAdvance;
+                    decimal netAmount = totalPurchase - totalAdvance;
+                    decimal paidAmount = item.PaidAmount;
+                    decimal remaining = netAmount - paidAmount;
+                    if (remaining < 0) remaining = 0;
+
+                    <tr class="text-center align-middle">
+                        <td class="fw-bold">@item.FarmerName</td>
+                        <td>@(item.PaymentDate?.ToString("dd-MM-yyyy") ?? "—")</td>
+                        <td class="text-end">₹ @totalPurchase.ToString("N2")</td>
+                        <td class="text-end">₹ @totalAdvance.ToString("N2")</td>
+                        <td class="text-end">₹ @(item.CarryForward?.ToString("N2") ?? "0.00")</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.PaymentMode))
+                            {
+                                <span class="badge bg-info text-dark">@item.PaymentMode</span>
+                            }
+                            else
+                            {
+
+                                <span class="text-muted">-</span>
+                            }
+                        </td>
+                        <td><i class="@icon me-1"></i><span class="@statusBadge">@statusText</span></td>
+                        <td>@(item.MemberName ?? "-")</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.PaymentProofPath))
+                            {
+                                <a href="@item.PaymentProofPath" target="_blank">
+                                    <img src="@item.PaymentProofPath" width="60" height="60"
+                                         class="rounded shadow-sm border border-secondary" />
+                                </a>
+                            }
+                            else
+                            {
+
+                                <span class="text-muted">-</span>
+                            }
+                        </td>
+                        <td>
+
+                            <div class="d-flex justify-content-center gap-2">
+                                <a asp-action="PaymentSlip" asp-route-farmerId="@item.FarmerId"
+                                   class="btn btn-sm text-white rounded-pill"
+                                   style="background: linear-gradient(90deg,#198754,#20c997);"
+                                   title="@Localizer["Button_PaymentSlip"]">
+                                    <i class="bi bi-file-earmark-text-fill"></i>
+                                </a>
+
+                                @if (remaining > 0)
+                                {
+                                    <a asp-action="CreatePayment" asp-route-farmerId="@item.FarmerId"
+                                       class="btn btn-sm btn-primary rounded-pill shadow-sm"
+                                       title="@Localizer["Button_CreatePayment"]">
+                                        <i class="bi bi-cash-coin"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-sm btn-success rounded-pill" disabled title="Already Paid">
+                                        <i class="bi bi-check-circle"></i>
+                                    </button>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- ✅ Marathi Remaining Row -->
+                    <tr class="table-light">
+                        <td colspan="10" class="text-end fw-bold @(remaining == 0 ? "text-success" : "text-danger")">
+                            💰 @Localizer["Table_Header_CarryForward"]: ₹ @remaining.ToString("N2")
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="10" class="text-center text-muted fw-bold py-3">
+                        @Localizer["NoData"]
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

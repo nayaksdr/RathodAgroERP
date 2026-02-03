@@ -1,0 +1,99 @@
+﻿body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    margin: 20px;
+}
+
+h2 {
+    background-color: #0d6efd;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.meta {
+    margin-bottom: 15px;
+}
+
+    .meta div {
+        margin-bottom: 4px;
+    }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 6px;
+    text-align: right;
+}
+
+    th:first-child, td:first-child {
+        text-align: left;
+    }
+
+th {
+    background-color: #0d6efd;
+    color: white;
+}
+
+tfoot td {
+    font-weight: bold;
+    background-color: #f8f9fa;
+}
+
+@media print {
+    body {
+        margin: 0;
+    }
+
+    h2 {
+        box-shadow: none;
+    }
+}
+/* Smooth scale effect on hover */
+.hover-scale {
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s;
+}
+
+    .hover-scale:hover {
+        transform: scale(1.03);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+/* Input highlight glow */
+.focus-ring:focus {
+    border-color: #28a745 !important;
+    box-shadow: 0 0 6px rgba(40, 167, 69, 0.5) !important;
+}
+
+/* Rounded corners for form elements */
+.form-control, .form-select {
+    border-radius: 0.6rem;
+}
+
+/* Card animation */
+.card {
+    transition: all 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+    }
+
+@media (max-width: 576px) {
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-header h4 {
+        font-size: 1.1rem;
+    }
+}

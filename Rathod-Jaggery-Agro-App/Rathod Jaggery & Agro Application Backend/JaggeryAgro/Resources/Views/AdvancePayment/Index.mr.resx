@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AdvanceTitle" xml:space="preserve">
+    <value>उचल नोंदी</value>
+  </data>
+  <data name="AddAdvance" xml:space="preserve">
+    <value>नवीन उचल जोडा</value>
+  </data>
+  <data name="LaborName" xml:space="preserve">
+    <value>मजुराचे नाव</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>रक्कम</value>
+  </data>
+  <data name="DateGiven" xml:space="preserve">
+    <value>उचल दिनांक</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+  <data name="NoRecords" xml:space="preserve">
+    <value>नोंदी उपलब्ध नाहीत</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>संपादन करा</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>हटवा</value>
+  </data>
+</root>

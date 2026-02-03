@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.LaborType
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="container mt-5">
+    <!-- Page Header -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-white bg-warning px-4 py-3 d-inline-block rounded-3 shadow">
+            @Localizer["Title"]
+        </h2>
+    </div>
+
+    <!-- Edit Form Card -->
+    <div class="card shadow-lg border-0 rounded-4 mx-auto" style="max-width:600px;">
+        <div class="card-body">
+            <form asp-action="Edit" method="post" class="needs-validation" novalidate>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label asp-for="LaborTypeName" class="form-label fw-semibold">@Localizer["Label_LaborTypeName"]</label>
+                    <input asp-for="LaborTypeName" class="form-control shadow-sm" />
+                    <span asp-validation-for="LaborTypeName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-semibold">@Localizer["Label_Description"]</label>
+                    <textarea asp-for="Description" class="form-control shadow-sm" rows="4"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-end gap-3 mt-4">
+                    <button type="submit" class="btn btn-primary fw-bold shadow-sm rounded-pill px-4">
+                        <i class="fas fa-edit me-2"></i> @Localizer["Button_Update"]
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary fw-bold shadow-sm rounded-pill px-4">
+                        <i class="fas fa-times me-2"></i> @Localizer["Button_Cancel"]
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="SplitwiseDashboardTitle"><value>Splitwise Dashboard</value></data>
+
+  <data name="AddExpense"><value>Add Expense</value></data>
+  <data name="AddMember"><value>Add Member</value></data>
+
+  <data name="ExpenseList"><value>Expense List</value></data>
+  <data name="PaidBy"><value>Paid By</value></data>
+  <data name="ExpenseType"><value>Expense Type</value></data>
+  <data name="PaymentMode"><value>Payment Mode</value></data>
+  <data name="Date"><value>Date</value></data>
+  <data name="ProofImage"><value>Proof Image</value></data>
+  <data name="Amount"><value>Amount</value></data>
+  <data name="Actions"><value>Actions</value></data>
+  <data name="Unknown"><value>Unknown</value></data>
+
+  <data name="Edit"><value>Edit</value></data>
+  <data name="Delete"><value>Delete</value></data>
+
+  <data name="PaymentProofImage"><value>Payment Proof Image</value></data>
+  <data name="Balances"><value>Balances</value></data>
+  <data name="Settlements"><value>Settlements</value></data>
+
+  <data name="Member"><value>Member</value></data>
+  <data name="Balance"><value>Balance</value></data>
+  <data name="From"><value>From</value></data>
+  <data name="To"><value>To</value></data>
+
+  <data name="NoExpensesFound"><value>No expenses found.</value></data>
+  <data name="NoSettlementData"><value>No settlement data available.</value></data>
+
+  <data name="ExpenseSummary"><value>Expense Summary</value></data>
+  <data name="ExpensesByMember"><value>Expenses by Member</value></data>
+  <data name="BalancePerMember"><value>Balance per Member</value></data>
+
+  <data name="DownloadExcel"><value>Download Excel</value></data>
+  <data name="DownloadPdf"><value>Download PDF</value></data>
+</root>

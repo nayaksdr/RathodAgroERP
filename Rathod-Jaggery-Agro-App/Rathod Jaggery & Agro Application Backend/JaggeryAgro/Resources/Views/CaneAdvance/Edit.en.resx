@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- ✅ Title -->
+  <data name="Title" xml:space="preserve">
+    <value>Edit Cane Advance</value>
+  </data>
+
+  <!-- ✅ Labels -->
+  <data name="Label_Farmer" xml:space="preserve">
+    <value>Farmer</value>
+  </data>
+
+  <data name="Placeholder_SelectFarmer" xml:space="preserve">
+    <value>-- Select Farmer --</value>
+  </data>
+
+  <data name="Label_Member" xml:space="preserve">
+    <value>Member</value>
+  </data>
+
+  <data name="Column_Member" xml:space="preserve">
+    <value>Member Name</value>
+  </data>
+
+  <data name="Placeholder_SelectMember" xml:space="preserve">
+    <value>-- Select Member --</value>
+  </data>
+
+  <data name="Label_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+
+  <data name="Label_Amount" xml:space="preserve">
+    <value>Amount (₹)</value>
+  </data>
+
+  <data name="Label_Remarks" xml:space="preserve">
+    <value>Remarks / Notes</value>
+  </data>
+
+  <data name="Placeholder_Remarks" xml:space="preserve">
+    <value>Enter a note...</value>
+  </data>
+
+  <!-- ✅ Buttons -->
+  <data name="Button_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+
+  <data name="Button_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+</root>

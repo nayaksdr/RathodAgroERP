@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0</value></resheader>
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>Deposit Details</value>
+  </data>
+
+  <data name="Header" xml:space="preserve">
+    <value>Deposit Details</value>
+  </data>
+
+  <data name="Labor" xml:space="preserve">
+    <value>Type</value>
+  </data>
+
+  <data name="LaborId" xml:space="preserve">
+    <value>Related ID</value>
+  </data>
+
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+
+  <data name="DepositDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+
+  <data name="Back" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+</root>

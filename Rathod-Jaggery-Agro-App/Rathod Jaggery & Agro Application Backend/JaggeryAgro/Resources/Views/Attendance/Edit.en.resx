@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  
+  
+  <data name="PageTitle" xml:space="preserve"><value>Edit Attendance</value></data>
+<data name="SelectLabor" xml:space="preserve"><value>Select Labor</value></data>
+<data name="Date" xml:space="preserve"><value>Date</value></data>
+<data name="Present" xml:space="preserve"><value>Present</value></data>
+<data name="Update" xml:space="preserve"><value>Update</value></data>
+<data name="Back" xml:space="preserve"><value>Back</value></data>
+<data name="SelectLaborOption" xml:space="preserve"><value>-- Select Labor --</value></data>
+
+  
+  </root>

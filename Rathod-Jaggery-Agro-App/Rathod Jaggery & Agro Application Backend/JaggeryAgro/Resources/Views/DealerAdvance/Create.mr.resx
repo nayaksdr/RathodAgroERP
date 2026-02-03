@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="CreateTitle"><value>व्यापारी आगाऊ रक्कम जोडा</value></data>
+  <data name="EditTitle"><value>व्यापारी आगाऊ रक्कम संपादित करा</value></data>
+
+  <data name="BackButton"><value>मागे जा</value></data>
+
+  <data name="DealerLabel"><value>व्यापारी</value></data>
+  <data name="SelectDealer"><value>व्यापारी निवडा</value></data>
+
+  <data name="PaidByLabel"><value>कोणाकडून देण्यात आले</value></data>
+  <data name="SelectMember"><value>सदस्य निवडा</value></data>
+
+  <data name="DateLabel"><value>भरणा तारीख</value></data>
+
+  <data name="PaymentModeLabel"><value>पेमेंट पद्धत</value></data>
+  <data name="SelectPaymentMode"><value>पेमेंट पद्धत निवडा</value></data>
+  <data name="Cash"><value>रोख</value></data>
+  <data name="UPI"><value>यूपीआय</value></data>
+  <data name="Bank"><value>बँक</value></data>
+
+  <data name="ProofImageLabel"><value>भरणा पुरावा (प्रतिमा)</value></data>
+
+  <data name="AmountLabel"><value>रक्कम (₹)</value></data>
+  <data name="AmountPlaceholder"><value>रक्कम भरा</value></data>
+
+  <data name="NoteLabel"><value>टीप</value></data>
+  <data name="NotePlaceholder"><value>टीप लिहा (ऐच्छिक)</value></data>
+
+  <data name="SaveButton"><value>जतन करा</value></data>
+  <data name="UpdateButton"><value>अपडेट करा</value></data>
+
+  <data name="Validation_DealerRequired"><value>कृपया व्यापारी निवडा.</value></data>
+  <data name="Validation_AmountRequired"><value>कृपया रक्कम भरा.</value></data>
+  <data name="Validation_DateRequired"><value>कृपया भरणा तारीख निवडा.</value></data>
+</root>

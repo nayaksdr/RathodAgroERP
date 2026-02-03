@@ -1,0 +1,172 @@
+﻿using JaggeryAgro.Core.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
+
+namespace JaggeryAgro.Infrastructure.Data
+{
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options) { }
+
+        // ✅ DbSets
+        public DbSet<LaborTypeRate> LaborTypeRates { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Deposit> Deposits { get; set; }
+        public DbSet<Labor> Labors { get; set; }
+        public DbSet<LaborType> LaborTypes { get; set; }
+        public DbSet<WeeklyPayment> WeeklyPayments { get; set; }
+        public DbSet<AdvancePayment> AdvancePayments { get; set; }
+        public DbSet<WeeklySalary> WeeklySalaries { get; set; }
+        public DbSet<Setting> Settings { get; set; }
+        public DbSet<JaggeryProduce> JaggeryProduces { get; set; }
+        public DbSet<Farmer> Farmers { get; set; }
+        public DbSet<CanePurchase> CanePurchases { get; set; }
+        public DbSet<CaneAdvance> CaneAdvances { get; set; }
+        public DbSet<CanePayment> CanePayments { get; set; }
+        public DbSet<LaborPayment> LaborPayments { get; set; }
+        public DbSet<Member> Members { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
+        public DbSet<ExpenseType> ExpenseTypes { get; set; }
+        public DbSet<Dealer> Dealers { get; set; }
+        public DbSet<JaggerySale> JaggerySales { get; set; }
+        public DbSet<JaggerySalePayment> JaggerySalePayments { get; set; }
+        public DbSet<DealerAdvance> DealerAdvances { get; set; }
+        public DbSet<SplitwisePayment> SplitwisePayments { get; set; }
+        public DbSet<JaggerySaleShare> JaggerySaleShares { get; set; }
+
+        public DbSet<CaneProcessing> CaneProcessings { get; set; }
+        public DbSet<JaggeryProduction> JaggeryProductions { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // ✅ Identity table mappings
+            modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUsers");
+            modelBuilder.Entity<ApplicationRole>().ToTable("AspNetRoles");
+
+            // ✅ Add custom ApplicationRole property mapping once (no duplicate!)
+            modelBuilder.Entity<ApplicationRole>(entity =>
+            {
+                entity.Property(e => e.LastDayAsRoleUse)
+                      .HasColumnType("datetime2")
+                      .IsRequired(false);
+            });
+
+            // ✅ Decimal precision globally
+            foreach (var property in modelBuilder.Model
+                .GetEntityTypes()
+                .SelectMany(t => t.GetProperties())
+                .Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?)))
+            {
+                property.SetPrecision(18);
+                property.SetScale(2);
+            }
+
+            // ✅ Ignore MVC UI types
+            modelBuilder.Ignore<SelectListItem>();
+
+            // ✅ Relationships
+            modelBuilder.Entity<Labor>(entity =>
+            {
+                entity.HasOne(l => l.LaborType)
+                      .WithMany(lt => lt.Labors)  // point to navigation property
+                      .HasForeignKey(l => l.LaborTypeId)
+                      .OnDelete(DeleteBehavior.Restrict);
+
+                entity.Property(l => l.LaborTypeId).HasColumnName("LaborTypeId");
+            });
+
+
+            modelBuilder.Entity<LaborType>()
+                .Property(x => x.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Farmer>()
+                .HasIndex(f => new { f.Name, f.Mobile })
+                .IsUnique(false);
+
+            modelBuilder.Entity<CanePurchase>()
+                .HasOne(cp => cp.Farmer)
+                .WithMany(f => f.CanePurchases)
+                .HasForeignKey(cp => cp.FarmerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<CaneAdvance>()
+                .Property(a => a.RemainingAmount).HasPrecision(18, 2);
+            modelBuilder.Entity<CaneAdvance>()
+                .Property(a => a.Amount).HasPrecision(18, 2);
+
+            modelBuilder.Entity<CanePayment>()
+                .Property(p => p.GrossAmount).HasPrecision(18, 2);
+            modelBuilder.Entity<CanePayment>()
+                .Property(p => p.AdvanceAdjusted).HasPrecision(18, 2);
+            modelBuilder.Entity<CanePayment>()
+                .Property(p => p.NetAmount).HasPrecision(18, 2);
+            modelBuilder.Entity<CanePayment>()
+                .Property(p => p.CarryForwardAdvance).HasPrecision(18, 2);
+
+            modelBuilder.Entity<Expense>()
+                .HasOne(e => e.PaidBy)
+                .WithMany()
+                .HasForeignKey(e => e.PaidById)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Expense>()
+                .HasOne(e => e.ExpenseType)
+                .WithMany()
+                .HasForeignKey(e => e.ExpenseTypeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Expense>()
+                .HasOne(e => e.SplitwisePayment)
+                .WithMany()
+                .HasForeignKey(e => e.SplitwisePaymentId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<SplitwisePayment>()
+                .HasOne(p => p.FromMember)
+                .WithMany()
+                .HasForeignKey(p => p.FromMemberId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<SplitwisePayment>()
+                .HasOne(p => p.ToMember)
+                .WithMany()
+                .HasForeignKey(p => p.ToMemberId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<JaggerySalePayment>()
+                .HasOne(p => p.FromMember)
+                .WithMany()
+                .HasForeignKey(p => p.FromMemberId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<JaggerySalePayment>()
+                .HasOne(p => p.ToMember)
+                .WithMany()
+                .HasForeignKey(p => p.ToMemberId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<AdvancePayment>(entity =>
+            {
+                // Primary key
+                entity.HasKey(a => a.Id);
+
+                // Configure relationship to Labor
+                entity.HasOne(a => a.Labor)      // navigation property in AdvancePayment
+                      .WithMany()                // no collection in Labor (safe if Labor doesn't track AdvancePayments)
+                      .HasForeignKey(a => a.LaborId)  // explicitly define the FK
+                      .OnDelete(DeleteBehavior.Restrict); // prevent EF from deleting Labor when AdvancePayment is deleted
+            });
+
+
+
+
+        }
+    }
+}

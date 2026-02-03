@@ -1,0 +1,48 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model JaggeryAgro.Core.Entities.CaneAdvance
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="container mt-4">
+    <!-- Page Header -->
+    <div class="text-center my-4">
+        <h2 class="form-header text-danger">
+            @Localizer["Header_Delete"]
+        </h2>
+    </div>
+
+    <!-- Delete Confirmation Card -->
+    <div class="card shadow-lg rounded-4">
+        <div class="card-body">
+            <p class="fw-bold text-center">@Localizer["Confirm_Message"]</p>
+
+            <dl class="row mb-0">
+                <dt class="col-sm-3 fw-bold">@Localizer["Label_FarmerId"]</dt>
+                <dd class="col-sm-9">@Model.FarmerId</dd>
+
+                <dt class="col-sm-3 fw-bold">@Localizer["Label_Amount"]</dt>
+                <dd class="col-sm-9 text-success fw-bold">₹ @Model.Amount.ToString("N2")</dd>
+
+                <dt class="col-sm-3 fw-bold">@Localizer["Label_Date"]</dt>
+                <dd class="col-sm-9">@Model.AdvanceDate.ToString("dd-MM-yyyy")</dd>
+            </dl>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div class="card-footer d-flex flex-wrap justify-content-between gap-2">
+            <form asp-action="DeleteConfirmed" method="post" class="d-inline">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger shadow-sm hover-scale">
+                    <i class="fa-solid fa-trash me-2"></i> @Localizer["Button_Delete"]
+                </button>
+            </form>
+
+            <a asp-action="Index" class="btn btn-secondary shadow-sm hover-scale">
+                <i class="fa-solid fa-arrow-left me-2"></i> @Localizer["Button_Back"]
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.ExpenseType
+@inject IViewLocalizer Localizer
+
+@{
+    bool isEdit = Model.Id != 0;
+    ViewBag.Title = isEdit ? Localizer["EditTitle"] : Localizer["CreateTitle"];
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0 rounded-3 mx-auto" style="max-width: 600px;">
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0">@ViewBag.Title</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="@(isEdit ? "Edit" : "Create")" method="post">
+                @if (isEdit)
+                {
+                    <input type="hidden" asp-for="Id" />
+                }
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-bold">@Localizer["ExpenseTypeLabel"]</label>
+                    <input asp-for="Name" class="form-control" placeholder="@Localizer["ExpenseTypePlaceholder"]" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-3">
+                    <button type="submit" class="btn btn-success px-4">
+                        <i class="bi @(isEdit ? "bi-pencil-square" : "bi-plus-circle") me-2"></i>
+                        @(isEdit? Localizer["EditButton"] : Localizer["AddButton"])
+                    </button>
+                    <a class="btn btn-secondary px-4" asp-action="Index">
+                        <i class="bi bi-x-circle me-2"></i>@Localizer["CancelButton"]
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

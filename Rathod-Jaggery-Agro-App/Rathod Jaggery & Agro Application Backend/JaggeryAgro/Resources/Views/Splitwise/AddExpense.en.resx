@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddExpenseTitle" xml:space="preserve">
+    <value>Add Expense</value>
+  </data>
+  <data name="ExpenseType" xml:space="preserve">
+    <value>Expense Type</value>
+  </data>
+  <data name="SelectExpenseType" xml:space="preserve">
+    <value>Select Expense Type</value>
+  </data>
+  <data name="PaidBy" xml:space="preserve">
+    <value>Paid By</value>
+  </data>
+  <data name="SelectMember" xml:space="preserve">
+    <value>Select Member</value>
+  </data>
+  <data name="PaymentMode" xml:space="preserve">
+    <value>Payment Mode</value>
+  </data>
+  <data name="SelectPaymentMode" xml:space="preserve">
+    <value>Select Payment Mode</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="UPI" xml:space="preserve">
+    <value>UPI</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="EnterAmount" xml:space="preserve">
+    <value>Enter amount</value>
+  </data>
+  <data name="ProofImage" xml:space="preserve">
+    <value>Proof (Image)</value>
+  </data>
+  <data name="SaveExpense" xml:space="preserve">
+    <value>Save Expense</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+</root>

@@ -1,0 +1,73 @@
+﻿@using JaggeryAgro.Core.Entities
+@using Microsoft.AspNetCore.Mvc.Localization
+@model Attendance
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["PageTitle"];
+}
+
+<div class="container mt-4">
+    <div class="text-center my-4">
+        <h2 class="form-header fw-bold text-white px-4 py-3 rounded shadow-lg d-inline-block"
+            style="background: linear-gradient(90deg, #43cea2, #185a9d); letter-spacing: 1px;">
+            @ViewData["Title"]
+        </h2>
+    </div>
+
+    <form asp-action="Edit" method="post" class="needs-validation" novalidate>
+        <input type="hidden" asp-for="Id" />
+
+        <!-- Labor Dropdown -->
+        <div class="mb-3">
+            <label asp-for="LaborId" class="form-label fw-bold">@Localizer["SelectLabor"]</label>
+            <select asp-for="LaborId" class="form-select shadow-sm" asp-items="ViewBag.Labors">
+                <option value="">@Localizer["SelectLaborOption"]</option>
+            </select>
+            <span asp-validation-for="LaborId" class="text-danger"></span>
+        </div>
+
+        <!-- Date -->
+        <div class="mb-3">
+            <label asp-for="Date" class="form-label fw-bold">@Localizer["Date"]</label>
+            <input asp-for="Date" type="date" class="form-control shadow-sm" required />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+
+        <!-- Present Checkbox -->
+        <div class="form-check mb-3">
+            <input asp-for="IsPresent" class="form-check-input" type="checkbox" id="isPresentSwitch" />
+            <label asp-for="IsPresent" class="form-check-label fw-bold" for="isPresentSwitch">@Localizer["Present"]</label>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex flex-wrap gap-2">
+            <button type="submit" class="btn btn-success shadow-sm hover-scale">
+                <i class="fas fa-save me-1"></i> @Localizer["Update"]
+            </button>
+            <a asp-action="Index" class="btn btn-secondary shadow-sm hover-scale">
+                <i class="fas fa-arrow-left me-1"></i> @Localizer["Back"]
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Bootstrap validation
+        (() => {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+}

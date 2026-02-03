@@ -1,0 +1,53 @@
+﻿@using JaggeryAgro.Core.Entities
+@model WeeklyPayment
+@{
+    Layout = null; // ✅ No master layout for clean PDF export
+}
+
+<div style="padding:20px; font-family:Arial, sans-serif; font-size:14px;">
+    <h2 style="text-align:center; margin-bottom:5px;">Rathod Jaggery & Agro</h2>
+    <h4 style="text-align:center; margin-top:0;">पगार पावती</h4>
+    <hr />
+    <p style="text-align:right; margin:0;">
+        <strong>दिनांक:</strong> @DateTime.Now.ToString("dd-MM-yyyy")
+    </p>
+
+    <table style="width:100%; border-collapse:collapse; margin-top:10px;" border="1" cellpadding="6">
+        <tr>
+            <th style="text-align:left;">कामगाराचे नाव</th>
+            <td>@Model.LaborName</td>
+        </tr>
+        <tr>
+            <th style="text-align:left;">कामगार प्रकार</th>
+            <td>@Model.LaborType</td>
+        </tr>
+        <tr>
+            <th style="text-align:left;">उपस्थित दिवस</th>
+            <td>@Model.DaysPresent</td>
+        </tr>
+        <tr>
+            <th style="text-align:left;">दररोज वेतन</th>
+            <td>₹ @Model.DailyRate.ToString("N2")</td>
+        </tr>
+        <tr>
+            <th style="text-align:left;">एकूण वेतन</th>
+            <td>₹ @(Model.DaysPresent* Model.DailyRate).ToString("N2")</td>
+        </tr>
+        <tr>
+            <th style="text-align:left;">अ‍ॅडव्हान्स कपात</th>
+            <td>₹ @Model.AdvanceDeducted.ToString("N2")</td>
+        </tr>
+        <tr>
+            <th style="text-align:left;">नेट वेतन</th>
+            <td><strong>₹ @Model.NetSalary.ToString("N2")</strong></td>
+        </tr>
+        <tr>
+            <th style="text-align:left;">पगार देण्याची पद्धत</th>
+            <td>@Model.PaymentMethod</td>
+        </tr>
+    </table>
+
+    <p style="text-align:center; margin-top:30px; font-size:12px;">
+        *** तुमच्या मेहनतीसाठी धन्यवाद ***
+    </p>
+</div>

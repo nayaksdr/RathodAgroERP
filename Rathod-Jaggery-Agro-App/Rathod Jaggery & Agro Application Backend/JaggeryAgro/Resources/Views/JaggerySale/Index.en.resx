@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="JaggerySaleList" xml:space="preserve"><value>Jaggery Sale List</value></data>
+<data name="AddNewSale" xml:space="preserve"><value>Add New Sale</value></data>
+<data name="Dealer" xml:space="preserve"><value>Dealer</value></data>
+<data name="AllDealers" xml:space="preserve"><value>All Dealers</value></data>
+<data name="FromDate" xml:space="preserve"><value>From Date</value></data>
+<data name="ToDate" xml:space="preserve"><value>To Date</value></data>
+<data name="Search" xml:space="preserve"><value>Search</value></data>
+<data name="Date" xml:space="preserve"><value>Date</value></data>
+<data name="QuantityKg" xml:space="preserve"><value>Quantity (Kg)</value></data>
+<data name="RatePerKg" xml:space="preserve"><value>Rate per Kg</value></data>
+<data name="TotalAmount" xml:space="preserve"><value>Total Amount</value></data>
+<data name="Member" xml:space="preserve"><value>Member</value></data>
+<data name="PaymentMode" xml:space="preserve"><value>Payment Mode</value></data>
+<data name="Proof" xml:space="preserve"><value>Proof</value></data>
+<data name="LaborMukadam" xml:space="preserve"><value>Labor (Mukadam)</value></data>
+<data name="Actions" xml:space="preserve"><value>Actions</value></data>
+<data name="NoImage" xml:space="preserve"><value>No Image</value></data>
+<data name="ConfirmDelete" xml:space="preserve"><value>Are you sure you want to delete this record?</value></data>
+<data name="NoSalesAvailable" xml:space="preserve"><value>No sales available</value></data>
+<data name="PaymentProof" xml:space="preserve"><value>Payment Proof</value></data>
+<data name="Close" xml:space="preserve"><value>Close</value></data>
+
+</root>

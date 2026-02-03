@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--  English Localization for CanePurchase Edit View  -->
+ 
+  <data name="PageTitle" xml:space="preserve">
+    <value>Edit Cane Purchase</value>
+  </data>
+  <data name="HeaderTitle" xml:space="preserve">
+    <value>Edit Cane Purchase</value>
+  </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>Go Back</value>
+  </data>
+  <data name="FarmerLabel" xml:space="preserve">
+    <value>Farmer</value>
+  </data>
+  <data name="LaborLabel" xml:space="preserve">
+    <value>Cutter / Mukadam</value>
+  </data>
+  <data name="PurchaseDateLabel" xml:space="preserve">
+    <value>Purchase Date</value>
+  </data>
+  <data name="QuantityTonLabel" xml:space="preserve">
+    <value>Quantity (Ton)</value>
+  </data>
+  <data name="RatePerTonLabel" xml:space="preserve">
+    <value>Rate (Per Ton)</value>
+  </data>
+  <data name="PaymentStatusLabel" xml:space="preserve">
+    <value>Payment Status</value>
+  </data>
+  <data name="PaymentPending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="PaymentPaid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="CaneWeightImageLabel" xml:space="preserve">
+    <value>Cane Weight Image</value>
+  </data>
+  <data name="ImageNote" xml:space="preserve">
+    <value>Select only image files (jpg, png, bmp)</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+</root>

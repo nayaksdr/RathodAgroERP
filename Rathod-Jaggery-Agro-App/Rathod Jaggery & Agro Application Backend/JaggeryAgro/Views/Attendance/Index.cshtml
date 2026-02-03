@@ -1,0 +1,108 @@
+﻿@using JaggeryAgro.Core.Entities
+@using Microsoft.AspNetCore.Mvc.Localization
+@model IEnumerable<Attendance>
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["PageTitle"];
+}
+
+<div class="d-flex justify-content-center my-4">
+    <div class="card shadow-lg border-0 rounded-4 w-100" style="max-width: 600px;">
+        <div class="card-header bg-success bg-gradient text-white text-center fw-bold fs-4 rounded-top-4">
+            <i class="fas fa-clipboard-list me-2"></i> @Localizer["PageTitle"]
+        </div>
+        <div class="card-body text-center">
+            <a asp-action="Create"
+               class="btn btn-success bg-gradient btn-lg fw-bold px-4 shadow rounded-pill hover-scale">
+                <i class="fas fa-plus me-2"></i> @Localizer["AddAttendance"]
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive shadow-sm rounded-4 mb-5">
+    <table class="table table-bordered table-hover align-middle mb-0" id="AttendanceTable">
+        <thead class="table-success">
+            <tr>
+                <th>@Localizer["LaborName"]</th>
+                <th>@Localizer["Date"]</th>
+                <th>@Localizer["Present"]</th>
+                <th>@Localizer["Actions"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                bool isSpecialLabor = item.Labor?.LaborType?.LaborTypeName?.Contains("ऊस तोड") == true
+                || item.Labor?.LaborType?.LaborTypeName?.Contains("गुळ तयार") == true;
+
+                <tr class="@(isSpecialLabor ? "table-warning" : "")">
+                    <td>@item.Labor?.Name</td>
+                    <td>@item.Date.ToShortDateString()</td>
+                    <td>
+                        <span class="badge @(item.IsPresent ? "bg-success" : "bg-danger")">
+                            @(item.IsPresent? Localizer["PresentLabel"] : Localizer["AbsentLabel"])
+                        </span>
+                    </td>
+                    <td class="d-flex flex-wrap gap-1">
+                        @if (!isSpecialLabor)
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary hover-scale" title="@Localizer["Edit"]">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <button type="button" class="btn btn-sm btn-danger hover-scale" data-bs-toggle="modal" data-bs-target="#deleteModal-@item.Id" title="@Localizer["Delete"]">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        }
+                        else
+                        {
+                            <span class="text-muted small" title="@Localizer["SpecialLaborTooltip"]">@Localizer["ControlledOnSlip"]</span>
+                        }
+
+                        <!-- Delete Modal -->
+                        <div class="modal fade" id="deleteModal-@item.Id" tabindex="-1" aria-labelledby="deleteModalLabel-@item.Id" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-danger text-white">
+                                        <h5 class="modal-title" id="deleteModalLabel-@item.Id">@Localizer["DeleteConfirmTitle"]</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="@Localizer["Cancel"]"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @string.Format(Localizer["DeleteConfirmBody"].Value, item.Labor?.Name)
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-danger hover-scale">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm hover-scale">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@Localizer["Cancel"]</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#AttendanceTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 5
+            });
+        });
+    </script>
+}

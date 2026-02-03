@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>Delete Cane Purchase</value>
+  </data>
+  <data name="HeaderTitle" xml:space="preserve">
+    <value>Delete Cane Purchase Record</value>
+  </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>Back to List</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Are you sure you want to delete this cane purchase record?</value>
+  </data>
+  <data name="DateLabel" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="QuantityLabel" xml:space="preserve">
+    <value>Tons</value>
+  </data>
+  <data name="RateLabel" xml:space="preserve">
+    <value>Rate per Ton (₹)</value>
+  </data>
+  <data name="TotalLabel" xml:space="preserve">
+    <value>Total Amount (₹)</value>
+  </data>
+  <data name="WeightSlipLabel" xml:space="preserve">
+    <value>Weight Slip</value>
+  </data>
+  <data name="NoImageText" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="ConfirmDeleteButton" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+</root>

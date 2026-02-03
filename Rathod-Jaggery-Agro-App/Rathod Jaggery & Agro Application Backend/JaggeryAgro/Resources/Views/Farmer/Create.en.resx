@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="FarmerCreateTitle" xml:space="preserve">
+    <value>Add New Farmer</value>
+  </data>
+  <data name="FarmerName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="EnterFarmerName" xml:space="preserve">
+    <value>Enter farmer's name</value>
+  </data>
+  <data name="FarmerMobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="EnterFarmerMobile" xml:space="preserve">
+    <value>Enter mobile number</value>
+  </data>
+  <data name="FarmerAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="EnterFarmerAddress" xml:space="preserve">
+    <value>Enter address</value>
+  </data>
+  <data name="FarmerVillage" xml:space="preserve">
+    <value>Village</value>
+  </data>
+  <data name="EnterFarmerVillage" xml:space="preserve">
+    <value>Enter village name</value>
+  </data>
+  <data name="SaveFarmer" xml:space="preserve">
+    <value>Save Farmer</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+</root>

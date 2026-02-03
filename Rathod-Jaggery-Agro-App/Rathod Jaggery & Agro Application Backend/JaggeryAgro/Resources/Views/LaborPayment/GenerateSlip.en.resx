@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="Title" xml:space="preserve">
+    <value>Payment Slip</value>
+  </data>
+  <data name="PaymentSlipTitle" xml:space="preserve">
+    <value>Payment Slip</value>
+  </data>
+  <data name="LogoAlt" xml:space="preserve">
+    <value>Factory Logo</value>
+  </data>
+  <data name="LaborName" xml:space="preserve">
+    <value>Labor Name</value>
+  </data>
+  <data name="PaymentDate" xml:space="preserve">
+    <value>Payment Date</value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="TotalSalary" xml:space="preserve">
+    <value>Total Salary</value>
+  </data>
+  <data name="Advance" xml:space="preserve">
+    <value>Advance Deducted</value>
+  </data>
+  <data name="NetSalary" xml:space="preserve">
+    <value>Net Salary</value>
+  </data>
+  <data name="GeneratePDFSlip" xml:space="preserve">
+    <value>Generate PDF Slip</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="GeneratedOn" xml:space="preserve">
+    <value>Generated On</value>
+  </data>
+</root>

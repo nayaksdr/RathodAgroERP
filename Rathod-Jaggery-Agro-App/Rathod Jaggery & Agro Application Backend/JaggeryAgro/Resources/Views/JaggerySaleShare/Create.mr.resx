@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PageTitle" xml:space="preserve">
+    <value>गुळ विक्री वाटप तयार करा</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>यादीकडे परत जा</value>
+  </data>
+  <data name="SelectDealer" xml:space="preserve">
+    <value>व्यापारी निवडा</value>
+  </data>
+  <data name="SelectDealerPlaceholder" xml:space="preserve">
+    <value>-- व्यापारी निवडा --</value>
+  </data>
+  <data name="SelectDealerValidation" xml:space="preserve">
+    <value>कृपया व्यापारी निवडा.</value>
+  </data>
+  <data name="PayingMember" xml:space="preserve">
+    <value>देय सदस्य</value>
+  </data>
+  <data name="PayingMemberPlaceholder" xml:space="preserve">
+    <value>व्यापारी निवडल्यावर आपोआप भरले जाईल</value>
+  </data>
+  <data name="SplitMembers" xml:space="preserve">
+    <value>वाटप सदस्य</value>
+  </data>
+  <data name="SplitMembersHint" xml:space="preserve">
+    <value>जे सदस्य पेमेंट वाटून घेतील ते निवडा.</value>
+  </data>
+  <data name="PaidAmount" xml:space="preserve">
+    <value>देय रक्कम</value>
+  </data>
+  <data name="PaidAmountValidation" xml:space="preserve">
+    <value>कृपया देय रक्कम भरा.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>जतन करा</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+  <data name="NoMembersFound" xml:space="preserve">
+    <value>या विक्रीसाठी कोणतेही सदस्य आढळले नाहीत.</value>
+  </data>
+  <data name="AllMembersAuto" xml:space="preserve">
+    <value>सर्व सदस्य आपोआप निवडले गेले आहेत.</value>
+  </data>
+</root>

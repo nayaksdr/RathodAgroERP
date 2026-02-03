@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject IViewLocalizer Localizer
+@model JaggeryAgro.Core.Entities.Farmer
+
+@{
+    ViewData["Title"] = Localizer["FarmerCreateTitle"];
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <div class="card shadow-lg rounded-3">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-person-plus-fill me-2"></i> @ViewData["Title"]
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post" class="row g-3 needs-validation" novalidate>
+                        <div class="col-12">
+                            <label asp-for="Name" class="form-label fw-bold">@Localizer["FarmerName"]</label>
+                            <input asp-for="Name" class="form-control" placeholder="@Localizer["EnterFarmerName"]" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="Mobile" class="form-label fw-bold">@Localizer["FarmerMobile"]</label>
+                            <input asp-for="Mobile" class="form-control" placeholder="@Localizer["EnterFarmerMobile"]" />
+                            <span asp-validation-for="Mobile" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="Address" class="form-label fw-bold">@Localizer["FarmerAddress"]</label>
+                            <textarea asp-for="Address" class="form-control" rows="3" placeholder="@Localizer["EnterFarmerAddress"]"></textarea>
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-12">
+                            <label asp-for="Village" class="form-label fw-bold">@Localizer["FarmerVillage"]</label>
+                            <input asp-for="Village" class="form-control" placeholder="@Localizer["EnterFarmerVillage"]" />
+                            <span asp-validation-for="Village" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-12 text-end mt-3">
+                            <button type="submit" class="btn btn-success px-4">
+                                <i class="bi bi-check-circle me-1"></i> @Localizer["SaveFarmer"]
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary px-4 ms-2">
+                                <i class="bi bi-x-circle me-1"></i> @Localizer["Cancel"]
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -1,0 +1,119 @@
+﻿@model IEnumerable<JaggeryAgro.Core.Entities.Labor>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["LaborListTitle"];
+}
+
+<div class="container mt-5">
+
+    <!-- Page Header -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-white px-4 py-3 d-inline-block rounded shadow-lg"
+            style="background: linear-gradient(90deg, #0d6efd, #6610f2);
+                   font-size: 2rem;
+                   letter-spacing: 1px;
+                   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
+            <i class="fas fa-users me-2"></i> @Localizer["LaborListTitle"]
+        </h2>
+    </div>
+
+    <!-- Add New Labor Button -->
+    <div class="text-center mb-4">
+        <a asp-action="Create" class="btn btn-success btn-lg fw-bold shadow-lg rounded-pill px-5 py-3">
+            <i class="fas fa-plus-circle me-2"></i> @Localizer["AddNewLabor"]
+        </a>
+    </div>
+
+    <!-- No Labor Alert -->
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info shadow-sm rounded">
+            <i class="fas fa-info-circle me-2"></i> @Localizer["NoLaborFound"]
+        </div>
+    }
+    else
+    {
+        <!-- Labor Table Card -->
+        <div class="card shadow-sm rounded-4">
+            <div class="card-body p-3">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle text-center" id="LaborTable">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>@Localizer["Name"]</th>
+                                <th>@Localizer["LaborType"]</th>
+                                <th>@Localizer["MobileNumber"]</th>
+                                <th>@Localizer["Role"]</th>
+                                <th>@Localizer["JoinDate"]</th>
+                                <th>@Localizer["ActiveStatus"]</th>
+                                <th style="width: 180px;">@Localizer["Actions"]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.LaborType?.LaborTypeName</td>
+                                    <td>@item.Mobile</td>
+                                    <td>@item.Role</td>
+                                    <td>@item.JoinDate.ToString("dd-MM-yyyy")</td>
+                                    <td>
+                                        @if (item.IsActive)
+                                        {
+                                            <span class="badge bg-success px-3 py-2">@Localizer["Active"]</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger px-3 py-2">@Localizer["Inactive"]</span>
+                                        }
+                                    </td>
+                                    <td class="d-flex justify-content-center gap-1">
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary shadow-sm" title="@Localizer["Edit"]">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white shadow-sm" title="@Localizer["Details"]">
+                                            <i class="fas fa-info-circle"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger shadow-sm" title="@Localizer["Delete"]">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#LaborTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 10,
+                language: {
+                    search: "@Localizer["Search"]",
+                    lengthMenu: "_MENU_ @Localizer["ShowEntries"]",
+                    zeroRecords: "@Localizer["NoRecordsFound"]",
+                    info: "@Localizer["ShowingEntries"]",
+                    infoEmpty: "@Localizer["NoEntriesAvailable"]",
+                    paginate: {
+                        previous: "@Localizer["Previous"]",
+                        next: "@Localizer["Next"]"
+                    }
+                },
+                columnDefs: [
+                    { orderable: false, targets: 6 }
+                ]
+            });
+        });
+    </script>
+}

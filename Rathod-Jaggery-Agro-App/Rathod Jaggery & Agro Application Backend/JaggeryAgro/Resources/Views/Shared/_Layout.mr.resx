@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="EmployeeRegistration" xml:space="preserve">
+    <value>कर्मचारी नोंदणी</value>
+  </data>
+  <data name="LaborType" xml:space="preserve">
+    <value>मजूर प्रकार</value>
+  </data>
+  <data name="LaborTypeRate" xml:space="preserve">
+    <value>कामगार प्रकार दर</value>
+  </data>
+  <data name="Labor" xml:space="preserve">
+    <value>मजूर</value>
+  </data>
+  <data name="AiAssistant" xml:space="preserve">
+    <value>🤖 AI सहाय्यक</value>
+  </data>
+  <data name="Attendance" xml:space="preserve">
+    <value>उपस्थिती</value>
+  </data>
+  <data name="EmployeePayments" xml:space="preserve">
+    <value>कर्मचारी वेतन</value>
+  </data>
+  <data name="EmployeeSalary" xml:space="preserve">
+    <value>कर्मचारी वेतन</value>
+  </data>
+  <data name="EmployeeAdvance" xml:space="preserve">
+    <value>कर्मचारी उचल</value>
+  </data>
+  <data name="ProduceManagement" xml:space="preserve">
+    <value>उत्पादन व्यवस्थापन</value>
+  </data>
+  <data name="Produce" xml:space="preserve">
+    <value>उत्पादन</value>
+  </data>
+  <data name="Dealer" xml:space="preserve">
+    <value>व्यापारी</value>
+  </data>
+  <data name="DealerAdvance" xml:space="preserve">
+    <value>उचल रक्कम नोंद</value>
+  </data>
+  <data name="JaggerySale" xml:space="preserve">
+    <value>गुळ विक्री</value>
+  </data>
+  <data name="JaggerySaleReport" xml:space="preserve">
+    <value>विक्री अहवाल</value>
+  </data>
+  <data name="CaneManagement" xml:space="preserve">
+    <value>ऊस व्यवस्थापन</value>
+  </data>
+  <data name="Farmer" xml:space="preserve">
+    <value>शेतकरी / ऊस उत्पादक</value>
+  </data>
+  <data name="CanePurchase" xml:space="preserve">
+    <value>ऊस खरेदी नोंद</value>
+  </data>
+  <data name="CanePayment" xml:space="preserve">
+    <value>शेतकरी ऊस रक्कम</value>
+  </data>
+  <data name="CaneAdvance" xml:space="preserve">
+    <value>उचल रक्कम</value>
+  </data>
+  <data name="SharedExpenses" xml:space="preserve">
+    <value>सामायिक खर्च</value>
+  </data>
+  <data name="ExpenseTypeMaster" xml:space="preserve">
+    <value>खर्च प्रकार मास्टर</value>
+  </data>
+  <data name="SplitwiseExpense" xml:space="preserve">
+    <value>सामायिक खर्च</value>
+  </data>
+  <data name="JaggerySaleShare" xml:space="preserve">
+    <value>गुळ विक्री वाटणी</value>
+  </data>
+  <data name="HelloUser" xml:space="preserve">
+    <value>नमस्कार, {0}</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>बाहेर पडा</value>
+  </data>
+</root>

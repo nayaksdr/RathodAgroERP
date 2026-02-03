@@ -1,0 +1,52 @@
+﻿@model JaggeryAgro.Core.Entities.JaggeryProduce
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["EditTitle"];
+}
+
+<div class="container mt-4">
+    <!-- Page Header -->
+    <div class="text-center my-4">
+        <h2 class="fw-bold text-white bg-warning px-4 py-2 d-inline-block rounded-3 shadow mb-4">
+            🍯 @Localizer["Header"]
+        </h2>
+    </div>
+
+    <!-- Edit Form Card -->
+    <div class="card shadow-sm rounded-3 p-4 mx-auto" style="max-width: 900px;">
+        <form asp-action="Edit" method="post" class="row g-3">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Id" />
+
+            <!-- Include the reusable form partial -->
+            <partial name="_Form" model="Model" />
+
+            <!-- Action Buttons -->
+            <div class="col-12 d-flex flex-wrap gap-2 justify-content-end mt-4">
+                <button type="submit" class="btn btn-warning btn-lg shadow-sm">
+                    <i class="bi bi-pencil-square me-1"></i> @Localizer["UpdateButton"]
+                </button>
+                <a asp-action="Index" class="btn btn-secondary btn-lg shadow-sm">
+                    <i class="bi bi-x-circle me-1"></i> @Localizer["CancelButton"]
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function calculateTotal() {
+            const qty = parseFloat(document.getElementById("QuantityKg")?.value) || 0;
+            const price = parseFloat(document.getElementById("UnitPrice")?.value) || 0;
+            const totalInput = document.getElementById("TotalCost");
+            if (totalInput) totalInput.value = Math.round(qty * price);
+        }
+
+        document.getElementById("QuantityKg")?.addEventListener("input", calculateTotal);
+        document.getElementById("UnitPrice")?.addEventListener("input", calculateTotal);
+    </script>
+}

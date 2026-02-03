@@ -1,0 +1,67 @@
+﻿@model JaggeryAgro.Core.Entities.JaggeryProduce
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["PageTitle"];
+}
+
+<div class="container mt-4">
+    <!-- Header -->
+    <div class="text-center my-4">
+        <h2 class="fw-bold text-white bg-dark px-4 py-2 d-inline-block rounded-3 shadow">
+            🍯 @Localizer["Header"]
+        </h2>
+    </div>
+
+    <!-- Details Card -->
+    <div class="card shadow-sm rounded-3 p-4">
+        <div class="row g-3 mb-3">
+            <div class="col-md-6">
+                <strong>@Localizer["ProducedDate"]:</strong> @Model.ProducedDate.ToString("dd-MM-yyyy")
+            </div>
+            <div class="col-md-6">
+                <strong>@Localizer["BatchNumber"]:</strong> @Model.BatchNumber
+            </div>
+            <div class="col-md-6">
+                <strong>@Localizer["QuantityKg"]:</strong> @Model.QuantityKg
+            </div>
+            <div class="col-md-6">
+                <strong>@Localizer["UnitCount"]:</strong> @Model.UnitPrice.ToString("N2")
+            </div>
+            <div class="col-md-6">
+                <strong>@Localizer["TotalProductionKg"]:</strong> @Model.TotalCostSnapshot.ToString("N2")
+            </div>
+            <div class="col-md-6">
+                <strong>@Localizer["QualityGrade"]:</strong>
+                @if (Model.QualityGrade == "A")
+                {
+                    <span class="badge bg-success">@Localizer["GradeA"]</span>
+                }
+                else if (Model.QualityGrade == "B")
+                {
+                    <span class="badge bg-warning text-dark">@Localizer["GradeB"]</span>
+                }
+                else if (Model.QualityGrade == "C")
+                {
+                    <span class="badge bg-danger">@Localizer["GradeC"]</span>
+                }
+            </div>
+            <div class="col-md-6">
+                <strong>@Localizer["StockKg"]:</strong> @Model.StockKg
+            </div>
+            <div class="col-md-12">
+                <strong>@Localizer["Notes"]:</strong> @Model.Notes
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex flex-wrap gap-2 mt-3 justify-content-end">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-lg shadow-sm">
+                <i class="bi bi-pencil-square me-1"></i> @Localizer["EditButton"]
+            </a>
+            <a asp-action="Index" class="btn btn-secondary btn-lg shadow-sm">
+                <i class="bi bi-arrow-left me-1"></i> @Localizer["BackButton"]
+            </a>
+        </div>
+    </div>
+</div>

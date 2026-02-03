@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve">
+    <value>Edit Employee Rate</value>
+  </data>
+  <data name="Select_LaborType" xml:space="preserve">
+    <value>-- Select Employee Type --</value>
+  </data>
+  <data name="DailyRate_Label" xml:space="preserve">
+    <value>Daily Rate</value>
+  </data>
+  <data name="DailyRate_Placeholder" xml:space="preserve">
+    <value>Enter daily rate</value>
+  </data>
+  <data name="PerTon_Label" xml:space="preserve">
+    <value>Rate per Ton</value>
+  </data>
+  <data name="PerTon_Placeholder" xml:space="preserve">
+    <value>Enter rate per ton</value>
+  </data>
+  <data name="PerJaggery_Label" xml:space="preserve">
+    <value>Rate per Jaggery</value>
+  </data>
+  <data name="PerJaggery_Placeholder" xml:space="preserve">
+    <value>Enter rate per jaggery</value>
+  </data>
+  <data name="EffectiveFrom_Label" xml:space="preserve">
+    <value>Effective From</value>
+  </data>
+  <data name="Button_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="RateHint_Daily" xml:space="preserve">
+    <value>Enter daily rate (₹)</value>
+  </data>
+  <data name="RateHint_PerTon" xml:space="preserve">
+    <value>Enter rate per ton (₹)</value>
+  </data>
+  <data name="RateHint_PerJaggery" xml:space="preserve">
+    <value>Enter rate per jaggery (₹)</value>
+  </data>
+</root>

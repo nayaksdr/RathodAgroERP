@@ -1,0 +1,152 @@
+﻿@using JaggeryAgro.Core.ViewModel
+@model JaggerySaleFilterViewModel
+@using Microsoft.AspNetCore.Mvc.Rendering
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    var safeModel = Model ?? new JaggerySaleFilterViewModel
+    {
+        Sales = new List<JaggeryAgro.Core.Entities.JaggerySale>()
+    };
+}
+
+<div class="container mt-4">
+
+    <!-- Header & Add New Sale Button -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-white bg-primary px-4 py-2 rounded shadow d-inline-block">
+            <i class="bi bi-cart-fill me-2"></i> @Localizer["JaggerySaleList"]
+        </h2>
+        <a href="/JaggerySale/Create" class="btn btn-success btn-lg fw-bold px-4 rounded-pill shadow-lg">
+            <i class="bi bi-plus-circle me-2"></i> @Localizer["AddNewSale"]
+        </a>
+    </div>
+
+    <!-- Filter Form -->
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-3">
+            <label for="SearchDealer" class="form-label fw-bold">@Localizer["Dealer"]</label>
+            <select class="form-select" id="SearchDealer" name="SearchDealer" asp-items="@(ViewBag.Dealers as SelectList)">
+                <option value="">@Localizer["AllDealers"]</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="fromDate" class="form-label fw-bold">@Localizer["FromDate"]</label>
+            <input type="date" class="form-control" id="fromDate" name="fromDate" value="@ViewBag.FromDate" />
+        </div>
+        <div class="col-md-3">
+            <label for="toDate" class="form-label fw-bold">@Localizer["ToDate"]</label>
+            <input type="date" class="form-control" id="toDate" name="toDate" value="@ViewBag.ToDate" />
+        </div>
+        <div class="col-md-3 d-grid">
+            <button type="submit" class="btn btn-primary btn-lg fw-bold mt-3">
+                <i class="bi bi-search me-2"></i> @Localizer["Search"]
+            </button>
+        </div>
+    </form>
+
+    <!-- Sales Table -->
+    <div class="table-responsive card shadow-sm p-3">
+        <table class="table table-bordered table-hover align-middle table-orange-header" id="JaggerySaleTable">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>@Localizer["Date"]</th>
+                    <th>@Localizer["Dealer"]</th>
+                    <th>@Localizer["QuantityKg"]</th>
+                    <th>@Localizer["RatePerKg"]</th>
+                    <th>@Localizer["TotalAmount"]</th>
+                    <th>@Localizer["Member"]</th>
+                    <th>@Localizer["PaymentMode"]</th>
+                    <th>@Localizer["Proof"]</th>
+                    <th>@Localizer["LaborMukadam"]</th>
+                    <th>@Localizer["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                @if (safeModel.Sales.Any())
+                {
+                    foreach (var sale in safeModel.Sales)
+                    {
+                        <tr>
+                            <td>@sale.SaleDate.ToString("dd-MM-yyyy")</td>
+                            <td>@sale.Dealer.Name</td>
+                            <td>@sale.QuantityInKg</td>
+                            <td>₹ @sale.RatePerKg.ToString("N2")</td>
+                            <td>₹ @sale.TotalAmount.ToString("N2")</td>
+                            <td>@sale.PaidBy?.Name</td>
+                            <td>@sale.PaymentMode</td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(sale.ProofImage))
+                                {
+                                    <img src="@Url.Content(sale.ProofImage)" class="img-thumbnail clickable-image"
+                                         style="width:50px; height:50px; cursor:pointer;"
+                                         data-bs-toggle="modal" data-bs-target="#imageModal"
+                                         data-imgsrc="@Url.Content(sale.ProofImage)" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted">@Localizer["NoImage"]</span>
+                                }
+                            </td>
+                            <td>@sale.Labor?.Name</td>
+                            <td>
+                                <a asp-controller="JaggerySale" asp-action="Edit" asp-route-id="@sale.Id" class="btn btn-sm btn-warning me-1">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <a asp-controller="JaggerySale" asp-action="Delete" asp-route-id="@sale.Id"
+                                   class="btn btn-sm btn-danger"
+                                   onclick="return confirm('@Localizer["ConfirmDelete"]');">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="10" class="text-center text-danger">@Localizer["NoSalesAvailable"]</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- Modal for Proof Image -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">@Localizer["PaymentProof"]</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="@Localizer["Close"]"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" alt="Preview" class="img-fluid rounded shadow" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#JaggerySaleTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 5
+            });
+
+            const modalImage = document.getElementById('modalImage');
+            const imageModal = document.getElementById('imageModal');
+            imageModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const imgSrc = button.getAttribute('data-imgsrc');
+                modalImage.src = imgSrc;
+            });
+        });
+    </script>
+}

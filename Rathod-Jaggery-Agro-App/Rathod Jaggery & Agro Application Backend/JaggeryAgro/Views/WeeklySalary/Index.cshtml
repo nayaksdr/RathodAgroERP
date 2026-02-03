@@ -1,0 +1,56 @@
+﻿@model IEnumerable<JaggeryAgro.Core.Entities.WeeklyPaymentViewModel>
+
+
+<h2>Weekly Salary Report</h2>
+
+<form method="post" asp-action="GenerateReport">
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label>From Date</label>
+            <input type="date" name="fromDate" class="form-control" required />
+        </div>
+        <div class="col-md-3">
+            <label>To Date</label>
+            <input type="date" name="toDate" class="form-control" required />
+        </div>
+        <div class="col-md-3 align-self-end">
+            
+            <button type="submit" class="btn btn-primary">Generate</button>
+        </div>
+    </div>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered">
+        <thead style="background-color: #cc6600; color: white;">
+            <tr>
+                <th>Labor Name</th>
+                <th>Labor Type</th>
+                <th>Days Present</th>
+                <th>Daily Rate</th>
+                <th>Gross Salary</th>
+                <th>Advance Deducted</th>
+                <th>Net Pay</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                    <td>@item.LaborName</td>
+                    <td>@item.LaborType</td>
+                    <td>@item.DaysPresent</td>
+                    <td>@item.DailyWage</td>
+                    <td>@(item.DaysPresent* item.DailyWage)</td> <!-- Gross Salary -->
+                    <td>₹@item.AdvanceDeducted.ToString("N2")</td>
+                    <td>₹@item.NetPay.ToString("N2")</td>
+
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <a asp-action="DownloadPdf" class="btn btn-danger">Download PDF</a>
+    <a asp-action="DownloadExcel" class="btn btn-success">Download Excel</a>
+}

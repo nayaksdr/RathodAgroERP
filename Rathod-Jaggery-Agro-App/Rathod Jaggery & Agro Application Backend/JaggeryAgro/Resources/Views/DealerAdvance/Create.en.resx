@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="CreateTitle"><value>Add Dealer Advance</value></data>
+  <data name="EditTitle"><value>Edit Dealer Advance</value></data>
+
+  <data name="BackButton"><value>Back</value></data>
+
+  <data name="DealerLabel"><value>Dealer</value></data>
+  <data name="SelectDealer"><value>Select Dealer</value></data>
+
+  <data name="PaidByLabel"><value>Paid By</value></data>
+  <data name="SelectMember"><value>Select Member</value></data>
+
+  <data name="DateLabel"><value>Payment Date</value></data>
+
+  <data name="PaymentModeLabel"><value>Payment Mode</value></data>
+  <data name="SelectPaymentMode"><value>Select Payment Mode</value></data>
+  <data name="Cash"><value>Cash</value></data>
+  <data name="UPI"><value>UPI</value></data>
+  <data name="Bank"><value>Bank</value></data>
+
+  <data name="ProofImageLabel"><value>Payment Proof (Image)</value></data>
+
+  <data name="AmountLabel"><value>Amount (₹)</value></data>
+  <data name="AmountPlaceholder"><value>Enter amount</value></data>
+
+  <data name="NoteLabel"><value>Note</value></data>
+  <data name="NotePlaceholder"><value>Enter note (optional)</value></data>
+
+  <data name="SaveButton"><value>Save</value></data>
+  <data name="UpdateButton"><value>Update</value></data>
+
+  <data name="Validation_DealerRequired"><value>Please select a dealer.</value></data>
+  <data name="Validation_AmountRequired"><value>Please enter the amount.</value></data>
+  <data name="Validation_DateRequired"><value>Please select a payment date.</value></data>
+</root>

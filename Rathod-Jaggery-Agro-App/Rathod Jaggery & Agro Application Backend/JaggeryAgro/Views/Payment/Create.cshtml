@@ -1,0 +1,45 @@
+﻿@using JaggeryAgro.Core.Entities
+@model Payment
+@{
+    ViewData["Title"] = "पेमेंट जोडा";
+}
+
+<div class="container mt-4">
+    <div class="text-center my-4">
+        <h2 class="fw-bold text-white bg-primary px-4 py-2 d-inline-block rounded-3 shadow mb-4">
+            @ViewData["Title"]
+        </h2>
+    </div>
+
+
+    <form asp-action="Create" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label asp-for="Labor" class="form-label">कामगाराचे नाव</label>
+            <input asp-for="Labor" class="form-control" required />
+            <span asp-validation-for="Labor" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Amount" class="form-label">रक्कम</label>
+            <input asp-for="Amount" type="number" class="form-control" required />
+            <span asp-validation-for="Amount" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PaidOn" class="form-label">पेमेंट तारीख</label>
+            <input asp-for="PaidOn" type="date" class="form-control" required />
+            <span asp-validation-for="PaidOn" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i> पेमेंट जतन करा
+        </button>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-x-circle"></i> रद्द करा
+        </a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

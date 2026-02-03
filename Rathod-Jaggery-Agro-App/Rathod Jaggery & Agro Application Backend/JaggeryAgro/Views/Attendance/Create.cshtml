@@ -1,0 +1,83 @@
+﻿@using JaggeryAgro.Core.Entities
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@model Attendance
+
+<div class="container py-4">
+    <!-- Page Header -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-white px-4 py-3 rounded shadow-lg d-inline-block"
+            style="background: linear-gradient(90deg, #43cea2, #185a9d);
+                   letter-spacing: 1px;
+                   border: 2px solid rgba(255,255,255,0.3);
+                   text-shadow: 1px 1px 3px rgba(0,0,0,0.4);">
+            <i class="fas fa-user-check me-2"></i> @Localizer["PageHeader"]
+        </h2>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+            <form asp-action="Create" method="post" class="needs-validation" novalidate>
+
+                <!-- Labor Dropdown -->
+                <div class="mb-3">
+                    <label asp-for="LaborId" class="form-label fw-bold">
+                        <i class="fas fa-users me-1 text-success"></i> @Localizer["SelectLabor"]
+                    </label>
+                    <select asp-for="LaborId" class="form-select form-control-lg shadow-sm custom-focus" asp-items="ViewBag.Labors">
+                        <option value="">-- @Localizer["SelectLaborPlaceholder"] --</option>
+                    </select>
+                    <span asp-validation-for="LaborId" class="text-danger"></span>
+                </div>
+
+                <!-- Date -->
+                <div class="mb-3">
+                    <label asp-for="Date" class="form-label fw-bold">
+                        <i class="fas fa-calendar-alt me-1 text-primary"></i> @Localizer["Date"]
+                    </label>
+                    <input asp-for="Date" type="date" class="form-control form-control-lg shadow-sm custom-focus" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+
+                <!-- Is Present Checkbox -->
+                <div class="form-check form-switch mb-4">
+                    <input asp-for="IsPresent" class="form-check-input" type="checkbox" id="isPresentSwitch" />
+                    <label asp-for="IsPresent" class="form-check-label fw-bold ms-2" for="isPresentSwitch">
+                        <i class="fas fa-check-circle text-success me-1"></i> @Localizer["IsPresent"]
+                    </label>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <button type="submit" class="btn btn-success btn-lg shadow-sm px-4 hover-scale">
+                        <i class="fas fa-save me-2"></i> @Localizer["Button_Save"]
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary btn-lg shadow-sm px-4 hover-scale">
+                        <i class="fas fa-arrow-left me-2"></i> @Localizer["Button_Back"]
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Bootstrap Validation
+        (() => {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+}

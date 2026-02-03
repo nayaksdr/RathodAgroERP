@@ -1,0 +1,39 @@
+﻿@model IEnumerable<JaggeryAgro.Core.ViewModels.WeeklySalaryReportVM>
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Labor Name</th>
+                <th>Labor Type</th>
+                <th>Days Present</th>
+                <th>Daily Rate</th>
+                <th>Gross Salary</th>
+                <th>Advance Deducted</th>
+                <th>Net Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.LaborName</td>
+                    <td>@item.LaborTypeName</td>
+                    <td>@item.DaysPresent</td>
+                    <td>₹@item.DailyRate.ToString("N2")</td>
+                    <td>₹@item.GrossSalary.ToString("N2")</td>
+                    <td>₹@item.AdvanceDeducted.ToString("N2")</td>
+                    <td>₹@item.NetSalary.ToString("N2")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="mt-3 d-flex flex-wrap gap-2">
+    <a asp-action="DownloadExcel" class="btn btn-success">Download as Excel</a>
+    <a asp-action="DownloadPdf" class="btn btn-danger">Download as PDF</a>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</div>

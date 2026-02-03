@@ -1,0 +1,256 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.ViewModel.DashboardDailyVm
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="container-fluid py-4">
+
+    <!-- Header -->
+    <div class="text-center my-4">
+        <h2 class="fw-bold text-white bg-gradient rounded-4 px-4 py-2 shadow-sm d-inline-flex align-items-center">
+            <i class="bi bi-speedometer2 me-2 fs-3"></i> @Localizer["Title"]
+        </h2>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="row g-3 g-md-4 mb-5">
+        @{
+            var kpis = new[]
+            {
+                new { Title = Localizer["TodayPresent"], Value = @Model.TodayPresentCount.ToString(), Icon="bi-people-fill", Color="primary" },
+                new { Title = Localizer["TodayAdvance"], Value = "₹" + @Model.TodayAdvance.ToString("N0"), Icon="bi-currency-rupee", Color="success" },
+                new { Title = Localizer["TodayExpense"], Value = "₹" + @Model.TodayExpense.ToString("N0"), Icon="bi-cash-coin", Color="danger" },
+                new { Title = Localizer["TodayCaneTons"], Value = @Model.TodayCaneTons.ToString(), Icon="bi-flower3", Color="warning" },
+                new { Title = Localizer["TodayProduceQty"], Value = @Model.TodayProduceQty.ToString(), Icon="bi-box-seam", Color="info" },
+                new { Title = Localizer["TodaySell"], Value = @Model.TodayJaggerySellAmount.ToString("N0"), Icon="bi-cart4", Color="info" }
+                };
+        }
+
+        @foreach (var kpi in kpis)
+        {
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="card shadow-sm border-0 rounded-4 text-center p-3 h-100 hover-shadow">
+                    <div class="d-flex justify-content-center align-items-center mb-2">
+                        <i class="bi @kpi.Icon fs-2 text-@kpi.Color"></i>
+                    </div>
+                    <h6 class="text-muted">@kpi.Title</h6>
+                    <h3 class="fw-bold text-@kpi.Color">@kpi.Value</h3>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row g-4">
+        @{
+            var charts = new[]
+            {
+                new { Title = Localizer["AttendanceChart"], Icon="bi-people-fill", CanvasId="attendanceChart" },
+                new { Title = Localizer["AdvanceChart"], Icon="bi-currency-rupee", CanvasId="advanceChart" },
+                new { Title = Localizer["ExpenseChart"], Icon="bi-cash-coin", CanvasId="expenseChart" },
+                new { Title = Localizer["CaneChart"], Icon="bi-flower3", CanvasId="caneChart" },
+                new { Title = Localizer["ProduceChart"], Icon="bi-box-seam", CanvasId="produceChart" },
+                new { Title = Localizer["JaggerySellChart"], Icon="bi-cart4", CanvasId="JagerySellChart" }
+                };
+        }
+
+        @foreach (var chart in charts)
+        {
+            <div class="col-12 col-lg-6">
+                <div class="card shadow-sm border-0 rounded-4">
+                    <div class="card-body">
+                        <h6 class="fw-bold mb-3 d-flex align-items-center">
+                            <i class="@chart.Icon me-2 fs-5"></i> @chart.Title
+                        </h6>
+                        <canvas id="@chart.CanvasId" class="w-100" style="height:250px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Member-wise Pie Charts -->
+    <div class="container-fluid mt-5">
+        <div class="text-center mb-4">
+            <h3 class="fw-bold text-primary">
+                <i class="bi bi-pie-chart-fill me-2"></i> @Localizer["MemberSectionTitle"]
+            </h3>
+            <p class="text-muted">@Localizer["MemberSectionDesc"]</p>
+        </div>
+
+        <div class="row g-3 justify-content-center">
+            @foreach (var member in Model.MemberSummary)
+            {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="card shadow-sm border-0 rounded-4 w-100 hover-shadow flex-fill d-flex flex-column">
+                        <div class="card-body text-center p-3 flex-grow-1 d-flex flex-column justify-content-between">
+                            <div>
+                                <h6 class="fw-bold mb-2">@member.Name</h6>
+                                <p class="mb-1 text-success">@Localizer["PaidAmount"]: ₹@member.SplitwisePaid</p>
+                                <p class="mb-1 text-primary">@Localizer["EarnedAmount"]: ₹@member.JaggeryEarned</p>
+                                <p class="fw-bold @(member.NetBalance >= 0 ? "text-success" : "text-danger")">
+                                    @Localizer["NetBalance"]: ₹@member.NetBalance
+                                </p>
+                            </div>
+                            <div style="width: 100%; height: 250px; margin: auto;">
+                                <canvas id="pieChart_@member.MemberId"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Styles {
+    <link href="~/css/dashboard.css" rel="stylesheet" />
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const labels = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Labels));
+
+            // Attendance Chart
+            new Chart(document.getElementById('attendanceChart'), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '@Localizer["Label_Attendance"]',
+                        data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AttendanceDaily.Select(x => x.Value))),
+                        borderColor: '#0d6efd',
+                        backgroundColor: 'rgba(13,110,253,0.2)',
+                        tension: 0.3,
+                        fill: true
+                    }]
+                }
+            });
+
+            // Advance Chart
+            new Chart(document.getElementById('advanceChart'), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '@Localizer["Label_Advance"]',
+                        data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.AdvancesDaily.Select(x => x.Value))),
+                        backgroundColor: '#198754'
+                    }]
+                }
+            });
+
+            // Expense Chart
+            new Chart(document.getElementById('expenseChart'), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '@Localizer["Label_Expense"]',
+                        data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ExpensesDaily.Select(x => x.Value))),
+                        backgroundColor: '#dc3545'
+                    }]
+                }
+            });
+
+            // Cane Chart
+            new Chart(document.getElementById('caneChart'), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '@Localizer["Label_CanePurchase"]',
+                        data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.CanePurchaseTonsDaily.Select(x => x.Value))),
+                        borderColor: '#ffc107',
+                        backgroundColor: 'rgba(255,193,7,0.3)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                }
+            });
+
+            // Produce Chart
+            new Chart(document.getElementById('produceChart'), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '@Localizer["Label_JaggeryProduce"]',
+                        data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ProduceQtyDaily.Select(x => x.Value))),
+                        backgroundColor: '#0dcaf0'
+                    }]
+                }
+            });
+
+            // Jagery Sell Chart
+            const jageryData = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.JagerySellDaily));
+            const jageryLabels = jageryData.map(x => new Date(x.Date).toLocaleDateString('en-GB'));
+            const qtyData = jageryData.map(x => x.Qty);
+            const amountData = jageryData.map(x => x.Amount);
+
+            new Chart(document.getElementById('JagerySellChart'), {
+                type: 'bar',
+                data: {
+                    labels: jageryLabels,
+                    datasets: [
+                        { label: '@Localizer["Label_Quantity"]', data: qtyData, backgroundColor: '#0dcaf0', yAxisID: 'y1' },
+                        { label: '@Localizer["Label_Amount"]', data: amountData, backgroundColor: '#ffc107', yAxisID: 'y2' }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    interaction: { mode: 'index', intersect: false },
+                    stacked: false,
+                    plugins: { legend: { position: 'top' } },
+                    scales: {
+                        y1: { type: 'linear', position: 'left', beginAtZero: true },
+                        y2: { type: 'linear', position: 'right', beginAtZero: true, grid: { drawOnChartArea: false } },
+                        x: { title: { display: true, text: '@Localizer["Label_Date"]' } }
+                    }
+                }
+            });
+
+            // Member-wise Pie Charts
+            @foreach (var member in Model.MemberSummary)
+            {
+                        <text>
+                        const ctx_@member.MemberId = document.getElementById('pieChart_@member.MemberId').getContext('2d');
+                        new Chart(ctx_@member.MemberId, {
+                            type: 'pie',
+                            data: {
+                                labels: ['@Localizer["Label_AmountPaid"]', '@Localizer["Label_AmountEarned"]'],
+                                datasets: [{
+                                    data: [@(@member.SplitwisePaid), @(@member.JaggeryEarned)],
+                                    backgroundColor: ['rgba(54,162,235,0.8)','rgba(255,193,7,0.8)'],
+                                    borderColor: '#fff',
+                                    borderWidth: 2,
+                                    hoverOffset: 10
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: { position: 'bottom', labels: { font: { size: 13 } } },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(context) {
+                                                return context.label + ': ₹' + parseFloat(context.raw).toFixed(2);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        </text>
+            }
+        });
+    </script>
+}

@@ -1,0 +1,48 @@
+﻿@using JaggeryAgro.Core.ViewModel
+@model ExpenseDeleteViewModel
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+@{
+    ViewBag.Title = Localizer["DeleteExpenseTitle"];
+}
+
+<div class="container my-5">
+
+    <!-- Page Header -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-white bg-danger d-inline-block px-4 py-2 rounded-3 shadow-sm">
+            <i class="bi bi-trash me-2"></i> @Localizer["DeleteExpenseTitle"]
+        </h2>
+    </div>
+
+    <p class="text-center mb-4 fs-5">@Localizer["DeleteExpenseConfirm"]</p>
+
+    <!-- Expense Details Card -->
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-4 fw-bold">@Localizer["PaidBy"]</dt>
+                <dd class="col-sm-8">@Model.PaidByName</dd>
+
+                <dt class="col-sm-4 fw-bold">@Localizer["ExpenseType"]</dt>
+                <dd class="col-sm-8">@Model.ExpenseTypeName</dd>
+
+                <dt class="col-sm-4 fw-bold">@Localizer["Amount"]</dt>
+                <dd class="col-sm-8">₹@Model.Amount.ToString("N2")</dd>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex flex-wrap gap-2 justify-content-center">
+        <form asp-action="DeleteExpense" method="post" class="m-0">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger shadow-sm">
+                <i class="bi bi-trash me-1"></i> @Localizer["Delete"]
+            </button>
+        </form>
+        <a asp-action="Index" class="btn btn-secondary shadow-sm">
+            <i class="bi bi-x-circle me-1"></i> @Localizer["Cancel"]
+        </a>
+    </div>
+</div>

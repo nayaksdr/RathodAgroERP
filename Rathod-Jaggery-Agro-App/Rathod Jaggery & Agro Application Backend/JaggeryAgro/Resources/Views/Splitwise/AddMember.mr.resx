@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddMemberTitle" xml:space="preserve">
+    <value>सदस्य जोडा</value>
+  </data>
+  <data name="MemberNameLabel" xml:space="preserve">
+    <value>सदस्याचे नाव</value>
+  </data>
+  <data name="EnterMemberName" xml:space="preserve">
+    <value>सदस्याचे नाव प्रविष्ट करा</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>जतन करा</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>परत जा</value>
+  </data>
+</root>

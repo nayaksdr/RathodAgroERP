@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>  
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>ऊस खरेदी सुधारित करा</value>
+  </data>
+  <data name="HeaderTitle" xml:space="preserve">
+    <value>ऊस खरेदी सुधारित करा</value>
+  </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>परत जा</value>
+  </data>
+  <data name="FarmerLabel" xml:space="preserve">
+    <value>शेतकरी</value>
+  </data>
+  <data name="LaborLabel" xml:space="preserve">
+    <value>उस तोडणारा मजूर (मुकादम)</value>
+  </data>
+  <data name="PurchaseDateLabel" xml:space="preserve">
+    <value>खरेदी दिनांक</value>
+  </data>
+  <data name="QuantityTonLabel" xml:space="preserve">
+    <value>प्रमाण (टन)</value>
+  </data>
+  <data name="RatePerTonLabel" xml:space="preserve">
+    <value>दर (प्रति टन)</value>
+  </data>
+  <data name="PaymentStatusLabel" xml:space="preserve">
+    <value>पेमेंट स्थिती</value>
+  </data>
+  <data name="PaymentPending" xml:space="preserve">
+    <value>बाकी</value>
+  </data>
+  <data name="PaymentPaid" xml:space="preserve">
+    <value>भरणा पूर्ण</value>
+  </data>
+  <data name="CaneWeightImageLabel" xml:space="preserve">
+    <value>ऊस वजन प्रतिमा</value>
+  </data>
+  <data name="ImageNote" xml:space="preserve">
+    <value>फक्त प्रतिमा फाइल निवडा (jpg, png, bmp)</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>सुधारित करा</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>रद्द करा</value>
+  </data>
+</root>

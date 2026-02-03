@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- ===== PAGE TITLE ===== -->
+  <data name="Title" xml:space="preserve">
+    <value>ऊस आगाऊ माहिती</value>
+  </data>
+<data name="Label_Attachment" xml:space="preserve">
+  <value>जोडलेली फाइल</value>
+</data>
+
+  <!-- ===== FIELD LABELS ===== -->
+  <data name="Label_Farmer" xml:space="preserve">
+    <value>शेतकरी</value>
+  </data>
+
+  <data name="Label_Amount" xml:space="preserve">
+    <value>रक्कम (₹)</value>
+  </data>
+
+  <data name="Label_Date" xml:space="preserve">
+    <value>दिनांक</value>
+  </data>
+
+  <data name="Label_Remarks" xml:space="preserve">
+    <value>टिप / कारण</value>
+  </data>
+
+  <data name="Column_Member" xml:space="preserve">
+    <value>सदस्याचे नाव</value>
+  </data>
+
+  <data name="Label_PaymentMode" xml:space="preserve">
+    <value>पेमेंट मोड</value>
+  </data>
+
+  <data name="Label_ProofImage" xml:space="preserve">
+    <value>पेमेंट पुरावा प्रतिमा</value>
+  </data>
+
+  <!-- ===== BUTTONS ===== -->
+  <data name="Button_Edit" xml:space="preserve">
+    <value>संपादन करा</value>
+  </data>
+
+  <data name="Button_BackToList" xml:space="preserve">
+    <value>यादीकडे परत जा</value>
+  </data>
+</root>

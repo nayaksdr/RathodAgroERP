@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title" xml:space="preserve"><value>डॅशबोर्ड</value></data>
+  <data name="TodayPresent" xml:space="preserve"><value>आजची उपस्थिती</value></data>
+  <data name="TodayAdvance" xml:space="preserve"><value>आजची आगाऊ रक्कम</value></data>
+  <data name="TodayExpense" xml:space="preserve"><value>आजचा खर्च</value></data>
+  <data name="TodayCaneTons" xml:space="preserve"><value>ऊस (टन)</value></data>
+  <data name="TodayProduceQty" xml:space="preserve"><value>गुळ उत्पादन (कि.ग्रॅ.)</value></data>
+  <data name="TodaySell" xml:space="preserve"><value>गुळ विक्री (₹)</value></data>
+  <data name="AttendanceChart" xml:space="preserve"><value>उपस्थिती</value></data>
+  <data name="AdvanceChart" xml:space="preserve"><value>आगाऊ रक्कम</value></data>
+  <data name="ExpenseChart" xml:space="preserve"><value>खर्च</value></data>
+  <data name="CaneChart" xml:space="preserve"><value>ऊस खरेदी (टन)</value></data>
+  <data name="ProduceChart" xml:space="preserve"><value>गुळ उत्पादन (कि.ग्रॅ.)</value></data>
+  <data name="JaggerySellChart" xml:space="preserve"><value>गुळ विक्री</value></data>
+  <data name="MemberSectionTitle" xml:space="preserve"><value>सदस्यवार गुळ विक्री व खर्च वाटा</value></data>
+  <data name="MemberSectionDesc" xml:space="preserve"><value>प्रत्येक सदस्याचा वाटा, मिळकत व एकूण शिल्लक खाली दर्शविले आहे.</value></data>
+  <data name="PaidAmount" xml:space="preserve"><value>भरलेली रक्कम</value></data>
+  <data name="EarnedAmount" xml:space="preserve"><value>मिळालेली रक्कम</value></data>
+  <data name="NetBalance" xml:space="preserve"><value>एकूण शिल्लक</value></data>
+  <data name="Quantity" xml:space="preserve"><value>प्रमाण (कि.ग्रॅ.)</value></data>
+  <data name="Amount" xml:space="preserve"><value>रक्कम (₹)</value></data>
+  <data name="Date" xml:space="preserve"><value>दिनांक</value></data>
+   <data name="Label_Attendance" xml:space="preserve">
+    <value>उपस्थित कामगार</value>
+  </data>
+  <data name="Label_Advance" xml:space="preserve">
+    <value>आगाऊ (₹)</value>
+  </data>
+  <data name="Label_Expense" xml:space="preserve">
+    <value>खर्च (₹)</value>
+  </data>
+  <data name="Label_CanePurchase" xml:space="preserve">
+    <value>ऊस खरेदी (टन)</value>
+  </data>
+  <data name="Label_JaggeryProduce" xml:space="preserve">
+    <value>गुळ उत्पादन (कि.ग्रॅ.)</value>
+  </data>
+  <data name="Label_Quantity" xml:space="preserve">
+    <value>प्रमाण (कि.ग्रॅ.)</value>
+  </data>
+  <data name="Label_Amount" xml:space="preserve">
+    <value>रक्कम (₹)</value>
+  </data>
+  <data name="Label_Date" xml:space="preserve">
+    <value>तारीख</value>
+  </data>
+  <data name="Label_AmountPaid" xml:space="preserve">
+    <value>भरलेली रक्कम</value>
+  </data>
+  <data name="Label_AmountEarned" xml:space="preserve">
+    <value>मिळालेली रक्कम</value>
+  </data>
+</root>

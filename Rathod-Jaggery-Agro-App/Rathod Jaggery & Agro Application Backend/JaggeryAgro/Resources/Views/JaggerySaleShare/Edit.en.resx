@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="EditJaggerySaleShare"><value>Edit Jaggery Sale Share</value></data>
+<data name="UpdateSaleAndShareDetails"><value>Update sale and share details</value></data>
+<data name="Edit"><value>Edit</value></data>
+<data name="SelectSale"><value>Select Sale</value></data>
+<data name="PleaseSelectSale"><value>Please select a sale.</value></data>
+<data name="PayingMember"><value>Paying Member</value></data>
+<data name="AutoSelectedMemberPlaceholder"><value>Member will be auto selected</value></data>
+<data name="MembersToSplit"><value>Members for Share</value></data>
+<data name="SelectSaleToViewMembers"><value>Select a sale to load members.</value></data>
+<data name="ShareAmount"><value>Share Amount (₹)</value></data>
+<data name="EnterShareAmount"><value>Please enter share amount.</value></data>
+<data name="PaidAmount"><value>Paid Amount (₹)</value></data>
+<data name="EnterPaidAmount"><value>Please enter paid amount.</value></data>
+<data name="Save"><value>Save</value></data>
+<data name="Cancel"><value>Cancel</value></data>
+<data name="NoMembersFound"><value>No members found.</value></data>
+<data name="AllMembersAutoSelected"><value>All members auto-selected:</value></data>
+
+</root>

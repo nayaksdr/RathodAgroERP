@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model IEnumerable<JaggeryAgro.Core.Entities.AdvancePayment>
+@inject IViewLocalizer Localizer
+
+<div class="container my-5">
+    <!-- Header Card -->
+    <div class="card shadow-lg border-0">
+        <div class="card-body text-center p-4" style="background: linear-gradient(135deg, #28a745, #198754);">
+            <h2 class="fw-bold text-white mb-3">@Localizer["AdvanceTitle"]</h2>
+            <a asp-action="Create" class="btn btn-light btn-lg shadow-sm">
+                <i class="fa-solid fa-plus me-2"></i>@Localizer["AddAdvance"]
+            </a>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-responsive mt-4">
+        <table id="advanceTable" class="table table-hover align-middle shadow-sm">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>@Localizer["LaborName"]</th>
+                    <th>@Localizer["Amount"]</th>
+                    <th>@Localizer["DateGiven"]</th>
+                    <th>@Localizer["Action"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr class="text-center">
+                            <td>@item.Labor?.Name</td>
+                            <td>₹@item.Amount.ToString("N2")</td>
+                            <td>@item.DateGiven.ToShortDateString()</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm me-1 shadow-sm">
+                                    <i class="fas fa-edit"></i> @Localizer["Edit"]
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm shadow-sm">
+                                    <i class="fa fa-trash"></i> @Localizer["Delete"]
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="text-center text-muted">@Localizer["NoRecords"]</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#advanceTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 5,
+                lengthChange: false,
+                info: false
+            });
+        });
+    </script>
+}

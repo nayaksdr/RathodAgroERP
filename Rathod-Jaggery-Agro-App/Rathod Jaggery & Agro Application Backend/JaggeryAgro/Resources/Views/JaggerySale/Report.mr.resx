@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Jaggery Sale Report" xml:space="preserve">
+    <value>गुळ विक्री अहवाल</value>
+  </data>
+  <data name="Dealer" xml:space="preserve">
+    <value>व्यापारी</value>
+  </data>
+  <data name="All Dealers" xml:space="preserve">
+    <value>सर्व व्यापारी</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>पासून</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>पर्यंत</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>शोधा</value>
+  </data>
+  <data name="Excel" xml:space="preserve">
+    <value>एक्सेल</value>
+  </data>
+  <data name="PDF" xml:space="preserve">
+    <value>पीडीएफ</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>तारीख</value>
+  </data>
+  <data name="Quantity (Kg)" xml:space="preserve">
+    <value>प्रमाण (किलो)</value>
+  </data>
+  <data name="Rate / Kg" xml:space="preserve">
+    <value>दर / किलो</value>
+  </data>
+  <data name="Total Amount" xml:space="preserve">
+    <value>एकूण रक्कम</value>
+  </data>
+  <data name="Advance" xml:space="preserve">
+    <value>आगाऊ</value>
+  </data>
+  <data name="Remaining" xml:space="preserve">
+    <value>उर्वरित</value>
+  </data>
+  <data name="No sales records found" xml:space="preserve">
+    <value>कोणतेही विक्री रेकॉर्ड उपलब्ध नाहीत</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>एकूण</value>
+  </data>
+</root>

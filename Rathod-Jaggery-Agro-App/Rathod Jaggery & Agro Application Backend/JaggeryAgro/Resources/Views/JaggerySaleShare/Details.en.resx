@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PersonwiseJaggerySaleDetails"><value>Person-wise Jaggery Sale Details</value></data>
+<data name="Details"><value>Details</value></data>
+<data name="PersonName"><value>Person Name</value></data>
+<data name="PaidAmount"><value>Paid Amount</value></data>
+<data name="ShareAmount"><value>Share Amount</value></data>
+<data name="NetAmount"><value>Net Amount</value></data>
+<data name="SaleId"><value>Sale ID</value></data>
+<data name="Back"><value>Back</value></data>
+
+</root>

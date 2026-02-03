@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="JaggerySaleList" xml:space="preserve"><value>गुळ विक्री यादी</value></data>
+<data name="AddNewSale" xml:space="preserve"><value>नवीन विक्री जोडा</value></data>
+<data name="Dealer" xml:space="preserve"><value>व्यापारी</value></data>
+<data name="AllDealers" xml:space="preserve"><value>सर्व व्यापारी</value></data>
+<data name="FromDate" xml:space="preserve"><value>पासून</value></data>
+<data name="ToDate" xml:space="preserve"><value>पर्यंत</value></data>
+<data name="Search" xml:space="preserve"><value>शोधा</value></data>
+<data name="Date" xml:space="preserve"><value>तारीख</value></data>
+<data name="QuantityKg" xml:space="preserve"><value>प्रमाण (किलो)</value></data>
+<data name="RatePerKg" xml:space="preserve"><value>दर प्रति किलो</value></data>
+<data name="TotalAmount" xml:space="preserve"><value>एकूण रक्कम</value></data>
+<data name="Member" xml:space="preserve"><value>सदस्य</value></data>
+<data name="PaymentMode" xml:space="preserve"><value>पेमेंट पद्धत</value></data>
+<data name="Proof" xml:space="preserve"><value>पुरावा</value></data>
+<data name="LaborMukadam" xml:space="preserve"><value>उस तोडणारा मजूर (मुकादम)</value></data>
+<data name="Actions" xml:space="preserve"><value>क्रिया</value></data>
+<data name="NoImage" xml:space="preserve"><value>प्रतिमा नाही</value></data>
+<data name="ConfirmDelete" xml:space="preserve"><value>तुम्हाला नक्की हटवायचे आहे का?</value></data>
+<data name="NoSalesAvailable" xml:space="preserve"><value>कोणतीही विक्री उपलब्ध नाहीत</value></data>
+<data name="PaymentProof" xml:space="preserve"><value>पेमेंट पुरावा</value></data>
+<data name="Close" xml:space="preserve"><value>बंद करा</value></data>
+
+</root>

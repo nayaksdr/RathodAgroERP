@@ -1,0 +1,80 @@
+﻿@model RegisterViewModel
+
+@section Styles {
+    <link href="~/css/register.css" rel="stylesheet" />
+}
+<div class="register-wrapper d-flex align-items-center justify-content-center min-vh-100"
+     style="background: linear-gradient(135deg, #667eea, #764ba2);">
+    <div class="card shadow-lg rounded-4 border-0 overflow-hidden" style="max-width: 450px; width: 90%;">
+        <!-- Header -->
+        <div class="card-header text-center text-white py-4"
+             style="background: linear-gradient(135deg, #4e54c8, #8f94fb); font-size: 1.6rem; font-weight: 600;">
+            <i class="bi bi-person-plus-fill me-2"></i>Register
+        </div>
+
+        <div class="card-body p-4 bg-light">
+            <form asp-action="Register" method="post" novalidate>
+                <!-- Email -->
+                <div class="mb-3 input-group-lg">
+                    <label asp-for="Email" class="form-label fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white text-primary"><i class="bi bi-envelope-fill"></i></span>
+                        <input asp-for="Email" class="form-control form-control-lg shadow-sm" placeholder="Enter your email" />
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3 input-group-lg">
+                    <label asp-for="Password" class="form-label fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white text-primary"><i class="bi bi-lock-fill"></i></span>
+                        <input asp-for="Password" type="password" class="form-control form-control-lg shadow-sm" placeholder="Enter your password" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger small"></span>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mb-3 input-group-lg">
+                    <label asp-for="ConfirmPassword" class="form-label fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white text-primary"><i class="bi bi-lock-fill"></i></span>
+                        <input asp-for="ConfirmPassword" type="password" class="form-control form-control-lg shadow-sm" placeholder="Confirm password" />
+                    </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                </div>
+
+                <!-- Role -->
+                <div class="mb-4 input-group-lg">
+                    <label asp-for="Role" class="form-label fw-semibold"></label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white text-primary"><i class="bi bi-person-badge-fill"></i></span>
+                        <select asp-for="Role" class="form-select form-select-lg shadow-sm">
+                            <option>Admin</option>
+                            <option>Employee</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary btn-lg w-100 shadow-sm rounded-pill">
+                    <i class="bi bi-check-circle me-2"></i>Register
+                </button>
+            </form>
+
+            <!-- Login link -->
+            <div class="text-center mt-3">
+                <p class="text-muted">
+                    Already have an account?
+                    <a asp-controller="Account" asp-action="Login" class="text-decoration-none">Login here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

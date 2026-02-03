@@ -1,0 +1,28 @@
+﻿<root>
+  <data name="CreateTitle"><value>New Jaggery Sale</value></data>
+  <data name="EditTitle"><value>Edit Jaggery Sale</value></data>
+  <data name="Back"><value>Back</value></data>
+  <data name="Dealer"><value>Dealer</value></data>
+  <data name="SelectDealer"><value>-- Select Dealer --</value></data>
+  <data name="Labor"><value>Labor (Maker)</value></data>
+  <data name="SelectLabor"><value>-- Select Labor --</value></data>
+  <data name="Quantity"><value>Quantity (Quintal)</value></data>
+  <data name="QuantityPlaceholder"><value>e.g. 50</value></data>
+  <data name="Rate"><value>Rate (₹)</value></data>
+  <data name="RatePlaceholder"><value>e.g. 3000</value></data>
+  <data name="SaleDate"><value>Date</value></data>
+  <data name="PaymentMode"><value>Payment Mode</value></data>
+  <data name="SelectPaymentMode"><value>-- Select Payment Mode --</value></data>
+  <data name="Cash"><value>Cash</value></data>
+  <data name="UPI"><value>UPI</value></data>
+  <data name="Bank"><value>Bank</value></data>
+  <data name="ProofImage"><value>Payment Proof (Image)</value></data>
+  <data name="PaidBy"><value>Paid To</value></data>
+  <data name="SelectMember"><value>-- Select Member --</value></data>
+  <data name="TotalAmount"><value>Total Amount (₹)</value></data>
+  <data name="AdvancePaid"><value>Advance Paid (₹)</value></data>
+  <data name="AdvancePlaceholder"><value>e.g. 20000</value></data>
+  <data name="RemainingAmount"><value>Remaining Amount (₹)</value></data>
+  <data name="UpdateButton"><value>Update</value></data>
+  <data name="SaveButton"><value>Save</value></data>
+</root>

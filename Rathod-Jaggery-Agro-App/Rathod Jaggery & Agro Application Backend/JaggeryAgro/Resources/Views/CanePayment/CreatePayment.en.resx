@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Title_CreatePayment" xml:space="preserve">
+    <value>Create New Payment</value>
+  </data>
+  <data name="Label_Farmer" xml:space="preserve">
+    <value>Farmer</value>
+  </data>
+  <data name="Label_TotalPurchaseAmount" xml:space="preserve">
+    <value>Total Purchase Amount</value>
+  </data>
+  <data name="Label_AdvanceAmount" xml:space="preserve">
+    <value>Advance Amount</value>
+  </data>
+  <data name="Label_NetAmount" xml:space="preserve">
+    <value>Net Payable Amount</value>
+  </data>
+  <data name="Label_PaymentMode" xml:space="preserve">
+    <value>Payment Mode</value>
+  </data>
+  <data name="Label_Member" xml:space="preserve">
+    <value>Member</value>
+  </data>
+  
+ 
+  
+  <data name="Label_PaymentMode" xml:space="preserve">
+    <value>Select Payment Mode</value>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="UPI" xml:space="preserve">
+    <value>UPI</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="Label_PaymentProof" xml:space="preserve">
+    <value>Proof (Image)</value>
+  </data>
+  <data name="Button_SavePayment" xml:space="preserve">
+    <value>Save Payment</value>
+  </data>
+</root>

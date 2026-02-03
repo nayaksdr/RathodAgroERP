@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>AI Rathod Jaggery &amp; Agro Assistant</value>
+  </data>
+  <data name="PageSubtitle" xml:space="preserve">
+    <value>Ask questions about labor, attendance, weekly salary, jaggery production, sales or agriculture advice</value>
+  </data>
+  <data name="QuestionPlaceholder" xml:space="preserve">
+    <value>Type or speak your question here...</value>
+  </data>
+  <data name="AskButton" xml:space="preserve">
+    <value>Ask</value>
+  </data>
+  <data name="UserQuestion" xml:space="preserve">
+    <value>Your Question:</value>
+  </data>
+  <data name="AIAnswer" xml:space="preserve">
+    <value>AI Answer:</value>
+  </data>
+  <data name="MicTooltip" xml:space="preserve">
+    <value>Microphone</value>
+  </data>
+  <data name="ListenAnswer" xml:space="preserve">
+    <value>Listen to Answer</value>
+  </data>
+  <data name="MicNotSupported" xml:space="preserve">
+    <value>Speech recognition is not supported in your browser</value>
+  </data>
+</root>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>शेतकऱ्यांची यादी</value>
+  </data>
+
+  <data name="AddNewFarmerButton" xml:space="preserve">
+    <value>नवीन शेतकरी जोडा</value>
+  </data>
+
+  <data name="NameHeader" xml:space="preserve">
+    <value>नाव</value>
+  </data>
+
+  <data name="MobileHeader" xml:space="preserve">
+    <value>मोबाइल नंबर</value>
+  </data>
+
+  <data name="AddressHeader" xml:space="preserve">
+    <value>पत्ता</value>
+  </data>
+
+  <data name="VillageHeader" xml:space="preserve">
+    <value>गाव</value>
+  </data>
+
+  <data name="ActionHeader" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+
+  <data name="EditTooltip" xml:space="preserve">
+    <value>शेतकरी संपादित करा</value>
+  </data>
+
+  <data name="DeleteTooltip" xml:space="preserve">
+    <value>शेतकरी हटवा</value>
+  </data>
+
+  <data name="DeleteConfirm" xml:space="preserve">
+    <value>तुम्हाला खात्री आहे का की हा शेतकरी हटवायचा आहे?</value>
+  </data>
+</root>

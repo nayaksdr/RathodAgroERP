@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- ===== PAGE TITLES ===== -->
+  <data name="Title" xml:space="preserve">
+    <value>Cane Payment List</value>
+  </data>
+  <data name="Summary_Title" xml:space="preserve">
+    <value>Farmer Payment Summary</value>
+  </data>
+  <data name="FarmerPaymentSummary" xml:space="preserve">
+    <value>Farmer Payment Summary</value>
+  </data>
+
+  <!-- ===== SUMMARY LABELS ===== -->
+  <data name="TotalAmount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+  <data name="AdvanceAmount" xml:space="preserve">
+    <value>Advance Amount</value>
+  </data>
+  <data name="NetAmount" xml:space="preserve">
+    <value>Net Amount</value>
+  </data>
+  <data name="TotalPaid" xml:space="preserve">
+    <value>Total Paid</value>
+  </data>
+  <data name="BalancePending" xml:space="preserve">
+    <value>Balance Pending</value>
+  </data>
+
+  <!-- ===== BUTTONS ===== -->
+  <data name="Button_CreatePayment" xml:space="preserve">
+    <value>Create Payment</value>
+  </data>
+  <data name="Button_UpdateStatus" xml:space="preserve">
+    <value>Update Status</value>
+  </data>
+  <data name="Button_ExportExcel" xml:space="preserve">
+    <value>Export to Excel</value>
+  </data>
+  <data name="Button_ExportPdf" xml:space="preserve">
+    <value>Export to PDF</value>
+  </data>
+  <data name="Button_PaymentSlip" xml:space="preserve">
+    <value>Generate Payment Slip</value>
+  </data>
+  <data name="Button_Confirm" xml:space="preserve">
+    <value>Confirm Payment</value>
+  </data>
+
+  <!-- ===== LABELS ===== -->
+  <data name="Label_SelectFarmer" xml:space="preserve">
+    <value>Select Farmer</value>
+  </data>
+  <data name="Label_CurrentBalance" xml:space="preserve">
+    <value>Current Balance</value>
+  </data>
+  <data name="Hint_ProofFileTypes" xml:space="preserve">
+    <value>Allowed file types: PDF, JPG, JPEG, PNG</value>
+  </data>
+  <data name="Label_PaidAmount" xml:space="preserve">
+    <value>Paid Amount</value>
+  </data>
+  <data name="Label_Balance" xml:space="preserve">
+    <value>Remaining Balance</value>
+  </data>
+  <data name="Label_Status" xml:space="preserve">
+    <value>Payment Status</value>
+  </data>
+
+  <!-- ===== DROPDOWNS ===== -->
+  <data name="Option_AllFarmers" xml:space="preserve">
+    <value>-- All Farmers --</value>
+  </data>
+
+  <!-- ===== SUMMARY FIELDS ===== -->
+  <data name="Summary_TotalPurchase" xml:space="preserve">
+    <value>Total Purchase</value>
+  </data>
+  <data name="Summary_TotalAdvance" xml:space="preserve">
+    <value>Total Advance</value>
+  </data>
+  <data name="Summary_TotalPaid" xml:space="preserve">
+    <value>Total Paid</value>
+  </data>
+  <data name="Summary_BalancePending" xml:space="preserve">
+    <value>Pending Balance</value>
+  </data>
+  <data name="Summary_CarryForward" xml:space="preserve">
+    <value>Carry Forward Amount</value>
+  </data>
+  <data name="Summary_TotalAmount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+  <data name="Summary_Advance" xml:space="preserve">
+    <value>Advance Adjusted</value>
+  </data>
+  <data name="Summary_NetAmount" xml:space="preserve">
+    <value>Net Payable</value>
+  </data>
+
+  <!-- ===== TABLE HEADERS ===== -->
+  <data name="Table_Header_Farmer" xml:space="preserve">
+    <value>Farmer</value>
+  </data>
+  <data name="Table_Header_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Table_Header_TotalAmount" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+  <data name="Table_Header_Advance" xml:space="preserve">
+    <value>Advance Adjusted</value>
+  </data>
+  <data name="Table_Header_Paid" xml:space="preserve">
+    <value>Paid Amount</value>
+  </data>
+  <data name="Table_Header_Balance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="Table_Header_CarryForward" xml:space="preserve">
+    <value>Carry Forward</value>
+  </data>
+  <data name="Table_Header_PaymentMode" xml:space="preserve">
+    <value>Payment Mode</value>
+  </data>
+  <data name="Table_Header_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Table_Header_PaidBy" xml:space="preserve">
+    <value>Paid By (Member)</value>
+  </data>
+  <data name="Table_Header_Proof" xml:space="preserve">
+    <value>Proof</value>
+  </data>
+  <data name="Table_Header_Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Table_Header_Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+
+  <!-- ===== STATUS VALUES ===== -->
+  <data name="Status_Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="Status_Partial" xml:space="preserve">
+    <value>Partially Paid</value>
+  </data>
+  <data name="Status_Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="Status_NoData" xml:space="preserve">
+    <value>No Data</value>
+  </data>
+
+  <!-- ===== PAYMENT MODES ===== -->
+  <data name="PaymentMode_Cash" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="PaymentMode_UPI" xml:space="preserve">
+    <value>UPI</value>
+  </data>
+  <data name="PaymentMode_Bank" xml:space="preserve">
+    <value>Bank Transfer</value>
+  </data>
+
+  <!-- ===== PAYMENT STATUS MESSAGES ===== -->
+  <data name="PaymentStatusPaid" xml:space="preserve">
+    <value>All payments are completed — nothing pending.</value>
+  </data>
+  <data name="PaymentStatusPartial" xml:space="preserve">
+    <value>Some payments are made, balance still pending.</value>
+  </data>
+  <data name="PaymentStatusPending" xml:space="preserve">
+    <value>Payment still pending.</value>
+  </data>
+
+  <!-- ===== PAYMENT SLIP CONTENT ===== -->
+  <data name="Slip_Title" xml:space="preserve">
+    <value>Cane Payment Receipt</value>
+  </data>
+  <data name="Slip_FactoryName" xml:space="preserve">
+    <value>Rathod Jaggery &amp; Agro Factory</value>
+  </data>
+  <data name="Slip_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Slip_FarmerName" xml:space="preserve">
+    <value>Farmer Name</value>
+  </data>
+  <data name="Slip_Village" xml:space="preserve">
+    <value>Village</value>
+  </data>
+  <data name="Slip_TotalCane" xml:space="preserve">
+    <value>Total Cane (Tons)</value>
+  </data>
+  <data name="Slip_RatePerTon" xml:space="preserve">
+    <value>Rate per Ton</value>
+  </data>
+  <data name="Slip_GrossAmount" xml:space="preserve">
+    <value>Gross Amount</value>
+  </data>
+  <data name="Slip_Advance" xml:space="preserve">
+    <value>Advance Deducted</value>
+  </data>
+  <data name="Slip_NetAmount" xml:space="preserve">
+    <value>Net Payable</value>
+  </data>
+  <data name="Slip_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Slip_PaymentMode" xml:space="preserve">
+    <value>Payment Mode</value>
+  </data>
+  <data name="Slip_Attachment" xml:space="preserve">
+    <value>Attached Receipt</value>
+  </data>
+  <data name="Slip_ThankYou" xml:space="preserve">
+    <value>Thank you for your cooperation 🙏</value>
+  </data>
+
+  <!-- ===== MISC ===== -->
+  <data name="NoData" xml:space="preserve">
+    <value>No Data Available</value>
+  </data>
+</root>

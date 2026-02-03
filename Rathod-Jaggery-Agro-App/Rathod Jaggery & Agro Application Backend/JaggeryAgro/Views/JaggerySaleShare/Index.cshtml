@@ -1,0 +1,257 @@
+﻿@using JaggeryAgro.Core.ViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@model DashboardViewModel
+@inject IViewLocalizer Localizer
+
+<div class="container mt-5">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-white py-3 px-4 rounded shadow-lg"
+            style="background: linear-gradient(90deg, #FFC107, #FF9800);
+                   font-size: 2.5rem; letter-spacing: 1px;
+                   text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+                   border: 2px solid #FFA000;">
+            @Localizer["JaggerySaleShare"]
+        </h1>
+    </div>
+
+    <!-- Add New Sale Share Button -->
+    <div class="text-center mb-5">
+        <a asp-action="Create" class="btn btn-warning btn-lg fw-bold text-white shadow-lg rounded-pill px-5 py-3">
+            <i class="fas fa-plus me-2"></i> @Localizer["AddNewSaleShare"]
+        </a>
+    </div>
+
+    <!-- Jaggery Status Table -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-header bg-dark text-white fw-bold">
+            <i class="fas fa-table me-2"></i> @Localizer["JaggerySaleDetails"]
+        </div>
+        <div class="card-body table-responsive">
+            <table class="table table-striped table-hover table-bordered align-middle" id="JaggerySaleShareTable">
+                <thead class="table-primary text-center">
+                    <tr>
+                        <th>@Localizer["Date"]</th>
+                        <th>@Localizer["Dealer"]</th>
+                        <th>@Localizer["Member"]</th>
+                        <th>@Localizer["ShareAmount"]</th>
+                        <th>@Localizer["PaidAmount"]</th>
+                        <th>@Localizer["PendingAmount"]</th>
+                        <th>@Localizer["Status"]</th>
+                        <th>@Localizer["PaymentMode"]</th>
+                        <th>@Localizer["Proof"]</th>
+                        <th>@Localizer["Action"]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var s in Model.JaggeryStatusList)
+                    {
+                        <tr class="text-center align-middle">
+                            <td>@s.SaleDate.ToString("dd/MM/yyyy")</td>
+                            <td>@s.DealerName</td>
+                            <td>@s.MemberName</td>
+                            <td>₹@s.ShareAmount</td>
+                            <td>₹@s.PaidAmount</td>
+                            <td>₹@s.PendingAmount</td>
+                            <td class="fw-bold @(s.PendingAmount <= 0 ? "text-success" : "text-danger")">@s.Status</td>
+                            <td>@s.PaymentMode</td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(s.ProofImage))
+                                {
+                                    <img src="@Url.Content(s.ProofImage)"
+                                         class="img-thumbnail clickable-image shadow-sm"
+                                         style="width:50px; height:50px; cursor:pointer;"
+                                         data-bs-toggle="modal"
+                                         data-bs-target="#imageModal"
+                                         data-imgsrc="@Url.Content(s.ProofImage)" />
+                                }
+                                else
+                                {
+                                    <span class="text-muted">@Localizer["NoImage"]</span>
+                                }
+                            </td>
+                            <td>
+                                <a asp-action="RecordPayment" asp-route-saleId="@s.SaleId"
+                                   class="btn btn-sm btn-success mb-1" title="@Localizer["RecordPayment"]">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@s.ShareId"
+                                   class="btn btn-sm btn-primary mb-1" title="@Localizer["Edit"]">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@s.ShareId"
+                                   class="btn btn-sm btn-danger mb-1" title="@Localizer["Delete"]">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Proof Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content shadow-lg">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title" id="imageModalLabel">@Localizer["ProofImage"]</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-3">
+                    <img id="modalImage" src="" alt="Preview" class="img-fluid rounded shadow-sm" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paid vs Pending Chart -->
+    <div class="card p-4 shadow-lg rounded mb-5">
+        <h4 class="fw-bold text-center mb-4 text-dark">
+            <i class="fas fa-chart-bar me-2 text-warning"></i> @Localizer["PaidVsPendingChartTitle"]
+        </h4>
+        <div class="chart-container" style="position: relative; height: 300px; width: 100%;">
+            <canvas id="jaggerySaleChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Member Summary Cards -->
+    <div class="row g-4">
+        @foreach (var member in Model.MemberSummary)
+        {
+            <div class="col-12 col-sm-6 col-md-4">
+                <div class="card shadow-sm border-start border-4 border-warning rounded-4 h-100">
+                    <div class="card-body d-flex flex-column align-items-center text-center">
+                        <h5 class="card-title fw-bold">@member.Name</h5>
+                        <p class="mb-1 text-success">@Localizer["PaidAmount"] ₹@member.SplitwisePaid</p>
+                        <p class="mb-1 text-primary">@Localizer["EarnedAmount"] ₹@member.JaggeryEarned</p>
+                        <p class="mb-2 fw-bold @(member.NetBalance >= 0 ? "text-success" : "text-danger")">
+                            @Localizer["TotalBalance"] ₹@member.NetBalance
+                        </p>
+
+                        <div class="chart-wrapper mt-3 flex-grow-1" style="max-width:250px; max-height:250px;">
+                            <canvas id="pieChart_@member.MemberId"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Lock Chart.js to stable v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // DataTable initialization with localization
+            $('#JaggerySaleShareTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 5,
+                columnDefs: [{ targets: 7, orderable: false }],
+                language: {
+                    @* Localized DataTable messages *@
+                    search: "@Localizer["Search"]",
+                    lengthMenu: "@Localizer["ShowEntries"]",
+                    info: "@Localizer["ShowingEntries"]",
+                    paginate: {
+                        previous: "@Localizer["Previous"]",
+                        next: "@Localizer["Next"]"
+                    },
+                    zeroRecords: "@Localizer["NoRecordsFound"]",
+                    infoEmpty: "@Localizer["NoEntries"]"
+                }
+            });
+
+            // Image modal preview
+            $('#imageModal').on('show.bs.modal', function (event) {
+                const button = $(event.relatedTarget);
+                const imgSrc = button.data('imgsrc');
+                $('#modalImage').attr('src', imgSrc);
+            });
+        });
+
+        // Paid vs Pending Bar Chart
+        const ctxJaggery = document.getElementById('jaggerySaleChart').getContext('2d');
+        new Chart(ctxJaggery, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.JaggeryChartLabels)),
+                datasets: [
+                    {
+                        label: '@Localizer["PaidAmount"]',
+                        data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.JaggeryChartPaid)),
+                        backgroundColor: 'rgba(54,162,235,0.8)',
+                        borderRadius: 8
+                    },
+                    {
+                        label: '@Localizer["PendingAmount"]',
+                        data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.JaggeryChartPending)),
+                        backgroundColor: 'rgba(255,99,132,0.8)',
+                        borderRadius: 8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { font: { size: 13 } }
+                    },
+                    title: {
+                        display: true,
+                        text: '@Localizer["PaidVsPendingChartTitle"]'
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { font: { size: 12 } },
+                        grid: { display: false }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: { font: { size: 12 } }
+                    }
+                }
+            }
+        });
+
+        // Member Pie Charts
+        document.addEventListener("DOMContentLoaded", function () {
+            @foreach (var member in Model.MemberSummary)
+            {
+                    <text>
+                    var ctx_@member.MemberId = document.getElementById('pieChart_@member.MemberId').getContext('2d');
+                    new Chart(ctx_@member.MemberId, {
+                        type: 'pie',
+                        data: {
+                            labels: ['@Localizer["PaidAmount"]', '@Localizer["EarnedAmount"]'],
+                            datasets: [{
+                                data: [@member.SplitwisePaid, @member.JaggeryEarned],
+                                backgroundColor: ['rgba(54,162,235,0.8)','rgba(255,193,7,0.8)'],
+                                borderColor: '#fff',
+                                borderWidth: 2,
+                                hoverOffset: 10
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { position: 'bottom' } }
+                        }
+                    });
+                    </text>
+            }
+        });
+    </script>
+}

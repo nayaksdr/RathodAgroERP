@@ -1,0 +1,48 @@
+﻿@model JaggeryAgro.Core.ViewModel.LaborLoginViewModel
+
+@{
+    ViewData["Title"] = "मजूर लॉगिन";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg rounded-4 p-4">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold text-success">
+                        <i class="fas fa-user-tie me-2"></i> मजूर लॉगिन
+                    </h2>
+                </div>
+
+                <form asp-action="LaborLogin" method="post" novalidate>
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <label asp-for="Mobile" class="form-label"></label>
+                        <input asp-for="Mobile" class="form-control shadow-sm" placeholder="मोबाईल नंबर टाका" />
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" type="password" class="form-control shadow-sm" placeholder="पासवर्ड टाका" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-success fw-bold">
+                            <i class="fas fa-sign-in-alt me-1"></i> लॉगिन
+                        </button>
+                        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary fw-bold">
+                            <i class="fas fa-arrow-left me-1"></i> मुख्य पृष्ठावर परत जा
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,55 @@
+﻿@using JaggeryAgro.Core.Entities
+
+@model IEnumerable<WeeklyPayment>
+@{
+    ViewData["Title"] = "साप्ताहिक वेतन देयके";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="get" asp-action="Generate">
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label>तारीख पासून</label>
+            <input type="date" name="fromDate" class="form-control" required />
+        </div>
+        <div class="col-md-3">
+            <label>तारीख पर्यंत</label>
+            <input type="date" name="toDate" class="form-control" required />
+        </div>
+        <div class="col-md-3 align-self-end">
+            <button type="submit" class="btn btn-primary">वेतन तयार करा</button>
+        </div>
+    </div>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>कामगाराचे नाव</th>
+                <th>कामगार प्रकार</th>
+                <th>उपस्थित दिवस</th>
+                <th>दररोज वेतन</th>
+                <th>एकूण वेतन (ग्रॉस)</th>
+                <th>अ‍ॅडव्हान्स कपात</th>
+                <th>नेट वेतन</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.LaborName</td>
+                    <td>@item.LaborType</td>
+                    <td>@item.DaysPresent</td>
+                    <td>@item.DailyRate</td>
+                    @* <td>@item.GrossSalary</td> *@
+                    <td>@item.AdvanceDeducted</td>
+                    <td>@item.NetSalary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.CanePurchase
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["PageTitle"];
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg rounded-3">
+        <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">
+                <i class="bi bi-exclamation-triangle me-2"></i> @Localizer["HeaderTitle"]
+            </h4>
+            <a asp-action="Index" class="btn btn-light btn-sm">
+                <i class="bi bi-arrow-left-circle me-1"></i> @Localizer["BackButton"]
+            </a>
+        </div>
+
+        <div class="card-body">
+            <h5 class="text-danger mb-3">@Localizer["DeleteConfirmation"]</h5>
+
+            <dl class="row">
+                <dt class="col-sm-3">@Localizer["DateLabel"]</dt>
+                <dd class="col-sm-9">@Model.PurchaseDate.ToString("dd-MM-yyyy")</dd>
+
+                <dt class="col-sm-3">@Localizer["QuantityLabel"]</dt>
+                <dd class="col-sm-9">@Model.QuantityTon.ToString("0.00")</dd>
+
+                <dt class="col-sm-3">@Localizer["RateLabel"]</dt>
+                <dd class="col-sm-9">@Model.RatePerTon.ToString("N2")</dd>
+
+                <dt class="col-sm-3">@Localizer["TotalLabel"]</dt>
+                <dd class="col-sm-9 fw-bold text-danger">
+                    ₹@((Model.QuantityTon * Model.RatePerTon).ToString("N2"))
+                </dd>
+
+                <dt class="col-sm-3">@Localizer["WeightSlipLabel"]</dt>
+                <dd class="col-sm-9">
+                    @if (!string.IsNullOrEmpty(Model.CaneWeightImagePath))
+                    {
+                        <img src="@Model.CaneWeightImagePath" alt="@Localizer["WeightSlipLabel"]" class="img-thumbnail" style="max-height:70px;" />
+                    }
+                    else
+                    {
+                        <span class="text-muted">@Localizer["NoImageText"]</span>
+                    }
+                </dd>
+            </dl>
+
+            <form asp-action="DeleteConfirmed" method="post">
+                <input type="hidden" asp-for="Id" />
+                <div class="mt-4 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-danger me-2">
+                        <i class="bi bi-trash me-1"></i> @Localizer["ConfirmDeleteButton"]
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-x-circle me-1"></i> @Localizer["CancelButton"]
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

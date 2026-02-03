@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="Labor Payment List"><value>Labor Payment List</value></data>
+  <data name="Total Salary"><value>Total Salary</value></data>
+  <data name="Advance Deducted"><value>Advance Deducted</value></data>
+  <data name="Net Salary"><value>Net Salary</value></data>
+  <data name="Labor"><value>Labor</value></data>
+  <data name="Select Labor"><value>Select Labor</value></data>
+  <data name="From"><value>From</value></data>
+  <data name="To"><value>To</value></data>
+  <data name="Filter"><value>Filter</value></data>
+  <data name="Date Range"><value>Date Range</value></data>
+  <data name="to"><value>to</value></data>
+  <data name="Labor Name"><value>Labor Name</value></data>
+  <data name="Days/Production/Weight"><value>Days / Production / Weight</value></data>
+  <data name="Rate"><value>Rate</value></data>
+  <data name="Advance"><value>Advance</value></data>
+  <data name="Status"><value>Status</value></data>
+  <data name="Slip"><value>Slip</value></data>
+  <data name="Paid"><value>Paid</value></data>
+  <data name="Pending"><value>Pending</value></data>
+  <data name="Generate Slip"><value>Generate Slip</value></data>
+  <data name="Generated"><value>Generated</value></data>
+  <data name="Days"><value>Days</value></data>
+  <data name="Search"><value>Search:</value></data>
+  <data name="Show _MENU_ entries per page"><value>Show _MENU_ entries per page</value></data>
+  <data name="Showing _START_ to _END_ of _TOTAL_ entries"><value>Showing _START_ to _END_ of _TOTAL_ entries</value></data>
+</root>

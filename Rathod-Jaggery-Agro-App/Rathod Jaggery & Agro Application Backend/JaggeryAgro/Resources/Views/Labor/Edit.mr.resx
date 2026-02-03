@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="PageTitle" xml:space="preserve">
+    <value>मजूर सुधारित करा</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>नाव</value>
+  </data>
+  <data name="EnterNamePlaceholder" xml:space="preserve">
+    <value>मजूरचे नाव टाका</value>
+  </data>
+  <data name="LaborType" xml:space="preserve">
+    <value>मजूर प्रकार</value>
+  </data>
+  <data name="SelectLaborType" xml:space="preserve">
+    <value>-- मजूर प्रकार निवडा --</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>मोबाईल क्रमांक</value>
+  </data>
+  <data name="EnterMobilePlaceholder" xml:space="preserve">
+    <value>मोबाईल क्रमांक टाका</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>पासवर्ड</value>
+  </data>
+  <data name="EnterPasswordPlaceholder" xml:space="preserve">
+    <value>पासवर्ड टाका (रिकामा ठेवला तरी चालेल)</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>भूमिका</value>
+  </data>
+  <data name="EnterRolePlaceholder" xml:space="preserve">
+    <value>भूमिका टाका</value>
+  </data>
+  <data name="JoinDate" xml:space="preserve">
+    <value>जॉईन तारीख</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>सक्रिय आहे का?</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>सुधारित करा</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>मागे जा</value>
+  </data>
+</root>

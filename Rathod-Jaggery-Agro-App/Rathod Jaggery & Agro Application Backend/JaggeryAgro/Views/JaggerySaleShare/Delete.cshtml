@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.JaggerySaleShare
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["DeleteJaggeryShareTitle"];
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-danger text-white rounded-top-4 d-flex justify-content-between align-items-center">
+            <h4 class="mb-0 fw-bold">
+                <i class="fas fa-trash-alt me-2"></i> @ViewData["Title"]
+            </h4>
+            <a asp-action="Index" class="btn btn-light btn-sm shadow-sm">
+                <i class="fas fa-arrow-left me-1"></i> @Localizer["Back"]
+            </a>
+        </div>
+
+        <div class="card-body bg-light">
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">@Localizer["Sale"]</label>
+                    <div class="p-2 border rounded shadow-sm bg-white">
+                        @Model.JaggerySale?.Dealer?.Name - ₹@Model.JaggerySale?.TotalAmount:N2 (@Model.JaggerySale?.SaleDate:dd/MM/yyyy)
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">@Localizer["Member"]</label>
+                    <div class="p-2 border rounded shadow-sm bg-white">
+                        @Model.Member?.Name
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">@Localizer["ShareAmount"] (₹)</label>
+                    <div class="p-2 border rounded shadow-sm bg-white">
+                        @Model.ShareAmount:N2
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">@Localizer["PaidAmount"] (₹)</label>
+                    <div class="p-2 border rounded shadow-sm bg-white">
+                        @Model.PaidAmount:N2
+                    </div>
+                </div>
+            </div>
+
+            <form asp-action="Delete" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="d-flex flex-wrap gap-2 justify-content-end">
+                    <button type="submit" class="btn btn-danger px-4 shadow-sm">
+                        <i class="fas fa-trash-alt me-2"></i> @Localizer["Delete"]
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary px-4 shadow-sm">
+                        <i class="fas fa-times-circle me-2"></i> @Localizer["Cancel"]
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@using JaggeryAgro.Core.Entities
+@using Microsoft.AspNetCore.Mvc.Localization
+@model ExpenseType
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["PageTitle"];
+}
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <div class="card shadow-lg rounded-3">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">@ViewData["Title"]</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-bold">@Localizer["ExpenseTypeNameLabel"]</label>
+                            <input asp-for="Name" class="form-control" placeholder="@Localizer["ExpenseTypePlaceholder"]" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-3">
+                            <a asp-action="Index" class="btn btn-secondary px-4">
+                                <i class="bi bi-x-circle me-2"></i> @Localizer["CancelButton"]
+                            </a>
+                            <button type="submit" class="btn btn-success px-4">
+                                <i class="bi bi-plus-circle me-2"></i> @Localizer["AddButton"]
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

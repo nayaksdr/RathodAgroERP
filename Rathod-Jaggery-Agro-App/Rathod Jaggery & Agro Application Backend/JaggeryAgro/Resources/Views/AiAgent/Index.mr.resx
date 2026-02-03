@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>AI राठोड गुळ व अ‍ॅग्रो सहाय्यक</value>
+  </data>
+  <data name="PageSubtitle" xml:space="preserve">
+    <value>कामगार, हजर, आठवड्याचा पगार, गुळ उत्पादन, विक्री किंवा कृषी सल्ल्यासंबंधी प्रश्न विचारू शकता</value>
+  </data>
+  <data name="QuestionPlaceholder" xml:space="preserve">
+    <value>आपला प्रश्न येथे बोला किंवा टाइप करा...</value>
+  </data>
+  <data name="AskButton" xml:space="preserve">
+    <value>विचारणा करा</value>
+  </data>
+  <data name="UserQuestion" xml:space="preserve">
+    <value>आपला प्रश्न:</value>
+  </data>
+  <data name="AIAnswer" xml:space="preserve">
+    <value>AI उत्तर:</value>
+  </data>
+  <data name="MicTooltip" xml:space="preserve">
+    <value>मायक्रोफोन</value>
+  </data>
+  <data name="ListenAnswer" xml:space="preserve">
+    <value>उत्तर ऐका</value>
+  </data>
+  <data name="MicNotSupported" xml:space="preserve">
+    <value>आपल्या ब्राउझरमध्ये आवाज ओळख सुविधा उपलब्ध नाही</value>
+  </data>
+</root>

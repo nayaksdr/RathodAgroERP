@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model JaggeryAgro.Core.Entities.DealerAdvance
+@inject IViewLocalizer Localizer
+
+@{
+    var isEdit = Model?.Id > 0;
+    ViewBag.Title = isEdit ? Localizer["EditTitle"] : Localizer["CreateTitle"];
+}
+
+<div class="container mt-4 mb-5">
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+        <div class="card-header text-white py-3 px-4"
+             style="background: linear-gradient(135deg, #007bff, #6610f2);">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <h4 class="mb-0 fw-bold">
+                    <i class="bi bi-cash-coin me-2"></i> @ViewBag.Title
+                </h4>
+                <a asp-action="Index" class="btn btn-light btn-sm fw-bold shadow-sm">
+                    <i class="bi bi-arrow-left-circle me-1"></i> @Localizer["BackButton"]
+                </a>
+            </div>
+        </div>
+
+        <div class="card-body bg-light">
+            <form asp-action="@(isEdit ? "Edit" : "Create")" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+
+                <div class="col-md-6">
+                    <label asp-for="DealerId" class="form-label fw-bold">@Localizer["DealerLabel"]</label>
+                    <select asp-for="DealerId" asp-items="ViewBag.Dealers" class="form-select shadow-sm">
+                        <option value="">-- @Localizer["SelectDealer"] --</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="PaidById" class="form-label fw-bold">@Localizer["PaidByLabel"]</label>
+                    <select asp-for="PaidById" asp-items="ViewBag.Members" class="form-select shadow-sm">
+                        <option value="">-- @Localizer["SelectMember"] --</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="AdvanceDate" class="form-label fw-bold">@Localizer["DateLabel"]</label>
+                    <input asp-for="AdvanceDate" type="date" class="form-control shadow-sm" />
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="PaymentMode" class="form-label fw-bold">@Localizer["PaymentModeLabel"]</label>
+                    <select asp-for="PaymentMode" class="form-select shadow-sm">
+                        <option value="">-- @Localizer["SelectPaymentMode"] --</option>
+                        <option value="Cash">@Localizer["Cash"]</option>
+                        <option value="UPI">@Localizer["UPI"]</option>
+                        <option value="Bank">@Localizer["Bank"]</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">@Localizer["ProofImageLabel"]</label>
+                    <input type="file" name="ProofImage" class="form-control shadow-sm" accept="image/*" />
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Amount" class="form-label fw-bold">@Localizer["AmountLabel"]</label>
+                    <input asp-for="Amount" class="form-control shadow-sm" placeholder="@Localizer["AmountPlaceholder"]" />
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Note" class="form-label fw-bold">@Localizer["NoteLabel"]</label>
+                    <input asp-for="Note" class="form-control shadow-sm" placeholder="@Localizer["NotePlaceholder"]" />
+                </div>
+
+                <div class="col-12 text-end mt-4">
+                    <button type="submit" class="btn btn-success btn-lg px-5 rounded-pill shadow-sm">
+                        <i class="bi @(isEdit ? "bi-pencil-square" : "bi-save") me-2"></i>
+                        @(isEdit? Localizer["UpdateButton"] : Localizer["SaveButton"])
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

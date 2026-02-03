@@ -1,0 +1,78 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model IEnumerable<JaggeryAgro.Core.Entities.LaborType>
+
+@{
+    ViewData["Title"] = Localizer["Title"];
+}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-white bg-dark px-4 py-3 d-inline-block rounded-3 shadow">
+            @Localizer["Title"]
+        </h2>
+    </div>
+
+    <div class="text-end mb-4">
+        <a asp-action="Create" class="btn btn-success bg-gradient fw-bold shadow rounded-pill px-4 py-2">
+            <i class="bi bi-plus-circle me-2"></i> @Localizer["AddNew"]
+        </a>
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body">
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info text-center">
+                    @Localizer["NoRecords"]
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle table-striped" id="LaborTypeTable">
+                        <thead class="table-dark text-center">
+                            <tr>
+                                <th>@Localizer["Header_LaborType"]</th>
+                                <th>@Localizer["Header_Description"]</th>
+                                <th style="width: 180px;">@Localizer["Header_Actions"]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var type in Model)
+                            {
+                                <tr class="text-center align-middle">
+                                    <td>@type.LaborTypeName</td>
+                                    <td class="text-start">@type.Description</td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@type.Id" class="btn btn-warning btn-sm me-1 shadow-sm rounded-pill">
+                                            <i class="bi bi-pencil me-1"></i> @Localizer["Action_Edit"]
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@type.Id" class="btn btn-danger btn-sm shadow-sm rounded-pill">
+                                            <i class="bi bi-trash me-1"></i> @Localizer["Action_Delete"]
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#LaborTypeTable').DataTable({
+                responsive: true,
+                paging: true,
+                searching: true,
+                ordering: true,
+                pageLength: 5
+            });
+        });
+    </script>
+}

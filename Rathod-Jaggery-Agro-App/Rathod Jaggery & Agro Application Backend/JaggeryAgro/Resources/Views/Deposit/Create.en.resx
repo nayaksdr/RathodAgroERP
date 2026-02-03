@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0</value></resheader>
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>Add Deposit</value>
+  </data>
+
+  <data name="Header" xml:space="preserve">
+    <value>Add New Deposit</value>
+  </data>
+
+  <data name="Labor" xml:space="preserve">
+    <value>Type</value>
+  </data>
+
+  <data name="LaborPlaceholder" xml:space="preserve">
+    <value>Enter deposit type</value>
+  </data>
+
+  <data name="LaborId" xml:space="preserve">
+    <value>Related ID</value>
+  </data>
+
+  <data name="LaborIdPlaceholder" xml:space="preserve">
+    <value>Enter related ID</value>
+  </data>
+
+  <data name="Amount" xml:space="preserve">
+    <value>Amount (₹)</value>
+  </data>
+
+  <data name="AmountPlaceholder" xml:space="preserve">
+    <value>Enter amount</value>
+  </data>
+
+  <data name="DepositDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+</root>

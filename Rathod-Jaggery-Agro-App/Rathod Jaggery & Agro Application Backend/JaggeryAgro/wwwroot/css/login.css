@@ -1,0 +1,51 @@
+﻿@media (max-width: 576px) {
+    .card {
+        margin: 0 1rem;
+    }
+}
+.form-control {
+    transition: all 0.3s ease;
+}
+
+    /* Input focus glow */
+    .form-control:focus {
+        border-color: #4e54c8;
+        box-shadow: 0 0 10px rgba(78, 84, 200, 0.4);
+        outline: none;
+    }
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #3c41b3, #7379f9);
+        transform: translateY(-2px);
+    }
+
+.btn-outline-primary:hover {
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    border-color: #4e54c8;
+    color: #fff !important;
+    transform: translateY(-2px);
+}
+
+/* Card subtle hover */
+.card:hover {
+    transform: scale(1.01);
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Responsive font adjustments */
+@media (max-width: 576px) {
+    .card-header {
+        font-size: 1.3rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+    }
+}

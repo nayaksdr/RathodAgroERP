@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+
+  <data name="PageTitle" xml:space="preserve">
+    <value>उत्पादन तपशील</value>
+  </data>
+  <data name="Header" xml:space="preserve">
+    <value>जागरी उत्पादन तपशील</value>
+  </data>
+  <data name="ProducedDate" xml:space="preserve">
+    <value>उत्पादित दिनांक</value>
+  </data>
+  <data name="BatchNumber" xml:space="preserve">
+    <value>बॅच क्रमांक</value>
+  </data>
+  <data name="QuantityKg" xml:space="preserve">
+    <value>भेली वजन (किलो)</value>
+  </data>
+  <data name="UnitCount" xml:space="preserve">
+    <value>भेली संख्या</value>
+  </data>
+  <data name="TotalProductionKg" xml:space="preserve">
+    <value>एकूण उत्पादन (किलो)</value>
+  </data>
+  <data name="QualityGrade" xml:space="preserve">
+    <value>गुणवत्ता श्रेणी</value>
+  </data>
+  <data name="GradeA" xml:space="preserve">
+    <value>A - प्रीमियम</value>
+  </data>
+  <data name="GradeB" xml:space="preserve">
+    <value>B - स्टँडर्ड</value>
+  </data>
+  <data name="GradeC" xml:space="preserve">
+    <value>C - इकॉनॉमी</value>
+  </data>
+  <data name="StockKg" xml:space="preserve">
+    <value>साठा (किलो)</value>
+  </data>
+  <data name="Notes" xml:space="preserve">
+    <value>टिप्पण्या</value>
+  </data>
+  <data name="EditButton" xml:space="preserve">
+    <value>संपादित करा</value>
+  </data>
+  <data name="BackButton" xml:space="preserve">
+    <value>मागे जा</value>
+  </data>
+</root>
