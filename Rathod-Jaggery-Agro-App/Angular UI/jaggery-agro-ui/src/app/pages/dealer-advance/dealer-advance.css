@@ -1,0 +1,74 @@
+/* Main Container - Absolute fix for Sidebar Overlap */
+.dealer-advance {
+  /* Margin must match your sidebar width exactly */
+  margin-left: 240px !important; 
+  width: calc(100% - 240px) !important;
+  padding: 10px 20px !important;
+  min-height: 100vh;
+  box-sizing: border-box; /* Keeps padding inside the width calculation */
+  background-color: #f8fafc;
+  overflow-x: hidden;
+  display: block;
+}
+
+/* Fix for Table Column Spacing */
+.table {
+  table-layout: auto; /* Allows columns to shrink to fit content */
+  width: 100% !important;
+}
+
+.table th, .table td {
+  /* Drastically reduce horizontal padding to remove large gaps */
+  padding: 8px 10px !important; 
+  vertical-align: middle;
+  font-size: 0.88rem;
+  white-space: nowrap; /* Prevents text from stretching columns */
+}
+
+/* Narrow Column Constraints */
+.table th:nth-child(1) { width: 50px; }  /* # Column */
+.table th:nth-child(3) { width: 130px; } /* Amount Column */
+.table th:nth-child(4) { width: 140px; } /* Payment Mode Column */
+.table th:nth-child(5) { width: 80px; }  /* Proof Column */
+.table th:nth-child(6) { width: 100px; } /* Actions Column */
+
+/* Header Icon Alignment */
+.tiny-icon {
+  font-size: 16px !important;
+  height: 16px !important;
+  width: 16px !important;
+  vertical-align: middle;
+}
+
+/* Mobile/Tablet Reset */
+@media (max-width: 991px) {
+  .dealer-advance {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 10px !important;
+  }
+}
+/* Tighten Table Columns (Removes massive white space) */
+.table th, .table td {
+  padding: 8px 12px !important;
+  white-space: nowrap; 
+  font-size: 0.88rem;
+}
+
+/* Icon Sizing */
+.tiny-icon {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  vertical-align: middle;
+}
+
+/* Modal styling */
+.img-fluid {
+  border: 5px solid white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.swal2-confirm {
+  border-radius: 50px !important; /* Matches your rounded-pill buttons */
+}

@@ -1,0 +1,28 @@
+<div class="card">
+  <h3>💰 Record Payment</h3>
+
+  <form (ngSubmit)="submit()" enctype="multipart/form-data">
+
+    <label>From Member</label>
+    <select [(ngModel)]="model.fromMemberId" name="fromMemberId"></select>
+
+    <label>To Member</label>
+    <select [(ngModel)]="model.toMemberId" name="toMemberId"></select>
+
+    <label>Amount</label>
+    <input type="number" [(ngModel)]="model.amount" name="amount">
+
+    <label>Payment Mode</label>
+    <select [(ngModel)]="model.paymentMode" name="paymentMode">
+      <option>Cash</option>
+      <option>UPI</option>
+      <option>Bank</option>
+    </select>
+
+    <label>Proof</label>
+    <input type="file" (change)="onFile($event)">
+
+    <button class="btn-success">Record Payment</button>
+
+  </form>
+</div>

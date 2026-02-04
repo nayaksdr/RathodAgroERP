@@ -1,0 +1,74 @@
+.expense-type-wrapper {
+    margin-left: 260px; /* Aligns with your sidebar */
+    width: calc(100% - 260px);
+    background-color: #f4f7f6;
+    min-height: 100vh;
+    padding: 2rem;
+    transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 992px) {
+    .expense-type-wrapper {
+        margin-left: 0;
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+/* Color Varieties */
+.bg-primary-soft { background-color: #eef2ff; }
+.bg-warning-soft { background-color: #fffbeb; }
+.text-primary { color: #4f46e5; }
+.text-warning { color: #d97706; }
+
+/* Action Buttons */
+.btn-edit-circle, .btn-delete-circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+/* Keeps the table header at the top during scrolling */
+.table-responsive {
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa !important;
+  z-index: 10;
+  box-shadow: 0 2px 2px -1px rgba(0,0,0,0.1);
+}
+
+/* Smooth row hover effect */
+.animate-row {
+  transition: background-color 0.2s ease;
+}
+
+.animate-row:hover {
+  background-color: rgba(79, 70, 229, 0.05) !important;
+}
+.btn-edit-circle { background: #f0fdf4; color: #16a34a; }
+.btn-edit-circle:hover { background: #16a34a; color: white; }
+
+.btn-delete-circle { background: #fef2f2; color: #dc2626; }
+.btn-delete-circle:hover { background: #dc2626; color: white; }
+
+/* Avatar Icon */
+.icon-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background: #4f46e5;
+    color: white;
+}

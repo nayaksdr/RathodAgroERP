@@ -1,0 +1,16 @@
+.header {
+  margin-bottom: 15px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+table {
+  width: 100%;
+}
+.swal2-confirm {
+  border-radius: 50px !important; /* Matches your rounded-pill buttons */
+}

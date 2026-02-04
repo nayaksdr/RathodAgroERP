@@ -1,0 +1,208 @@
+<div class="produce">
+  <div class="labor-wrapper">
+    <mat-card class="page-card shadow-sm border-0">
+      
+      <div class="page-header d-flex justify-content-between align-items-center mb-4">
+        <h2 class="m-0 fw-bold d-flex align-items-center">
+          <div class="header-icon-bg me-3"><mat-icon color="primary">fact_check</mat-icon></div>
+          Production Dashboard
+        </h2>
+        <button mat-raised-button color="primary" class="rounded-pill px-4 shadow" (click)="openForm()">
+          <mat-icon>add</mat-icon> Add Entry
+        </button>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-12 col-md-4">
+          <div class="stat-card cost-card">
+            <div class="stat-icon"><mat-icon>account_balance_wallet</mat-icon></div>
+            <div class="stat-content">
+              <span class="stat-label">Total Cost</span>
+              <h3 class="stat-value">₹{{ totalCost | number:'1.2-2' }}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="stat-card belly-card">
+            <div class="stat-icon"><mat-icon>reorder</mat-icon></div>
+            <div class="stat-content">
+              <span class="stat-label">Total Belly Count</span>
+              <h3 class="stat-value text-orange">{{ totalBellyCount | number:'1.2-2' }}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="stat-card production-card">
+            <div class="stat-icon"><mat-icon>auto_graph</mat-icon></div>
+            <div class="stat-content">
+              <span class="stat-label">Total Production</span>
+              <h3 class="stat-value text-success">{{ totalProductionWeight | number:'1.2-2' }} <small>Kg</small></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-bar bg-white p-3 rounded-4 border mb-4 d-flex gap-3 align-items-center flex-wrap">
+        <mat-form-field appearance="outline" class="flex-grow-1">
+          <mat-label>Start Date</mat-label>
+          <input matInput [matDatepicker]="startPicker" [(ngModel)]="from">
+          <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <mat-datepicker #startPicker></mat-datepicker>
+          <mat-icon matPrefix class="me-2 text-muted">calendar_today</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="flex-grow-1">
+          <mat-label>End Date</mat-label>
+          <input matInput [matDatepicker]="endPicker" [(ngModel)]="to">
+          <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <mat-datepicker #endPicker></mat-datepicker>
+          <mat-icon matPrefix class="me-2 text-muted">event</mat-icon>
+        </mat-form-field>
+
+        <div class="btn-group d-flex gap-2">
+          <button mat-flat-button color="primary" class="rounded-pill px-4" (click)="load()">Filter</button>
+          <button mat-stroked-button class="rounded-pill" (click)="clearFilter()">Reset</button>
+        </div>
+      </div>
+
+      <div class="table-responsive rounded-4 border bg-white shadow-sm">
+        <table mat-table [dataSource]="list" class="w-100">
+          
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let r">
+              <mat-icon class="small-icon me-1 text-muted">calendar_today</mat-icon> 
+              {{ r.producedDate | date:'dd-MM-yyyy' }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="batch">
+            <th mat-header-cell *matHeaderCellDef>Batch Number</th>
+            <td mat-cell *matCellDef="let r"> 
+              <mat-icon class="small-icon me-1 text-muted">qr_code</mat-icon> {{ r.batchNumber }} 
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef>Belly Weight (Kg)</th>
+            <td mat-cell *matCellDef="let r"> 
+              <mat-icon class="small-icon me-1 text-muted">fitness_center</mat-icon> {{ r.quantityKg }} 
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef>Belly Count</th>
+            <td mat-cell *matCellDef="let r"> 
+              <mat-icon class="small-icon me-1 text-muted">pin</mat-icon> {{ r.unitPrice }} 
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="production">
+            <th mat-header-cell *matHeaderCellDef>Total Production (Kg)</th>
+            <td mat-cell *matCellDef="let r" class="fw-bold text-dark"> 
+               {{ r.totalCostSnapshot | number }} 
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="quality">
+            <th mat-header-cell *matHeaderCellDef>Quality</th>
+            <td mat-cell *matCellDef="let r"> 
+              <span class="badge rounded-pill" [ngClass]="r.qualityGrade === 'A' ? 'bg-success' : 'bg-warning text-dark'">
+                {{ r.qualityGrade }}
+              </span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="stock">
+            <th mat-header-cell *matHeaderCellDef>Stock (Kg)</th>
+            <td mat-cell *matCellDef="let r" class="text-primary fw-bold"> 
+              <mat-icon class="small-icon me-1">inventory_2</mat-icon> {{ r.stockKg | number }} 
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let r">
+              <button mat-icon-button color="primary" (click)="openForm(r)"><mat-icon>edit</mat-icon></button>
+              <button mat-icon-button color="warn" (click)="delete(r.id)"><mat-icon>delete_outline</mat-icon></button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row-hover"></tr>
+        </table>
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+<ng-template #produceForm>
+  <div class="p-2">
+    <h2 mat-dialog-title class="fw-bold text-primary">{{ formData.id ? 'Edit' : 'Add' }} Production Entry</h2>
+    <mat-dialog-content>
+      <div class="row g-3 pt-2">
+        
+        <div class="col-12">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Produced Date</mat-label>
+            <input matInput [matDatepicker]="modalPicker" [(ngModel)]="formData.producedDate">
+            <mat-datepicker-toggle matIconSuffix [for]="modalPicker"></mat-datepicker-toggle>
+            <mat-datepicker #modalPicker></mat-datepicker>
+            <mat-icon matPrefix class="me-2 text-muted">calendar_today</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Belly Weight (Kg)</mat-label>
+            <input matInput type="number" [(ngModel)]="formData.quantityKg" (ngModelChange)="calculateFormTotals()">
+            <mat-icon matPrefix class="me-2 text-muted">fitness_center</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Belly Count</mat-label>
+            <input matInput type="number" [(ngModel)]="formData.unitPrice" (ngModelChange)="calculateFormTotals()">
+            <mat-icon matPrefix class="me-2 text-muted">pin</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100 bg-light rounded">
+            <mat-label>Total Production (Kg)</mat-label>
+            <input matInput type="number" [(ngModel)]="formData.totalCostSnapshot" readonly>
+            <mat-icon matPrefix class="me-2 text-success">auto_graph</mat-icon>
+            <mat-hint>Calculated: Weight × Count</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Quality Grade</mat-label>
+            <input matInput [(ngModel)]="formData.qualityGrade">
+            <mat-icon matPrefix class="me-2 text-muted">workspace_premium</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Stock (Kg)</mat-label>
+            <input matInput type="number" [(ngModel)]="formData.stockKg">
+            <mat-icon matPrefix class="me-2 text-primary">inventory_2</mat-icon>
+            <mat-hint>Defaults to Total Production</mat-hint>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" class="pb-3 px-3">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button color="primary" class="rounded-pill px-4" [mat-dialog-close]="formData">
+        {{ formData.id ? 'Update' : 'Save' }} Production
+      </button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>

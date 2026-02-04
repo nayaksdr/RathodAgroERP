@@ -1,0 +1,52 @@
+/* ================= AI AGENT PAGE ================= */
+.aiagent-page {
+  margin-left: 260px;     /* full sidebar width */
+  padding: 25px;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease, padding 0.3s ease;
+}
+
+/* Collapsed sidebar */
+@media (max-width: 992px) {
+  .aiagent-page {
+    margin-left: 70px;   /* match collapsed sidebar */
+  }
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .aiagent-page {
+    margin-left: 0;
+    padding: 15px;
+  }
+}
+.swal2-confirm {
+  border-radius: 50px !important; /* Matches your rounded-pill buttons */
+}
+
+/* HEADER ICON */
+.aiagent-page .ai-header i {
+  color: #0d6efd;
+}
+
+/* Hover effect for cards/buttons */
+.hover-scale {
+  transition: transform .2s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Answer box */
+.ai-answer {
+  background: #f8f9fa;
+  border-left: 5px solid #0d6efd;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Spinner centered */
+.aiagent-page .spinner-border {
+  width: 3rem;
+  height: 3rem;
+}

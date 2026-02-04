@@ -1,0 +1,261 @@
+<div class="jaggery-sales container-fluid py-4 bg-light min-vh-100">
+  
+  <header class="glass-header d-flex flex-wrap justify-content-between align-items-center p-3 mb-4 sticky-top shadow-sm animate__animated animate__fadeInDown">
+    <div class="d-flex align-items-center">
+      <div class="logo-hexagon me-3 shadow-primary">
+        <mat-icon>leaderboard</mat-icon>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+  <div class="brand-wrapper">
+    <h2 class="m-0 fw-bolder tracking-tighter text-dark d-flex align-items-center">
+      Jaggery<span class="text-primary ms-1">Sales</span>
+      <mat-icon class="ms-2 fs-4 text-primary-subtle">verified</mat-icon>
+    </h2>
+
+  </div>
+</div>
+    </div>
+    
+    <div class="d-flex gap-3 align-items-center mt-3 mt-md-0">
+      <div class="d-none d-md-block text-end me-2 border-end pe-3">
+        <p class="m-0 small text-muted">Server Node: <span class="text-success fw-bold">Active</span></p>
+        <p class="m-0 small fw-bold text-dark">₹ {{ summary.total | number }} Total Flow</p>
+      </div>
+      <button mat-fab extended color="primary" (click)="load()" class="sync-btn">
+        <mat-icon >sync</mat-icon>
+        SYNC DATA
+      </button>
+    </div>
+  </header>
+
+  <div class="row g-4">
+    <div class="col-12 col-lg-4 col-xl-3">
+      <div class="modern-card border-0 shadow-lg sticky-lg-top" style="top: 100px;">
+        <div class="card-header-premium" [class.edit-mode]="editId">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-2 text-white">
+              <mat-icon>{{ editId ? 'published_with_changes' : 'add_shopping_cart' }}</mat-icon>
+              <span class="fw-bold fs-6">{{ editId ? 'Modify Transaction' : 'Quick Sale Entry' }}</span>
+            </div>
+            <mat-icon *ngIf="editId" class="text-white-50">auto_awesome</mat-icon>
+          </div>
+        </div>
+
+        <div class="card-body p-4 bg-white rounded-bottom-4">
+         <mat-form-field appearance="outline" class="w-100 custom-field">
+  <mat-label>Associated Dealer</mat-label>
+  <mat-icon matPrefix color="primary">storefront</mat-icon>
+  <mat-select [(ngModel)]="model.dealerId" required>
+    <mat-option *ngFor="let d of dealers" [value]="d.id">
+      <div class="d-flex align-items-center gap-3 py-1">
+        <div class="initial-circle-sm">{{ d.name?.charAt(0) }}</div>
+        <span class="fw-medium text-dark">{{ d.name }}</span>
+      </div>
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+          <div class="row g-2 mb-2">
+            <div class="col-12">
+              <mat-form-field appearance="outline" class="w-100 custom-field">
+                <mat-label>Transaction Date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="model.saleDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="metrics-grid mb-3">
+            <div class="metric-box">
+              <span class="label"><mat-icon>scale</mat-icon> Weight</span>
+              <div class="input-wrapper">
+                <input type="number" [(ngModel)]="model.quantityInKg" (input)="calculateTotal()" placeholder="0">
+                <span class="unit">KG</span>
+              </div>
+            </div>
+            <div class="metric-box highlight">
+              <span class="label"><mat-icon>sell</mat-icon> Rate</span>
+              <div class="input-wrapper">
+                <input type="number" [(ngModel)]="model.ratePerKg" (input)="calculateTotal()" placeholder="0.00">
+                <span class="unit">₹</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ledger-preview rounded-4 p-3 mb-3">
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">Gross Amount</span>
+              <span class="fw-bold">₹{{ model.totalAmount | number:'1.2-2' }}</span>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted">Advance Adj.</span>
+              <input type="number" class="mini-ledger-input" [(ngModel)]="model.advancePaid" (input)="updateRemaining()">
+            </div>
+            <div class="divider"></div>
+            <div class="d-flex justify-content-between align-items-center pt-2">
+              <span class="fw-bold text-dark">Net Payable</span>
+              <span class="text-danger fw-bolder fs-5">₹{{ model.remainingAmount | number:'1.2-2' }}</span>
+            </div>
+          </div>
+
+    <mat-form-field appearance="outline" class="w-100 custom-field mb-3">
+      <mat-label>Authorized By</mat-label>
+             <mat-icon matPrefix color="primary">verified_user</mat-icon>
+               <mat-select [(ngModel)]="model.paidById" panelClass="premium-dropdown-panel">
+                    <mat-option *ngFor="let p of paidBy" [value]="p.id">
+                    <div class="d-flex align-items-center justify-content-between w-100">
+                              <span class="fw-medium">{{ p.name }}</span>
+        
+              <mat-icon *ngIf="model.paidById === p.id" 
+                  color="primary" 
+                  class="selection-checkmark">
+          
+              </mat-icon>
+             </div>
+        </mat-option>
+  </mat-select>
+</mat-form-field>
+
+         <div class="upload-zone mb-4" [class.has-file]="selectedFile" (click)="fileInput.click()">
+  <input type="file" #fileInput hidden (change)="onFileSelected($event)" accept="image/*">
+  
+  <div *ngIf="!selectedFile" class="text-center p-3 animate__animated animate__fadeIn">
+    <mat-icon class="text-muted fs-1">add_a_photo</mat-icon>
+    <p class="m-0 small text-muted fw-bold">Upload Proof / Receipt</p>
+    <span class="x-small text-secondary">JPG, PNG up to 2MB</span>
+  </div>
+
+  <div *ngIf="selectedFile" class="preview-container p-2 animate__animated animate__zoomIn">
+    <img [src]="imagePreview" alt="Proof Preview" class="img-fluid rounded-3 mb-2 shadow-sm">
+    <div class="d-flex align-items-center gap-2 bg-white p-2 rounded-2 border">
+      <mat-icon color="success" style="font-size: 20px; width:20px; height:20px;">check_circle</mat-icon>
+      <span class="small truncate fw-bold text-dark flex-grow-1">{{ selectedFile.name }}</span>
+      <button mat-icon-button color="warn" size="small" (click)="selectedFile = null; imagePreview = null; $event.stopPropagation()">
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+          <div class="d-grid gap-2">
+            <button mat-flat-button color="primary" class="py-3 rounded-3 shadow-primary" (click)="save()">
+              <mat-icon class="me-2">{{ editId ? 'save' : 'bolt' }}</mat-icon>
+              {{ editId ? 'SAVE CHANGES' : 'EXECUTE SALE' }}
+            </button>
+            <button *ngIf="editId" mat-button color="warn" (click)="afterSave()">CANCEL</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-8 col-xl-9">
+      <div class="row g-3 mb-4">
+        <div class="col-12 col-md-4" *ngFor="let s of [
+          {title: 'Net Revenue', val: summary.total, icon: 'analytics', color: '#6366f1', bg: 'rgba(99, 102, 241, 0.1)'},
+          {title: 'Cash Inflow', val: summary.advance, icon: 'account_balance_wallet', color: '#22c55e', bg: 'rgba(34, 197, 94, 0.1)'},
+          {title: 'Outstanding', val: summary.remaining, icon: 'hourglass_empty', color: '#ef4444', bg: 'rgba(239, 68, 68, 0.1)'}
+        ]">
+          <div class="stat-card p-4 rounded-4 shadow-sm border-0 bg-white">
+            <div class="d-flex justify-content-between">
+              <div>
+                <p class="text-uppercase small fw-bold text-muted mb-1">{{s.title}}</p>
+                <h3 class="fw-bolder m-0">₹{{s.val | number:'1.0-0'}}</h3>
+              </div>
+              <div class="icon-shape" [style.background-color]="s.bg" [style.color]="s.color">
+                <mat-icon>{{s.icon}}</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modern-card border-0 shadow-sm bg-white rounded-4 overflow-hidden">
+        <div class="p-4 d-flex flex-wrap justify-content-between align-items-center bg-white border-bottom">
+          <div class="d-flex align-items-center gap-2">
+            <div class="p-2 bg-soft-primary rounded-3">
+              <mat-icon class="text-primary">history_edu</mat-icon>
+            </div>
+            <h5 class="m-0 fw-bolder">Audit Ledger</h5>
+          </div>
+          
+          <div class="search-filter-group d-flex gap-2">
+            <div class="search-box">
+              <mat-icon>search</mat-icon>
+              <select class="form-select border-0 bg-light" [(ngModel)]="filter.dealerId" (change)="load()">
+                <option [value]="null">All Dealers</option>
+                <option *ngFor="let d of dealers" [value]="d.id">{{ d.name }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table mat-table [dataSource]="sales" class="w-100">
+            <ng-container matColumnDef="dealer">
+              <th mat-header-cell *matHeaderCellDef class="ps-4">DEALER</th>
+              <td mat-cell *matCellDef="let r" class="ps-4">
+                <div class="d-flex align-items-center gap-3 py-2">
+                  <div class="avatar-sm shadow-sm">{{r.dealerName.charAt(0)}}</div>
+                  <div>
+                    <div class="fw-bold text-dark">{{ r.dealerName }}</div>
+                    <div class="small text-muted d-flex align-items-center gap-1">
+                      <mat-icon style="font-size: 12px; width:12px; height:12px;">calendar_month</mat-icon>
+                      {{ r.saleDate | date:'mediumDate' }}
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="total">
+              <th mat-header-cell *matHeaderCellDef>AMOUNT</th>
+              <td mat-cell *matCellDef="let r" class="fw-bold">₹{{ r.totalAmount | number:'1.2-2' }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="advance">
+              <th mat-header-cell *matHeaderCellDef>STATUS</th>
+              <td mat-cell *matCellDef="let r">
+                <span class="status-pill" [class.paid]="r.remainingAmount === 0" [class.partial]="r.remainingAmount > 0">
+                  {{ r.remainingAmount === 0 ? 'CLEARED' : 'PENDING' }}
+                </span>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="remaining">
+              <th mat-header-cell *matHeaderCellDef>BALANCE</th>
+              <td mat-cell *matCellDef="let r" class="text-danger fw-bold">₹{{ r.remainingAmount | number:'1.2-2' }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef class="pe-4"></th>
+              <td mat-cell *matCellDef="let r" class="text-end pe-4">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                  <mat-icon>more_horiz</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" class="modern-menu">
+                  <button mat-menu-item (click)="edit(r)">
+                    <mat-icon class="text-primary">edit</mat-icon>
+                    <span>Edit Entry</span>
+                  </button>
+                  <button mat-menu-item (click)="delete(r.id)">
+                    <mat-icon class="text-danger">delete_outline</mat-icon>
+                    <span>Remove</span>
+                  </button>
+                </mat-menu>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover-row"></tr>
+          </table>
+
+          <div *ngIf="sales.length === 0" class="p-5 text-center">
+            <mat-icon class="text-muted opacity-25" style="font-size: 64px; width: 64px; height:64px;">data_exploration</mat-icon>
+            <p class="text-muted fw-bold">No transactions found for the selected criteria.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

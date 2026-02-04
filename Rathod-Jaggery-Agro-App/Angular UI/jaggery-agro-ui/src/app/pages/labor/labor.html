@@ -1,0 +1,183 @@
+<div class="labor-page container py-4">
+
+  <!-- ===== HEADER ===== -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">
+      <i class="bi bi-people-fill me-2"></i> Labor Management
+    </h2>
+    <button class="btn btn-success" type="button" (click)="clear()">
+      <i class="bi bi-plus-circle me-1"></i> Add New Labor
+    </button>
+  </div>
+
+  <!-- ===== ADD/EDIT FORM ===== -->
+  <div class="card shadow-sm mb-4" *ngIf="showForm">
+    <div class="card-header bg-primary text-white d-flex align-items-center">
+      <i class="bi bi-person-lines-fill me-2"></i>
+      <span>{{ model.id ? 'Edit Labor' : 'Add New Labor' }}</span>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="save()">
+
+        <!-- Name -->
+        <div class="mb-3">
+          <label for="laborName" class="form-label">Name</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <input 
+              type="text" 
+              id="laborName" 
+              class="form-control" 
+              placeholder="Enter labor name"
+              [(ngModel)]="model.name"
+              name="name"
+              required>
+          </div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="mb-3">
+          <label for="laborMobile" class="form-label">Mobile</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+            <input 
+              type="text" 
+              id="laborMobile" 
+              class="form-control" 
+              placeholder="Enter mobile number"
+              [(ngModel)]="model.mobile"
+              name="mobile"
+              required>
+          </div>
+        </div>
+
+        <!-- Labor Type -->
+        <div class="mb-3">
+          <label for="laborType" class="form-label">Labor Type</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-briefcase-fill"></i></span>
+            <select 
+              id="laborType" 
+              class="form-select"
+              [(ngModel)]="model.laborTypeId"
+              name="laborTypeId"
+              required>
+              <option [value]="null">Select Labor Type</option>
+              <option *ngFor="let type of laborTypes" [value]="type.id">{{ type.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Status -->
+        <div class="form-check mb-3">
+          <input 
+            class="form-check-input" 
+            type="checkbox" 
+            id="isActive"
+            [(ngModel)]="model.isActive"
+            name="isActive">
+          <label class="form-check-label" for="isActive">Active</label>
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex justify-content-end gap-2">
+          <button type="submit" class="btn btn-primary">
+            <i class="bi" [ngClass]="model.id ? 'bi-pencil-square' : 'bi-plus-circle'"></i>
+            {{ model.id ? 'Update Labor' : 'Add Labor' }}
+          </button>
+          <button type="button" class="btn btn-secondary" (click)="clear()">
+            <i class="bi bi-arrow-counterclockwise"></i> Clear
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== TABLE ===== -->
+  <div class="card shadow-sm">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <span><i class="bi bi-people-fill me-2"></i> Labor List</span>
+
+      <div class="d-flex gap-2 flex-wrap">
+
+        <!-- Show Entries -->
+        <div class="input-group input-group-sm">
+          <span class="input-group-text">Show</span>
+          <select class="form-select" [(ngModel)]="pageSize" name="pageSize">
+            <option [value]="5">5</option>
+            <option [value]="10">10</option>
+            <option [value]="20">20</option>
+          </select>
+        </div>
+
+        <!-- Search -->
+        <div class="input-group input-group-sm">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Search name or mobile" 
+            (keyup)="applyFilter($event)">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card-body p-0 table-responsive">
+      <table class="table table-hover align-middle text-center mb-0">
+        <thead class="table-light">
+          <tr>
+            <th><i class="bi bi-person-fill"></i> Name</th>
+            <th><i class="bi bi-telephone-fill"></i> Mobile</th>
+            <th><i class="bi bi-shield-check"></i> Status</th>
+            <th><i class="bi bi-gear-fill"></i> Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let l of dataSource.data | slice:(currentPage-1)*pageSize:currentPage*pageSize">
+            <td>{{ l.name }}</td>
+            <td>{{ l.mobile }}</td>
+            <td>
+              <span class="badge" [ngClass]="l.isActive ? 'bg-success' : 'bg-danger'">
+                <i class="bi" [ngClass]="l.isActive ? 'bi-check-circle' : 'bi-x-circle'"></i>
+                {{ l.isActive ? 'Active' : 'Inactive' }}
+              </span>
+            </td>
+            <td class="d-flex justify-content-center gap-1">
+              <button class="btn btn-sm btn-primary" (click)="edit(l)">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+              <button class="btn btn-sm btn-info text-white" (click)="view(l)">
+                <i class="bi bi-eye-fill"></i>
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="delete(l.id!)">
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="dataSource.data.length === 0">
+            <td colspan="4" class="text-center py-3">No labor records found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="card-footer d-flex justify-content-end">
+      <nav>
+        <ul class="pagination pagination-sm mb-0">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <button class="page-link" (click)="prevPage()">Previous</button>
+          </li>
+          <li class="page-item" *ngFor="let p of totalPagesArray" [class.active]="p === currentPage">
+            <button class="page-link" (click)="goToPage(p)">{{ p }}</button>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <button class="page-link" (click)="nextPage()">Next</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

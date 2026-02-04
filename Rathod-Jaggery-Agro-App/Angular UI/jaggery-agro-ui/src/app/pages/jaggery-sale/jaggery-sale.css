@@ -1,0 +1,243 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
+
+.jaggery-sales {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+:root {
+  --primary-color: #6366f1;
+  --success-color: #22c55e;
+  --danger-color: #ef4444;
+  --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+/* 1. Fix the overlapping text/hiding data */
+.custom-field {
+  margin-bottom: 12px;
+  display: block;
+  position: relative;
+  z-index: 1; /* Ensures standard fields stay in their layer */
+}
+
+/* 2. Fix the Metrics Grid overlap */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  position: relative;
+  z-index: 1;
+  clear: both;
+}
+
+/* 3. ENSURE DROPDOWNS & CALENDAR ARE ON TOP */
+::ng-deep .cdk-overlay-container {
+  z-index: 9999 !important; /* Forces the list to the very front of the screen */
+}
+
+/* 4. Fix the "Hiding" Marathi text in the Select */
+::ng-deep .mat-mdc-select-panel {
+  background-color: white !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+  padding: 8px 0 !important;
+}
+
+.swal2-confirm {
+  border-radius: 50px !important; /* Matches your rounded-pill buttons */
+}
+/* 5. Improve Calendar Look & Visibility */
+::ng-deep .mat-datepicker-content {
+  background-color: white !important;
+  border-radius: 15px !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25) !important;
+  border: 1px solid #e0e7ff !important;
+}
+
+/* 6. Fix the "Initial Circle" and Name display inside dropdown */
+.initial-circle-sm {
+  width: 32px;
+  height: 32px;
+  background: #6366f1;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+/* Glass Header */
+.glass-header {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  z-index: 1000;
+}
+
+.logo-hexagon {
+  background: var(--primary-color);
+  color: white;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transform: rotate(45deg);
+}
+.logo-hexagon mat-icon { transform: rotate(-45deg); }
+/* Force icons to render as graphics, not text */
+.selection-checkmark {
+  font-size: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fix for overlapping Marathi/Hindi text in dropdowns */
+::ng-deep .mat-mdc-option .mdc-list-item__primary-text {
+  display: flex !important;
+  width: 100% !important;
+}
+::ng-deep .mat-mdc-option {
+  min-height: 52px !important; /* Slightly taller for better font readability */
+}
+/* Ensures the dropdown list has enough width for long names */
+::ng-deep .premium-dropdown-panel {
+  min-width: 250px !important;
+  background: white !important;
+  border-radius: 8px !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+}
+/* Card Architecture */
+.modern-card { border-radius: 1.25rem; overflow: hidden; }
+
+.card-header-premium {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+}
+.card-header-premium.edit-mode {
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+}
+
+/* Metric Inputs */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.metric-box {
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+.metric-box.highlight { border-color: var(--primary-color); }
+.metric-box .label { font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; display: flex; align-items: center; gap: 4px; }
+.metric-box .label mat-icon { font-size: 14px; width: 14px; height: 14px; }
+.metric-box .input-wrapper { display: flex; align-items: baseline; gap: 4px; margin-top: 4px; }
+.metric-box input { width: 100%; border: none; background: transparent; font-weight: 700; font-size: 1.1rem; outline: none; }
+.metric-box .unit { font-size: 12px; color: #94a3b8; font-weight: bold; }
+
+/* Ledger Preview */
+.ledger-preview { background: #f1f5f9; border: 1px dashed #cbd5e1; }
+.mini-ledger-input { width: 80px; border: none; border-bottom: 2px solid #cbd5e1; background: transparent; text-align: right; font-weight: bold; outline: none; }
+.mini-ledger-input:focus { border-color: var(--primary-color); }
+.divider { height: 1px; background: #e2e8f0; margin: 8px 0; }
+
+/* Upload Zone */
+.upload-zone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.upload-zone:hover { background: #f8fafc; border-color: var(--primary-color); }
+.upload-zone.has-file { border: 2px solid var(--success-color); background: #f0fdf4; }
+
+/* Table styling */
+.avatar-sm { width: 40px; height: 40px; background: #e0e7ff; color: #4338ca; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+.status-pill { padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; }
+.status-pill.paid { background: #dcfce7; color: #15803d; }
+.status-pill.partial { background: #fee2e2; color: #b91c1c; }
+
+.hover-row:hover { background: #f8fafc !important; cursor: pointer; }
+
+/* Animations */
+.spinning { animation: spin 1s linear infinite; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.shadow-primary { box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4); }
+.upload-zone {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #fdfdfd;
+}
+
+.preview-container img {
+  width: 100%;
+  max-height: 180px;
+  object-fit: cover; /* Keeps the image from stretching */
+  display: block;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.x-small {
+  font-size: 10px;
+}
+
+.animate__zoomIn {
+  animation-duration: 0.4s;
+}
+/* Professional Brand Styling */
+.tracking-tighter {
+  letter-spacing: -1.2px;
+}
+
+.tracking-widest {
+  letter-spacing: 1.5px;
+  font-size: 0.65rem !important;
+}
+
+.brand-wrapper {
+  border-left: 4px solid var(--mat-sys-primary); /* Use your primary color variable */
+  padding-left: 15px;
+}
+
+.status-indicator-dot {
+  height: 8px;
+  width: 8px;
+  background-color: #22c55e; /* Success Green */
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+  animation: pulse-green 2s infinite;
+}
+
+.v-divider {
+  width: 1px;
+  height: 12px;
+  background-color: #e2e8f0;
+}
+
+@keyframes pulse-green {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}

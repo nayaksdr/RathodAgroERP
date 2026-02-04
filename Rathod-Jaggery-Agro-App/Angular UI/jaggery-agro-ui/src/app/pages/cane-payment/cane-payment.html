@@ -1,0 +1,143 @@
+<div class="cane-payment-wrapper animate-in">
+  
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold text-primary mb-0">
+      <i class="bi bi-cash-stack me-2"></i>Cane Payment Dashboard
+    </h3>
+    <span class="badge bg-light text-dark border p-2">
+      <i class="bi bi-calendar-check me-1"></i> {{ today | date:'fullDate' }}
+    </span>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <div class="col-lg-7">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="stat-card glass-card border-start border-4 border-success h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="text-muted small fw-bold text-uppercase mb-1">Total Paid</p>
+                <h2 class="fw-bold mb-0 text-success">{{ paidCount }}</h2>
+                <small class="text-muted">Completed Transactions</small>
+              </div>
+              <div class="icon-box bg-soft-success text-success">
+                <i class="bi bi-check-circle-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="stat-card glass-card border-start border-4 border-danger h-100">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <p class="text-muted small fw-bold text-uppercase mb-1">Total Pending</p>
+                <h2 class="fw-bold mb-0 text-danger">{{ pendingCount }}</h2>
+                <small class="text-muted">Awaiting Payment</small>
+              </div>
+              <div class="icon-box bg-soft-danger text-danger">
+                <i class="bi bi-clock-history"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="card border-0 shadow-sm rounded-4 p-3">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="form-label x-small fw-bold text-muted">SELECT FARMER</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-white border-end-0"><i class="bi bi-person"></i></span>
+                  <select class="form-select border-start-0 ps-0" [(ngModel)]="filter.farmerId" (change)="applyFilter()">
+                    <option [ngValue]="null">All Farmers</option>
+                    <option *ngFor="let f of farmers" [value]="f.id">{{ f.name }}</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="col-md-3">
+                <label class="form-label x-small fw-bold text-muted">FROM DATE</label>
+                <input type="date" class="form-control" [(ngModel)]="filter.from" (change)="applyFilter()">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label x-small fw-bold text-muted">TO DATE</label>
+                <input type="date" class="form-control" [(ngModel)]="filter.to" (change)="applyFilter()">
+              </div>
+              <div class="col-md-2 d-flex align-items-end">
+                <button class="btn btn-light border w-100" (click)="resetFilter()" matTooltip="Reset Filters">
+                  <i class="bi bi-arrow-counterclockwise"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="card border-0 shadow-sm rounded-4 p-4 h-100 d-flex flex-column align-items-center justify-content-center">
+        <h6 class="fw-bold mb-3 text-muted">Payment Overview</h6>
+        <div style="width: 100%; max-width: 280px;">
+          <canvas id="paymentChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="card-header bg-white py-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <h5 class="fw-bold mb-0">Recent Transactions</h5>
+        <div class="search-input-group">
+           <input type="text" class="form-control form-control-sm" placeholder="Global Search..." [(ngModel)]="globalSearch" (input)="applyFilter()">
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="bg-light">
+          <tr>
+            <th class="ps-4">No.</th>
+            <th>Farmer Details</th>
+            <th>Payment Date</th>
+            <th>Amount</th>
+            <th class="text-center">Status</th>
+            <th class="text-end pe-4">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let x of filteredList; let i = index" class="record-row">
+            <td class="ps-4 text-muted">{{ i + 1 }}</td>
+            <td>
+              <div class="d-flex align-items-center">
+                <div class="avatar-circle me-2">{{ x.farmerName.charAt(0) }}</div>
+                <div>
+                  <div class="fw-bold">{{ x.farmerName }}</div>
+                  <div class="x-small text-muted">ID: #{{ x.id }}</div>
+                </div>
+              </div>
+            </td>
+            <td><i class="bi bi-calendar-event me-2 text-muted"></i>{{ x.paymentDate | date:'dd-MM-yyyy' }}</td>
+            <td><span class="fw-bold text-dark">₹ {{ x.netAmount | number }}</span></td>
+           <td class="text-center"> <span class="badge-pill d-inline-flex align-items-center gap-2" [ngClass]="statusBadge(x.isPaid)">
+            <i class="bi" [ngClass]="x.isPaid ? 'bi-check-circle-fill' : 'bi-hourglass-split'"></i>
+            {{ x.isPaid ? 'Completed' : 'Pending' }}</span>
+           </td>
+            <td class="text-end pe-4">
+              <button class="btn btn-icon btn-outline-primary" (click)="downloadSlip(x.id)" matTooltip="Download Slip">
+                <i class="bi bi-file-earmark-arrow-down"></i>
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="filteredList.length === 0">
+            <td colspan="6" class="text-center py-5">
+              <i class="bi bi-search fs-1 text-muted opacity-25"></i>
+              <p class="text-muted mt-2">No results matching your criteria.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

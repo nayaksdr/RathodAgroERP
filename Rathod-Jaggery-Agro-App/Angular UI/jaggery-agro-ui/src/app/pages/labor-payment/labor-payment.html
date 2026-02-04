@@ -1,0 +1,173 @@
+<div class="labor-payment container-fluid p-4 fade-in">
+
+  <div class="text-center mb-5">
+    <h2 class="header-badge shadow-lg">🧑‍🌾 Labor Payment Management</h2>
+  </div>
+<div class="row g-3 mb-4" *ngIf="!loading">
+    <div class="col-md-4">
+      <div class="card summary-card bg-success text-white border-0 shadow-sm">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div>
+            <p class="mb-1 small opacity-75">Total Salary</p>
+            <h3 class="fw-bold mb-0">₹ {{ summary.totalGross | number:'1.2-2' }}</h3>
+          </div>
+          <mat-icon class="large-icon">payments</mat-icon>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card summary-card bg-warning text-dark border-0 shadow-sm">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div>
+            <p class="mb-1 small opacity-75">Advance Deducted</p>
+            <h3 class="fw-bold mb-0">₹ {{ summary.totalAdvance | number:'1.2-2' }}</h3>
+          </div>
+          <mat-icon class="large-icon">money_off</mat-icon>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card summary-card bg-primary text-white border-0 shadow-sm">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <div>
+            <p class="mb-1 small opacity-75">Net Salary</p>
+            <h3 class="fw-bold mb-0">₹ {{ summary.totalNet | number:'1.2-2' }}</h3>
+          </div>
+          <mat-icon class="large-icon">account_balance_wallet</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row g-3 mb-4" *ngIf="!loading">
+    </div>
+
+  <mat-card class="mb-4 p-4 border-0 shadow-sm rounded-4">
+  <div class="row g-3 align-items-end">
+    
+    <div class="col-md-3">
+      <mat-form-field appearance="outline" class="w-100 no-wrapper-padding">
+        <mat-label>Search Labor Name</mat-label>
+        <mat-icon matPrefix class="text-success me-2">person_search</mat-icon> 
+        <input matInput (keyup)="applySearch($event)" placeholder="E.g. Rajesh">
+      </mat-form-field>
+    </div>
+
+   <div class="col-md-2">
+  <mat-form-field appearance="outline" class="w-100 no-wrapper-padding">
+    <mat-label>From Date</mat-label>
+    <mat-icon matPrefix class="text-primary me-2">calendar_today</mat-icon>
+    <input matInput [matDatepicker]="fromPicker" [(ngModel)]="filter.from" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+    <mat-datepicker #fromPicker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<div class="col-md-2">
+  <mat-form-field appearance="outline" class="w-100 no-wrapper-padding">
+    <mat-label>To Date</mat-label>
+    <mat-icon matPrefix class="text-primary me-2">event_available</mat-icon>
+    <input matInput [matDatepicker]="toPicker" [(ngModel)]="filter.to" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+    <mat-datepicker #toPicker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+    <div class="col-md-5 d-flex gap-2">
+      <button mat-raised-button color="primary" class="rounded-pill flex-grow-1 py-2" (click)="load()">
+        <mat-icon>filter_list</mat-icon> Filter Results
+      </button>
+      <button mat-stroked-button color="warn" class="rounded-circle" (click)="clearFilter()" matTooltip="Reset All">
+        <mat-icon>restart_alt</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>
+
+ <mat-card class="p-0 overflow-hidden border-0 shadow-lg rounded-4 fade-in">
+  <div class="table-responsive" *ngIf="!loading">
+    <table mat-table [dataSource]="dataSource" class="w-100 custom-table">
+      
+      <ng-container matColumnDef="laborName">
+        <th mat-header-cell *matHeaderCellDef> 
+          <mat-icon class="header-icon">person</mat-icon> Labor Name 
+        </th>
+        <td mat-cell *matCellDef="let p"> 
+          <div class="d-flex align-items-center">
+            <div class="avatar-circle me-2">{{ p.laborName | slice:0:1 }}</div>
+            <span class="fw-bold text-dark">{{ p.laborName }}</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="workAmount">
+        <th mat-header-cell *matHeaderCellDef> 
+          <mat-icon class="header-icon">handyman</mat-icon> Work 
+        </th>
+        <td mat-cell *matCellDef="let p"> 
+          <span class="badge bg-light text-dark border">{{ p.workAmount }} Units</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rate">
+        <th mat-header-cell *matHeaderCellDef> 
+          <mat-icon class="header-icon">sell</mat-icon> Rate 
+        </th>
+        <td mat-cell *matCellDef="let p" class="text-secondary"> 
+          ₹{{ p.rate | number:'1.2-2' }} 
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="grossAmount">
+        <th mat-header-cell *matHeaderCellDef> 
+          <mat-icon class="header-icon">payments</mat-icon> Total Salary 
+        </th>
+        <td mat-cell *matCellDef="let p" class="fw-semibold"> 
+          ₹{{ p.grossAmount | number:'1.2-2' }} 
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="advance">
+        <th mat-header-cell *matHeaderCellDef> 
+          <mat-icon class="header-icon">history_edu</mat-icon> Advance 
+        </th>
+        <td mat-cell *matCellDef="let p"> 
+          <div class="d-flex align-items-center text-danger">
+            <mat-icon class="small-icon">remove_circle_outline</mat-icon>
+            <span class="ms-1">₹{{ p.advanceAdjusted | number:'1.2-2' }}</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="netAmount">
+        <th mat-header-cell *matHeaderCellDef> 
+          <mat-icon class="header-icon">account_balance_wallet</mat-icon> Net Salary 
+        </th>
+        <td mat-cell *matCellDef="let p"> 
+          <div class="net-pay-pill">
+            ₹{{ p.netAmount | number:'1.2-2' }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="text-center"> 
+          <mat-icon class="header-icon">print</mat-icon> Slip 
+        </th>
+        <td mat-cell *matCellDef="let p" class="text-center">
+          <button mat-mini-fab color="warn" class="download-btn" (click)="downloadSlip(p)" matTooltip="Download PDF Slip">
+            <mat-icon>download</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row-hover"></tr>
+    </table>
+
+    <div *ngIf="dataSource.filteredData.length === 0" class="empty-state">
+      <mat-icon>sentiment_dissatisfied</mat-icon>
+      <p>No records match your search criteria.</p>
+    </div>
+  </div>
+</mat-card>
+</div>

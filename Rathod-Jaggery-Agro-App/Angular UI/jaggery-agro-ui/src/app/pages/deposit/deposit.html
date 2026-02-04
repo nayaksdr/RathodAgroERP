@@ -1,0 +1,132 @@
+<div class="container-fluid py-4">
+
+  <!-- ================= FORM CARD ================= -->
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+
+      <h4 class="fw-bold mb-3 d-flex align-items-center gap-2">
+        <mat-icon color="primary">
+          {{ isEdit ? 'edit' : 'add_circle' }}
+        </mat-icon>
+        {{ isEdit ? 'Edit Deposit' : 'Add Deposit' }}
+      </h4>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="row g-3">
+
+        <div class="col-md-3">
+          <label class="form-label">Depositor Name *</label>
+          <input class="form-control" formControlName="depositorName">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label">Amount *</label>
+          <input type="number" class="form-control" formControlName="amount">
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">Deposit Date *</label>
+          <input type="date" class="form-control" formControlName="depositDate">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label">Remarks</label>
+          <input class="form-control" formControlName="remarks">
+        </div>
+
+        <div class="col-md-2 d-flex align-items-end gap-2">
+          <button class="btn btn-primary w-100" type="submit">
+            <mat-icon class="me-1">save</mat-icon>
+            {{ isEdit ? 'Update' : 'Save' }}
+          </button>
+
+          <button *ngIf="isEdit"
+                  type="button"
+                  class="btn btn-light w-100"
+                  (click)="cancelEdit()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ================= LIST CARD ================= -->
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+
+      <!-- Search -->
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <input
+            class="form-control"
+            placeholder="🔍 Search depositor..."
+            [(ngModel)]="searchText"
+            (input)="applyFilter()">
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Depositor</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Remarks</th>
+              <th class="text-end">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody *ngIf="paginatedData.length; else noData">
+            <tr *ngFor="let item of paginatedData; let i = index">
+              <td>{{ (page - 1) * pageSize + i + 1 }}</td>
+              <td class="fw-semibold">{{ item.depositorName }}</td>
+              <td>{{ item.amount | currency:'INR' }}</td>
+              <td>{{ item.depositDate | date }}</td>
+              <td>{{ item.remarks || '-' }}</td>
+              <td class="text-end">
+                <button class="btn btn-sm btn-outline-primary me-2"
+                        (click)="edit(item)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button class="btn btn-sm btn-outline-danger"
+                        (click)="delete(item.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ng-template #noData>
+          <div class="text-center py-4 text-muted">
+            No deposit records found
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- Pagination -->
+      <div class="d-flex justify-content-end align-items-center gap-2 mt-3">
+        <button class="btn btn-outline-secondary btn-sm"
+                [disabled]="page === 1"
+                (click)="page = page - 1">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <span>Page {{ page }} of {{ totalPages() }}</span>
+
+        <button class="btn btn-outline-secondary btn-sm"
+                [disabled]="page === totalPages()"
+                (click)="page = page + 1">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

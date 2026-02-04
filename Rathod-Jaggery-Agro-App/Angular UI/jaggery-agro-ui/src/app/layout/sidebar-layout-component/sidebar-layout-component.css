@@ -1,0 +1,20 @@
+.app-layout {
+  display: flex;
+}
+
+/* Sidebar */
+app-sidebar {
+  width: 260px;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}

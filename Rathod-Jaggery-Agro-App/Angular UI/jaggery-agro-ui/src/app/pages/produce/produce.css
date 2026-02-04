@@ -1,0 +1,28 @@
+.produce { margin-left: 260px; width: calc(100% - 260px); min-height: 100vh; }
+.labor-wrapper { padding: 30px; background: #f8fafc; }
+
+/* Stat Cards */
+.stat-card {
+  display: flex; align-items: center; padding: 25px; border-radius: 16px;
+  background: #fff; border: 1px solid #eef2f6; transition: 0.3s;
+}
+.stat-icon {
+  width: 50px; height: 50px; border-radius: 12px; margin-right: 15px;
+  display: flex; align-items: center; justify-content: center;
+}
+.cost-card .stat-icon { background: #e0f2fe; color: #0369a1; }
+.belly-card .stat-icon { background: #fff7ed; color: #c2410c; }
+.production-card .stat-icon { background: #f0fdf4; color: #15803d; }
+
+.text-orange { color: #ea580c; }
+.stat-label { font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; }
+.stat-value { font-size: 1.6rem; font-weight: 800; margin: 0; }
+
+/* Table styling */
+.small-icon { font-size: 18px; width: 18px; height: 18px; color: #94a3b8; }
+.mat-mdc-header-cell { background-color: #f1f5f9 !important; font-weight: 700 !important; color: #475569 !important; }
+.row-hover:hover { background-color: #f8fafc !important; cursor: pointer; }
+.badge { font-size: 0.75rem; padding: 0.4em 0.8em; }
+.swal2-confirm {
+  border-radius: 50px !important; /* Matches your rounded-pill buttons */
+}

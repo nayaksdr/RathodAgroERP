@@ -1,0 +1,87 @@
+<header class="app-header">
+
+  <!-- LEFT SECTION -->
+  <div class="header-left">
+
+    <!-- Sidebar Toggle -->
+    <button class="menu-btn" (click)="toggleMenu()">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <!-- Page Title -->
+    <div class="page-header-card">
+  <div class="title-section">
+    <mat-icon class="title-icon">dashboard</mat-icon>
+    <h5 class="page-title">{{ title }}</h5>
+  </div>
+</div>
+
+
+    <!-- Search -->
+    <!-- <input type="text"
+           class="form-control search-input d-none d-md-block"
+           placeholder="Search..." /> -->
+  </div>
+
+  <!-- RIGHT SECTION -->
+  <div class="header-right">
+
+    <!-- Date & Time -->
+    <div class="date-time d-none d-md-block text-end">
+      <small>{{ currentDate }}</small>
+      <div class="fw-bold">{{ currentTime }}</div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="icon-btn" (click)="toggleTheme()">
+      <i class="bi" [ngClass]="darkMode ? 'bi-sun-fill' : 'bi-moon-fill'"></i>
+    </button>
+
+    <!-- Notifications -->
+    <div class="icon-wrapper" (click)="toggleNotifications()">
+      <i class="bi bi-bell"></i>
+      <span class="badge-dot"></span>
+
+      <div class="dropdown-panel" *ngIf="showNotifications">
+        <p class="dropdown-title">Notifications</p>
+        <div class="dropdown-item">New Attendance Added</div>
+        <div class="dropdown-item">Salary Processed</div>
+        <div class="dropdown-item">Expense Updated</div>
+      </div>
+    </div>
+
+    <!-- User -->
+   <div class="icon-wrapper" (click)="toggleUserMenu()">
+
+  <mat-icon class="user-icon"></mat-icon>
+
+
+  <div class="dropdown-panel" *ngIf="showUserMenu">
+
+    <!-- USER INFO -->
+    <div class="user-info">
+      <div class="user-name">{{ user?.name }}</div>
+      <div class="user-email">{{ user?.email }}</div>
+    </div>
+
+    <hr />
+
+    <!-- MENU ITEMS -->
+    <div class="dropdown-item">
+      <i class="bi bi-person"></i> Profile
+    </div>
+
+    <div class="dropdown-item">
+      <i class="bi bi-gear"></i> Settings
+    </div>
+
+    <div class="dropdown-item text-danger" (click)="logout()">
+      <i class="bi bi-box-arrow-right"></i> Logout
+    </div>
+
+  </div>
+</div>
+
+
+  </div>
+</header>

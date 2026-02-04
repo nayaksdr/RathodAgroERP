@@ -1,0 +1,32 @@
+<div class="container mt-4">
+
+  <h3 class="fw-bold text-primary">
+    🧾 Dealer Balance
+  </h3>
+
+  <div class="table-responsive card shadow rounded-4 mt-3">
+    <table class="table table-bordered text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>Date</th>
+          <th>Qty</th>
+          <th>Total</th>
+          <th>Advance</th>
+          <th>Remaining</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of sales">
+          <td>{{s.saleDate | date}}</td>
+          <td>{{s.quantityInKg}}</td>
+          <td>₹ {{s.totalAmount}}</td>
+          <td class="text-warning">₹ {{s.advancePaid}}</td>
+          <td class="fw-bold text-success">
+            ₹ {{s.remainingAmount}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

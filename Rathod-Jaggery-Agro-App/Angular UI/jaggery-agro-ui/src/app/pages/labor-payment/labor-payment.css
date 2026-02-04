@@ -1,0 +1,174 @@
+/* ===============================
+   Main Layout
+================================= */
+.labor-payment {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 28px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2f7, #f8fafc);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.labor-wrapper {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+/* Fade-in Animation */
+.fade-in {
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Gradient Header from MVC */
+.header-badge {
+  background: linear-gradient(90deg, #198754, #20c997);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  display: inline-block;
+  font-size: 1.8rem;
+}
+
+/* Summary Cards */
+.summary-card {
+  transition: transform 0.2s ease;
+  border-radius: 15px !important;
+}
+.summary-card:hover {
+  transform: scale(1.03);
+}
+.small-label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-bottom: 4px;
+}
+
+/* Table Optimization */
+.mat-mdc-table {
+  background: transparent !important;
+}
+.row-hover:hover {
+  background-color: rgba(25, 135, 84, 0.05) !important;
+}
+.mat-mdc-header-row {
+  background-color: #f8f9fa;
+}
+
+/* Form Styling */
+.no-wrapper-padding .mat-mdc-form-field-subscript-wrapper {
+  display: none; /* Removes extra space under inputs for speedier layout */
+}
+/* ✅ Ensures icons are perfectly centered within the outline */
+.mat-mdc-form-field-icon-prefix {
+  padding: 0 8px 0 4px !important;
+}
+
+/* ✅ Slight color pop for icons to match your MVC theme */
+mat-icon[matPrefix] {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✅ Button hover effect */
+.rounded-circle:hover {
+  background-color: #fff1f0; /* Soft red for the refresh button */
+  transform: rotate(90deg);
+  transition: all 0.3s ease;
+}
+/* Table Header Styling */
+.custom-table .mat-mdc-header-cell {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  padding: 16px;
+}
+
+.header-icon {
+  font-size: 16px !important;
+  height: 16px !important;
+  width: 16px !important;
+  vertical-align: middle;
+  margin-right: 4px;
+  color: #198754; /* Match your green theme */
+}
+
+/* Avatar Circle for Labor Names */
+.avatar-circle {
+  width: 32px;
+  height: 32px;
+  background-color: #e9ecef;
+  color: #198754;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 1px solid #dee2e6;
+}
+
+/* Net Salary Pill */
+.net-pay-pill {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 800;
+  display: inline-block;
+}
+
+/* Row Hover & Animation */
+.row-hover {
+  transition: background-color 0.2s ease;
+}
+
+.row-hover:hover {
+  background-color: #f1f8f5 !important;
+  cursor: pointer;
+}
+.swal2-confirm {
+  border-radius: 50px !important; /* Matches your rounded-pill buttons */
+}
+/* Action Button Style */
+.download-btn {
+  transform: scale(0.8);
+  transition: transform 0.2s;
+}
+
+.download-btn:hover {
+  transform: scale(1);
+}
+
+.small-icon {
+  font-size: 14px !important;
+  height: 14px !important;
+  width: 14px !important;
+}
+
+/* Empty State Styling */
+.empty-state {
+  padding: 60px;
+  text-align: center;
+  color: #adb5bd;
+}
+
+.empty-state mat-icon {
+  font-size: 48px;
+  height: 48px;
+  width: 48px;
+  margin-bottom: 10px;
+}

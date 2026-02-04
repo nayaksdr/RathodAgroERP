@@ -1,0 +1,56 @@
+.labor-type-rate-page {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+
+/* ===== Wrapper ===== */
+.labor-wrapper {
+  padding: 25px;
+  min-height: 100vh;
+  background: #f4f7fb;
+}
+.labor-type-rate {
+  background: #f4f6f9;
+  min-height: 100vh;
+}
+
+.header-card {
+  background: linear-gradient(135deg, #0d6efd, #4e73df);
+  color: white;
+}
+
+.header-icon {
+  font-size: 32px;
+}
+
+.search-box {
+  min-width: 250px;
+}
+
+.form-card {
+  border-radius: 12px;
+}
+
+mat-form-field {
+  font-size: 14px;
+}
+
+table th {
+  font-weight: 600;
+  background: #f8f9fa;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+.badge {
+  font-size: 13px;
+}
+.swal2-confirm {
+  border-radius: 50px !important; /* Matches your rounded-pill buttons */
+}

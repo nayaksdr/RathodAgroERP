@@ -1,0 +1,172 @@
+<div class="labor-advance-payment container-fluid py-4">
+  <div class="labor-wrapper">
+    
+    <div class="row align-items-center mb-4">
+      <div class="col-md-8">
+        <h4 class="fw-bold text-dark m-0">
+          <span class="icon-badge me-2"><i class="bi bi-cash-stack text-primary"></i></span>
+          Advance Payment Management
+        </h4>
+        <p class="text-muted small mb-0">Track and manage employee advance disbursements</p>
+      </div>
+      <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <div class="summary-card p-3 bg-white shadow-sm rounded-3 border-start border-primary border-4">
+          <span class="text-uppercase x-small fw-bold text-muted d-block" style="font-size: 0.7rem;">Total Outstanding</span>
+          <h3 class="text-primary fw-bold mb-0">₹ {{ totalAmount | number:'1.2-2' }}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="card form-card mb-4 border-0 shadow-sm">
+      <div class="card-header bg-transparent border-0 pt-3">
+        <h6 class="fw-bold text-secondary mb-0">
+          <i class="bi {{ isEdit ? 'bi-pencil-square text-warning' : 'bi-plus-circle-dotted text-success' }} me-2"></i>
+          {{ isEdit ? 'Update Entry' : 'New Advance Entry' }}
+        </h6>
+      </div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <label class="form-label small fw-bold">Select Labor <span class="text-danger">*</span></label>
+            <div class="input-group">
+              <span class="input-group-text bg-white border-end-0"><i class="bi bi-person text-primary"></i></span>
+              <select class="form-select border-start-0" [(ngModel)]="model.laborId">
+                <option [value]="0">Choose labor...</option>
+                <option *ngFor="let l of labors" [value]="l.id || l.Id">
+                  {{ l.name || l.Name }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <label class="form-label small fw-bold">Amount <span class="text-danger">*</span></label>
+            <div class="input-group">
+              <span class="input-group-text bg-white border-end-0 text-success fw-bold">₹</span>
+              <input type="number" class="form-control border-start-0" placeholder="0.00" [(ngModel)]="model.amount">
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label class="form-label small fw-bold">Payment Date</label>
+            <div class="input-group">
+              <span class="input-group-text bg-white border-end-0"><i class="bi bi-calendar3 text-primary"></i></span>
+              <input type="date" class="form-control border-start-0" [(ngModel)]="model.dateGiven">
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label small fw-bold">Remarks/Notes</label>
+            <div class="input-group">
+              <span class="input-group-text bg-white border-end-0"><i class="bi bi-chat-left-text text-muted"></i></span>
+              <input class="form-control border-start-0" placeholder="Optional notes..." [(ngModel)]="model.remarks">
+            </div>
+          </div>
+
+          <div class="col-12 text-end mt-3">
+            <button type="button" class="btn btn-light border me-2 px-4" (click)="reset()">
+              <i class="bi bi-x-circle me-1"></i> Cancel
+            </button>
+            <button type="button" class="btn btn-primary px-4 shadow-sm" (click)="save()">
+              <i class="bi {{ isEdit ? 'bi-check2-circle' : 'bi-send-plus' }} me-1"></i> 
+              {{ isEdit ? 'Update Payment' : 'Process Payment' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card table-card border-0 shadow-sm">
+      <div class="card-header bg-white py-3 border-bottom">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h6 class="m-0 fw-bold"><i class="bi bi-clock-history me-2 text-muted"></i>Transaction History</h6>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group input-group-sm">
+              <span class="input-group-text border-end-0 bg-light"><i class="bi bi-search"></i></span>
+              <input class="form-control border-start-0 bg-light" placeholder="Search by name..." [(ngModel)]="searchText" (input)="applyFilter()">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="bg-light text-muted small text-uppercase">
+            <tr>
+              <th class="ps-4" style="width: 80px;">#</th>
+              <th>Labor Name</th>
+              <th>Date</th>
+              <th class="text-center">Remarks</th>
+              <th class="text-end">Amount</th>
+              <th class="text-center">Action</th>
+            </tr>
+          </thead>
+          
+          <tbody *ngIf="paginated().length > 0; else noData">
+            <tr *ngFor="let r of paginated(); let i = index">
+              <td class="ps-4 text-muted small">#{{ (page-1)*pageSize + i + 1 }}</td>
+              <td>
+                <div class="fw-bold text-dark">{{ r.laborName }}</div>
+              </td>
+              <td>
+                <span class="badge bg-light text-dark border fw-normal">
+                  <i class="bi bi-calendar-event me-1 text-primary"></i>
+                  {{ r.dateGiven | date:'dd MMM, yyyy' }}
+                </span>
+              </td>
+            <td class="text-center text-muted small">
+  <span [title]="r.remarks || ''">
+    {{ (r.remarks | slice:0:20) || '---' }}{{ (r.remarks?.length ?? 0) > 20 ? '...' : '' }}
+  </span>
+</td>
+              <td class="text-end fw-bold text-dark">₹ {{ r.amount | number:'1.2-2' }}</td>
+              <td class="text-center">
+                <button class="btn btn-sm btn-outline-primary border-0 me-1" (click)="edit(r)" title="Edit">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-danger border-0" (click)="delete(r.id)" title="Delete">
+  <i class="bi bi-trash3"></i>
+</button>
+              </td>
+            </tr>
+          </tbody>
+
+          <ng-template #noData>
+            <tbody>
+              <tr>
+                <td colspan="6" class="text-center py-5">
+                  <div class="py-4">
+                    <i class="bi bi-database-exclamation text-muted display-4"></i>
+                    <p class="text-muted mt-3">No payment records found matching your search.</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </ng-template>
+        </table>
+      </div>
+
+      <div class="card-footer bg-white border-top py-3">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+          <span class="text-muted small">
+            Showing <b>{{ paginated().length }}</b> of <b>{{ filteredPayments.length }}</b> entries
+          </span>
+          
+          <nav *ngIf="totalPages() > 1">
+            <ul class="pagination pagination-sm mb-0 shadow-sm">
+              <li class="page-item" [class.disabled]="page === 1">
+                <button class="page-link" (click)="prevPage()"><i class="bi bi-chevron-left"></i></button>
+              </li>
+              <li class="page-item active"><span class="page-link">{{ page }}</span></li>
+              <li class="page-item" [class.disabled]="page === totalPages()">
+                <button class="page-link" (click)="nextPage()"><i class="bi bi-chevron-right"></i></button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

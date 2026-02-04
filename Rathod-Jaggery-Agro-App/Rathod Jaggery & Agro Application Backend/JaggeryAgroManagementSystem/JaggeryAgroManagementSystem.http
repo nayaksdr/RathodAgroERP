@@ -1,0 +1,6 @@
+@JaggeryAgroManagementSystem_HostAddress = http://localhost:5120
+
+GET {{JaggeryAgroManagementSystem_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

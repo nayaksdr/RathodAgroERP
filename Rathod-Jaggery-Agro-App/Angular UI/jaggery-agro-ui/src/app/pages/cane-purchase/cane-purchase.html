@@ -1,0 +1,171 @@
+<div class="cane-purchase-wrapper animate-in">
+  <div class="row g-3 mb-4">
+    <div class="col-md-6 col-lg-3">
+      <div class="stat-card glass-card border-start border-4 border-success">
+        <div class="d-flex align-items-center">
+          <div class="icon-circle bg-soft-success text-success me-3">
+            <i class="bi bi-box-seam"></i>
+          </div>
+          <div>
+            <p class="text-muted mb-0 small fw-bold text-uppercase">Total Volume</p>
+            <h3 class="mb-0 fw-bold">{{ totalTons | number }} <span class="fs-6 fw-normal">Tons</span></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="stat-card glass-card border-start border-4 border-primary">
+        <div class="d-flex align-items-center">
+          <div class="icon-circle bg-soft-primary text-primary me-3">
+            <i class="bi bi-currency-rupee"></i>
+          </div>
+          <div>
+            <p class="text-muted mb-0 small fw-bold text-uppercase">Total Expenditure</p>
+            <h3 class="mb-0 fw-bold">₹ {{ totalAmount | number }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-6">
+      <div class="search-box glass-card h-100 d-flex align-items-center px-3">
+        <i class="bi bi-search text-muted me-3"></i>
+        <input type="text" 
+               class="form-control border-0 bg-transparent shadow-none" 
+               placeholder="Search by Dealer, ID, or Date..."
+               [(ngModel)]="searchQuery"
+               (input)="applyFilter()">
+        <button class="btn btn-primary btn-sm rounded-3 px-3 ms-2">Filter</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-xl-4">
+      <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="header-gradient p-3 text-white">
+          <h5 class="mb-0 fw-bold d-flex align-items-center">
+            <i class="bi {{ isEdit ? 'bi-pencil-square' : 'bi-plus-circle-dotted' }} me-2"></i>
+            {{ isEdit ? 'Update Entry' : 'New Purchase Entry' }}
+          </h5>
+        </div>
+        <div class="card-body p-4">
+          <form (submit)="save()">
+            
+            <div class="mb-3">
+              <label class="form-label small fw-bold">Select Farmer / Dealer *</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0 text-primary"><i class="bi bi-person-badge"></i></span>
+                <select class="form-select border-start-0 ps-0 shadow-none" [(ngModel)]="model.farmerId" name="farmerId" required>
+                  <option [ngValue]="null">Choose Farmer...</option>
+                  <option *ngFor="let f of farmers" [value]="f.id">{{f.name}} (#{{f.id}})</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-6">
+                <label class="form-label small fw-bold">Date *</label>
+                <input type="date" class="form-control shadow-none" [(ngModel)]="model.date" name="date" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-bold">Weight (Tons) *</label>
+                <div class="input-group">
+                  <input type="number" class="form-control shadow-none border-end-0" [(ngModel)]="model.tons" (input)="calculateAmount()" name="tons">
+                  <span class="input-group-text bg-white text-muted border-start-0 small">T</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-3 mb-4">
+              <div class="col-6">
+                <label class="form-label small fw-bold">Rate (₹) *</label>
+                <input type="number" class="form-control shadow-none" [(ngModel)]="model.rate" (input)="calculateAmount()" name="rate">
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-bold text-primary">Final Amount</label>
+                <div class="form-control bg-light border-dashed fw-bold text-dark">₹ {{ model.amount || 0 }}</div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label small fw-bold">Weight Slip / Invoice Attachment</label>
+              <div class="upload-zone" (click)="fileInput.click()">
+                <input type="file" class="d-none" #fileInput (change)="onFileSelected($event)" accept="image/*">
+                <div *ngIf="!imagePreview" class="py-2">
+                  <i class="bi bi-cloud-arrow-up fs-2 text-primary"></i>
+                  <p class="mb-0 x-small text-muted">Click to upload image</p>
+                </div>
+               <div *ngIf="imagePreview" class="position-relative">
+                  <img [src]="imagePreview" class="img-preview rounded" alt="Weight Slip Preview">
+               <div class="upload-overlay rounded">
+                 <i class="bi bi-arrow-repeat text-white"></i>
+            </div>
+          </div>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary py-2 fw-bold shadow-sm">
+                <i class="bi bi-check2-all me-1"></i> {{ isEdit ? 'UPDATE RECORD' : 'CONFIRM PURCHASE' }}
+              </button>
+              <button *ngIf="isEdit" type="button" (click)="reset()" class="btn btn-link text-decoration-none text-muted btn-sm">Discard Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-8">
+      <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light-header">
+              <tr>
+                <th class="ps-4">#</th>
+                <th>Farmer Details</th>
+                <th>Purchase Info</th>
+                <th class="text-end">Financials</th>
+                <th class="text-center">Slip</th>
+                <th class="text-end pe-4">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of filteredData; let i = index" class="record-row">
+                <td class="ps-4"><span class="badge bg-light text-dark">#{{ r.id }}</span></td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="avatar-sm bg-soft-info text-info me-2">{{ r.farmerName?.charAt(0) }}</div>
+                    <span class="fw-bold">{{ r.farmerName }}</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="small fw-bold"><i class="bi bi-calendar3 me-1"></i> {{ r.date | date:'dd MMM yyyy' }}</div>
+                  <div class="x-small text-muted"><i class="bi bi-truck me-1"></i> {{ r.tons }} Tons</div>
+                </td>
+                <td class="text-end">
+                  <div class="fw-bold text-success">₹ {{ r.amount | number }}</div>
+                  <div class="x-small text-muted">@ ₹{{ r.rate }}/T</div>
+                </td>
+                <td class="text-center">
+                  <i *ngIf="r.caneWeightImagePath" class="bi bi-image text-primary fs-5" matTooltip="Slip Attached"></i>
+                  <i *ngIf="!r.caneWeightImagePath" class="bi bi-image text-muted opacity-25 fs-5"></i>
+                </td>
+                <td class="text-end pe-4">
+                  <button class="btn btn-action-edit me-1" (click)="edit(r)"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-action-delete" (click)="delete(r.id!)"><i class="bi bi-trash"></i></button>
+                </td>
+              </tr>
+              <tr *ngIf="filteredData.length === 0">
+                <td colspan="6" class="text-center py-5">
+                   <img src="assets/img/empty.svg" alt="" style="width: 150px; opacity: 0.5;">
+                   <p class="text-muted mt-3">No purchase records found.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

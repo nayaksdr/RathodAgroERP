@@ -1,0 +1,109 @@
+.cane-payment-wrapper {
+  margin-left: 240px; /* Offset for sidebar */
+  width: calc(100% - 240px);
+  padding: 2rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.glass-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.icon-box {
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.bg-soft-success { background: #e8f5e9; color: #2e7d32; }
+.bg-soft-danger { background: #ffebee; color: #c62828; }
+
+.badge-pill {
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.avatar-circle {
+  width: 35px;
+  height: 35px;
+  background: #6c757d;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.x-small { font-size: 0.7rem; }
+
+.btn-icon {
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: fadeIn 0.4s ease-out; }
+
+@media (max-width: 992px) {
+  .cane-payment-wrapper { margin-left: 0; width: 100%; padding: 1rem; }
+}
+/* Base style for the pill */
+.badge-pill {
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Success / Completed Style */
+.badge-paid {
+  background-color: rgba(25, 135, 84, 0.1); /* Soft Green */
+  color: #198754;
+  border: 1px solid rgba(25, 135, 84, 0.2);
+}
+
+/* Pending / Danger Style */
+.badge-pending {
+  background-color: rgba(220, 53, 69, 0.1); /* Soft Red */
+  color: #dc3545;
+  border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+/* Optional: Add a slight pulse animation to Pending items */
+.badge-pending i {
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+.swal2-confirm {
+  border-radius: 50px !important; /* Matches your rounded-pill buttons */
+}

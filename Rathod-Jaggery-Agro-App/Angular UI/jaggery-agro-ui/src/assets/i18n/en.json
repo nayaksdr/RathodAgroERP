@@ -1,0 +1,9 @@
+{
+  "APP_TITLE": "Rathod Jaggery & Agro",
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "LABOUR": "Labour",
+    "PAYMENTS": "Payments",
+    "LOGOUT": "Logout"
+  }
+}

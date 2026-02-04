@@ -1,0 +1,185 @@
+<div class="cane-advance-wrapper animate-fade-in">
+
+  <div class="header-container d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h3 class="fw-bold text-primary mb-0">
+        <i class="bi bi-cash-stack me-2"></i>Cane Advance Payments
+      </h3>
+      <p class="text-muted small mb-0">Manage and track financial advances for farmers</p>
+    </div>
+    <div class="stats-badge bg-white shadow-sm border p-2 px-3 rounded-pill">
+      <span class="text-muted">Total Records: </span>
+      <span class="fw-bold text-primary">{{ filteredData.length }}</span>
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0 rounded-4 mb-4 overflow-hidden animate-slide-down">
+    <div class="card-header bg-primary text-white py-3">
+      <h5 class="fw-bold mb-0">
+        <i class="bi" [ngClass]="isEdit ? 'bi-pencil-square' : 'bi-plus-circle-dotted'"></i>
+        {{ isEdit ? 'Update Advance Details' : 'Register New Advance' }}
+      </h5>
+    </div>
+    <div class="card-body p-4">
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label class="form-label fw-semibold"><i class="bi bi-person-badge me-1"></i>Farmer *</label>
+          <select class="form-select custom-input" [(ngModel)]="model.farmerId">
+            <option [value]="0">Select Farmer</option>
+            <option *ngFor="let f of farmers" [value]="f.id">{{ f.name }}</option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label fw-semibold"><i class="bi bi-person-check me-1"></i>Member *</label>
+          <select class="form-select custom-input" [(ngModel)]="model.memberId">
+            <option [value]="0">Select Member</option>
+            <option *ngFor="let m of members" [value]="m.id">{{ m.name }}</option>
+          </select>
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label fw-semibold"><i class="bi bi-calendar3 me-1"></i>Date *</label>
+          <input type="date" class="form-control custom-input" [(ngModel)]="model.advanceDate">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label fw-semibold"><i class="bi bi-currency-rupee me-1"></i>Amount *</label>
+          <input type="number" class="form-control custom-input" [(ngModel)]="model.amount" placeholder="0.00">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label fw-semibold"><i class="bi bi-wallet2 me-1"></i>Mode *</label>
+          <select class="form-select custom-input" [(ngModel)]="model.paymentMode">
+            <option value="">Select Mode</option>
+            <option value="Cash">Cash</option>
+            <option value="Bank">Bank</option>
+            <option value="UPI">UPI</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold"><i class="bi bi-chat-left-text me-1"></i>Remarks</label>
+          <input type="text" class="form-control custom-input" [(ngModel)]="model.remarks" placeholder="Enter notes...">
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">
+            <i class="bi bi-file-earmark-arrow-up me-1"></i>Proof Document 
+            <span *ngIf="isProofRequired()" class="text-danger">*</span>
+          </label>
+          <div class="input-group">
+            <input type="file" class="form-control custom-input" 
+                   (change)="onFileChange($event)" 
+                   [disabled]="model.paymentMode === 'Cash' || !model.paymentMode">
+            <span class="input-group-text bg-light" *ngIf="proofFile">
+              <i class="bi bi-check-circle-fill text-success"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="col-12 d-flex gap-2 mt-3">
+          <button class="btn btn-success px-4 py-2 rounded-3 shadow-sm hover-up" (click)="save()">
+            <i class="bi bi-cloud-arrow-up me-2"></i>{{ isEdit ? 'Update Record' : 'Save Advance' }}
+          </button>
+          <button class="btn btn-light px-4 py-2 rounded-3 border" (click)="reset()">
+            <i class="bi bi-arrow-counterclockwise me-2"></i>Reset
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3 align-items-center">
+    <div class="col-md-6">
+      <div class="input-group search-bar shadow-sm">
+        <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+        <input type="text" class="form-control border-start-0 ps-0" 
+               placeholder="Search by Name, Amount, or Remarks..." 
+               [(ngModel)]="searchText" (input)="page=1">
+        <button *ngIf="searchText" class="btn btn-outline-secondary border-start-0" (click)="searchText=''; page=1">
+          <i class="bi bi-x"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0 rounded-4 p-0 overflow-hidden">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="bg-light-blue">
+          <tr>
+            <th class="ps-4">#</th>
+            <th>Farmer Details</th>
+            <th>Member Reference</th>
+            <th>Date</th>
+            <th class="text-end">Amount</th>
+            <th class="text-center">Mode</th>
+            <th class="text-end pe-4">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of paginatedData(); let i = index" class="animate-row">
+            <td class="ps-4 text-muted small">{{ (page-1)*pageSize + i + 1 }}</td>
+            <td>
+              <div class="fw-bold">{{ row.farmerName }}</div>
+              <div class="text-muted extra-small">ID: #F-{{ row.farmerId }}</div>
+            </td>
+            <td><i class="bi bi-person me-1"></i>{{ row.memberName }}</td>
+            <td>{{ row.advanceDate | date:'mediumDate' }}</td>
+            <td class="text-end fw-bold text-success">₹ {{ row.amount | number }}</td>
+            <td class="text-center">
+              <span [ngClass]="{
+                'badge-cash': row.paymentMode === 'Cash',
+                'badge-bank': row.paymentMode === 'Bank',
+                'badge-upi': row.paymentMode === 'UPI'
+              }" class="mode-badge">
+                <i class="bi" [ngClass]="{
+                  'bi-cash-coin': row.paymentMode === 'Cash',
+                  'bi-bank': row.paymentMode === 'Bank',
+                  'bi-qr-code-scan': row.paymentMode === 'UPI'
+                }"></i> {{ row.paymentMode }}
+              </span>
+            </td>
+            <td class="text-end pe-4">
+              <div class="btn-group shadow-sm rounded-3">
+                <button *ngIf="row.proofUrl" class="btn btn-sm btn-white text-info border" (click)="viewProof(row.proofUrl)" title="View Proof">
+                  <i class="bi bi-eye"></i>
+                </button>
+                <button class="btn btn-sm btn-white text-primary border" (click)="edit(row)" title="Edit">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button class="btn btn-sm btn-white text-danger border" (click)="delete(row.id!)" title="Delete">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="paginatedData().length === 0">
+            <td colspan="7" class="text-center py-5">
+              <i class="bi bi-search text-muted display-4 d-block mb-3"></i>
+              <p class="text-muted">No records matching your search were found.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="card-footer bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+        <div class="text-muted small">
+          Showing <strong>{{ paginatedData().length }}</strong> of {{ filteredData.length }} records
+        </div>
+        <nav>
+          <ul class="pagination pagination-sm mb-0 shadow-sm">
+            <li class="page-item" [class.disabled]="page === 1">
+              <a class="page-link px-3" (click)="page = page - 1" role="button">Prev</a>
+            </li>
+            <li class="page-item active"><span class="page-link">{{ page }} / {{ totalPages() }}</span></li>
+            <li class="page-item" [class.disabled]="page === totalPages() || totalPages() === 0">
+              <a class="page-link px-3" (click)="page = page + 1" role="button">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+<div class="expense-type-wrapper">
+  <div class="header-section d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <div class="animate__animated animate__fadeInLeft">
+      <h3 class="fw-bold text-dark mb-1 d-flex align-items-center gap-2">
+        <div class="icon-avatar" style="background: #eef2ff; color: #4f46e5;">
+          <mat-icon>category</mat-icon>
+        </div>
+        Expense Type Master
+      </h3>
+      <p class="text-muted small mb-0 ms-1">Manage and organize your business expenditure types</p>
+    </div>
+
+    <div class="stats-chip shadow-sm bg-white px-3 py-2 rounded-3 border d-inline-flex align-items-center animate__animated animate__fadeInRight">
+      <span class="status-indicator bg-success pulse me-2"></span>
+      <span class="text-secondary small fw-bold text-uppercase ls-1">Total Categories: </span>
+      <span class="ms-2 badge bg-primary-soft text-primary rounded-pill">{{ filtered.length }}</span>
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0 rounded-4 mb-4 overflow-hidden">
+    <div class="card-header border-0 py-3" [ngClass]="isEdit ? 'bg-warning-soft' : 'bg-primary-soft'">
+      <h6 class="fw-bold mb-0 d-flex align-items-center gap-2" [ngClass]="isEdit ? 'text-warning' : 'text-primary'">
+        <mat-icon>{{ isEdit ? 'edit_note' : 'add_moderator' }}</mat-icon>
+        {{ isEdit ? 'Modify Existing Category' : 'Define New Category' }}
+      </h6>
+    </div>
+    <div class="card-body p-4 bg-white">
+      <form [formGroup]="form" (ngSubmit)="submit()" class="row g-3 align-items-end">
+        <div class="col-lg-8 col-md-7">
+          <label class="form-label fw-bold text-secondary small text-uppercase">Category Name</label>
+          <div class="input-group search-glass rounded-3 overflow-hidden">
+            <span class="input-group-text bg-transparent border-0">
+              <mat-icon class="text-primary">auto_awesome_motion</mat-icon>
+            </span>
+            <input type="text" class="form-control border-0 bg-transparent py-2-5" formControlName="name" placeholder="Enter category name (e.g. Travel, Office)">
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-5 d-flex gap-2">
+          <button type="submit" class="btn btn-primary flex-grow-1 py-2-5 rounded-3 fw-bold d-flex align-items-center justify-content-center gap-2 shadow-sm" [disabled]="form.invalid || loading">
+            <mat-icon *ngIf="!loading">{{ isEdit ? 'published_with_changes' : 'check_circle' }}</mat-icon>
+            <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+            {{ isEdit ? 'Update' : 'Save Category' }}
+          </button>
+          
+          <button *ngIf="isEdit" type="button" class="btn btn-light py-2-5 px-3 rounded-3" (click)="cancelEdit()">
+            <mat-icon>backspace</mat-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+    <div class="card-header bg-white py-3 border-bottom-0">
+      <div class="input-group search-glass rounded-3">
+        <span class="input-group-text border-0 bg-transparent"><mat-icon>search</mat-icon></span>
+        <input type="text" class="form-control border-0 bg-transparent" placeholder="Quick find categories..." [(ngModel)]="searchText" (input)="applyFilter()">
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="bg-light uppercase-label">
+          <tr>
+            <th class="ps-4 py-3"># No.</th>
+            <th class="py-3">Category Identity</th>
+            <th class="text-end pe-4 py-3">Control</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="filtered.length; else noData">
+          <tr *ngFor="let item of filtered; let i = index" class="animate-row">
+            <td class="ps-4 text-muted font-monospace">
+              <span class="badge bg-light text-dark">#{{ i + 1 }}</span>
+            </td>
+            <td>
+              <div class="d-flex align-items-center gap-3">
+                <div class="icon-avatar">
+                   <mat-icon>{{ getIcon(item.name) }}</mat-icon>
+                </div>
+                <div>
+                  <div class="fw-bold text-dark">{{ item.name }}</div>
+                 
+                </div>
+              </div>
+            </td>
+            <td class="text-end pe-4">
+              <div class="d-flex justify-content-end gap-2">
+                <button class="btn btn-edit-circle" (click)="edit(item)" title="Edit">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button class="btn btn-delete-circle" (click)="delete(item.id)" title="Delete">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #noData>
+  <div class="text-center py-5">
+    <mat-icon class="text-muted display-1 opacity-10">layers_clear</mat-icon>
+    <p class="text-muted mt-2">No categories found in the system.</p>
+  </div>
+</ng-template>

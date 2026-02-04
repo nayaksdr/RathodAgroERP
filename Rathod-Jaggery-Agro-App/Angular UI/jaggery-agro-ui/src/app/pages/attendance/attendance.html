@@ -1,0 +1,163 @@
+<div class="container-fluid py-4 attendance-page">
+
+  <!-- ================= FORM CARD ================= -->
+  <div class="card form-card shadow-sm mb-4">
+    <div class="card-header bg-white border-0">
+      <h5 class="fw-bold mb-0">
+        <i class="bi bi-calendar-check me-2 text-success"></i>
+        {{ isEdit ? 'Edit Attendance' : 'Add Attendance' }}
+      </h5>
+    </div>
+
+    <div class="card-body">
+      <div class="row g-4">
+
+        <!-- LABOR -->
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Labor *</label>
+          <div class="input-group-custom">
+            <i class="bi bi-person-fill input-icon"></i>
+            <select class="form-select custom-input"
+                    [(ngModel)]="model.laborId">
+              <option value="">Select Labor</option>
+              <option *ngFor="let l of labors" [value]="l.id">
+                {{ l.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- DATE -->
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Date *</label>
+          <div class="input-group-custom">
+            <i class="bi bi-calendar-event input-icon"></i>
+            <input type="date"
+                   class="form-control custom-input"
+                   [(ngModel)]="model.date">
+          </div>
+        </div>
+
+        <!-- STATUS -->
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Status *</label>
+          <div class="input-group-custom">
+            <i class="bi bi-check-circle input-icon"></i>
+            <select class="form-select custom-input"
+                    [(ngModel)]="model.isPresent">
+              <option [ngValue]="true">Present</option>
+              <option [ngValue]="false">Absent</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="col-12 d-flex gap-3 mt-2">
+          <button class="btn btn-success px-4"
+                  (click)="save()">
+            <i class="bi bi-save me-1"></i>
+            {{ isEdit ? 'Update' : 'Save' }}
+          </button>
+
+          <button class="btn btn-outline-secondary px-4"
+                  (click)="reset()">
+            <i class="bi bi-x-circle me-1"></i>
+            Cancel
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SEARCH ================= -->
+  <div class="search-box mb-3">
+    <i class="bi bi-search search-icon"></i>
+    <input type="text"
+           class="form-control search-input"
+           placeholder="Search by Labor or Status..."
+           [(ngModel)]="searchText">
+  </div>
+
+  <!-- ================= TABLE ================= -->
+  <div class="card table-card shadow-sm">
+    <div class="table-responsive">
+      <table class="table align-middle table-hover mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Labor</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th class="text-end">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let row of paginatedData(); let i = index"
+              [class.present-row]="row.isPresent"
+              [class.absent-row]="!row.isPresent">
+
+            <td>{{ (page-1)*pageSize + i + 1 }}</td>
+
+            <td class="fw-semibold">
+              <i class="bi bi-person-badge me-1 text-muted"></i>
+              {{ row?.laborName }}
+            </td>
+
+            <td>
+              <i class="bi bi-calendar3 me-1 text-muted"></i>
+              {{ row?.date | date:'dd-MM-yyyy' }}
+            </td>
+
+            <td>
+              <span class="badge"
+                    [ngClass]="row.isPresent ? 'bg-success' : 'bg-danger'">
+                {{ row.isPresent ? 'Present' : 'Absent' }}
+              </span>
+            </td>
+
+            <td class="text-end">
+              <button class="btn btn-sm btn-outline-primary me-2"
+                      (click)="edit(row)">
+                <i class="bi bi-pencil"></i>
+              </button>
+
+              <button class="btn btn-sm btn-outline-danger"
+                      (click)="delete(row.id!)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+
+          <tr *ngIf="paginatedData().length === 0">
+            <td colspan="5"
+                class="text-center text-muted py-4">
+              No records found
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="d-flex justify-content-between align-items-center p-3 border-top">
+      <button class="btn btn-outline-secondary btn-sm"
+              (click)="page = page-1"
+              [disabled]="page===1">
+        <i class="bi bi-chevron-left"></i> Prev
+      </button>
+
+      <span class="fw-semibold">
+        Page {{ page }} / {{ totalPages() }}
+      </span>
+
+      <button class="btn btn-outline-secondary btn-sm"
+              (click)="page = page+1"
+              [disabled]="page===totalPages()">
+        Next <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+</div>

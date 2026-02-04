@@ -1,0 +1,202 @@
+<!-- MOBILE TOGGLE BUTTON -->
+<button
+  class="mobile-toggle d-md-none"
+  (click)="toggleMobile()">
+  <i class="bi" [ngClass]="isMobileOpen ? 'bi-x-lg' : 'bi-list'"></i>
+</button>
+
+<!-- MOBILE OVERLAY -->
+<div
+  class="sidebar-overlay"
+  *ngIf="isMobileOpen"
+  (click)="closeMobile()">
+</div>
+
+<!-- SIDEBAR -->
+<nav
+  class="sidebar custom-navbar shadow-sm"
+  [class.collapsed]="isCollapsed && !isMobile"
+  [class.mobile-open]="isMobileOpen"
+  [class.dark]="darkMode">
+
+  <!-- LOGO SECTION -->
+  <div class="sidebar-logo">
+    <a routerLink="/dashboard" (click)="closeMobile()" class="logo-wrapper">
+      <img src="assets/images/logo.png" alt="Logo" class="logo">      
+    </a>   
+  </div>
+
+  <!-- MENU -->
+  <ul class="sidebar-menu">
+
+    <!-- EMPLOYEE -->
+    <li class="nav-item has-sub"
+        [class.open]="isOpen.employee">
+
+      <div class="nav-link"
+           role="button"
+           (click)="toggleDropdown('employee')">
+
+        <i class="bi bi-people-fill"></i>
+        <span class="title" *ngIf="!isCollapsed">Employee</span>
+        <i class="bi bi-chevron-down chevron"
+           *ngIf="!isCollapsed"
+           [class.rotate]="isOpen.employee"></i>
+      </div>
+
+      <ul class="submenu">
+        <li>
+          <a routerLink="/labor-type"
+             routerLinkActive="active"
+             (click)="closeMobile()">
+            <i class="bi bi-person-badge"></i>
+            <span>Labor Type</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/labor-type-rate"
+             routerLinkActive="active"
+             (click)="closeMobile()">
+            <i class="bi bi-currency-exchange"></i>
+            <span>Labor Type Rate</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/labor"
+             routerLinkActive="active"
+             (click)="closeMobile()">
+            <i class="bi bi-people"></i>
+            <span>Labor</span>
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/ai-agent"
+             routerLinkActive="active"
+             (click)="closeMobile()">
+            <i class="bi bi-robot"></i>
+            <span>AI Assistant</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- ATTENDANCE -->
+    <li class="nav-item">
+      <a routerLink="/attendance"
+         routerLinkActive="active"
+         class="nav-link"
+         (click)="closeMobile()">
+        <i class="bi bi-calendar-check"></i>
+        <span class="title" *ngIf="!isCollapsed">Attendance</span>
+      </a>
+    </li>
+
+    <!-- PAYMENTS -->
+    <li class="nav-item has-sub"
+        [class.open]="isOpen.payments">
+
+      <div class="nav-link"
+           role="button"
+           (click)="toggleDropdown('payments')">
+
+        <i class="fa-solid fa-money-bill-wave"></i>
+        <span class="title" *ngIf="!isCollapsed">Labor Payments</span>
+        <i class="bi bi-chevron-down chevron"
+           *ngIf="!isCollapsed"
+           [class.rotate]="isOpen.payments"></i>
+      </div>
+
+      <ul class="submenu">
+        <li>
+          <a routerLink="/labor-payment"
+             routerLinkActive="active"
+             (click)="closeMobile()">
+            <i class="bi bi-cash-stack"></i>
+            <span>Labor Salary</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/advance-payment"
+             routerLinkActive="active"
+             (click)="closeMobile()">
+            <i class="bi bi-credit-card"></i>
+            <span>Labor Advance Pay</span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- PRODUCE -->
+    <li class="nav-item has-sub"
+        [class.open]="isOpen.produce">
+
+      <div class="nav-link"
+           role="button"
+           (click)="toggleDropdown('produce')">
+
+        <i class="fa-solid fa-box"></i>
+        <span class="title" *ngIf="!isCollapsed">Produce</span>
+        <i class="bi bi-chevron-down chevron"
+           *ngIf="!isCollapsed"
+           [class.rotate]="isOpen.produce"></i>
+      </div>
+
+      <ul class="submenu">
+        <li><a routerLink="/produce" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-basket-fill"></i><span>Produce</span></a></li>
+        <li><a routerLink="/dealer" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-people"></i><span>Dealers</span></a></li>
+        <li><a routerLink="/dealer-advance" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-cash"></i><span>Dealer Advance</span></a></li>
+        <li><a routerLink="/jaggery-sale" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-cart-fill"></i><span>Jaggery Sale</span></a></li>
+        <li><a routerLink="/jaggery-report.component" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-file-earmark-text"></i><span>Sale Report</span></a></li>
+      </ul>
+    </li>
+
+    <!-- CANE -->
+    <li class="nav-item has-sub"
+        [class.open]="isOpen.cane">
+
+      <div class="nav-link"
+           role="button"
+           (click)="toggleDropdown('cane')">
+
+        <i class="fa-solid fa-tractor"></i>
+        <span class="title" *ngIf="!isCollapsed">Cane</span>
+        <i class="bi bi-chevron-down chevron"
+           *ngIf="!isCollapsed"
+           [class.rotate]="isOpen.cane"></i>
+      </div>
+
+      <ul class="submenu">
+        <li><a routerLink="/farmer" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-person"></i><span>Farmers</span></a></li>
+        <li><a routerLink="/cane-purchase" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-box-seam"></i><span>Cane Purchase</span></a></li>
+        <li><a routerLink="/cane-payment" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-cash-stack"></i><span>Cane Payment</span></a></li>
+        <li><a routerLink="/cane-advance" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-credit-card"></i><span>Cane Advance</span></a></li>
+      </ul>
+    </li>
+
+    <!-- EXPENSE -->
+    <li class="nav-item has-sub"
+        [class.open]="isOpen.expense">
+
+      <div class="nav-link"
+           role="button"
+           (click)="toggleDropdown('expense')">
+
+        <i class="fa-solid fa-wallet"></i>
+        <span class="title" *ngIf="!isCollapsed">Expense</span>
+        <i class="bi bi-chevron-down chevron"
+           *ngIf="!isCollapsed"
+           [class.rotate]="isOpen.expense"></i>
+      </div>
+
+      <ul class="submenu">
+        <li><a routerLink="/expense-type" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-list-task"></i><span>Expense Type</span></a></li>
+        <li><a routerLink="/splitwise" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-diagram-3"></i><span>Splitwise</span></a></li>
+        <li><a routerLink="/jaggery-share-dashboard" routerLinkActive="active" (click)="closeMobile()"><i class="bi bi-graph-up"></i><span> Jaggery Sale Share</span></a></li>
+      </ul>
+    </li>
+
+  </ul>
+</nav>

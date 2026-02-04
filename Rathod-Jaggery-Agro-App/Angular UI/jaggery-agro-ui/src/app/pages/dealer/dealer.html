@@ -1,0 +1,139 @@
+<div class="dealer">
+  <div class="dealer-container">
+    
+    <div class="header-section d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h2 class="m-0 fw-bold text-dark d-flex align-items-center gap-2">
+          <div class="icon-box"><mat-icon color="primary">store</mat-icon></div>
+          Dealer Management
+        </h2>
+        <p class="text-muted m-0 ms-5">Manage your distribution network and contact details</p>
+      </div>
+      <div class="stats-mini d-flex gap-3">
+        <div class="mini-card">
+          <span class="label">Total Dealers</span>
+          <span class="value">{{ totalItems || dealers.length }}</span>
+        </div>
+      </div>
+    </div>
+
+    <mat-card class="form-card mb-4 border-0 shadow-sm">
+      <mat-card-header class="pb-3 border-bottom mb-3">
+        <mat-card-title class="d-flex align-items-center gap-2 fs-6 fw-bold">
+          <mat-icon color="primary">{{ isEdit ? 'edit_note' : 'person_add' }}</mat-icon>
+          {{ isEdit ? 'Update Dealer Information' : 'Register New Dealer' }}
+        </mat-card-title>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Dealer Name</mat-label>
+              <input matInput placeholder="e.g. John Doe" [(ngModel)]="model.name">
+              <mat-icon matPrefix class="text-muted me-2">badge</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Phone Number</mat-label>
+              <input matInput placeholder="+91 00000 00000" [(ngModel)]="model.phone">
+              <mat-icon matPrefix class="text-muted me-2">call</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="col-md-4">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Business Address</mat-label>
+              <input matInput placeholder="City, State" [(ngModel)]="model.address">
+              <mat-icon matPrefix class="text-muted me-2">location_on</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions align="end" class="p-3 bg-light-soft">
+        <button mat-button class="px-4 rounded-pill me-2" *ngIf="isEdit" (click)="reset()">
+          Cancel
+        </button>
+        <button mat-raised-button color="primary" class="px-4 rounded-pill shadow-sm" (click)="save()">
+          <mat-icon class="me-1">{{ isEdit ? 'update' : 'save' }}</mat-icon>
+          {{ isEdit ? 'Update' : 'Save' }} Dealer
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    <div class="table-container shadow-sm border">
+      <div class="table-toolbar p-3 bg-white d-flex align-items-center justify-content-between border-bottom">
+        <div class="search-box flex-grow-1">
+          <mat-icon class="search-icon">search</mat-icon>
+          <input type="text" placeholder="Search by name, phone or location..." 
+                 [(ngModel)]="search" (input)="page=1; load()">
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table custom-table m-0">
+          <thead>
+            <tr>
+              <th>Dealer Identity</th>
+              <th>Contact Info</th>
+              <th>Location</th>
+              <th class="text-center">Manage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let d of dealers" class="dealer-row">
+              <td>
+                <div class="d-flex align-items-center gap-3">
+  <div class="avatar-circle">
+    {{ (d.name ? d.name[0] : '') | uppercase }}
+  </div>
+  <span class="fw-bold text-dark">{{ d.name }}</span>
+</div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-2">
+                  <mat-icon class="text-muted small-icon">phone_android</mat-icon>
+                  <span class="text-secondary">{{ d.phone || d.mobile || 'N/A' }}</span>
+                </div>
+              </td>
+              <td>
+                <div class="d-flex align-items-center gap-2">
+                  <mat-icon class="text-muted small-icon">map</mat-icon>
+                  <span class="text-secondary">{{ d.address }}</span>
+                </div>
+              </td>
+              <td class="text-center">
+                <button mat-icon-button color="primary" matTooltip="Edit" (click)="edit(d)">
+                  <mat-icon>edit_square</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" matTooltip="Delete" (click)="delete(d.id)">
+                  <mat-icon>delete_sweep</mat-icon>
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="dealers.length === 0">
+              <td colspan="4" class="text-center py-5">
+                <mat-icon class="text-muted mb-2" style="font-size: 48px; width: 48px; height: 48px;">sentiment_dissatisfied</mat-icon>
+                <p class="text-muted mt-2">No dealer records found.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination-bar p-3 bg-light-soft d-flex justify-content-between align-items-center">
+        <span class="text-muted small">Showing Page <strong>{{ page }}</strong> of <strong>{{ totalPages }}</strong></span>
+        <div class="paginator-buttons">
+          <button mat-stroked-button [disabled]="page===1" (click)="prev()" class="me-2">
+            <mat-icon>chevron_left</mat-icon> Prev
+          </button>
+          <button mat-stroked-button [disabled]="page===totalPages" (click)="next()">
+            Next <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

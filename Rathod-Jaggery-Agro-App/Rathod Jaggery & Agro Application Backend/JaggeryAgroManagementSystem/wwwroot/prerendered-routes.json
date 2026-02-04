@@ -1,0 +1,13 @@
+{
+  "routes": {
+    "/": {},
+    "/attendance": {},
+    "/dashboard": {},
+    "/deposits": {},
+    "/labors": {},
+    "/labors/add": {},
+    "/login": {},
+    "/payments": {},
+    "/register": {}
+  }
+}

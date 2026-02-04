@@ -1,0 +1,114 @@
+/* Main Container */
+.jaggerySheare {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 30px;
+  background: #f1f5f9; /* Solid light gray for better contrast with glass cards */
+  min-height: 100vh;
+}
+/* Custom Global Styling */
+:host {
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --primary-soft: #eef2ff;
+  --success-soft: #ecfdf5;
+  --danger-soft: #fef2f2;
+}
+
+.jaggery-wrapper {
+  background: radial-gradient(circle at top right, #f8fafc, #eff6ff);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Glassmorphism Effect */
+.glass-card, .stat-glass-card, .partner-glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+}
+
+/* Icons & Shapes */
+.icon-shape {
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 12px; background: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.avatar-box {
+  width: 40px; height: 40px;
+  background: #6366f1; color: white;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 10px; font-weight: bold;
+}
+
+/* Interactive Chips */
+.partner-chip {
+  padding: 8px 16px; border-radius: 10px;
+  background: white; border: 1px solid #e2e8f0;
+  cursor: pointer; transition: 0.2s;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.85rem; font-weight: 500;
+}
+.partner-chip.active {
+  background: #6366f1; color: white; border-color: #6366f1;
+}
+
+/* Settlement Nodes */
+.payment-node {
+  background: #fff; border-radius: 12px;
+  border: 1px solid #f1f5f9;
+}
+
+/* Upload Zone */
+.upload-zone {
+  border: 2px dashed #cbd5e1; border-radius: 12px;
+  cursor: pointer; transition: 0.3s;
+}
+.upload-zone:hover { background: #f8fafc; border-color: #6366f1; }
+.upload-zone.has-file { border-color: #10b981; background: #f0fdf4; }
+
+/* Transitions */
+.transition-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+}
+
+/* Soft Badges */
+.bg-danger-soft { background: var(--danger-soft); }
+.bg-success-soft { background: var(--success-soft); }
+.bg-soft-warning { background: #fffbeb; color: #b45309; }
+
+/* Print Mode */
+@media print {
+  .jaggery-wrapper { background: white; }
+  .custom-form, button, mat-icon { display: none !important; }
+}
+.payment-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-arrow mat-icon {
+  font-size: 2rem;
+  height: 32px;
+  width: 100%;
+  margin-top: -5px;
+}
+
+.settlement-card {
+  transition: transform 0.2s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.settlement-card:hover {
+  transform: scale(1.02);
+  background: #f8faff !important;
+}
+
+.bg-soft-primary {
+  background-color: #e0e7ff;
+}

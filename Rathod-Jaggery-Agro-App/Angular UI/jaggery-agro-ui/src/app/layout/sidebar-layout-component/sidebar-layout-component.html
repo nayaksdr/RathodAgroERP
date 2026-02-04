@@ -1,0 +1,12 @@
+<div class="layout-container">
+
+  <!-- Sidebar -->
+  <app-sidebar *ngIf="isSidebarVisible"></app-sidebar>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <app-header (menuToggle)="toggleSidebar()"></app-header>
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
